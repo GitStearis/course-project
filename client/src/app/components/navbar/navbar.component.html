@@ -5,8 +5,16 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="nav navbar-nav navbar-right">
-            <li class="nav-item"><a href="#">Sign up</a></li>
-            <li class="nav-item"><a href="#">Login</a></li>
+            <li class="nav-item"><a href="" data-toggle="modal" data-target="#register">Register</a></li>
+            <li class="nav-item"><a href="" data-toggle="modal" data-target="#login">Login</a></li>
         </ul>
     </div>
 </nav>
+
+<div class="modal fade modal-lower" id="register" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <app-registration></app-registration>
+</div>
+
+<div class="modal fade modal-lower" id="login" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <app-login></app-login>
+</div>

@@ -10,6 +10,7 @@ import { RegistrationComponent } from './components/registration/registration.co
 import { UserComponent } from './components/user/user.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { DonationComponent } from './components/donation/donation.component';
+import { LoginComponent } from './components/login/login.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { DonationComponent } from './components/donation/donation.component';
     RegistrationComponent,
     UserComponent,
     NotfoundComponent,
-    DonationComponent
+    DonationComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule, 
