@@ -1,6 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { HttpModule } from "@angular/http";
+import { HttpClientModule } from "@angular/common/http";
+import { Http } from '@angular/http';
+
 import { routing, appRoutingProviders} from './app.routing';
 
 import { AppComponent } from './app.component';
@@ -11,6 +15,8 @@ import { UserComponent } from './components/user/user.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { DonationComponent } from './components/donation/donation.component';
 import { LoginComponent } from './components/login/login.component';
+
+
 
 @NgModule({
   declarations: [
@@ -24,6 +30,8 @@ import { LoginComponent } from './components/login/login.component';
     LoginComponent
   ],
   imports: [
+    HttpModule,
+    HttpClientModule,
     BrowserModule, 
     routing
   ],

@@ -7,10 +7,15 @@ import { HttpClient } from "@angular/common/http";
   styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
+  email: string;
   username: string;
   password: string;
 
   constructor(private http: HttpClient) { }
+
+  saveEmail(event: any) {
+    this.email = event.target.value;
+  }
 
   saveUsername(event: any) {
     this.username = event.target.value;
@@ -21,10 +26,11 @@ export class RegistrationComponent implements OnInit {
   }
 
   submit() {
+    console.log(this.email);
     console.log(this.username);
     console.log(this.password);
 
-    this.http.get("http://localhost:3000/registration/" + this.username + "/" + this.password)
+    this.http.get("http://localhost:3000/registration/" + this.email + "/" + this.username + "/" + this.password)
       .subscribe(data => {
         console.log(data);
       }, err => {

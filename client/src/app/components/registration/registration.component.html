@@ -6,6 +6,10 @@
         <div class="modal-body">
             <form>
                 <div class="form-group">
+                    <label>E-mail</label>
+                    <input (keyup)="saveEmail($event)" class="form-control">
+                </div>
+                <div class="form-group">
                     <label>Username</label>
                     <input (keyup)="saveUsername($event)" class="form-control">
                     <small class="form-text text-muted">Feel free to choose any username you want</small>
