@@ -12,7 +12,6 @@ const session = require("express-session");
 
 const configDB = require("./config/database.js");
 
-// configuration ===============================================================
 mongoose.connect(configDB.url, {
   useMongoClient: true
 }); // connect to our database

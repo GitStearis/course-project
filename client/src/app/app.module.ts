@@ -6,12 +6,20 @@ import { routing, appRoutingProviders} from './app.routing';
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
+import { RegistrationComponent } from './components/registration/registration.component';
+import { UserComponent } from './components/user/user.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { DonationComponent } from './components/donation/donation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
-    HomeComponent
+    HomeComponent,
+    RegistrationComponent,
+    UserComponent,
+    NotfoundComponent,
+    DonationComponent
   ],
   imports: [
     BrowserModule, 
