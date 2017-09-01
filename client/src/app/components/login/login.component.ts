@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
   ngOnInit() {
   }
 
-  aveEmail(event: any) {
+  saveEmail(event: any) {
     this.email = event.target.value;
   }
 

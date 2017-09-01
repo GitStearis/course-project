@@ -10,6 +10,10 @@ const appRoutes: Routes = [
     component: HomeComponent
   },
   {
+    path: "/",
+    component: HomeComponent
+  },
+  {
     path: "user", 
     component: UserComponent
   },
