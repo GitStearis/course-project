@@ -7,7 +7,7 @@ import 'rxjs/add/operator/map'
 export class AuthService {
 
   currentProfile: Profile;
-  isRegistred: Boolean;
+  isRegistrated: Boolean;
   isLoggedIn: Boolean = false;
 
   constructor(private router: Router, private http: HttpClient) { }
@@ -16,7 +16,8 @@ export class AuthService {
     this.http.get("http://localhost:3000/registration/" + email + "/" + username + "/" + password)
       .map(data => JSON.stringify(data))
       .subscribe(data => {
-        this.isRegistred = this.checkRegistration(JSON.parse(data));
+        console.log(data);
+        this.isRegistrated = this.checkRegistration(JSON.parse(data));
       }, err => {
         if (err.error instanceof Error) {
           console.log('An error occurred:', err.error.message);
@@ -32,9 +33,9 @@ export class AuthService {
     this.http.get("http://localhost:3000/login/" + email + "/" + username + "/" + password)
       .map(data => JSON.stringify(data))
       .subscribe(data => {
+        console.log(data);
         this.currentProfile = JSON.parse(data);
-        console.log(this.currentProfile);
-        this.isLoggedIn = this.checkLogin(JSON.parse(data));
+        localStorage['isLoggedIn'] = this.checkLogin(JSON.parse(data));
 
       }, err => {
         if (err.error instanceof Error) {
@@ -50,11 +51,12 @@ export class AuthService {
   public logout() {
     localStorage.removeItem('email');
     localStorage.removeItem('username');
+    localStorage.removeItem('isLoggedIn');
     this.router.navigate(['/']);
   }
 
   public isAuthenticated() {
-    return this.isLoggedIn;
+    return localStorage['isLoggedIn'];
   }
 
   private saveToLocalStorage(email, username) {
@@ -78,8 +80,6 @@ export class AuthService {
       return true;
     }
   }
-
-
 }
 
 interface Profile {

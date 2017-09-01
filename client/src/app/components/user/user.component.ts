@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NotfoundComponent } from '../notfound/notfound.component';
+
+import { AuthService } from "../../auth/auth.service";
 
 @Component({
   selector: 'app-user',
@@ -7,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class UserComponent implements OnInit {
 
-  constructor() { }
+  email: string;
+  username: string;
+
+
+  constructor(public auth: AuthService) { }
 
   ngOnInit() {
+    this.email = localStorage['email'];
+    this.username = localStorage['username'];
   }
 
 }

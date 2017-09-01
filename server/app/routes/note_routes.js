@@ -1,5 +1,6 @@
 module.exports = function(app, model) {
     app.get('/registration/:email/:username/:password', (req, res) => {
+        console.log('here');
         model.findOne({ username: req.params.username }, function(err, item) {
             if (item === null) {
                 let user = {
@@ -18,9 +19,7 @@ module.exports = function(app, model) {
             }
         });
     });
-};
 
-module.exports = function(app, model) {
     app.get('/login/:email/:username/:password', (req, res) => {
         model.findOne({ email: req.params.email, username: req.params.username, password: req.params.password }, function(err, item) {
             if (item === null) {
