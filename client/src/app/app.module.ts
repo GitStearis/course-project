@@ -15,8 +15,7 @@ import { UserComponent } from './components/user/user.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { DonationComponent } from './components/donation/donation.component';
 import { LoginComponent } from './components/login/login.component';
-
-import { AuthService } from "./auth/auth.service";
+import { ProjectComponent } from './components/project/project.component';
 
 
 
@@ -39,7 +38,6 @@ import { AuthService } from "./auth/auth.service";
   ],
   providers: [
     appRoutingProviders,
-    AuthService,
   ],
   bootstrap: [AppComponent]
 })
