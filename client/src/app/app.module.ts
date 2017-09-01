@@ -17,6 +17,8 @@ import { DonationComponent } from './components/donation/donation.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProjectComponent } from './components/project/project.component';
 
+import { AuthService } from "./auth/auth.service";
+
 
 
 @NgModule({
@@ -29,6 +31,7 @@ import { ProjectComponent } from './components/project/project.component';
     NotfoundComponent,
     DonationComponent,
     LoginComponent,
+    ProjectComponent,
   ],
   imports: [
     HttpModule,
@@ -38,6 +41,7 @@ import { ProjectComponent } from './components/project/project.component';
   ],
   providers: [
     appRoutingProviders,
+    AuthService,
   ],
   bootstrap: [AppComponent]
 })

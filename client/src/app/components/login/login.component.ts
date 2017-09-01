@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
 
+import { AuthService } from "../../auth/auth.service";
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -11,7 +13,7 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, public auth: AuthService) { }
 
   ngOnInit() {
   }
@@ -33,17 +35,6 @@ export class LoginComponent implements OnInit {
     console.log(this.username);
     console.log(this.password);
 
-    this.http.get("http://localhost:3000/login/" + this.email + "/" + this.username + "/" + this.password)
-      .subscribe(data => {
-        console.log(data);
-      }, err => {
-        if (err.error instanceof Error) {
-          console.log('An error occurred:', err.error.message);
-        }
-        else {
-          console.log(err);
-          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
-        }
-      });
+    this.auth.login(this.email, this.username, this.password);
   }
 }

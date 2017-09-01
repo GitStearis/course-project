@@ -8,6 +8,7 @@ export class AuthService {
 
   currentProfile: Profile;
   isRegistred: Boolean;
+  isLoggedIn: Boolean = false;
 
   constructor(private router: Router, private http: HttpClient) { }
 
@@ -15,8 +16,7 @@ export class AuthService {
     this.http.get("http://localhost:3000/registration/" + email + "/" + username + "/" + password)
       .map(data => JSON.stringify(data))
       .subscribe(data => {
-        let resp = JSON.parse(data);
-
+        this.isRegistred = this.checkRegistration(JSON.parse(data));
       }, err => {
         if (err.error instanceof Error) {
           console.log('An error occurred:', err.error.message);
@@ -33,7 +33,9 @@ export class AuthService {
       .map(data => JSON.stringify(data))
       .subscribe(data => {
         this.currentProfile = JSON.parse(data);
-        this.saveToLocalStorage(this.currentProfile.email, this.currentProfile.username);
+        console.log(this.currentProfile);
+        this.isLoggedIn = this.checkLogin(JSON.parse(data));
+
       }, err => {
         if (err.error instanceof Error) {
           console.log('An error occurred:', err.error.message);
@@ -48,19 +50,16 @@ export class AuthService {
   public logout() {
     localStorage.removeItem('email');
     localStorage.removeItem('username');
-    localStorage.setItem('isLogged', 'false');
     this.router.navigate(['/']);
   }
 
   public isAuthenticated() {
-    const isLogged: Boolean = JSON.parse(localStorage.getItem('isLogged'));
-    return isLogged;
+    return this.isLoggedIn;
   }
 
   private saveToLocalStorage(email, username) {
     localStorage.setItem('email', email);
     localStorage.setItem('username', username);
-    localStorage.setItem('isLogged', 'true');
   }
 
   private checkRegistration(response) {
@@ -68,6 +67,15 @@ export class AuthService {
       return true;
     } else {
       return false
+    }
+  }
+
+  private checkLogin(response) {
+    if (response === null) {
+      return false;
+    } else {
+      this.saveToLocalStorage(this.currentProfile.email, this.currentProfile.username);
+      return true;
     }
   }
 

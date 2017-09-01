@@ -11,10 +11,32 @@ module.exports = function(app, model) {
                 console.log(user);
 
                 model.create(user, function(err, item) {
-                    res.json({ isCreated: false });
+                    res.json("true");
                 });
             } else {
-                res.json({ isCreated: false });
+                res.json("false");
+            }
+        });
+    });
+};
+
+module.exports = function(app, model) {
+    app.get('/login/:email/:username/:password', (req, res) => {
+        model.findOne({ email: req.params.email, username: req.params.username, password: req.params.password }, function(err, item) {
+            if (item === null) {
+                res.json("false");
+            } else {
+                let user = {
+                    email: req.params.email,
+                    username: req.params.username,
+                    password: req.params.password
+                };
+
+                console.log(user);
+
+                model.create(user, function(err, item) {
+                    res.json(user);
+                });
             }
         });
     });
