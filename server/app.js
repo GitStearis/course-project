@@ -10,7 +10,7 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 
-const model = require('../models/user');
+const model = require('./models/user');
 
 const configDB = require("./config/database.js");
 
