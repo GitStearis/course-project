@@ -15,6 +15,7 @@ import { UserComponent } from './components/user/user.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
 import { DonationComponent } from './components/donation/donation.component';
 import { LoginComponent } from './components/login/login.component';
+import { ProjectComponent } from './src/app/components/project/project.component';
 
 
 
@@ -27,7 +28,8 @@ import { LoginComponent } from './components/login/login.component';
     UserComponent,
     NotfoundComponent,
     DonationComponent,
-    LoginComponent
+    LoginComponent,
+    ProjectComponent
   ],
   imports: [
     HttpModule,
