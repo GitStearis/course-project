@@ -44,7 +44,7 @@ app.use(function(req, res, next) {
 // routes ======================================================================
 require("./routes/index.js")(app, passport); // load our routes and pass in our app and fully configured passport
 const dbModel = require('./routes/database.js');
-dbModel(app, model);
+dbModel(app, model.User);
 
 // launch ======================================================================
 app.listen(port);
