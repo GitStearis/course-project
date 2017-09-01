@@ -10,6 +10,8 @@ const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
 const session = require("express-session");
 
+const model = require('../models/user');
+
 const configDB = require("./config/database.js");
 
 mongoose.connect(configDB.url, {
@@ -41,6 +43,8 @@ app.use(function(req, res, next) {
 
 // routes ======================================================================
 require("./routes/index.js")(app, passport); // load our routes and pass in our app and fully configured passport
+const dbModel = require('./routes/database.js');
+dbModel(app, model);
 
 // launch ======================================================================
 app.listen(port);

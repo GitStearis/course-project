@@ -1,20 +1,3 @@
-module.exports.register = function(req, res, next) {
-    app.get('/registration/:email/:username/:password', (req, res) => {
-        var user = new User({ username: req.body.email, username: req.body.username, password: req.body.password });
-        console.log(user);
-        user.save(function(err) {
-            return err ?
-                next(err) :
-                req.logIn(user, function(err) {
-                    return err ?
-                        next(err) :
-                        res.redirect('/private');
-                });
-        });
-    });
-
-};
-
 //PASSPORT
 module.exports = function(app, passport) {
     // =====================================
