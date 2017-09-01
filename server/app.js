@@ -1,46 +1,42 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+const express  = require('express');
+const app = express();
+const port = process.env.PORT || 3000;
+const mongoose = require("mongoose");
+const passport = require("passport");
+const flash = require("connect-flash");
 
-var index = require('./routes/index');
-var users = require('./routes/users');
+const morgan = require("morgan");
+const cookieParser = require("cookie-parser");
+const bodyParser = require("body-parser");
+const session = require("express-session");
 
-var app = express();
+const configDB = require("./config/database.js");
 
-// view engine setup
-app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'jade');
+// configuration ===============================================================
+mongoose.connect(configDB.url, {
+  useMongoClient: true
+}); // connect to our database
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
-app.use(logger('dev'));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
-app.use(cookieParser());
-app.use(express.static(path.join(__dirname, 'public')));
+require('./config/passport')(passport); // pass passport for configuration
 
-app.use('/', index);
-app.use('/users', users);
+// set up our express application
+app.use(morgan("dev")); // log every request to the console
+app.use(cookieParser()); // read cookies (needed for auth)
+app.use(bodyParser()); // get information from html forms
 
-// catch 404 and forward to error handler
-app.use(function(req, res, next) {
-  var err = new Error('Not Found');
-  err.status = 404;
-  next(err);
-});
+app.set("view engine", "ejs"); // set up ejs for templating
 
-// error handler
-app.use(function(err, req, res, next) {
-  // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get('env') === 'development' ? err : {};
+// required for passport
+app.use(session({ secret: "ilovescotchscotchyscotchscotch" })); // session secret
+app.use(passport.initialize());
+app.use(passport.session()); // persistent login sessions
+app.use(flash()); // use connect-flash for flash messages stored in session
 
-  // render the error page
-  res.status(err.status || 500);
-  res.render('error');
-});
+// routes ======================================================================
+require("./routes/index.js")(app, passport); // load our routes and pass in our app and fully configured passport
+
+// launch ======================================================================
+app.listen(port);
+console.log("The magic happens on port " + port);
 
 module.exports = app;
