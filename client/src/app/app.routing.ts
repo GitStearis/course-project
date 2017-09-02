@@ -4,6 +4,7 @@ import { Routes, RouterModule } from "@angular/router";
 import { HomeComponent } from "./components/home/home.component";
 import { UserComponent } from "./components/user/user.component";
 import { ProjectComponent } from "./components/project/project.component";
+import { NotfoundComponent } from "./components/notfound/notfound.component";
 
 const appRoutes: Routes = [
   {
@@ -20,7 +21,7 @@ const appRoutes: Routes = [
   },
   {
     path: "**",
-    redirectTo: ""
+    component: NotfoundComponent
   }
 ];
 
