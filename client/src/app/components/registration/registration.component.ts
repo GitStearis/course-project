@@ -1,19 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 
 import { AuthService } from "../../auth/auth.service";
 
 @Component({
-  selector: 'app-registration',
-  templateUrl: './registration.component.html',
-  styleUrls: ['./registration.component.css']
+  selector: "app-registration",
+  templateUrl: "./registration.component.html",
+  styleUrls: ["./registration.component.css"]
 })
 export class RegistrationComponent implements OnInit {
   email: string;
   username: string;
   password: string;
 
-  constructor(private http: HttpClient, public auth: AuthService) { }
+  constructor(private http: HttpClient, public auth: AuthService) {}
 
   saveEmail(event: any) {
     this.email = event.target.value;
@@ -32,10 +32,19 @@ export class RegistrationComponent implements OnInit {
     console.log(this.username);
     console.log(this.password);
 
-    this.auth.register(this.email, this.username, this.password);
+    let user: Profile = {
+      email: this.email,
+      name: this.username,
+      password: this.password
+    };
+
+    this.auth.register(user);
   }
 
-  ngOnInit() {
-  }
-
+  ngOnInit() {}
+}
+interface Profile {
+  email: String;
+  name: String;
+  password: String;
 }
