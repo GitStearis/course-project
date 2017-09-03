@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ElementRef } from "@angular/core";
 import { RegistrationComponent } from "../registration/registration.component";
 import { LoginComponent } from "../login/login.component";
 
@@ -10,30 +10,31 @@ import { AuthService } from "../../auth/auth.service";
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit {
-  constructor(public auth: AuthService) {}
+  constructor(public auth: AuthService, private elementRef: ElementRef) {}
 
-  private style: string;
+
+  private dark: string = 'https://bootswatch.com/darkly/bootstrap.min.css';
+  private light: string = 'https://bootswatch.com/flatly/bootstrap.min.css';
 
   ngOnInit() {
-    this.changeStyle("light");
+    this.changeStyle(localStorage['style']);
   }
 
   onChange() {
-    if (this.style === "light") this.changeStyle("dark");
-    else this.changeStyle("light");
+    if (localStorage['style'] === this.dark || localStorage['style'] === null) {
+      this.changeStyle(this.light);
+    } else {
+      this.changeStyle(this.dark);
+    }
   }
 
   changeStyle(style) {
-    this.style = style;
     let links = document.getElementsByTagName("link");
     for (let i = 0; i < links.length; i++) {
       let link = links[i];
-      if (
-        link.getAttribute("rel").indexOf("style") != -1 &&
-        link.getAttribute("title")
-      ) {
-        link.disabled = true;
-        if (link.getAttribute("title") === this.style) link.removeAttribute('disabled');
+      if (link.href === this.dark || link.href === this.light) {
+        localStorage['style'] = style;
+        link.href = style;
       }
     }
   }
