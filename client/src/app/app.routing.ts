@@ -11,11 +11,11 @@ const appRoutes: Routes = [
     component: HomeComponent
   },
   {
-    path: "user", 
+    path: "user",
     component: UserComponent
   },
   {
-    path: "project", 
+    path: "project",
     component: ProjectComponent
   },
   {
