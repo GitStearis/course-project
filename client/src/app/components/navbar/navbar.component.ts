@@ -29,6 +29,7 @@ export class NavbarComponent implements OnInit {
   }
 
   changeStyle(style) {
+    style === 'undefined' ? style = this.dark : style = style;
     let links = document.getElementsByTagName("link");
     for (let i = 0; i < links.length; i++) {
       let link = links[i];
