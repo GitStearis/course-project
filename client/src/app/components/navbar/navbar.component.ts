@@ -16,16 +16,22 @@ export class NavbarComponent implements OnInit {
   private dark: string = 'https://bootswatch.com/darkly/bootstrap.min.css';
   private light: string = 'https://bootswatch.com/flatly/bootstrap.min.css';
 
+  private icon: string = 'fa-sun-o';
+
   ngOnInit() {
-    this.changeStyle(localStorage['style']);
+    localStorage['icon'] = this.icon;
+    localStorage['style'] = this.dark;
   }
 
   onChange() {
     if (localStorage['style'] === this.dark || localStorage['style'] === undefined) {
+      localStorage['icon'] = 'fa-moon-o';
       this.changeStyle(this.light);
     } else {
+      localStorage['icon'] = 'fa-sun-o';
       this.changeStyle(this.dark);
     }
+    this.icon = localStorage['icon'];
   }
 
   changeStyle(style) {
