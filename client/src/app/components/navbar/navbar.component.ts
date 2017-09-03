@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onChange() {
-    if (localStorage['style'] === this.dark || localStorage['style'] === null) {
+    if (localStorage['style'] === this.dark || localStorage['style'] === undefined) {
       this.changeStyle(this.light);
     } else {
       this.changeStyle(this.dark);
