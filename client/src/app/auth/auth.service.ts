@@ -1,6 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
+import { Profile } from "../profile";
 import "rxjs/add/operator/map";
 
 @Injectable()
@@ -95,10 +96,4 @@ export class AuthService {
     localStorage.removeItem("mean-token");
     this.router.navigate(["/"]);
   }
-}
-
-interface Profile {
-  email: String;
-  name: String;
-  password: String;
 }

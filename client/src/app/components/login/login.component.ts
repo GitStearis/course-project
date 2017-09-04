@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
+import { Profile } from "../../profile";
 
 import { AuthService } from "../../auth/auth.service";
 
@@ -31,7 +32,10 @@ export class LoginComponent implements OnInit {
     let user: Profile = {
       email: this.email,
       name: this.username,
-      password: this.password
+      password: this.password,
+      firstname: "",
+      secondname: "",
+      phone: ""
     };
 
     this.auth.login(user);
@@ -39,8 +43,4 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() { }
 }
-interface Profile {
-  email: String;
-  name: String;
-  password: String;
-}
+
