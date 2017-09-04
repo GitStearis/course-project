@@ -11,7 +11,7 @@ import { AuthService } from "../../auth/auth.service";
 })
 export class LoginComponent implements OnInit {
   email: string;
-  username: string;
+  name: string;
   password: string;
 
   constructor(private http: HttpClient, public auth: AuthService) { }
@@ -20,8 +20,8 @@ export class LoginComponent implements OnInit {
     this.email = event.target.value;
   }
 
-  saveUsername(event: any) {
-    this.username = event.target.value;
+  saveName(event: any) {
+    this.name = event.target.value;
   }
 
   savePassword(event: any) {
@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   submit() {
     let user: Profile = {
       email: this.email,
-      name: this.username,
+      name: this.name,
       password: this.password,
       firstname: "",
       secondname: "",

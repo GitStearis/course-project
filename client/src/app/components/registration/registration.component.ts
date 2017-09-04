@@ -11,7 +11,7 @@ import { AuthService } from "../../auth/auth.service";
 })
 export class RegistrationComponent implements OnInit {
   email: string;
-  username: string;
+  name: string;
   password: string;
   firstname: string;
   secondname: string;
@@ -23,8 +23,8 @@ export class RegistrationComponent implements OnInit {
     this.email = event.target.value;
   }
 
-  saveUsername(event: any) {
-    this.username = event.target.value;
+  saveName(event: any) {
+    this.name = event.target.value;
   }
 
   savePassword(event: any) {
@@ -46,13 +46,13 @@ export class RegistrationComponent implements OnInit {
   submit() {
     let user: Profile = {
       email: this.email,
-      name: this.username,
+      name: this.name,
       password: this.password,
       firstname: this.firstname,
       secondname: this.secondname,
       phone: this.phone
     };
-
+    console.log(user);
     this.auth.register(user);
   }
 

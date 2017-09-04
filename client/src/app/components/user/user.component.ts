@@ -10,12 +10,20 @@ import { AuthService } from "../../auth/auth.service";
 })
 export class UserComponent implements OnInit {
   email: string;
-  username: string;
+  name: string;
+  firstname: string;
+  secondname: string;
+  phone: string;
+  date: string;
 
   constructor(public auth: AuthService) {}
 
   ngOnInit() {
     this.email = localStorage["email"];
-    this.username = localStorage["username"];
+    this.name = localStorage["name"];
+    this.firstname = localStorage["firstname"];
+    this.secondname = localStorage["secondname"];
+    this.phone = localStorage["phone"];
+    this.date = localStorage["date"];
   }
 }

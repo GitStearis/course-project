@@ -6,14 +6,24 @@ import "rxjs/add/operator/map";
 
 @Injectable()
 export class AuthService {
+
+  profile: Profile;
+  date: string;
+
   constructor(private router: Router, private http: HttpClient) {}
 
   public isAuthenticated() {
     return this.isLoggedIn();
   }
 
-  public saveToken(token) {
-    localStorage["mean-token"] = token;
+  public saveToLocal(parsed) {
+    localStorage["mean-token"] = parsed.token;
+    localStorage["email"] = parsed.email,
+    localStorage["name"] = parsed.name,
+    localStorage["firstname"] = parsed.firstname,
+    localStorage["secondname"] = parsed.secondname,
+    localStorage["phone"] = parsed.phone
+    localStorage["date"] = parsed.date;
   }
 
   public getToken() {
@@ -55,7 +65,7 @@ export class AuthService {
       .subscribe(
         data => {
           console.log(data);
-          this.saveToken(JSON.parse(data).token);
+          this.saveToLocal(JSON.parse(data));
         },
         err => {
           if (err.error instanceof Error) {
@@ -76,8 +86,7 @@ export class AuthService {
       .map(data => JSON.stringify(data))
       .subscribe(
         data => {
-          console.log(data);
-          this.saveToken(JSON.parse(data).token);
+          this.saveToLocal(JSON.parse(data));
         },
         err => {
           if (err.error instanceof Error) {

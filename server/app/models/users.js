@@ -14,16 +14,29 @@ var userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    firstname: {
+        type: String,
+        required: true
+    },
+    secondname: {
+        type: String,
+        required: true
+    },
+    phone: {
+        type: String,
+        required: true
+    },
+    date: {
+        type: String,
+        required: true
+    },
     hash: String,
     salt: String
 });
 
 userSchema.methods.setPassword = function(password) {
-    console.log(1);
     this.salt = crypto.randomBytes(16).toString("hex");
-    console.log(2);
     this.hash = crypto.pbkdf2Sync(password, this.salt, 1, 64, "sha512").toString("hex");
-    console.log(3);
 };
 
 userSchema.methods.validPassword = function(password) {
@@ -39,6 +52,10 @@ userSchema.methods.generateJwt = function() {
             _id: this._id,
             email: this.email,
             name: this.name,
+            firstname: this.firstname,
+            secondname: this.secondname,
+            phone: this.phone,
+            date: this.date,
             exp: parseInt(expiry.getTime() / 1000)
         },
         "MY_SECRET"
