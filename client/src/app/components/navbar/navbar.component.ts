@@ -2,6 +2,8 @@ import { Component, OnInit, ElementRef } from "@angular/core";
 import { RegistrationComponent } from "../registration/registration.component";
 import { LoginComponent } from "../login/login.component";
 
+import { Cookie } from 'ng2-cookies/ng2-cookies';
+
 import { AuthService } from "../../auth/auth.service";
 
 @Component({
@@ -19,19 +21,19 @@ export class NavbarComponent implements OnInit {
   private icon: string = 'fa-sun-o';
 
   ngOnInit() {
-    localStorage['icon'] = this.icon;
-    localStorage['style'] = this.dark;
+    this.changeStyle(Cookie.get('style'));
+    this.icon = Cookie.get('icon');
   }
 
   onChange() {
-    if (localStorage['style'] === this.dark || localStorage['style'] === undefined) {
-      localStorage['icon'] = 'fa-moon-o';
+    if (Cookie.get('style') === this.dark || Cookie.get('style') === undefined) {
+      Cookie.set('icon', 'fa-moon-o');
       this.changeStyle(this.light);
     } else {
-      localStorage['icon'] = 'fa-sun-o';
+      Cookie.set('icon', 'fa-sun-o');
       this.changeStyle(this.dark);
     }
-    this.icon = localStorage['icon'];
+    this.icon = Cookie.get('icon');
   }
 
   changeStyle(style) {
@@ -40,7 +42,7 @@ export class NavbarComponent implements OnInit {
     for (let i = 0; i < links.length; i++) {
       let link = links[i];
       if (link.href === this.dark || link.href === this.light) {
-        localStorage['style'] = style;
+        Cookie.set('style', style);
         link.href = style;
       }
     }
