@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   username: string;
   password: string;
 
-  constructor(private http: HttpClient, public auth: AuthService) {}
+  constructor(private http: HttpClient, public auth: AuthService) { }
 
   saveEmail(event: any) {
     this.email = event.target.value;
@@ -28,10 +28,6 @@ export class LoginComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.email);
-    console.log(this.username);
-    console.log(this.password);
-
     let user: Profile = {
       email: this.email,
       name: this.username,
@@ -41,7 +37,7 @@ export class LoginComponent implements OnInit {
     this.auth.login(user);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }
 interface Profile {
   email: String;
