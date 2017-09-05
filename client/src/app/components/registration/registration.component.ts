@@ -34,10 +34,16 @@ export class RegistrationComponent implements OnInit {
     return true;
   }
   checkFirstPage(): boolean {
-    if (this.checkFields() === true && this.checkUsernameLength() === true && this.checkPasswordLength() === true) {
+    if (this.isEmailValid() === true && this.checkUsernameLength() === true && this.checkPasswordLength() === true) {
       return true;
     }
     return false;
+  }
+  checkSecondPage(): boolean {
+    if (this.checkEmptiness(this.firstname) === true && this.checkEmptiness(this.secondname) === true && this.isPhoneValid() === true) {
+      return true;
+    }
+    else false;
   }
   checkFields(): boolean {
     if (this.email && this.name && this.password) {
@@ -54,7 +60,7 @@ export class RegistrationComponent implements OnInit {
     return false;
   }
   checkPasswordLength(): boolean {
-    if (this.name) {
+    if (this.password) {
       if (this.password.length >= 8) {
         return true
       }

@@ -39,7 +39,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button data-toggle="modal" data-target="#register-2" type="button" class="btn btn-success" [disabled]="!this.checkFirstPage()">Continue</button>
             </div>
         </form>
@@ -83,8 +83,8 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn" data-dismiss="modal">Close</button>
-                    <button (click)="submit()" type="button" class="btn btn-primary" data-dismiss="modal">Register</button>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button (click)="submit()" type="button" class="btn btn-success" data-dismiss="modal" [disabled]="!this.checkSecondPage()">Register</button>
                 </div>
             </form>
         </div>
