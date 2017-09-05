@@ -17,8 +17,10 @@ import { DonationComponent } from "./components/donation/donation.component";
 import { LoginComponent } from "./components/login/login.component";
 import { ProjectComponent } from "./components/project/project/project.component";
 import { AdminComponent } from './components/admin/admin.component';
+import { PreviewComponent } from './components/project/preview/preview.component';
 
 import { AuthService } from "./services/auth/auth.service";
+import { FormComponent } from './components/project/form/form.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { AuthService } from "./services/auth/auth.service";
     DonationComponent,
     LoginComponent,
     ProjectComponent,
-    AdminComponent
+    AdminComponent,
+    PreviewComponent,
+    FormComponent
   ],
   imports: [HttpModule, HttpClientModule, BrowserModule, routing],
   providers: [appRoutingProviders, AuthService],
