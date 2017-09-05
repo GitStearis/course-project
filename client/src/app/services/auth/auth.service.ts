@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
-import { Profile } from "../profile";
+import { Profile } from "../../profile";
 import "rxjs/add/operator/map";
 
 @Injectable()

@@ -15,9 +15,10 @@ import { UserComponent } from "./components/user/user.component";
 import { NotfoundComponent } from "./components/notfound/notfound.component";
 import { DonationComponent } from "./components/donation/donation.component";
 import { LoginComponent } from "./components/login/login.component";
-import { ProjectComponent } from "./components/project/project.component";
+import { ProjectComponent } from "./components/project/project/project.component";
+import { AdminComponent } from './components/admin/admin.component';
 
-import { AuthService } from "./auth/auth.service";
+import { AuthService } from "./services/auth/auth.service";
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { AuthService } from "./auth/auth.service";
     NotfoundComponent,
     DonationComponent,
     LoginComponent,
-    ProjectComponent
+    ProjectComponent,
+    AdminComponent
   ],
   imports: [HttpModule, HttpClientModule, BrowserModule, routing],
   providers: [appRoutingProviders, AuthService],

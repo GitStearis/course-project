@@ -4,7 +4,7 @@ import { LoginComponent } from "../login/login.component";
 
 import { Cookie } from 'ng2-cookies/ng2-cookies';
 
-import { AuthService } from "../../auth/auth.service";
+import { AuthService } from "../../services/auth/auth.service";
 
 @Component({
   selector: "app-navbar",
