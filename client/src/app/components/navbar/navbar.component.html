@@ -10,16 +10,33 @@
                     <i class="fa {{ icon }} fa-lg fa-fw colored"></i>
                 </a>
             </li>
-        </ul>
-        <ul class="nav navbar-nav">
-            <li class="nav-item"><a href="/user" *ngIf="auth.isAuthenticated()">Profile</a></li>
+            <li class="nav-item">
+                <a class="btn btn-active" href="/user" *ngIf="auth.isAuthenticated()">
+                    <i class="fa fa-user fa-lg fa-fw colored" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="auth.isAuthenticated()">
+                <a class="btn btn-active" data-toggle="modal" data-target="#add-project">
+                    <i class="fa fa-plus-circle fa-lg fa-fw colored" aria-hidden="true"></i>
+                </a>
+            </li>
         </ul>
     </div>
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
-            <li class="nav-item"><a href="" data-toggle="modal" data-target="#register" *ngIf="!auth.isAuthenticated()">Register</a></li>
-            <li class="nav-item"><a href="" data-toggle="modal" data-target="#login" *ngIf="!auth.isAuthenticated()">Log in</a></li>
-            <li class="nav-item"><a href="" (click)="auth.logout()" *ngIf="auth.isAuthenticated()">Log out</a></li>
+            <li class="nav-item"><a href="" data-toggle="modal" data-target="#register" *ngIf="!auth.isAuthenticated()">
+                    <i class="fa fa-user-plus fa-lg fa-fw colored" aria-hidden="true"></i>
+                    Register
+                </a>
+            </li>
+            <li class="nav-item"><a href="" data-toggle="modal" data-target="#login" *ngIf="!auth.isAuthenticated()">
+                    <i class="fa fa-sign-in fa-lg fa-fw colored" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li class="nav-item"><a href="" (click)="auth.logout()" *ngIf="auth.isAuthenticated()">
+                    <i class="fa fa-sign-out fa-lg fa-fw colored" aria-hidden="true"></i>    
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
@@ -30,4 +47,8 @@
 
 <div class="modal fade modal-lower" id="login" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <app-login></app-login>
+</div>
+
+<div class="modal fade modal-lower" id="add-project" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <app-form></app-form>
 </div>
