@@ -1,6 +1,8 @@
 const passport = require("passport");
 const mongoose = require("mongoose");
 const User = mongoose.model("user_list");
+const nodemailer = require("nodemailer");
+const mailConfig = require("../config/mail");
 
 let sendJSONresponse = function(res, status, content) {
   res.status(status);
@@ -20,13 +22,9 @@ let credentialsJSON = (token, email, name, firstname, secondname, phone, date) =
 };
 
 module.exports.register = function(req, res) {
-  // if(!req.body.name || !req.body.email || !req.body.password) {
-  //   sendJSONresponse(res, 400, {
-  //     "message": "All fields required"
-  //   });
-  //   return;
-  // }
   var user = new User();
+
+  console.log("Credentials obtained, sending message...");
 
   user.email = req.body.email;
   user.name = req.body.name;
@@ -39,9 +37,17 @@ module.exports.register = function(req, res) {
     .replace(/-/g, "/");
 
   user.setPassword(req.body.password);
+
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport(mailConfig.transport);
+  let mailOptions = mailConfig.mailOptions(user.email);
+
   user.save(function(err) {
     var token;
     token = user.generateJwt();
+
+    transporter.sendMail(mailOptions, mailConfig.sendMail);
+
     res.status(200);
     res.json(
       credentialsJSON(
@@ -58,13 +64,6 @@ module.exports.register = function(req, res) {
 };
 
 module.exports.login = function(req, res) {
-  // if(!req.body.email || !req.body.password) {
-  //   sendJSONresponse(res, 400, {
-  //     "message": "All fields required"
-  //   });
-  //   return;
-  // }
-
   passport.authenticate("local", function(err, user, info) {
     let token;
 

@@ -26,7 +26,7 @@ export class NavbarComponent implements OnInit {
   }
 
   onChange() {
-    if (Cookie.get('style') === this.dark || Cookie.get('style') === undefined) {
+    if (Cookie.get('style') === this.dark || Cookie.get('style') === null) {
       Cookie.set('icon', 'fa-moon-o');
       this.changeStyle(this.light);
     } else {
@@ -37,7 +37,7 @@ export class NavbarComponent implements OnInit {
   }
 
   changeStyle(style) {
-    style === 'undefined' ? style = this.dark : style = style;
+    style === 'null' ? style = this.dark : style = style;
     let links = document.getElementsByTagName("link");
     for (let i = 0; i < links.length; i++) {
       let link = links[i];
