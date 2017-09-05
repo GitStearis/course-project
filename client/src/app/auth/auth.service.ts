@@ -86,6 +86,7 @@ export class AuthService {
       .map(data => JSON.stringify(data))
       .subscribe(
         data => {
+          console.log(data);
           this.saveToLocal(JSON.parse(data));
         },
         err => {
