@@ -17,7 +17,43 @@ export class RegistrationComponent implements OnInit {
   secondname: string;
   phone: string;
 
-  constructor(private http: HttpClient, public auth: AuthService) {}
+  constructor(private http: HttpClient, public auth: AuthService) { }
+
+  checkFirstPage(): boolean {
+    if (this.checkFields() === true && this.checkUsernameLength() === true && this.checkPasswordLength() === true) {
+      return true;
+    }
+    return false;
+  }
+  isEmailValid(): boolean {
+    let EMAIL_REGEXP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    if (!EMAIL_REGEXP.test(this.email)) {
+      return false;
+    }
+    return true;
+  }
+  checkFields(): boolean {
+    if (this.email && this.name && this.password) {
+      return true
+    }
+    return false;
+  }
+  checkUsernameLength(): boolean {
+    if (this.name) {
+      if (this.name.length >= 3) {
+        return true
+      }
+    }
+    return false;
+  }
+  checkPasswordLength(): boolean {
+    if (this.name) {
+      if (this.password.length >= 8) {
+        return true
+      }
+      return false;
+    }
+  }
 
   saveEmail(event: any) {
     this.email = event.target.value;
@@ -56,6 +92,6 @@ export class RegistrationComponent implements OnInit {
     this.auth.register(user);
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 }
 
