@@ -19,11 +19,12 @@ export class RegistrationComponent implements OnInit {
 
   constructor(private http: HttpClient, public auth: AuthService) { }
 
-  checkFirstPage(): boolean {
-    if (this.checkFields() === true && this.checkUsernameLength() === true && this.checkPasswordLength() === true) {
-      return true;
+  isPhoneValid(): boolean {
+    let PHONE_REGEXP = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
+    if (!PHONE_REGEXP.test(this.phone)) {
+      return false;
     }
-    return false;
+    return true;   
   }
   isEmailValid(): boolean {
     let EMAIL_REGEXP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
@@ -31,6 +32,12 @@ export class RegistrationComponent implements OnInit {
       return false;
     }
     return true;
+  }
+  checkFirstPage(): boolean {
+    if (this.checkFields() === true && this.checkUsernameLength() === true && this.checkPasswordLength() === true) {
+      return true;
+    }
+    return false;
   }
   checkFields(): boolean {
     if (this.email && this.name && this.password) {
@@ -53,6 +60,12 @@ export class RegistrationComponent implements OnInit {
       }
       return false;
     }
+  }
+  checkEmptiness(str: string): boolean {
+    if (str) {
+      return true;
+    }
+    return false;
   }
 
   saveEmail(event: any) {
