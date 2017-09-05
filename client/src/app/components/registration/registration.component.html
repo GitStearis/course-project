@@ -5,7 +5,7 @@
                 <h2>Registration</h2>
             </div>
             <div class="modal-body">
-                <div *ngIf="!this.checkFields()" class="alert alert-info text text-center">
+                <div *ngIf="!this.checkFields(this.email, this.name, this.password)" class="alert alert-info text text-center">
                     <small>
                         Fill in all fields
                     </small>
@@ -15,7 +15,7 @@
                     <input (keyup)="saveEmail($event)" type="email" class="form-control">
                     <div *ngIf="!this.isEmailValid()" class="alert-warning text text-center rounded">
                         <small>
-                            Email is invaid
+                            Enter valid e-mail address
                         </small>
                     </div>
                 </div>
@@ -54,6 +54,11 @@
                     <h2>Credentials</h2>
                 </div>
                 <div class="modal-body">
+                    <div *ngIf="!this.checkFields(this.firstname, this.secondname, this.phone)" class="alert alert-info text text-center">
+                        <small>
+                            Please, fill in all fields
+                        </small>
+                    </div>
                     <div class="form-group">
                         <label>First name</label>
                         <input (keyup)="saveFirstname($event)" class="form-control">

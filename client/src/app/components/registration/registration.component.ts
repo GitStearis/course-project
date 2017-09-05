@@ -45,8 +45,8 @@ export class RegistrationComponent implements OnInit {
     }
     else false;
   }
-  checkFields(): boolean {
-    if (this.email && this.name && this.password) {
+  checkFields(first, second, third): boolean {
+    if (first && second && third) {
       return true
     }
     return false;
