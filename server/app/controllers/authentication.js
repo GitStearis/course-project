@@ -1,28 +1,28 @@
 const passport = require("passport");
 const mongoose = require("mongoose");
 const User = mongoose.model("user_list");
-
-let sendJSONresponse = function(res, status, content) {
-  res.status(status);
-  res.json(content);
-};
+const nodemailer = require("nodemailer");
+const mailConfig = require("../config/mail");
 
 module.exports.register = function(req, res) {
-  // if(!req.body.name || !req.body.email || !req.body.password) {
-  //   sendJSONresponse(res, 400, {
-  //     "message": "All fields required"
-  //   });
-  //   return;
-  // }
   var user = new User();
+
+  console.log("Credentials obtained, sending message...");
 
   user.name = req.body.name;
   user.email = req.body.email;
-
   user.setPassword(req.body.password);
+
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport(mailConfig.transport);
+  let mailOptions = mailConfig.mailOptions(user.email);
+
   user.save(function(err) {
     var token;
     token = user.generateJwt();
+
+    transporter.sendMail(mailOptions, mailConfig.sendMail);
+
     res.status(200);
     res.json({
       token: token
@@ -31,13 +31,6 @@ module.exports.register = function(req, res) {
 };
 
 module.exports.login = function(req, res) {
-  // if(!req.body.email || !req.body.password) {
-  //   sendJSONresponse(res, 400, {
-  //     "message": "All fields required"
-  //   });
-  //   return;
-  // }
-
   passport.authenticate("local", function(err, user, info) {
     let token;
 
