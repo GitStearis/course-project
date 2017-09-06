@@ -1,57 +1,97 @@
 <div class="modal-sm modal-dialog">
     <div class="modal-content">
-        <div class="modal-header">
-            <h2>Registration</h2>
-        </div>
-        <div class="modal-body">
-            <form>
+        <form>
+            <div class="modal-header">
+                <h2>Registration</h2>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="!this.checkFields(this.email, this.name, this.password)" class="alert alert-info text text-center">
+                    <small>
+                        Fill in all fields
+                    </small>
+                </div>
                 <div class="form-group">
                     <label>E-mail</label>
-                    <input (keyup)="saveEmail($event)" class="form-control">
+                    <input (keyup)="saveEmail($event)" type="email" class="form-control">
+                    <div *ngIf="!this.isEmailValid()" class="alert-warning text text-center rounded">
+                        <small>
+                            Enter valid e-mail address
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Username</label>
                     <input (keyup)="saveName($event)" class="form-control">
+                    <div *ngIf="!this.checkUsernameLength()" class="alert-warning text text-center rounded">
+                        <small>
+                            Must be 3 symbols at least
+                        </small>
+                    </div>
                 </div>
                 <div class="form-group">
                     <label>Password</label>
                     <input (keyup)="savePassword($event)" type="password" class="form-control">
+                    <div *ngIf="!this.checkPasswordLength()" class="alert-warning text text-center rounded">
+                        <small>
+                            Must be 8 symbols at least
+                        </small>
+                    </div>
                 </div>
-            </form>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn" data-dismiss="modal">Close</button>
-            <button data-toggle="modal" data-target="#register-2" type="button" class="btn btn-primary">Continue</button>
-        </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button data-toggle="modal" data-target="#register-2" type="button" class="btn btn-success" [disabled]="!this.checkFirstPage()">Continue</button>
+            </div>
+        </form>
     </div>
 </div>
 
 <div class="modal fade modal-lower" id="register-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
     <div class="modal-sm modal-dialog">
         <div class="modal-content">
-            <div class="modal-header">
-                <h2>Credentials</h2>
-            </div>
-            <div class="modal-body">
-                <form>
+            <form>
+                <div class="modal-header">
+                    <h2>Credentials</h2>
+                </div>
+                <div class="modal-body">
+                    <div *ngIf="!this.checkFields(this.firstname, this.secondname, this.phone)" class="alert alert-info text text-center">
+                        <small>
+                            Please, fill in all fields
+                        </small>
+                    </div>
                     <div class="form-group">
                         <label>First name</label>
                         <input (keyup)="saveFirstname($event)" class="form-control">
+                        <div *ngIf="!this.checkEmptiness(this.firstname)" class="alert-warning text text-center rounded">
+                            <small>
+                                Cannot be empty
+                            </small>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Second name</label>
                         <input (keyup)="saveSecondname($event)" class="form-control">
+                        <div *ngIf="!this.checkEmptiness(this.secondname)" class="alert-warning text text-center rounded">
+                            <small>
+                                Cannot be empty
+                            </small>
+                        </div>
                     </div>
                     <div class="form-group">
                         <label>Phone</label>
-                        <input (keyup)="savePhone($event)" type="password" class="form-control">
+                        <input (keyup)="savePhone($event)" type="tel" class="form-control">
+                        <div *ngIf="!this.isPhoneValid()" class="alert-warning text text-center rounded">
+                            <small>
+                                Enter valid mobile phone
+                            </small>
+                        </div>
                     </div>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn" data-dismiss="modal">Close</button>
-                <button (click)="submit()" type="button" class="btn btn-primary" data-dismiss="modal">Register</button>
-            </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button (click)="submit()" type="button" class="btn btn-success" data-dismiss="modal" [disabled]="!this.checkSecondPage()">Register</button>
+                </div>
+            </form>
         </div>
     </div>
 </div>
