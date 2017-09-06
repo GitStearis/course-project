@@ -24,22 +24,14 @@ export class LoginComponent implements OnInit {
     return true;
   }
   checkFirstPage(): boolean {
-    if (this.isEmailValid() === true && this.checkUsernameLength() === true && this.checkPasswordLength() === true) {
+    if (this.isEmailValid() === true && this.checkPasswordLength() === true) {
       return true;
     }
     return false;
   }
-  checkFields(first, second, third): boolean {
-    if (first && second && third) {
+  checkFields(first, second): boolean {
+    if (first && second) {
       return true
-    }
-    return false;
-  }
-  checkUsernameLength(): boolean {
-    if (this.name) {
-      if (this.name.length >= 3) {
-        return true
-      }
     }
     return false;
   }
@@ -62,10 +54,6 @@ export class LoginComponent implements OnInit {
     this.email = event.target.value;
   }
 
-  saveName(event: any) {
-    this.name = event.target.value;
-  }
-
   savePassword(event: any) {
     this.password = event.target.value;
   }
@@ -73,7 +61,7 @@ export class LoginComponent implements OnInit {
   submit() {
     let user: Profile = {
       email: this.email,
-      name: this.name,
+      name: "",
       password: this.password,
       firstname: "",
       secondname: "",

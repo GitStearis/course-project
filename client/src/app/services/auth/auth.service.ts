@@ -3,6 +3,7 @@ import { HttpClient } from "@angular/common/http";
 import { Router } from "@angular/router";
 import { Profile } from "../../profile";
 import "rxjs/add/operator/map";
+import { MessagesService } from '../../../../node_modules/ng2-messages/ng2-messages.service';
 
 @Injectable()
 export class AuthService {
@@ -10,7 +11,7 @@ export class AuthService {
   profile: Profile;
   date: string;
 
-  constructor(private router: Router, private http: HttpClient) {}
+  constructor(private router: Router, private http: HttpClient, public msg: MessagesService) {}
 
   public isAuthenticated() {
     return this.isLoggedIn();

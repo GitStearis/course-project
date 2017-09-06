@@ -7,6 +7,10 @@ import { Http } from "@angular/http";
 
 import { routing, appRoutingProviders } from "./app.routing";
 
+import { MessagesService } from '../../node_modules/ng2-messages/ng2-messages.service';
+
+import { MessagesComponent } from '../../node_modules/ng2-messages/ng2-messages.component';
+
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { HomeComponent } from "./components/home/home.component";
@@ -18,6 +22,8 @@ import { LoginComponent } from "./components/login/login.component";
 import { ProjectComponent } from "./components/project/project/project.component";
 import { AdminComponent } from './components/admin/admin.component';
 import { PreviewComponent } from './components/project/preview/preview.component';
+
+
 
 import { AuthService } from "./services/auth/auth.service";
 import { FormComponent } from './components/project/form/form.component';
@@ -35,10 +41,11 @@ import { FormComponent } from './components/project/form/form.component';
     ProjectComponent,
     AdminComponent,
     PreviewComponent,
-    FormComponent
+    FormComponent,
+    MessagesComponent
   ],
   imports: [HttpModule, HttpClientModule, BrowserModule, routing],
-  providers: [appRoutingProviders, AuthService],
+  providers: [appRoutingProviders, AuthService, MessagesService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

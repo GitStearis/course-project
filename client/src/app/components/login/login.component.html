@@ -4,7 +4,7 @@
             <h2>Welcome!</h2>
         </div>
         <div class="modal-body">
-            <div *ngIf="!this.checkFields(this.email, this.name, this.password)" class="alert alert-info text text-center">
+            <div *ngIf="!this.checkFields(this.email, this.name)" class="alert alert-info text text-center">
                 <small>
                     Please, fill in all fields
                 </small>
@@ -16,15 +16,6 @@
                     <div *ngIf="!this.isEmailValid()" class="alert-warning text text-center rounded">
                         <small>
                             Enter valid e-mail address
-                        </small>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label>Username</label>
-                    <input (keyup)="saveName($event)" class="form-control">
-                    <div *ngIf="!this.checkUsernameLength()" class="alert-warning text text-center rounded">
-                        <small>
-                            Must be at least 3 symbols
                         </small>
                     </div>
                 </div>
