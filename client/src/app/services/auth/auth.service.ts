@@ -11,7 +11,23 @@ export class AuthService {
   profile: Profile;
   date: string;
 
-  constructor(private router: Router, private http: HttpClient, public msg: MessagesService) {}
+  constructor(private router: Router, private http: HttpClient, public msg: MessagesService) { }
+
+  removeWarnings() {
+
+    this.msg.messages.subscribe(data => {
+      let flag = true;
+      for (let id in data['warning']) {
+        if (flag === true) {
+        flag = false;
+        }
+        else {
+        this.msg.remove(id);
+        }
+      }
+    })
+
+  }
 
   public isAuthenticated() {
     return this.isLoggedIn();
@@ -20,10 +36,10 @@ export class AuthService {
   public saveToLocal(parsed) {
     localStorage["mean-token"] = parsed.token;
     localStorage["email"] = parsed.email,
-    localStorage["name"] = parsed.name,
-    localStorage["firstname"] = parsed.firstname,
-    localStorage["secondname"] = parsed.secondname,
-    localStorage["phone"] = parsed.phone
+      localStorage["name"] = parsed.name,
+      localStorage["firstname"] = parsed.firstname,
+      localStorage["secondname"] = parsed.secondname,
+      localStorage["phone"] = parsed.phone
     localStorage["date"] = parsed.date;
   }
 
@@ -64,42 +80,48 @@ export class AuthService {
       .post("/api/register", user)
       .map(data => JSON.stringify(data))
       .subscribe(
-        data => {
-          console.log(data);
-          this.saveToLocal(JSON.parse(data));
-        },
-        err => {
-          if (err.error instanceof Error) {
-            console.log("An error occurred:", err.error.message);
-          } else {
-            console.log(err);
-            console.log(
-              `Backend returned code ${err.status}, body was: ${err.error}`
-            );
-          }
+      data => {
+        this.msg.success("Registration completed successfully!");
+        console.log(data);
+        this.saveToLocal(JSON.parse(data));
+      },
+      err => {
+        this.removeWarnings();
+        this.msg.warning('An error occured, please, try later.');
+        if (err.error instanceof Error) {
+          console.log("An error occurred:", err.error.message);
+        } else {
+          console.log(err);
+          console.log(
+            `Backend returned code ${err.status}, body was: ${err.error}`
+          );
         }
+      }
       );
   }
 
   public login(user: Profile) {
+    this.msg
     this.http
       .post("/api/login", user)
       .map(data => JSON.stringify(data))
       .subscribe(
-        data => {
-          console.log(data);
-          this.saveToLocal(JSON.parse(data));
-        },
-        err => {
-          if (err.error instanceof Error) {
-            console.log("An error occurred:", err.error.message);
-          } else {
-            console.log(err);
-            console.log(
-              `Backend returned code ${err.status}, body was: ${err.error}`
-            );
-          }
+      data => {
+        this.msg.success("Successfully logged in!");
+        console.log(data);
+        this.saveToLocal(JSON.parse(data));
+      },
+      err => {
+        this.removeWarnings();
+        if (err.error instanceof Error) {
+          console.log("An error occurred:", err.error.message);
+          this.msg.warning('An error occured: ' + err.error.message);
+        } else {
+          this.msg.warning('Bad login or password');
+          console.log(err);
+          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
         }
+      }
       );
   }
 
