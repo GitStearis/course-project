@@ -14,19 +14,23 @@ export class AuthService {
   constructor(private router: Router, private http: HttpClient, public msg: MessagesService) { }
 
   removeWarnings() {
-
     this.msg.messages.subscribe(data => {
       let flag = true;
       for (let id in data['warning']) {
         if (flag === true) {
-        flag = false;
-        }
-        else {
-        this.msg.remove(id);
+          flag = false;
+        } else {
+          this.msg.remove(id);
         }
       }
     })
-
+  }
+  removeAllWarnings() {
+    this.msg.messages.subscribe(data => {
+      for (let id in data['warning']) {
+          this.msg.remove(id);
+      }
+    })
   }
 
   public isAuthenticated() {
@@ -107,6 +111,7 @@ export class AuthService {
       .map(data => JSON.stringify(data))
       .subscribe(
       data => {
+        this.removeAllWarnings();
         this.msg.success("Successfully logged in!");
         console.log(data);
         this.saveToLocal(JSON.parse(data));
