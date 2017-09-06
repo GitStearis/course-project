@@ -1,3 +1,6 @@
 h2 {
     margin-bottom: 40px;
 }
+.jumbotron .btn {
+    color: white;
+}
