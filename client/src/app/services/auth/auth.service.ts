@@ -87,7 +87,7 @@ export class AuthService {
       },
       err => {
         this.removeWarnings();
-        this.msg.warning('An error occured, please, try later.');
+        this.msg.warning('An error occured, please, try again.');
         if (err.error instanceof Error) {
           console.log("An error occurred:", err.error.message);
         } else {
@@ -117,7 +117,7 @@ export class AuthService {
           console.log("An error occurred:", err.error.message);
           this.msg.warning('An error occured: ' + err.error.message);
         } else {
-          this.msg.warning('Bad login or password');
+          this.msg.warning('Bad login or password. Please, try again.');
           console.log(err);
           console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
         }
