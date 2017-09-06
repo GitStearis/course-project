@@ -12,6 +12,7 @@ const auth = jwt({
 
 const ctrlProfile = require("../controllers/profile");
 const ctrlAuth = require("../controllers/authentication");
+const ctrUserList = require("../controllers/userlist");
 
 // профиль
 router.get("/profile", auth, ctrlProfile.profileRead);
@@ -19,5 +20,8 @@ router.get("/profile", auth, ctrlProfile.profileRead);
 // аутентификация
 router.post("/register", ctrlAuth.register);
 router.post("/login", ctrlAuth.login);
+
+// список пользователей для админа
+router.get("/userlist", ctrUserList.list);
 
 module.exports = router;

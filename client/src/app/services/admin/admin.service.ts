@@ -1,19 +1,12 @@
-import { Component, OnInit } from "@angular/core";
+import { Injectable } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
-import { AdminService } from "../../services/admin/admin.service";
+import { Router } from "@angular/router";
+import { Profile } from "../../profile";
+import "rxjs/add/operator/map";
 
-@Component({
-  selector: "app-admin",
-  templateUrl: "./admin.component.html",
-  styleUrls: ["./admin.component.css"]
-})
-export class AdminComponent implements OnInit {
-
-  constructor(private http: HttpClient, public admin: AdminService) {
-    this.getUserList();
-  }
-
-  ngOnInit() {}
+@Injectable()
+export class AdminService {
+  constructor(private router: Router, private http: HttpClient) {}
 
   public userList: any[];
 

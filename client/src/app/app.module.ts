@@ -21,6 +21,7 @@ import { AdminComponent } from "./components/admin/admin.component";
 import { PreviewComponent } from "./components/project/preview/preview.component";
 
 import { AuthService } from "./services/auth/auth.service";
+import { AdminService } from "./services/admin/admin.service";
 import { FormComponent } from "./components/project/form/form.component";
 
 @NgModule({
@@ -45,7 +46,7 @@ import { FormComponent } from "./components/project/form/form.component";
     routing,
     MarkdownModule.forRoot()
   ],
-  providers: [appRoutingProviders, AuthService],
+  providers: [appRoutingProviders, AuthService, AdminService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
