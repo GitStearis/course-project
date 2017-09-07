@@ -1,5 +1,7 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">App</a>
+    <a class="navbar-brand" href="#">
+        <img src="https://s8.hostingkartinok.com/uploads/images/2017/09/33cb02b1b093be99346051c29dcc6c70.png" width="54" height="20">
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -24,17 +26,19 @@
     </div>
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
-            <li class="nav-item"><a href="" data-toggle="modal" data-target="#register" *ngIf="!auth.isAuthenticated()">
-                    <i class="fa fa-user-plus fa-lg fa-fw colored" aria-hidden="true"></i>
-                    Register
+            <li class="nav-item">
+                <a class="btn btn-active" href="" data-toggle="modal" data-target="#register" *ngIf="!auth.isAuthenticated()">
+                    <i class="fa fa-user-plus fa-lg fa-fw colored" aria-hidden="true"></i> Register
                 </a>
             </li>
-            <li class="nav-item"><a href="" data-toggle="modal" data-target="#login" *ngIf="!auth.isAuthenticated()">
+            <li class="nav-item">
+                <a class="btn btn-active" href="" data-toggle="modal" data-target="#login" *ngIf="!auth.isAuthenticated()">
                     <i class="fa fa-sign-in fa-lg fa-fw colored" aria-hidden="true"></i>
                 </a>
             </li>
-            <li class="nav-item"><a href="" (click)="auth.logout()" *ngIf="auth.isAuthenticated()">
-                    <i class="fa fa-sign-out fa-lg fa-fw colored" aria-hidden="true"></i>    
+            <li class="nav-item">
+                <a class="btn btn-active" href="" (click)="auth.logout()" *ngIf="auth.isAuthenticated()">
+                    <i class="fa fa-sign-out fa-lg fa-fw colored" aria-hidden="true"></i>
                 </a>
             </li>
         </ul>

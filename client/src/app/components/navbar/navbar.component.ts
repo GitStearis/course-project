@@ -14,7 +14,6 @@ import { AuthService } from "../../services/auth/auth.service";
 export class NavbarComponent implements OnInit {
   constructor(public auth: AuthService, private elementRef: ElementRef) {}
 
-
   private dark: string = 'https://bootswatch.com/darkly/bootstrap.min.css';
   private light: string = 'https://bootswatch.com/flatly/bootstrap.min.css';
 
