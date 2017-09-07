@@ -6,15 +6,15 @@
         <div class="modal-body">
             <form class="form-horizontal">
                 <fieldset>
-                  <legend>Crate new project</legend>
+                  <legend>Create new project</legend>
                   <div class="form-group">
-                    <label for="inputEmail" class="col-lg-2 control-label">Title</label>
+                    <label for="inputTitle" class="col-lg-2 control-label">Title</label>
                     <div class="col-lg-10">
                       <input type="text" class="form-control" id="inputTitle" placeholder="Title">
                     </div>
                   </div>
                   <div class="form-group">
-                    <label for="inputPassword" class="col-lg-2 control-label">Tag</label>
+                    <label for="inputTag" class="col-lg-2 control-label">Tag</label>
                     <div class="col-lg-10">
                       <input type="text" class="form-control" id="inputTag" placeholder="Tag">
                     </div>
@@ -22,10 +22,33 @@
                   <div class="form-group">
                     <label for="textArea" class="col-lg-2 control-label">Project's description</label>
                     <div class="col-lg-10">
-                      <textarea class="form-control" rows="3" id="textArea"></textarea>
+                      <textarea [value]="username" (input)="username = $event.target.value" class="form-control" rows="3" id="textArea"></textarea>
                       <span class="help-block">A longer block of help text that breaks onto a new line and may extend beyond one line.</span>
+                      <button data-toggle="modal" data-target="#text-preview" type="button" class="btn btn-primary">Show Preview</button>
                     </div>
                   </div>
+                  <div class="form-group">
+                      <label for="amount" class="col-lg-2 control-label">Amount</label>
+                      <div class="col-sm-10">
+                          <input type="number" class="form-control" id="amount" name="amount">
+                      </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="inputDate" class="col-lg-2 control-label">To</label>
+                    <div class="col-lg-10">
+                      <input type="date" class="form-control" id="inputDate">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                      <label for="file-upload" class="col-lg-2 control-label">
+                          <a class="btn btn-default">Image</a>
+                          <input (click)="fileUploading($event)" id="file-upload" type="file" class="form-control" style="display:none;">
+                      </label>
+                      <div class="col-lg-9"> 
+                        <img  src="https://pp.userapi.com/c639726/v639726376/1b0e8/-rCpYgJ08pM.jpg" id="img-preview" />
+                      </div>
+                      
+                    </div>
                   <div class="form-group">
                     <label class="col-lg-2 control-label">Radios</label>
                     <div class="col-lg-10">
@@ -47,8 +70,26 @@
               </form>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn" data-dismiss="modal">Close</button>
-            <button (click)="submit()" type="button" class="btn btn-primary" data-dismiss="modal">Log in</button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            <button (click)="submit()" type="button" class="btn btn-primary" data-dismiss="modal">Submit</button>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade modal-lower" id="text-preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Text Preview</h2>
+            </div>
+            <div class="modal-body">
+              <markdown [data]="username">
+               
+              </markdown>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>-->
