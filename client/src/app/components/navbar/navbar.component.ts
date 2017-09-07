@@ -20,7 +20,8 @@ export class NavbarComponent implements OnInit {
   private icon: string = 'fa-sun-o';
 
   ngOnInit() {
-    this.onChange();
+    this.changeStyle(Cookie.get('style'));
+    this.icon = Cookie.get('icon');
   }
 
   onChange() {
