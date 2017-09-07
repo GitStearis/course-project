@@ -27,6 +27,7 @@ import { PreviewComponent } from './components/project/preview/preview.component
 
 import { AuthService } from "./services/auth/auth.service";
 import { FormComponent } from './components/project/form/form.component';
+import { CreateComponent } from './components/project/create/create.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { FormComponent } from './components/project/form/form.component';
     AdminComponent,
     PreviewComponent,
     FormComponent,
-    MessagesComponent
+    MessagesComponent,
+    CreateComponent
   ],
   imports: [HttpModule, HttpClientModule, BrowserModule, routing],
   providers: [appRoutingProviders, AuthService, MessagesService],

@@ -18,7 +18,7 @@
                 </a>
             </li>
             <li class="nav-item" *ngIf="auth.isAuthenticated()">
-                <a class="btn btn-active" data-toggle="modal" data-target="#add-project">
+                <a class="btn btn-active" href="/new" *ngIf="auth.isAuthenticated()">
                     <i class="fa fa-plus-circle fa-lg fa-fw colored" aria-hidden="true"></i>
                 </a>
             </li>

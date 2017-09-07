@@ -6,6 +6,7 @@ import { UserComponent } from "./components/user/user.component";
 import { ProjectComponent } from "./components/project/project/project.component";
 import { NotfoundComponent } from "./components/notfound/notfound.component";
 import { AdminComponent } from "./components/admin/admin.component";
+import { CreateComponent } from './components/project/create/create.component';
 
 const appRoutes: Routes = [
   {
@@ -23,6 +24,10 @@ const appRoutes: Routes = [
   {
     path: "project",
     component: ProjectComponent
+  },
+  {
+    path: "create",
+    component: CreateComponent
   },
   {
     path: "**",
