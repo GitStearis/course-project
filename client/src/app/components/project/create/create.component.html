@@ -19,39 +19,30 @@
     </div>
 </div>
 
-<div class="container">
-    <form class="form-horizontal row">
-        <fieldset>
-            <div class="form-group">
-                <div class="col-lg-1"></div>
-                <div class="col-lg-7">
+<div class="container" *ngIf=" auth.isAuthenticated()">
+    <div class="row">
+        <div class="col-lg-1"></div>
+        <form class="form-horizontal col-6 row">
+            <fieldset>
+                <div class="form-group">
                     <label for="inputTitle" class="control-label"><h3>Project name</h3></label>
                     <input type="text" class="form-control" id="inputTitle" placeholder="Title">
                     <small>Make sure that your project has memorable title. People like it!</small>
                     <hr>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-1"></div>
-                <div class="col-lg-7">
+                <div class="form-group">
                     <label for="inputTitle" class="control-label"><h3>Tag</h3></label>
                     <input type="text" class="form-control" id="inputTag" placeholder="Enter tag for project">
                     <small>Tags are used for easy search.</small>
                     <hr>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-1"></div>
-                <div class="col-lg-7">
+                <div class="form-group">
                     <label for="textArea" class="control-label"><h3>Description</h3></label>
                     <textarea [value]="username" (input)="username = $event.target.value" class="form-control" rows="3" id="textArea" placeholder="Describe your project"></textarea>
                     <small>Try to briefly describe the purpose of the project.</small>
                     <hr>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-1"></div>
-                <div class="col-lg-7">
+                <div class="form-group">
                     <label for="inputTitle" class="control-label"><h3>Cover of the project</h3></label>
                     <img class="img-fluid img-rounded" src="https://pp.userapi.com/c639726/v639726376/1b0e8/-rCpYgJ08pM.jpg" />
                     <label for="file-upload" class="control-label">
@@ -60,10 +51,7 @@
                     </label>
                     <hr>
                 </div>
-            </div>
-            <div class="form-group">
-                <div class="col-lg-1"></div>
-                <div class="col-lg-7">
+                <div class="form-group">
                     <div class="row">
                         <div class="col-6">
                             <label for="amount" class="col-lg-2 control-label"><h3>Amount</h3></label>
@@ -78,19 +66,36 @@
                     </div>
                     <hr>
                 </div>
+                <div class="alert text-center">
+                    <button data-toggle="modal" data-target="#text-preview" type="button" class="btn btn-primary">Preview</button>
+                    <button (click)="submit()" type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+        <div class="container col-lg-4">
+            <h3>Small preview</h3>
+            <div class="thumbnail">
+                <h4>
+                    Post Thumbnail List
+                    <span class="label label-info info">
+                    <span data-toggle="tooltip" title="viewed">257 <b class="glyphicon glyphicon-eye-open"></b></span>
+                    <span data-toggle="tooltip" title="viewed">3 <b class="glyphicon glyphicon-star"></b></span>
+                    <span data-toggle="tooltip" title="Bootstrap version">3.0.3</span>
+                    </span>
+                </h4>
+                <img src="https://pp.userapi.com/c638519/v638519740/51df6/d4OVAQeW1PU.jpg" alt="...">
+                <a href="" class="btn btn-primary col-xs-12" role="button">View Snippet</a>
+                <div class="clearfix"></div>
             </div>
-        </fieldset>
-    </form>
+        </div>
+
+    </div>
 </div>
 
-<div class="container">
-    <div class="row">
-        <div class="col-lg-1">
-        </div>
-        <div class="jumbotron col-lg-7 text-center">
-            <button data-toggle="modal" data-target="#text-preview" type="button" class="btn btn-primary">Show Preview</button>
-            <button (click)="submit()" type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
-        </div>
+
+<div class="jumbotron" *ngIf="!auth.isAuthenticated()">
+    <div class="alert">
+        <p>Creation is available only for authenticated users. Please, <a href="" data-toggle="modal" data-target="#login">sign in</a> or <a href="" data-toggle="modal" data-target="#register">register</a>.</p>
     </div>
 </div>
 
