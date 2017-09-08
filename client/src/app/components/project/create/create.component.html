@@ -21,49 +21,55 @@
 
 <div class="container" *ngIf=" auth.isAuthenticated()">
     <div class="row">
-        <div class="col-lg-1"></div>
+        <div class="col-1"></div>
         <form class="form-horizontal col-6 row">
             <fieldset>
                 <div class="form-group">
                     <label for="inputTitle" class="control-label"><h3>Project name</h3></label>
-                    <input type="text" class="form-control" id="inputTitle" placeholder="Title">
+                    <input #titleInput class="form-control" placeholder="Title" (input)="projectName = $event.target.value" (keyup.enter)="getFromInput(titleInput.value, this.projectName)" (blur)="getFromInput(titleInput.value, this.projectName)">
                     <small>Make sure that your project has memorable title. People like it!</small>
                     <hr>
                 </div>
                 <div class="form-group">
-                    <label for="inputTitle" class="control-label"><h3>Tag</h3></label>
-                    <input type="text" class="form-control" id="inputTag" placeholder="Enter tag for project">
-                    <small>Tags are used for easy search.</small>
+                    <label for="inputTitle" class="control-label"><h3>Description</h3></label>
+                    <input #inputDescription type="text" class="form-control" placeholder="Write about your project in one sentence" (input)="description = $event.target.value" (keyup.enter)="getFromInput(inputDescription.value, this.description)" (blur)="getFromInput(inputDescription.value, this.description)">
+                    <small>Description can help people to understand your purpose.</small>
                     <hr>
                 </div>
                 <div class="form-group">
-                    <label for="textArea" class="control-label"><h3>Description</h3></label>
-                    <textarea [value]="username" (input)="username = $event.target.value" class="form-control" rows="3" id="textArea" placeholder="Describe your project"></textarea>
-                    <small>Try to briefly describe the purpose of the project.</small>
+                    <label for="textArea" class="control-label"><h3>Body</h3></label>
+                    <textarea #textArea class="form-control" rows="3" placeholder="Rock-n-roll starts here" (input)="body = $event.target.value" (keyup.enter)="getFromInput(textArea.value, this.body)" (blur)="getFromInput(textArea.value, this.body)"></textarea>
+                    <small>Tell people about yourself, about your goals and gifts.</small>
                     <hr>
                 </div>
                 <div class="form-group">
                     <label for="inputTitle" class="control-label"><h3>Cover of the project</h3></label>
                     <img class="img-fluid img-rounded" src="https://pp.userapi.com/c639726/v639726376/1b0e8/-rCpYgJ08pM.jpg" />
                     <label for="file-upload" class="control-label">
-                        <a class="btn btn-default">Choose image</a>
-                        <input (click)="fileUploading($event)" id="file-upload" type="file" class="form-control" style="display:none;">
-                    </label>
+                            <a class="btn btn-default">Choose image</a>
+                            <input (click)="fileUploading($event)" id="file-upload" type="file" class="form-control" style="display:none;">
+                        </label>
                     <hr>
                 </div>
                 <div class="form-group">
                     <div class="row">
                         <div class="col-6">
-                            <label for="amount" class="col-lg-2 control-label"><h3>Amount</h3></label>
-                            <input type="number" class="form-control" id="amount" name="amount">
+                            <label for="amount" class="col-lg-2 control-label"><h3>Goal</h3></label>
+                            <input #inputGoal type="number" class="form-control" (input)="goal = $event.target.value" (keyup.enter)="getFromInput(inputGoal.value, this.goal)" (blur)="getFromInput(inputGoal.value, this.goal)">
                             <small>How much money do you want to collect</small>
                         </div>
                         <div class="col-6">
-                            <label for="inputDate" class="col-lg-2 control-label"><h3>To</h3></label>
-                            <input type="date" class="form-control" id="inputDate">
+                            <label for="inputdeadline" class="col-lg-2 control-label"><h3>To</h3></label>
+                            <input #inputDeadline type="date" class="form-control" (input)="deadline = $event.target.value" (keyup.enter)="getFromInput(inputDeadline.value, this.deadline)" (blur)="getFromInput(inputDeadline.value, this.deadline)">
                             <small>Project's deadline</small>
                         </div>
                     </div>
+                    <hr>
+                </div>
+                <div class="form-group">
+                    <label for="inputTitle" class="control-label"><h3>Tag</h3></label>
+                    <input #inputTag type="text" class="form-control" placeholder="Enter tag for project" (input)="tags = $event.target.value" (keyup.enter)="getFromInput(inputTag.value, this.tags)" (blur)="getFromInput(inputTag.value, this.tags)">
+                    <small>Tags are used for easy search.</small>
                     <hr>
                 </div>
                 <div class="alert text-center">
@@ -72,28 +78,29 @@
                 </div>
             </fieldset>
         </form>
-        <div class="container col-lg-3">
+        <div class="container col-3">
             <h3>Small preview</h3>
-            <div class="thumbnail">
+            <div class="thumbnail card">
                 <a href=""><img class="img-fluid" src="https://pp.userapi.com/c638519/v638519740/51df6/d4OVAQeW1PU.jpg" alt="Project image"></a>
-                <div class="container">
+                <div class="alert">
                     <a href="">
                         <h4>
-                            Project title
+                            {{ projectName }}
                         </h4>
                     </a>
-                    <p class="text text-secondary">
-                        Part of project description...
+                    <p class="text text-secondary text-left">
+                        {{ description }}
                     </p>
-                    <div class="clearfix"></div>
-                </div>
-                <div class="container">
-                    <p class="text text-success">Goal: </p>
-                    <p class="text">Current: </p>
                 </div>
                 <hr>
-                <div class="container">
-                    <small class="text text-secondary">tagged as: </small>
+                <div class="alert">
+                    <p class="text text-success">Goal: {{ goal }}$</p>
+                    <p class="text">Current: 0$</p>
+                    <p class="text">Deadline: {{ deadline }}</p>
+                </div>
+                <hr>
+                <div class="alert">
+                    <small class="text text-secondary">tagged as: {{ tags }}</small>
                 </div>
                 <hr>
             </div>
@@ -110,13 +117,17 @@
 </div>
 
 <div class="modal fade modal-lower" id="text-preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
                 <h2>Project preview</h2>
             </div>
             <div class="modal-body">
-                <markdown [data]="username">
+                <div class="d-flex justify-content-center">
+                    <h1>{{ projectName }}</h1>
+                </div>
+
+                <markdown [data]=" body ">
 
                 </markdown>
             </div>

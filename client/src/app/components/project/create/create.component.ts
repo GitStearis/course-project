@@ -13,7 +13,24 @@ export class CreateComponent implements OnInit {
   CLOUDYNARY_URL: string = "";
   CLOUDYNARY_UPLOAD_PRESET: string = "";
 
+  public projectName: string;
+  public description: string = "";
+  public body: string = "";
+  public goal: string = "";
+  public deadline: string = "";
+  public tags: string = "";
+
   constructor(private http: HttpClient, public auth: AuthService) {}
+
+  private getFromInput(value, target) {
+    console.log(value);
+    console.log(target);
+    if (value) {
+      target = value;
+    }
+    console.log(this.projectName);
+  }
+
 
   public fileUploading(event: any) {
     let imgPreview = document.getElementById("img-preview");
