@@ -1,3 +1,5 @@
+const express = require("express");
+const router = express.Router();
 const passport = require("passport");
 const mongoose = require("mongoose");
 const User = mongoose.model("user_list");
@@ -29,8 +31,8 @@ let credentialsJSON = (
   };
 };
 
-let rand, host;
-let _user;
+var rand, host;
+var _user;
 
 module.exports.register = function(req, res) {
   _user = new User();
@@ -63,23 +65,24 @@ module.exports.verification = function(req, res) {
   if (req.protocol + "://" + req.get("host") === "http://" + host) {
     console.log("Domain is matched. Information is from Authentic email");
     if (req.query.id == rand) {
-      console.log("email is verified");
-
+      console.log("Email is verified.");
+      // router.get('/profile');
       _user.save(function(err) {
         var token;
         token = _user.generateJwt();
         res.status(200);
-        res.json(
-          credentialsJSON(
-            token,
-            _user.email,
-            _user.name,
-            _user.firstname,
-            _user.secondname,
-            _user.phone,
-            _user.date
-          )
-        );
+        res.redirect("http://" + host);
+        // res.json(
+        //   credentialsJSON(
+        //     token,
+        //     _user.email,
+        //     _user.name,
+        //     _user.firstname,
+        //     _user.secondname,
+        //     _user.phone,
+        //     _user.date
+        //   )
+        // );
       });
     } else {
       console.log("email is not verified");
