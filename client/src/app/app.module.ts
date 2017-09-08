@@ -24,11 +24,9 @@ import { AdminComponent } from "./components/admin/admin.component";
 import { PreviewComponent } from "./components/project/preview/preview.component";
 
 
-
 import { AuthService } from "./services/auth/auth.service";
 import { CreateComponent } from './components/project/create/create.component';
 import { AdminService } from "./services/admin/admin.service";
-import { FormComponent } from "./components/project/form/form.component";
 
 @NgModule({
   declarations: [
@@ -43,7 +41,6 @@ import { FormComponent } from "./components/project/form/form.component";
     ProjectComponent,
     AdminComponent,
     PreviewComponent,
-    FormComponent,
     MessagesComponent,
     CreateComponent
   ],
