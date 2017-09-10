@@ -80,6 +80,7 @@ export class AuthService {
   }
 
   public register(user: Profile) {
+    this.removeWarnings();
     this.http
       .post("/api/register", user)
       .map(data => JSON.stringify(data))
@@ -91,20 +92,20 @@ export class AuthService {
       },
       err => {
         this.removeWarnings();
-        this.msg.warning('An error occured, please, try again.');
         if (err.error instanceof Error) {
           console.log("An error occurred:", err.error.message);
+          this.msg.warning('An error occured: ' + err.error.message + '.');
         } else {
           console.log(err);
-          console.log(
-            `Backend returned code ${err.status}, body was: ${err.error}`
-          );
+          console.log('Backend returned code ${err.status}, body was: ${err.error}');
+          this.msg.warning('An error occured: ' + err.error + '.');
         }
       }
       );
   }
 
   public login(user: Profile) {
+    this.removeWarnings();
     this.msg
     this.http
       .post("/api/login", user)
@@ -120,11 +121,11 @@ export class AuthService {
         this.removeWarnings();
         if (err.error instanceof Error) {
           console.log("An error occurred:", err.error.message);
-          this.msg.warning('An error occured: ' + err.error.message);
+          this.msg.warning('An error occured: ' + err.error.message + '.');
         } else {
-          this.msg.warning('Bad login or password. Please, try again.');
           console.log(err);
           console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+          this.msg.warning('An error occured: ' + err.error.message + '.');
         }
       }
       );
