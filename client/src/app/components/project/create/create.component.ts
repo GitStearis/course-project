@@ -35,6 +35,7 @@ export class CreateComponent implements OnInit {
                       "Portugal","Romania","Russia","San Marino","Serbia","Slovakia","Slovenia",
                       "Spain","Sweden","Switzerland","Turkey","Ukraine","United Kingdom","Vatican City"];
   public filteredList = [];
+  public selected = [];
   public elementRef;
 
   constructor(
@@ -45,7 +46,7 @@ export class CreateComponent implements OnInit {
     this.elementRef = element;
   }
 
-  filter() {
+  public filter() {
     if (this.query !== "") {
       this.filteredList = this.countries.filter(
         function(el) {
@@ -57,10 +58,15 @@ export class CreateComponent implements OnInit {
     }
   }
 
-  select(item) {
-    this.query = item;
+  public select(item) {
+    this.selected.push(item);
+    this.query = '';
     this.filteredList = [];
   }
+
+  public remove(item){
+    this.selected.splice(this.selected.indexOf(item),1);
+}
 
   handleClick(event){
     var clickedComponent = event.target;
