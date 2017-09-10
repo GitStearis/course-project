@@ -70,7 +70,21 @@
                 </div>
                 <div class="form-group">
                     <label for="inputTitle" class="control-label"><h3>Tag</h3></label>
-                    <input #inputTag type="text" class="form-control" placeholder="Enter tag for project" (input)="tags = $event.target.value" (keyup.enter)="getFromInput(inputTag.value, this.tags)" (blur)="getFromInput(inputTag.value, this.tags)">
+                    <!--<input #inputTag type="text" class="form-control" placeholder="Enter tag for project" (input)="tags = $event.target.value" (keyup.enter)="getFromInput(inputTag.value, this.tags)" (blur)="getFromInput(inputTag.value, this.tags)">-->
+                    <!--<ng2-completer #inputTag class="form-control" [datasource]="tagList" [minSearchLength]="0" [clearSelected]="true" (selected)="onSelected($event)" (input)="getTagList()" (keyup.enter)="getFromInput(inputTag.value, this.tags)" (blur)="getFromInput(inputTag.value, this.tags)"></ng2-completer>-->
+                    <div class="row" >
+                        <div class="col-6">
+                          <input id="country" type="text" class="form-control" (input)="query = $event.target.value" (keyup)="filter()">
+                          <label for="country">Country</label>
+                          <div class="suggestions" *ngIf="filteredList.length > 0">
+                            <ul *ngFor="let item of filteredList" >
+                                <li >
+                                    <a (click)="select(item)">{{item}}</a>
+                                </li>
+                            </ul>
+                        </div>
+                        </div>
+                    </div>  
                     <small>Tags are used for easy search.</small>
                     <hr>
                 </div>
