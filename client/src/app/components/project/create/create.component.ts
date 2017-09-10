@@ -104,63 +104,36 @@ export class CreateComponent implements OnInit {
     }
   }
 
-  public fileUploading(event: any) {
-    let imgPreview = document.getElementById("img-preview");
-    let fileUpload = document.getElementById("file-upload");
-
+  public uploadFile(event: any) {
     let file = event.target.files[0];
-    let formData = new FormData();
-    formData.append("file", file);
-    formData.append("upload_preset", this.CLOUDYNARY_UPLOAD_PRESET);
-
-    /*axios({
-      url: this.CLOUDYNARY_URL,
-      method: "POST",
-      headers: {
-        "Content-Type": "application/x-www-form-urlencoded"
-      },
-      data: formData
-    })
-      .then(function(res) {
-        console.log(res);
-        imgPreview.src = res.data.secure_url;
-      })
-      .catch(function(err) {
-        console.log(err);
-      });*/
-
-    this.http
-      .post(
-        this.CLOUDYNARY_URL,
-        {
-          file: formData
-        },
-        {
-          headers: new HttpHeaders().set(
-            "Content-Type",
-            "application/x-www-form-urlencoded"
-          )
+    var xhr = new XMLHttpRequest();
+    var fd = new FormData();
+    xhr.open('POST', this.CLOUDYNARY_URL, true);
+    xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+  
+    xhr.onreadystatechange = function(e) {
+      if (xhr.readyState == 4 && xhr.status == 200) {
+        console.log('Successfully uploaded!')
+        let response = JSON.parse(xhr.responseText);
+        let imgs = document.getElementsByTagName('img');
+        for (let i = 0; i < imgs.length; i++){
+          let img = imgs[i];
+          if (img.id === 'img-preview'){
+            img.src = response.secure_url;
+            img.alt = response.public_id;
+          }
         }
-      )
-      .map(data => JSON.stringify(data))
-      .subscribe(
-        data => {
-          console.log(data);
-          let res = JSON.parse(data);
-          // imgPreview.src = res.data.secure_url;
-          document
-            .getElementById("img-preview")
-            .setAttribute("src", res.data.secure_url);
-        },
-        err => {
-          this.deafultErrorMessage(err);
-        }
-      );
+      }
+    };
+  
+    fd.append('upload_preset', this.CLOUDYNARY_UPLOAD_PRESET);
+    fd.append('file', file);
+    xhr.send(fd);
   }
 
-  public getTagList() {
-    this.tagList = ["one", "two"];
-  }
+  // public getTagList() {
+  //   this.tagList = ["one", "two"];
+  // }
 
   public submit() {
     let project = {
