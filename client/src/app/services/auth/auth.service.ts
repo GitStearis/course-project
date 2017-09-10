@@ -28,7 +28,7 @@ export class AuthService {
   removeAllWarnings() {
     this.msg.messages.subscribe(data => {
       for (let id in data['warning']) {
-          this.msg.remove(id);
+        this.msg.remove(id);
       }
     })
   }

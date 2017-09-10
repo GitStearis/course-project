@@ -132,3 +132,7 @@ module.exports.login = function(req, res) {
         }
     })(req, res);
 };
+
+module.exports.userById = function(req, res) {
+
+}

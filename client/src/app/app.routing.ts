@@ -7,11 +7,16 @@ import { ProjectComponent } from "./components/project/project/project.component
 import { NotfoundComponent } from "./components/notfound/notfound.component";
 import { AdminComponent } from "./components/admin/admin.component";
 import { CreateComponent } from './components/project/create/create.component';
+import { UserComponent } from './components/user/user.component';
 
 const appRoutes: Routes = [
   {
     path: "",
     component: HomeComponent
+  },
+  {
+    path: "user/:username",
+    component: UserComponent
   },
   {
     path: "profile",
@@ -28,6 +33,10 @@ const appRoutes: Routes = [
   {
     path: "create",
     component: CreateComponent
+  },
+  {
+    path: "404",
+    component: NotfoundComponent
   },
   {
     path: "**",

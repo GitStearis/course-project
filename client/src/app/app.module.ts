@@ -26,6 +26,7 @@ import { PreviewComponent } from "./components/project/preview/preview.component
 import { AuthService } from "./services/auth/auth.service";
 import { CreateComponent } from './components/project/create/create.component';
 import { AdminService } from "./services/admin/admin.service";
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { AdminService } from "./services/admin/admin.service";
     AdminComponent,
     PreviewComponent,
     MessagesComponent,
-    CreateComponent
+    CreateComponent,
+    UserComponent
   ],
   imports: [
     HttpModule,
