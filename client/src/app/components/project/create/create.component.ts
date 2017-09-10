@@ -16,6 +16,7 @@ export class CreateComponent implements OnInit {
   public projectName: string;
   public description: string = "";
   public body: string = "";
+  public image: string = "https://pp.userapi.com/c639726/v639726376/1b0e8/-rCpYgJ08pM.jpg";
   public goal: string = "";
   public deadline: string = "";
   public tags: string = "";
@@ -29,6 +30,19 @@ export class CreateComponent implements OnInit {
       target = value;
     }
     console.log(this.projectName);
+  }
+
+  private deafultErrorMessage(err: any) {
+    this.auth.removeWarnings();
+    this.auth.msg.warning("An error occured, please, try again.");
+    if (err.error instanceof Error) {
+      console.log("An error occurred:", err.error.message);
+    } else {
+      console.log(err);
+      console.log(
+        `Backend returned code ${err.status}, body was: ${err.error}`
+      );
+    }
   }
 
   public fileUploading(event: any) {
@@ -80,16 +94,32 @@ export class CreateComponent implements OnInit {
             .setAttribute("src", res.data.secure_url);
         },
         err => {
-          this.auth.removeWarnings();
-          this.auth.msg.warning("An error occured, please, try again.");
-          if (err.error instanceof Error) {
-            console.log("An error occurred:", err.error.message);
-          } else {
-            console.log(err);
-            console.log(
-              `Backend returned code ${err.status}, body was: ${err.error}`
-            );
-          }
+          this.deafultErrorMessage(err);
+        }
+      );
+  }
+
+  public submit() {
+    let project = {
+      title: this.projectName,
+      description: this.description,
+      body: this.body,
+      image: this.image,
+      goal: this.goal,
+      date: this.deadline,
+      tags: this.tags
+    };
+
+    this.http
+      .post("/api/project/new", project)
+      .map(data => JSON.stringify(data))
+      .subscribe(
+        data => {
+          this.auth.msg.success("Project creating completed successfully!");
+          console.log(data);
+        },
+        err => {
+          this.deafultErrorMessage(err);
         }
       );
   }

@@ -47,6 +47,8 @@
                     <img id="img-preview" class="img-fluid img-rounded" src="https://pp.userapi.com/c639726/v639726376/1b0e8/-rCpYgJ08pM.jpg" />
                     <label for="file-upload" class="control-label">
                             <a class="btn btn-default">Choose image</a>
+                            <!-- Some hell is going on here -->
+                            <!-- #imagePreview (input)="body = $event.target.value" (keyup.enter)="getFromInput(imagePreview.value, this.body)" (blur)="imagePreview(textArea.value, this.body)" -->
                             <input (change)="fileUploading($event)" id="file-upload" type="file" name="file" class="form-control" style="display:none;">
                         </label>
                     <hr>
