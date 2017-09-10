@@ -2,7 +2,7 @@ import { ModuleWithProviders } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";
 
 import { HomeComponent } from "./components/home/home.component";
-import { UserComponent } from "./components/user/user.component";
+import { ProfileComponent } from "./components/profile/profile.component";
 import { ProjectComponent } from "./components/project/project/project.component";
 import { NotfoundComponent } from "./components/notfound/notfound.component";
 import { AdminComponent } from "./components/admin/admin.component";
@@ -14,8 +14,8 @@ const appRoutes: Routes = [
     component: HomeComponent
   },
   {
-    path: "user",
-    component: UserComponent
+    path: "profile",
+    component: ProfileComponent
   },
   {
     path: "admin", 

@@ -15,7 +15,7 @@ import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { HomeComponent } from "./components/home/home.component";
 import { RegistrationComponent } from "./components/registration/registration.component";
-import { UserComponent } from "./components/user/user.component";
+import { ProfileComponent } from "./components/profile/profile.component";
 import { NotfoundComponent } from "./components/notfound/notfound.component";
 import { DonationComponent } from "./components/donation/donation.component";
 import { LoginComponent } from "./components/login/login.component";
@@ -33,7 +33,7 @@ import { AdminService } from "./services/admin/admin.service";
     NavbarComponent,
     HomeComponent,
     RegistrationComponent,
-    UserComponent,
+    ProfileComponent,
     NotfoundComponent,
     DonationComponent,
     LoginComponent,
