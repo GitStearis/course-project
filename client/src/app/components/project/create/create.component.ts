@@ -6,7 +6,7 @@ import { AuthService } from "../../../services/auth/auth.service";
 @Component({
   selector: "app-create",
   host: {
-    "(document:click)": "handleClick($event)",
+    "(document.getElementById('tag-input'):click)": "handleClick($event)",
   },
   templateUrl: "./create.component.html",
   styleUrls: ["./create.component.css"]

@@ -68,7 +68,7 @@
                     </div>
                     <hr>
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="tag-input">
                     <label for="inputTitle" class="control-label"><h3>Tag</h3></label>
                     <!--<input #inputTag type="text" class="form-control" placeholder="Enter tag for project" (input)="tags = $event.target.value" (keyup.enter)="getFromInput(inputTag.value, this.tags)" (blur)="getFromInput(inputTag.value, this.tags)">-->
                     <!--<ng2-completer #inputTag class="form-control" [datasource]="tagList" [minSearchLength]="0" [clearSelected]="true" (selected)="onSelected($event)" (input)="getTagList()" (keyup.enter)="getFromInput(inputTag.value, this.tags)" (blur)="getFromInput(inputTag.value, this.tags)"></ng2-completer>-->
@@ -79,7 +79,9 @@
                                 <option *ngFor="let item of filteredList" value="{{item}}" (click)="select(item)">
                             </datalist>
                         </div>
-                        <div *ngFor="item of selected">
+                    </div>
+                    <div class="row">
+                        <div *ngFor="let item of selected" class="col-1">
                             <div class="selected" >
                                 <span>{{item}}</span>
                                 <a (click)="remove(item)">x</a>
