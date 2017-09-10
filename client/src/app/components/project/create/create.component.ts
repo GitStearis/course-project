@@ -1,17 +1,17 @@
-import { Component, OnInit } from '@angular/core';
-import { HttpClient } from "@angular/common/http";
+import { Component, OnInit } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Profile } from "../../../profile";
 
 import { AuthService } from "../../../services/auth/auth.service";
 
 @Component({
-  selector: 'app-create',
-  templateUrl: './create.component.html',
-  styleUrls: ['./create.component.css']
+  selector: "app-create",
+  templateUrl: "./create.component.html",
+  styleUrls: ["./create.component.css"]
 })
 export class CreateComponent implements OnInit {
-  CLOUDYNARY_URL: string = "";
-  CLOUDYNARY_UPLOAD_PRESET: string = "";
+  CLOUDYNARY_URL: string = "https://api.cloudinary.com/v1_1/itra-courseproject/image/upload";
+  CLOUDYNARY_UPLOAD_PRESET: string = "nw6hxewv";
 
   public projectName: string;
   public description: string = "";
@@ -30,7 +30,6 @@ export class CreateComponent implements OnInit {
     }
     console.log(this.projectName);
   }
-
 
   public fileUploading(event: any) {
     let imgPreview = document.getElementById("img-preview");
@@ -56,6 +55,43 @@ export class CreateComponent implements OnInit {
       .catch(function(err) {
         console.log(err);
       });*/
+
+    this.http
+      .post(
+        this.CLOUDYNARY_URL,
+        {
+          file: formData
+        },
+        {
+          headers: new HttpHeaders().set(
+            "Content-Type",
+            "application/x-www-form-urlencoded"
+          )
+        }
+      )
+      .map(data => JSON.stringify(data))
+      .subscribe(
+        data => {
+          console.log(data);
+          let res = JSON.parse(data);
+          // imgPreview.src = res.data.secure_url;
+          document
+            .getElementById("img-preview")
+            .setAttribute("src", res.data.secure_url);
+        },
+        err => {
+          this.auth.removeWarnings();
+          this.auth.msg.warning("An error occured, please, try again.");
+          if (err.error instanceof Error) {
+            console.log("An error occurred:", err.error.message);
+          } else {
+            console.log(err);
+            console.log(
+              `Backend returned code ${err.status}, body was: ${err.error}`
+            );
+          }
+        }
+      );
   }
 
   ngOnInit() {}
