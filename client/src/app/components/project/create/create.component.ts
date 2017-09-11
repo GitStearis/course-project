@@ -110,7 +110,6 @@ export class CreateComponent implements OnInit {
     var fd = new FormData();
     xhr.open('POST', this.CLOUDYNARY_URL, true);
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
-
   
     xhr.onreadystatechange = (e) => {
       if (xhr.readyState == 4 && xhr.status == 200) {
@@ -141,7 +140,7 @@ export class CreateComponent implements OnInit {
     let project = {
       title: this.projectName,
       description: this.description,
-      body: this.body,
+      body: this.body,  
       image: this.image,
       goal: this.goal,
       date: this.deadline,

@@ -1,5 +1,5 @@
 .modal-lower {
-    padding-top: 100px;
+    padding-top: 200px;
 }
 
 input,
@@ -13,14 +13,20 @@ description {
     overflow-x: hidden;
 }
 
-.selected{
-	border:solid #4CAF50 1px;
-	float:left; 
-	margin:2px;
-	padding:2px 15px;
+.selected {
+    border: solid #4CAF50 1px;
+    float: left;
+    margin: 2px;
+    padding: 2px 15px;
 }
- 
-.selected a{
-	cursor:pointer;
-	font-weight:bold;
+
+.selected a {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.img-responsive {
+    display: block;
+    max-width: 100%;
+    max-height: 512px;
 }
