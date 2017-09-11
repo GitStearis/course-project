@@ -18,7 +18,7 @@ module.exports.createProject = function(req, res) {
     Project.findOne({ pageId: tempTitle }, function(err, project) {
         if (project === null) {
             _project.save(function(err) {
-                res.status(200).json("Successfully created!");
+                res.status(200);
             });
         }
         if (project) {

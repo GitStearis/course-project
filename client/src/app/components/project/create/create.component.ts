@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Profile } from "../../../profile";
 import { AuthService } from "../../../services/auth/auth.service";
+import { MessagesService } from '../../../../../node_modules/ng2-messages/ng2-messages.service';
 
 @Component({
   selector: "app-create",
@@ -41,7 +42,8 @@ export class CreateComponent implements OnInit {
   constructor(
     private http: HttpClient,
     public auth: AuthService,
-    public element: ElementRef
+    public element: ElementRef,
+    public msg: MessagesService
   ) {
     this.elementRef = element;
   }
@@ -88,19 +90,6 @@ export class CreateComponent implements OnInit {
     }
   }
 
-  private deafultErrorMessage(err: any) {
-    this.auth.removeWarnings();
-    this.auth.msg.warning("An error occured, please, try again.");
-    if (err.error instanceof Error) {
-      console.log("An error occurred:", err.error.message);
-    } else {
-      console.log(err);
-      console.log(
-        `Backend returned code ${err.status}, body was: ${err.error}`
-      );
-    }
-  }
-
   public uploadFile(event: any) {
     let file = event.target.files[0];
     var xhr = new XMLHttpRequest();
@@ -133,6 +122,26 @@ export class CreateComponent implements OnInit {
   //   this.tagList = ["one", "two"];
   // }
 
+  private removeWarnings() {
+    this.msg.messages.subscribe(data => {
+      let flag = true;
+      for (let id in data['warning']) {
+        if (flag === true) {
+          flag = false;
+        } else {
+          this.msg.remove(id);
+        }
+      }
+    })
+  }
+  private removeAllWarnings() {
+    this.msg.messages.subscribe(data => {
+      for (let id in data['warning']) {
+          this.msg.remove(id);
+      }
+    })
+  }
+
   public submit() {
     let project = {
       title: this.projectName,
@@ -149,11 +158,24 @@ export class CreateComponent implements OnInit {
       .map(data => JSON.stringify(data))
       .subscribe(
         data => {
-          this.auth.msg.success("Project creating completed successfully!");
+          this.removeAllWarnings();
+          window.scrollTo(0,0);
+          this.msg.success("Successfully created project!");
           console.log(data);
         },
         err => {
-          this.deafultErrorMessage(err);
+          this.removeWarnings();
+          window.scrollTo(0,0);
+          if (err.error instanceof Error) {
+            this.msg.warning('An error occured, please, try again.');
+            console.log("An error occurred:", err.error.message);
+          } else {
+            this.msg.warning('Server returned code ' + err.status + ', ' + err.error);
+            console.log(err);
+            console.log(
+              `Backend returned code ${err.status}, body was: ${err.error}`
+            );
+          }
         }
       );
   }
