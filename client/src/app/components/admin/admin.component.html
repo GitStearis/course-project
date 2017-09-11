@@ -23,17 +23,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                  <tr *ngFor="let user of userList; let i = index">
-                    <td>{{i + 1}}</td>
-                    <td>{{user.name}}</td>
-                    <td>{{user.email}}</td>
-                    <td>{{user.firstname}}</td>
-                    <td>{{user.secondname}}</td>
-                    <td>{{user.phone}}</td>
-                    <td>{{user.date}}</td>
-                  </tr>
+                    <tr *ngFor="let user of userList; let i = index">
+                        <td>{{ i + 1 }}</td>
+                        <td><a href="/user/{{ user.name }}">{{ user.name }}</a></td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.firstname }}</td>
+                        <td>{{ user.secondname }}</td>
+                        <td>{{ user.phone }}</td>
+                        <td>{{ user.date }}</td>
+                    </tr>
                 </tbody>
-              </table> 
+            </table>
         </div>
     </div>
 </div>
