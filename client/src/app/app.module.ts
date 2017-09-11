@@ -27,6 +27,7 @@ import { AuthService } from "./services/auth/auth.service";
 import { CreateComponent } from './components/project/create/create.component';
 import { AdminService } from "./services/admin/admin.service";
 import { UserComponent } from './components/user/user.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { UserComponent } from './components/user/user.component';
     PreviewComponent,
     MessagesComponent,
     CreateComponent,
-    UserComponent
+    UserComponent,
+    FooterComponent
   ],
   imports: [
     HttpModule,
