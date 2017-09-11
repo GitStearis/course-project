@@ -12,18 +12,19 @@ module.exports.createProject = function(req, res) {
     _project.date = req.body.date;
     _project.tags = req.body.tags;
 
-    _project.save(function(err){
-        if (err) return handleError(err);
-        
-        res.status(200);
-        res.json({
-            title: _project.title,
-            description: _project.description,
-            body: _project.body,
-            image: _project.image,
-            goal: _project.goal,
-            date: _project.date,
-            tags: _project.tags
-        });
+    _project.pageId = req.body.title.toLowerCase().replace(/\s/g, '-');
+    let tempTitle = _project.title.toLowerCase().replace(/\s/g, '-');
+
+    Project.findOne({ pageId: tempTitle }, function(err, project) {
+        if (project === null) {
+            _project.save(function(err) {
+                res.status(200).json("Successfully created!");
+            });
+        }
+        if (project) {
+            res.status(409).json("please, choose other name for your project")
+        } else {
+            res.json(err);
+        }
     });
 }

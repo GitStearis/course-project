@@ -83,12 +83,9 @@ export class CreateComponent implements OnInit {
   }
 
   private getFromInput(value, target) {
-    console.log(value);
-    console.log(target);
     if (value) {
       target = value;
     }
-    console.log(this.projectName);
   }
 
   private deafultErrorMessage(err: any) {

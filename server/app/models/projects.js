@@ -30,7 +30,11 @@ var projectSchema = new mongoose.Schema({
     tags: [{
         type: String,
         required: true
-    }]
+    }],
+    pageId: {
+        type: String,
+        required: true
+    }
 });
 
 module.exports = mongoose.model("project_list", projectSchema);
