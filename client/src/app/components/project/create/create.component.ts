@@ -15,10 +15,10 @@ export class CreateComponent implements OnInit {
   CLOUDYNARY_URL: string = "https://api.cloudinary.com/v1_1/itra-courseproject/image/upload";
   CLOUDYNARY_UPLOAD_PRESET: string = "nw6hxewv";
 
-  public projectName: string;
+  public projectName: string = "";
   public description: string = "";
   public body: string = "";
-  public image: string = "https://pp.userapi.com/c639726/v639726376/1b0e8/-rCpYgJ08pM.jpg";
+  public image: string = "";
   public goal: string = "";
   public deadline: string = "";
   public tags: string = "";
@@ -110,15 +110,17 @@ export class CreateComponent implements OnInit {
     var fd = new FormData();
     xhr.open('POST', this.CLOUDYNARY_URL, true);
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
+
   
-    xhr.onreadystatechange = function(e) {
+    xhr.onreadystatechange = (e) => {
       if (xhr.readyState == 4 && xhr.status == 200) {
-        console.log('Successfully uploaded!')
+        console.log(JSON.parse(xhr.responseText));
         let response = JSON.parse(xhr.responseText);
         let imgs = document.getElementsByTagName('img');
         for (let i = 0; i < imgs.length; i++){
           let img = imgs[i];
           if (img.id === 'img-preview'){
+            this.image = response.secure_url;
             img.src = response.secure_url;
             img.alt = response.public_id;
           }
