@@ -1,33 +1,50 @@
-<div class="card">
-  <div class="container-fliud">
-    <div class="wrapper row">
-      <div class="preview col-md-6">
-
-        <div class="preview-pic tab-content">
-          <img src="http://placekitten.com/200/126" />
+<div class="container">
+    <div class="jumbotron">
+        <div class="row">
+            <div class="col-md-7 text-center">
+                <div class="alert text-center">
+                    <h2>{{ project.title }}</h2>
+                </div>
+            </div>
+            <div class="col-md-7 text-center">
+                <div><img class="img-fluid img-rounded" src="{{ project.image }}" alt="Project image"></div>
+                <hr>
+                <div class="alert">
+                    <small>{{ project.description }}</small>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="d-flex flex-column justify-content-center">
+                    <div class="text-center">
+                        <h1>{{ project.goal }} $</h1>
+                        <small>Goal</small>
+                    </div>
+                    <div class="alert text-center">
+                        <h3>{{ project.date }}</h3>
+                        <small>Deadline</small>
+                    </div>
+                    <div class="alert text-center">
+                        <button type="button" class="btn btn-success btn-lg">Support</button>
+                    </div>
+                </div>
+            </div>
         </div>
-
-      </div>
-      <div class="details col-md-6">
-        <h3 class="product-title">Project Title</h3>
-        <div class="rating">
-          <div class="stars">
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star checked"></span>
-            <span class="fa fa-star"></span>
-            <span class="fa fa-star"></span>
-          </div>
-          <span class="review-no">41 reviews</span>
-        </div>
-        <p class="product-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus in fringilla augue. Curabitur pulvinar semper risus vitae commodo. Curabitur sed mollis tellus. Pellentesque faucibus, tortor non gravida commodo, massa elit vehicula felis, at tincidunt justo ligula quis ex. Morbi eleifend et est non laoreet. Donec ut neque eget lacus dictum mattis et vel mauris. Vivamus eu aliquam purus, nec vestibulum diam. Nullam metus augue, congue congue justo sit amet, ornare fermentum odio.</p>
-        <h4 class="price">current price: <span> $180</span></h4>
-        <p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
-        <div class="action">
-          <button class="add-to-cart btn btn-default" type="button">add to cart</button>
-          <button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
-        </div>
-      </div>
     </div>
-  </div>
+</div>
+<div class="container">
+    <div class="col-md-8 jumbotron">
+        <div class="alert text-center">
+            <h2>About</h2>
+        </div>
+        <div class="d-flex justify-content-center">
+            <markdown [data]="project.body"></markdown>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="col-md-8 jumbotron">
+        <div class="alert text-center">
+            <h2>Comments</h2>
+        </div>
+    </div>
 </div>

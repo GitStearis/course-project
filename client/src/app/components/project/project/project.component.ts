@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
-import { Router } from '@angular/router'
-import { HttpClient } from "@angular/common/http";
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Project } from '../../../project';
 
 @Component({
   selector: 'app-project',
@@ -11,20 +12,22 @@ import { HttpClient } from "@angular/common/http";
 export class ProjectComponent implements OnInit {
 
   pageId: string;
+  project: Project;
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
     this.route.params.subscribe(params => {
       this.pageId = params.pageId;
       this.http
-        .get("/api/project/" + this.pageId)
+        .get('/api/project/' + this.pageId)
         .map(data => JSON.stringify(data))
         .subscribe(
         data => {
           console.log(data);
+          this.project = JSON.parse(data);
         },
         err => {
           if (err.error instanceof Error) {
-            console.log("An error occurred:", err.error.message);
+            console.log('An error occurred:', err.error.message);
           } else {
             console.log(err);
             console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
@@ -33,7 +36,6 @@ export class ProjectComponent implements OnInit {
         }
         );
     });
-
   }
 
   ngOnInit() {
