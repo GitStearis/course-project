@@ -28,6 +28,7 @@ import { CreateComponent } from './components/project/create/create.component';
 import { AdminService } from "./services/admin/admin.service";
 import { UserComponent } from './components/user/user.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { VerificationPageComponent } from './components/verification-page/verification-page.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,8 @@ import { FooterComponent } from './components/footer/footer.component';
     MessagesComponent,
     CreateComponent,
     UserComponent,
-    FooterComponent
+    FooterComponent,
+    VerificationPageComponent
   ],
   imports: [
     HttpModule,
