@@ -13,7 +13,8 @@ const auth = jwt({
 const ctrlProfile = require("../controllers/profile");
 const ctrlAuth = require("../controllers/authentication");
 const ctrUserList = require("../controllers/userlist");
-const ctrProject = require("../controllers/project-form");
+const ctrProjectForm = require("../controllers/project-form");
+const ctrProject = require("../controllers/project");
 
 // профиль
 router.get("/profile", auth, ctrlProfile.profileRead);
@@ -29,6 +30,7 @@ router.post("/login", ctrlAuth.login);
 router.get("/userlist", ctrUserList.list);
 
 // действия с проектами
-router.post("/project/new", ctrProject.createProject);
+router.post("/project/new", ctrProjectForm.createProject);
+router.get("/project/:pageId", ctrProject.projectByPageId);
 
 module.exports = router;

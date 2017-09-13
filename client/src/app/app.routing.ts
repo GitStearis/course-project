@@ -27,7 +27,7 @@ const appRoutes: Routes = [
     component: AdminComponent
   },
   {
-    path: "project",
+    path: "project/:pageId",
     component: ProjectComponent
   },
   {
