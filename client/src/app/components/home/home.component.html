@@ -1,24 +1,43 @@
 <div class="jumbotron">
-  <h1>Crowdfunding Platform</h1>
+    <h1>Crowdfunding Platform</h1>
     <blockquote>
-        <p>Our project does more than raise money.
-            It builds community around your work.</p>
+        <p>Our project does more than raise money. It builds community around your work.</p>
         <small>Someone famous in <cite title="Source Title">Our Awesome CO-OP Team</cite></small>
     </blockquote>
-  <div class="row"><a class="btn btn-primary btn-lg">Join Us</a></div>
+    <div class="row"><a class="btn btn-primary btn-lg">Join Us</a></div>
 </div>
 <div class="row">
-    <h2 class="text-center">Minimal Preview Thumbnails </h2>
+    <h2 class="text-center">Projects</h2>
 </div>
-<div>
-    <app-preview></app-preview>
-    <app-preview></app-preview>
-    <app-preview></app-preview>
-    <app-preview></app-preview>
-    <app-preview></app-preview>
-    <app-preview></app-preview>
-    <app-preview></app-preview>
-    <app-preview></app-preview>
+<div *ngFor="let project of projects">
+    <div class="col-sm-4 col-md-3">
+        <div class="thumbnail card">
+            <div class="img-preview-container">
+                <a href="{{ baseUrl }}{{ project.pageId }}"><img class="img-fluid img-preview" src="{{ project.image }}" alt="Project image"></a>
+            </div>
+            <div class="text-container">
+                <a href="{{ baseUrl }}{{ project.pageId }}">
+                    <h4>
+                        {{ project.title }}
+                    </h4>
+                </a>
+                <p class="text text-secondary text-left description">
+                    {{ project.description }}
+                </p>
+            </div>
+            <hr>
+            <div class="text-container">
+                <p class="text text-success">Goal: {{ project.goal }}$</p>
+                <p class="text text-info">Current: 0$</p>
+                <p class="text text-warning">Deadline: {{ project.date }}</p>
+            </div>
+            <hr>
+            <div class="text-container text-right ">
+                <small class="text text-secondary">tagged as: {{ project.tags }}</small>
+            </div>
+            <hr>
+        </div>
+    </div>
 </div>
 <div>
     <!--<app-donation></app-donation>-->

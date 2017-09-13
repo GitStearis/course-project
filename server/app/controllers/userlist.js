@@ -7,9 +7,6 @@ module.exports.list = function(req, res) {
             res.status(404);
             return;
         }
-        // for (user in users) {
-        //   users[user].isBlocked = items[item].isBlocked || false;
-        // }
         res.send(JSON.stringify(users));
     });
 };

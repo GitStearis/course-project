@@ -10,3 +10,13 @@ module.exports.projectByPageId = function(req, res) {
         }
     });
 }
+
+module.exports.projects = function(req, res) {
+    Project.find({}, function(err, project) {
+        if (err || project === null) {
+            res.status(404);
+            return;
+        }
+        res.send(JSON.stringify(project));
+    });
+}
