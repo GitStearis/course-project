@@ -26,6 +26,7 @@ import { PreviewComponent } from "./components/project/preview/preview.component
 import { AuthService } from "./services/auth/auth.service";
 import { CreateComponent } from './components/project/create/create.component';
 import { AdminService } from "./services/admin/admin.service";
+import { ImgCloudinaryService } from "./services/img/img-cloudinary.service";
 import { UserComponent } from './components/user/user.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { VerificationPageComponent } from './components/verification-page/verification-page.component';
@@ -60,7 +61,8 @@ import { VerificationPageComponent } from './components/verification-page/verifi
     appRoutingProviders,
     AuthService,
     MessagesService,
-    AdminService
+    AdminService,
+    ImgCloudinaryService
   ],
   bootstrap: [AppComponent]
 })
