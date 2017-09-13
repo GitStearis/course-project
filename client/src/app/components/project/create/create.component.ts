@@ -3,6 +3,8 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Profile } from '../../../profile';
 import { AuthService } from '../../../services/auth/auth.service';
 import { MessagesService } from '../../../../../node_modules/ng2-messages/ng2-messages.service';
+import { ImgCloudinaryService } from "../../../services/img/img-cloudinary.service";
+import { async } from "q";
 
 @Component({
   selector: 'app-create',
@@ -40,7 +42,8 @@ export class CreateComponent implements OnInit {
     private http: HttpClient,
     public auth: AuthService,
     public element: ElementRef,
-    public msg: MessagesService
+    public msg: MessagesService,
+    public img: ImgCloudinaryService
   ) {
     this.elementRef = element;
   }
@@ -89,6 +92,17 @@ export class CreateComponent implements OnInit {
 
   public uploadFile(event: any) {
     let file = event.target.files[0];
+    // let imgUploaded = this.img.uploadFile(file);
+
+    // let imgs = document.getElementsByTagName('img');
+    // for (let i = 0; i < imgs.length; i++){
+    //   let img = imgs[i];
+    //   if (img.id === 'img-preview'){
+    //     this.image = imgUploaded.src;
+    //     img.src = imgUploaded.src;
+    //     img.alt = imgUploaded.alt;
+    //   }
+    // }
     var xhr = new XMLHttpRequest();
     var fd = new FormData();
     xhr.open('POST', this.CLOUDYNARY_URL, true);
@@ -114,10 +128,6 @@ export class CreateComponent implements OnInit {
     fd.append('file', file);
     xhr.send(fd);
   }
-
-  // public getTagList() {
-  //   this.tagList = ['one', 'two'];
-  // }
 
   private removeWarnings() {
     this.msg.messages.subscribe(data => {

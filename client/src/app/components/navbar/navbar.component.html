@@ -22,10 +22,20 @@
                     <i class="fa fa-plus-circle fa-lg fa-fw colored" aria-hidden="true"></i>
                 </a>
             </li>
+            <li class="nav-item" *ngIf="auth.isAuthenticated()">
+                <a class="btn btn-active" href="/check" *ngIf="auth.isAuthenticated()">
+                    <i class="fa fa-check-circle fa-lg fa-fw colored" aria-hidden="true"></i>
+                </a>
+            </li>
         </ul>
     </div>
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
+            <li class="nav-item">
+                <a class="btn btn-active" href="">
+                    <i class="fa fa-globe fa-lg fa-fw colored" aria-hidden="true"></i>
+                </a>
+            </li>
             <li class="nav-item">
                 <a class="btn btn-active" href="" data-toggle="modal" data-target="#register" *ngIf="!auth.isAuthenticated()">
                     <i class="fa fa-user-plus fa-lg fa-fw colored" aria-hidden="true"></i> Register
