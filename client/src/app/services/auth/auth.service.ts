@@ -13,7 +13,7 @@ export class AuthService {
 
   constructor(private router: Router, private http: HttpClient, public msg: MessagesService) { }
 
-  removeWarnings() {
+  private removeWarnings() {
     this.msg.messages.subscribe(data => {
       let flag = true;
       for (let id in data['warning']) {
@@ -25,10 +25,10 @@ export class AuthService {
       }
     })
   }
-  removeAllWarnings() {
+  private removeAllWarnings() {
     this.msg.messages.subscribe(data => {
       for (let id in data['warning']) {
-          this.msg.remove(id);
+        this.msg.remove(id);
       }
     })
   }

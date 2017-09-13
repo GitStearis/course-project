@@ -6,16 +6,20 @@ const jwt = require("express-jwt");
 // but this is the name of an instance of our Mongoose User model,
 // so we’ll set it to payload to avoid confusion.
 const auth = jwt({
-  secret: "MY_SECRET",
-  userProperty: "payload"
+    secret: "MY_SECRET",
+    userProperty: "payload"
 });
 
 const ctrlProfile = require("../controllers/profile");
 const ctrlAuth = require("../controllers/authentication");
 const ctrUserList = require("../controllers/userlist");
+const ctrProjectForm = require("../controllers/project-form");
+const ctrProject = require("../controllers/project");
 
 // профиль
 router.get("/profile", auth, ctrlProfile.profileRead);
+
+router.get("/user/:username", ctrlProfile.profileByUsername);
 
 // аутентификация c верификацией
 router.post("/register", ctrlAuth.register);
@@ -24,5 +28,10 @@ router.post("/login", ctrlAuth.login);
 
 // список пользователей для админа
 router.get("/userlist", ctrUserList.list);
+
+// действия с проектами
+router.post("/project/new", ctrProjectForm.createProject);
+router.get("/project/:pageId", ctrProject.projectByPageId);
+router.get("/home/all", ctrProject.projects);
 
 module.exports = router;
