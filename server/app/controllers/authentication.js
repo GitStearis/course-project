@@ -1,5 +1,5 @@
-const express = require("express");
-const router = express.Router();
+// const express = require("express");
+// const router = express.Router();
 const passport = require("passport");
 const mongoose = require("mongoose");
 const User = mongoose.model("user_list");
@@ -32,14 +32,13 @@ let credentialsJSON = (
     };
 };
 
-let rand, host;
-let _user;
+let verificationToken, host, _user;
 
 function sendVerificationMail(email, req) {
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport(mailConfig.transport);
-    rand = mailConfig.verificationRand();
-    let mailOptions = mailConfig.verificationMail(email, rand, req);
+    verificationToken = mailConfig.verificationToken();
+    let mailOptions = mailConfig.verificationMail(email, verificationToken, req);
     transporter.sendMail(mailOptions, mailConfig.sendMail);
     console.log('Verification mail was delivered.');
 }
@@ -78,11 +77,11 @@ module.exports.verification = function(req, res) {
     console.log(req.protocol + ":/" + req.get("host"));
     if (req.protocol + "://" + req.get("host") === "http://" + host) {
         console.log("Domain is matched. Information is from Authentic email");
-        if (req.query.id == rand) {
-            console.log("email is verified");
+        if (req.query.id == verificationToken) {
+            console.log("Email is verified");
 
             _user.save(function(err) {
-                var token;
+                let token;
                 token = _user.generateJwt();
                 res.status(200);
                 res.json(
@@ -134,7 +133,3 @@ module.exports.login = function(req, res) {
         }
     })(req, res);
 };
-
-module.exports.userById = function(req, res) {
-
-}

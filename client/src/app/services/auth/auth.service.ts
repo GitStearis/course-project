@@ -13,7 +13,7 @@ export class AuthService {
 
   constructor(private router: Router, private http: HttpClient, public msg: MessagesService) { }
 
-  private removeWarnings() {
+  public removeWarnings() {
     this.msg.messages.subscribe(data => {
       let flag = true;
       for (let id in data['warning']) {
@@ -25,7 +25,7 @@ export class AuthService {
       }
     })
   }
-  private removeAllWarnings() {
+  public removeAllWarnings() {
     this.msg.messages.subscribe(data => {
       for (let id in data['warning']) {
         this.msg.remove(id);
@@ -39,11 +39,11 @@ export class AuthService {
 
   public saveToLocal(parsed) {
     localStorage["mean-token"] = parsed.token;
-    localStorage["email"] = parsed.email,
-      localStorage["name"] = parsed.name,
-      localStorage["firstname"] = parsed.firstname,
-      localStorage["secondname"] = parsed.secondname,
-      localStorage["phone"] = parsed.phone
+    localStorage["email"] = parsed.email;
+    localStorage["name"] = parsed.name;
+    localStorage["firstname"] = parsed.firstname;
+    localStorage["secondname"] = parsed.secondname;
+    localStorage["phone"] = parsed.phone;
     localStorage["date"] = parsed.date;
   }
 

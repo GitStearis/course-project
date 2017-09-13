@@ -8,11 +8,16 @@ import { NotfoundComponent } from "./components/notfound/notfound.component";
 import { AdminComponent } from "./components/admin/admin.component";
 import { CreateComponent } from './components/project/create/create.component';
 import { UserComponent } from './components/user/user.component';
+import { VerificationPageComponent } from "./components/verification-page/verification-page.component";
 
 const appRoutes: Routes = [
   {
     path: "",
     component: HomeComponent
+  },
+  {
+    path: "verify/:token",
+    component: VerificationPageComponent
   },
   {
     path: "user/:username",

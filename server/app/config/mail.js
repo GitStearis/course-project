@@ -1,3 +1,5 @@
+const crypto = require("crypto");
+
 module.exports.transport = {
   //host: "smtp.ethereal.email",
   //port: 587,
@@ -13,11 +15,11 @@ module.exports.transport = {
 
 };
 
-module.exports.verificationRand = () => {
-  return rand = Math.floor(Math.random() * 100 + 54);
+module.exports.verificationToken = () => {
+  return crypto.randomBytes(16).toString("hex");
 }
 
-module.exports.verificationMail = (email, rand, req) => {
+module.exports.verificationMail = (email, verificationToken, req) => {
   // let link = "hhtp://" + req.get("host") + "/verify?id=" + rand;
   return config = {
     from: '"Margarita, George" <itra.courseproject@gmail.com>',
@@ -26,10 +28,9 @@ module.exports.verificationMail = (email, rand, req) => {
     text: "Hello! Welcome to our awesome web-app!",
     html:
       "Hello,<br> Please Click on the link to verify your email.<br><a href=" +
-      "http://" + req.get("host") + "/api/verify?id=" + rand +
+      "http://" + req.get("host") + "/verify/" + verificationToken +
       ">Click here to verify</a>"
   };
-  // return config;
 };
 
 module.exports.successRegistration = email => {
