@@ -5,6 +5,7 @@ const mongoose = require("mongoose");
 const User = mongoose.model("user_list");
 const nodemailer = require("nodemailer");
 const mailConfig = require("../config/mail");
+const Users = require("../models/users");
 
 let sendJSONresponse = function(res, status, content) {
     res.status(status);
@@ -34,30 +35,43 @@ let credentialsJSON = (
 let rand, host;
 let _user;
 
-module.exports.register = function(req, res) {
-    _user = new User();
-
-    console.log("Credentials obtained, sending verification message...");
-
-    _user.email = req.body.email;
-    _user.name = req.body.name;
-    _user.firstname = req.body.firstname;
-    _user.secondname = req.body.secondname;
-    _user.phone = req.body.phone;
-    _user.date = new Date()
-        .toJSON()
-        .slice(0, 10)
-        .replace(/-/g, "/");
-    _user.setPassword(req.body.password);
-
-    host = req.get("host");
-
+function sendVerificationMail(email, req) {
     // create reusable transporter object using the default SMTP transport
     let transporter = nodemailer.createTransport(mailConfig.transport);
     rand = mailConfig.verificationRand();
-    let mailOptions = mailConfig.verificationMail(_user.email, rand, req);
+    let mailOptions = mailConfig.verificationMail(email, rand, req);
     transporter.sendMail(mailOptions, mailConfig.sendMail);
     console.log('Verification mail was delivered.');
+}
+
+module.exports.register = function(req, res) {
+    Users.findOne({ email: req.body.email }, function(err, user) {
+        if (user) {
+            res.status(409).json("email address is already taken");
+        } else {
+            Users.findOne({ name: req.body.name }, function(err, user) {
+                if (user) {
+                    res.status(409).json("username is already taken");
+                } else {
+                    _user = new User();
+                    _user.email = req.body.email;
+                    _user.name = req.body.name;
+                    _user.firstname = req.body.firstname;
+                    _user.secondname = req.body.secondname;
+                    _user.phone = req.body.phone;
+                    _user.date = new Date()
+                        .toJSON()
+                        .slice(0, 10)
+                        .replace(/-/g, "/");
+                    _user.setPassword(req.body.password);
+
+                    host = req.get("host");
+                    sendVerificationMail(_user.email, req);
+                }
+            });
+        }
+
+    });
 };
 
 module.exports.verification = function(req, res) {
@@ -65,24 +79,23 @@ module.exports.verification = function(req, res) {
     if (req.protocol + "://" + req.get("host") === "http://" + host) {
         console.log("Domain is matched. Information is from Authentic email");
         if (req.query.id == rand) {
-            console.log("Email is verified.");
-            // router.get('/profile');
+            console.log("email is verified");
+
             _user.save(function(err) {
                 var token;
                 token = _user.generateJwt();
                 res.status(200);
-                res.redirect("http://" + host);
-                // res.json(
-                //   credentialsJSON(
-                //     token,
-                //     _user.email,
-                //     _user.name,
-                //     _user.firstname,
-                //     _user.secondname,
-                //     _user.phone,
-                //     _user.date
-                //   )
-                // );
+                res.json(
+                    credentialsJSON(
+                        token,
+                        _user.email,
+                        _user.name,
+                        _user.firstname,
+                        _user.secondname,
+                        _user.phone,
+                        _user.date
+                    )
+                );
             });
         } else {
             console.log("email is not verified");
@@ -121,3 +134,7 @@ module.exports.login = function(req, res) {
         }
     })(req, res);
 };
+
+module.exports.userById = function(req, res) {
+
+}

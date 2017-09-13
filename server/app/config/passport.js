@@ -16,12 +16,12 @@ passport.use(
                 }
                 if (!user) {
                     return done(null, false, {
-                        message: "User not found"
+                        message: "user not found or not verified"
                     });
                 }
                 if (!user.validPassword(password)) {
                     return done(null, false, {
-                        message: "Password is wrong"
+                        message: "password is wrong"
                     });
                 }
                 return done(null, user);
