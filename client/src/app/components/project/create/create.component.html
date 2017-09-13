@@ -99,34 +99,34 @@
         <div class="container col-3">
             <h3>Small preview</h3>
             <div class="thumbnail card">
-                <a href=""><img class="img-fluid" src="{{ image }}" alt="Project image"></a>
-                <div class="alert">
+                <div class="img-preview-container text-center">
+                    <a href=""><img class="img-fluid img-preview" src="{{ image }}" alt="Project image"></a>
+                </div>
+                <div class="text-container">
                     <a href="">
-                        <h4>
-                            {{ projectName }}
+                        <h4 class="title">
+                            {{ projectTitle }}
                         </h4>
                     </a>
-                    <p class="text text-secondary text-left">
+                    <p class="text text-secondary text-left description">
                         {{ description }}
                     </p>
                 </div>
-                <hr>
-                <div class="alert">
-                    <p class="text text-success">Goal: {{ goal }}$</p>
-                    <p class="text">Current: 0$</p>
-                    <p class="text">Deadline: {{ deadline }}</p>
-                </div>
-                <hr>
-                <div class="alert">
-                    <small class="text text-secondary">tagged as: {{ tags }}</small>
-                </div>
-                <hr>
             </div>
+            <hr>
+            <div class="text-container">
+                <p class="text text-success">Goal: {{ goal }}$</p>
+                <p class="text text-info">Current: 0$</p>
+                <p class="text text-warning">Deadline: {{ deadline }}</p>
+            </div>
+            <hr>
+            <div class="text-container text-right ">
+                <small class="text text-secondary">tagged as: {{ tags }}</small>
+            </div>
+            <hr>
         </div>
-
     </div>
 </div>
-
 
 <div class="jumbotron" *ngIf="!auth.isAuthenticated()">
     <div class="alert">

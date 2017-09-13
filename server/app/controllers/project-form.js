@@ -1,6 +1,10 @@
 const mongoose = require("mongoose");
 const Project = require("../models/projects");
 
+String.prototype.cleanup = function() {
+    return this.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+}
+
 module.exports.createProject = function(req, res) {
     _project = new Project();
 
@@ -12,8 +16,8 @@ module.exports.createProject = function(req, res) {
     _project.date = req.body.date;
     _project.tags = req.body.tags;
 
-    _project.pageId = req.body.title.toLowerCase().replace(/\s/g, '-');
-    let tempTitle = _project.title.toLowerCase().replace(/\s/g, '-');
+    _project.pageId = req.body.title.toLowerCase().cleanup();
+    let tempTitle = _project.title.toLowerCase().cleanup();
 
     Project.findOne({ pageId: tempTitle }, function(err, project) {
         if (project === null) {
