@@ -22,6 +22,11 @@
                     <i class="fa fa-plus-circle fa-lg fa-fw colored" aria-hidden="true"></i>
                 </a>
             </li>
+            <li class="nav-item" *ngIf="auth.isAuthenticated()">
+                <a class="btn btn-active" href="/check" *ngIf="auth.isAuthenticated()">
+                    <i class="fa fa-check-circle fa-lg fa-fw colored" aria-hidden="true"></i>
+                </a>
+            </li>
         </ul>
     </div>
     <div class="collapse navbar-collapse">

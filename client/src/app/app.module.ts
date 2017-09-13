@@ -30,6 +30,7 @@ import { ImgCloudinaryService } from "./services/img/img-cloudinary.service";
 import { UserComponent } from './components/user/user.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { VerificationPageComponent } from './components/verification-page/verification-page.component';
+import { CheckingComponent } from './components/checking/checking.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +49,8 @@ import { VerificationPageComponent } from './components/verification-page/verifi
     CreateComponent,
     UserComponent,
     FooterComponent,
-    VerificationPageComponent
+    VerificationPageComponent,
+    CheckingComponent
   ],
   imports: [
     HttpModule,
