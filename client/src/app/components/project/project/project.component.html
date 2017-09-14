@@ -4,24 +4,30 @@
             <div class="col-md-7 text-center">
                 <div class="alert text-center">
                     <h2>{{ project.title }}</h2>
+                    <h4>
+                        <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                        <a href="/user/{{ project.author }}">{{ project.author }}</a>
+                    </h4>
                 </div>
             </div>
             <div class="col-md-7 text-center">
                 <div><img class="img-fluid img-rounded" src="{{ project.image }}" alt="Project image"></div>
                 <hr>
                 <div class="alert">
-                    <small>{{ project.description }}</small>
+                    <h4 class="text text-secondary">{{ project.description }}</h4>
                 </div>
             </div>
             <div class="col-md-5">
                 <div class="d-flex flex-column justify-content-center">
                     <div class="text-center">
                         <h1>{{ project.goal }} $</h1>
-                        <small>Goal</small>
+                        <small class="text text-success">Goal</small>
                     </div>
                     <div class="alert text-center">
+                        <h3>{{ project.creation }}</h3>
+                        <small class="text text-warning">Created</small>
                         <h3>{{ project.date }}</h3>
-                        <small>Deadline</small>
+                        <small class="text text-warning">Deadline</small>
                     </div>
                     <div class="alert text-center">
                         <button type="button" class="btn btn-success btn-lg">Support</button>

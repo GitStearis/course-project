@@ -14,6 +14,7 @@ module.exports.createProject = function(req, res) {
     _project.image = req.body.image;
     _project.goal = req.body.goal;
     _project.date = req.body.date;
+    _project.creation = new Date().toJSON().slice(0, 10);
     _project.tags = req.body.tags;
     _project.author = req.body.author;
 

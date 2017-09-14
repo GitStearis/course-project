@@ -27,6 +27,10 @@ var projectSchema = new mongoose.Schema({
         type: String, // Date or String ?
         required: true
     },
+    creation: {
+        type: String, // Date or String ?
+        required: true
+    },
     tags: [{
         type: String,
         required: true

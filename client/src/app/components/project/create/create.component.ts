@@ -21,6 +21,7 @@ export class CreateComponent implements OnInit {
   public image: string = '';
   public goal: string = '';
   public deadline: string = '';
+  public creation: string = new Date().toJSON().slice(0, 10);
   public tags: string = '';
   public author: string = localStorage['name'];
 
