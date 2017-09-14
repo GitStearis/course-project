@@ -1,14 +1,18 @@
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 
-import { HttpModule } from "@angular/http";
+import { HttpModule, Http } from "@angular/http";
 import { HttpClientModule } from "@angular/common/http";
-import { Http } from "@angular/http";
+import {
+  TranslateModule,
+  TranslateLoader,
+  TranslateStaticLoader
+} from "ng2-translate/ng2-translate";
 
 import { routing, appRoutingProviders } from "./app.routing";
 
-import { MessagesService } from '../../node_modules/ng2-messages/ng2-messages.service';
-import { MessagesComponent } from '../../node_modules/ng2-messages/ng2-messages.component';
+import { MessagesService } from "../../node_modules/ng2-messages/ng2-messages.service";
+import { MessagesComponent } from "../../node_modules/ng2-messages/ng2-messages.component";
 
 import { MarkdownModule } from "angular2-markdown";
 import { AppComponent } from "./app.component";
@@ -24,13 +28,13 @@ import { AdminComponent } from "./components/admin/admin.component";
 import { PreviewComponent } from "./components/project/preview/preview.component";
 
 import { AuthService } from "./services/auth/auth.service";
-import { CreateComponent } from './components/project/create/create.component';
+import { CreateComponent } from "./components/project/create/create.component";
 import { AdminService } from "./services/admin/admin.service";
 import { ImgCloudinaryService } from "./services/img/img-cloudinary.service";
-import { UserComponent } from './components/user/user.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { VerificationPageComponent } from './components/verification-page/verification-page.component';
-import { CheckingComponent } from './components/checking/checking.component';
+import { UserComponent } from "./components/user/user.component";
+import { FooterComponent } from "./components/footer/footer.component";
+import { VerificationPageComponent } from "./components/verification-page/verification-page.component";
+import { CheckingComponent } from "./components/checking/checking.component";
 
 @NgModule({
   declarations: [
@@ -57,7 +61,13 @@ import { CheckingComponent } from './components/checking/checking.component';
     HttpClientModule,
     BrowserModule,
     routing,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    TranslateModule.forRoot({
+      provide: TranslateLoader,
+      useFactory: (http: Http) =>
+        new TranslateStaticLoader(http, "../assets/i18n", ".json"),
+      deps: [Http]
+    })
   ],
   providers: [
     appRoutingProviders,
@@ -68,4 +78,4 @@ import { CheckingComponent } from './components/checking/checking.component';
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}

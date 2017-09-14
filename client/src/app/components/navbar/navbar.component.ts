@@ -3,6 +3,7 @@ import { RegistrationComponent } from "../registration/registration.component";
 import { LoginComponent } from "../login/login.component";
 
 import { Cookie } from 'ng2-cookies/ng2-cookies';
+import { TranslateService } from "ng2-translate";
 
 import { AuthService } from "../../services/auth/auth.service";
 
@@ -12,7 +13,13 @@ import { AuthService } from "../../services/auth/auth.service";
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit {
-  constructor(public auth: AuthService, private elementRef: ElementRef) {}
+  constructor(public auth: AuthService, private elementRef: ElementRef, translate: TranslateService) {
+    translate.addLangs(["en", "ru"]);
+    translate.setDefaultLang('en');
+
+    let browserLang = translate.getBrowserLang();
+    translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
+  }
 
   private dark: string = 'https://bootswatch.com/darkly/bootstrap.min.css';
   private light: string = 'https://bootswatch.com/flatly/bootstrap.min.css';

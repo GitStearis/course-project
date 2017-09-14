@@ -32,9 +32,15 @@
     <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
             <li class="nav-item">
-                <a class="btn btn-active" href="">
+                <a class="btn btn-active dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href=""
+                #langSelect (change)="translate.use(langSelect.value)">
                     <i class="fa fa-globe fa-lg fa-fw colored" aria-hidden="true"></i>
                 </a>
+                <ul class="dropdown-menu">
+                    <li><a href="#" class="colored">en</a></li>
+                    <li><a href="#" class="colored">ru</a></li>
+                    <!--<li *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</li>-->
+                </ul>
             </li>
             <li class="nav-item">
                 <a class="btn btn-active" href="" data-toggle="modal" data-target="#register" *ngIf="!auth.isAuthenticated()">
