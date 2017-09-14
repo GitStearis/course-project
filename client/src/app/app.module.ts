@@ -1,19 +1,19 @@
-import { BrowserModule } from "@angular/platform-browser";
-import { NgModule } from "@angular/core";
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
 
-import { HttpModule } from "@angular/http";
-import { HttpClientModule } from "@angular/common/http";
-import { Http } from "@angular/http";
+import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
+import { Http } from '@angular/http';
 
-import { routing, appRoutingProviders } from "./app.routing";
+import { routing, appRoutingProviders } from './app.routing';
 
 import { MessagesService } from '../../node_modules/ng2-messages/ng2-messages.service';
 import { MessagesComponent } from '../../node_modules/ng2-messages/ng2-messages.component';
 
-import { MarkdownModule } from "angular2-markdown";
-import { AppComponent } from "./app.component";
-import { NavbarComponent } from "./components/navbar/navbar.component";
-import { HomeComponent } from "./components/home/home.component";
+import { MarkdownModule } from 'angular2-markdown';
+import { AppComponent } from './app.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { HomeComponent } from './components/home/home.component';
 import { RegistrationComponent } from './components/registration/registration.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NotfoundComponent } from './components/notfound/notfound.component';
@@ -31,7 +31,7 @@ import { UserComponent } from './components/user/user.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { VerificationPageComponent } from './components/verification-page/verification-page.component';
 import { CheckingComponent } from './components/checking/checking.component';
-import { CreatedProjectsComponent } from './components/profile/created-projects/created-projects.component';
+import { CreatedProjectsComponent } from './components/created-projects/created-projects.component';
 
 @NgModule({
   declarations: [

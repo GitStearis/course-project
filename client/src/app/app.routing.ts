@@ -10,7 +10,7 @@ import { CreateComponent } from './components/project/create/create.component';
 import { UserComponent } from './components/user/user.component';
 import { VerificationPageComponent } from './components/verification-page/verification-page.component';
 import { CheckingComponent } from './components/checking/checking.component';
-import { CreatedProjectsComponent } from './components/profile/created-projects/created-projects.component';
+import { CreatedProjectsComponent } from './components/created-projects/created-projects.component';
 
 const appRoutes: Routes = [
   {
@@ -42,7 +42,7 @@ const appRoutes: Routes = [
     component: ProjectComponent
   },
   {
-    path: 'profile/created',
+    path: 'user/:name/created',
     component: CreatedProjectsComponent
   },
   {

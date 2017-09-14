@@ -20,6 +20,7 @@ const ctrProject = require("../controllers/project");
 router.get("/profile", auth, ctrlProfile.profileRead);
 
 router.get("/user/:username", ctrlProfile.profileByUsername);
+router.get("/user/:username/created", ctrProject.projectsByUsername);
 
 // аутентификация c верификацией
 router.post("/register", ctrlAuth.register);
@@ -33,6 +34,5 @@ router.get("/userlist", ctrUserList.list);
 router.post("/project/new", ctrProjectForm.createProject);
 router.get("/project/:pageId", ctrProject.projectByPageId);
 router.get("/projects/all", ctrProject.projects);
-router.get("/profile/projects/:name", ctrProject.projectsByUsername);
 
 module.exports = router;
