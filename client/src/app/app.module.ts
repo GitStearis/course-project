@@ -14,23 +14,24 @@ import { MarkdownModule } from "angular2-markdown";
 import { AppComponent } from "./app.component";
 import { NavbarComponent } from "./components/navbar/navbar.component";
 import { HomeComponent } from "./components/home/home.component";
-import { RegistrationComponent } from "./components/registration/registration.component";
-import { ProfileComponent } from "./components/profile/profile.component";
-import { NotfoundComponent } from "./components/notfound/notfound.component";
-import { DonationComponent } from "./components/donation/donation.component";
-import { LoginComponent } from "./components/login/login.component";
-import { ProjectComponent } from "./components/project/project/project.component";
-import { AdminComponent } from "./components/admin/admin.component";
-import { PreviewComponent } from "./components/project/preview/preview.component";
+import { RegistrationComponent } from './components/registration/registration.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { DonationComponent } from './components/donation/donation.component';
+import { LoginComponent } from './components/login/login.component';
+import { ProjectComponent } from './components/project/project/project.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { PreviewComponent } from './components/project/preview/preview.component';
 
-import { AuthService } from "./services/auth/auth.service";
+import { AuthService } from './services/auth/auth.service';
 import { CreateComponent } from './components/project/create/create.component';
-import { AdminService } from "./services/admin/admin.service";
-import { ImgCloudinaryService } from "./services/img/img-cloudinary.service";
+import { AdminService } from './services/admin/admin.service';
+import { ImgCloudinaryService } from './services/img/img-cloudinary.service';
 import { UserComponent } from './components/user/user.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { VerificationPageComponent } from './components/verification-page/verification-page.component';
 import { CheckingComponent } from './components/checking/checking.component';
+import { CreatedProjectsComponent } from './components/profile/created-projects/created-projects.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +51,8 @@ import { CheckingComponent } from './components/checking/checking.component';
     UserComponent,
     FooterComponent,
     VerificationPageComponent,
-    CheckingComponent
+    CheckingComponent,
+    CreatedProjectsComponent
   ],
   imports: [
     HttpModule,

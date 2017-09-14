@@ -32,6 +32,7 @@ router.get("/userlist", ctrUserList.list);
 // действия с проектами
 router.post("/project/new", ctrProjectForm.createProject);
 router.get("/project/:pageId", ctrProject.projectByPageId);
-router.get("/home/all", ctrProject.projects);
+router.get("/projects/all", ctrProject.projects);
+router.get("/profile/projects/:name", ctrProject.projectsByUsername);
 
 module.exports = router;
