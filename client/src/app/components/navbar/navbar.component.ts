@@ -13,20 +13,21 @@ import { AuthService } from "../../services/auth/auth.service";
   styleUrls: ["./navbar.component.css"]
 })
 export class NavbarComponent implements OnInit {
-  constructor(public auth: AuthService, private elementRef: ElementRef, translate: TranslateService) {
-    translate.addLangs(["en", "ru"]);
-    translate.setDefaultLang('en');
-
-    let browserLang = translate.getBrowserLang();
-    translate.use(browserLang.match(/en|fr/) ? browserLang : 'en');
-  }
+  constructor(public auth: AuthService, private elementRef: ElementRef, public translate: TranslateService) {}
 
   private dark: string = 'https://bootswatch.com/darkly/bootstrap.min.css';
   private light: string = 'https://bootswatch.com/flatly/bootstrap.min.css';
 
   private icon: string = 'fa-sun-o';
+  public browserLang: string = "";
 
   ngOnInit() {
+    this.initializeStyle();
+    this.initializeLanguage();    
+  }
+
+  // ================== Style section ==========================
+  initializeStyle() {
     if (Cookie.get('style') === null) {
       this.onChange();
     } else {
@@ -57,4 +58,21 @@ export class NavbarComponent implements OnInit {
       }
     }
   }
+
+  // ================== Language section ==========================
+  initializeLanguage() {
+    if (Cookie.get('lang') === null) {
+      this.browserLang = this.translate.getBrowserLang();
+      this.changeLanguage(this.browserLang.match(/en|ru/) ? this.browserLang : 'en');
+    } else {
+      this.browserLang = Cookie.get('lang');
+      this.translate.use(this.browserLang);
+    }
+  }
+
+  changeLanguage(lang) {
+    this.translate.use(lang)
+    Cookie.set('lang', lang);
+  }
+
 }

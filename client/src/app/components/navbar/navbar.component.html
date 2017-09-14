@@ -37,9 +37,7 @@
                     <i class="fa fa-globe fa-lg fa-fw colored" aria-hidden="true"></i>
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a href="#" class="colored">en</a></li>
-                    <li><a href="#" class="colored">ru</a></li>
-                    <!--<li *ngFor="let lang of translate.getLangs()" [value]="lang" [selected]="lang === translate.currentLang">{{ lang }}</li>-->
+                    <li *ngFor="let lang of translate.getLangs()" (click)="changeLanguage(lang)"><a href="#" class="colored">{{ lang }}</a></li>
                 </ul>
             </li>
             <li class="nav-item">
