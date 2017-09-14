@@ -29,3 +29,36 @@ module.exports.projects = function(req, res) {
         res.send(JSON.stringify(project));
     });
 }
+
+module.exports.closeProject = function(req, res) {
+    Project.findOne({ pageId: req.params.pageId }, function(err, project) {
+        if (err || project === null) {
+            res.status(404).json(err);
+        } else {
+            project.status = "closed";
+            res.status(200).json(project);
+        }
+    });
+}
+
+module.exports.projectMarkClosed = function(req, res) {
+    Project.findOne({ pageId: req.params.pageId }, function(err, project) {
+        if (err || project === null) {
+            res.status(404).json(err);
+        } else {
+            project.status = "closed";
+            res.status(200).json(project);
+        }
+    });
+}
+
+module.exports.projectMarkDone = function(req, res) {
+    Project.findOne({ pageId: req.params.pageId }, function(err, project) {
+        if (err || project === null) {
+            res.status(404).json(err);
+        } else {
+            project.status = "done";
+            res.status(200).json(project);
+        }
+    });
+}

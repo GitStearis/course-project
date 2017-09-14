@@ -18,6 +18,7 @@ module.exports.createProject = function(req, res) {
     _project.creation = new Date().toJSON().slice(0, 10);
     _project.tags = req.body.tags;
     _project.author = req.body.author;
+    _project.status = "active";
 
     _project.pageId = req.body.title.toLowerCase().cleanup();
     let tempTitle = _project.title.toLowerCase().cleanup();
