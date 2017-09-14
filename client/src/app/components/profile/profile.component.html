@@ -3,7 +3,7 @@
         <div class="d-flex justify-content-center">
             <div class="text-center">
                 <div>
-                    <h2 class="text-success"><i class="fa fa-user fa-fw" aria-hidden="true"></i>{{ name }}</h2>
+                    <h2><i class="fa fa-user fa-fw" aria-hidden="true"></i>{{ name }}</h2>
                 </div>
                 <img src="https://gamerespawn.nl/images/avatar_square/1487861536-1.jpg" class="img img-circle img-thumbnail" />
                 <div class="alert">
@@ -23,7 +23,7 @@
     <div class="well">
         <div class="d-flex justify-content-center alert">
             <div class="p-2 text-center">
-                <h2 class="text-success">Stats</h2>
+                <h2>Stats</h2>
             </div>
         </div>
 
@@ -34,9 +34,10 @@
                 <small class="form-text text-muted">Donated</small>
             </div>
             <div class="p-2 text-center alert">
-                <i class="fa fa-link fa-4x" aria-hidden="true"></i>
-                <h2>0</h2>
-                <small class="form-text text-muted">Projects</small>
+                <a href="/user/{{ name }}/created">
+                    <i class="fa fa-link fa-4x" aria-hidden="true"></i>
+                    <small class="form-text text-muted">Projects</small>
+                </a>
             </div>
         </div>
         <div class="d-flex justify-content-around alert">

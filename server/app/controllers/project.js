@@ -10,6 +10,15 @@ module.exports.projectByPageId = function(req, res) {
         }
     });
 }
+module.exports.projectsByUsername = function(req, res) {
+    Project.find({ author: req.params.username }, function(err, project) {
+        if (err || project === null) {
+            res.status(404);
+            return;
+        }
+        res.send(JSON.stringify(project));
+    });
+}
 
 module.exports.projects = function(req, res) {
     Project.find({}, function(err, project) {

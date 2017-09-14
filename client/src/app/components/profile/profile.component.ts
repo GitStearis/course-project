@@ -1,12 +1,12 @@
-import { Component, OnInit } from "@angular/core";
-import { NotfoundComponent } from "../notfound/notfound.component";
+import { Component, OnInit } from '@angular/core';
+import { NotfoundComponent } from '../notfound/notfound.component';
 
-import { AuthService } from "../../services/auth/auth.service";
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
-  selector: "app-profile",
-  templateUrl: "./profile.component.html",
-  styleUrls: ["./profile.component.css"]
+  selector: 'app-profile',
+  templateUrl: './profile.component.html',
+  styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
   email: string;
@@ -19,11 +19,11 @@ export class ProfileComponent implements OnInit {
   constructor(public auth: AuthService) {}
 
   ngOnInit() {
-    this.email = localStorage["email"];
-    this.name = localStorage["name"];
-    this.firstname = localStorage["firstname"];
-    this.secondname = localStorage["secondname"];
-    this.phone = localStorage["phone"];
-    this.date = localStorage["date"];
+    this.email = localStorage['email'];
+    this.name = localStorage['name'];
+    this.firstname = localStorage['firstname'];
+    this.secondname = localStorage['secondname'];
+    this.phone = localStorage['phone'];
+    this.date = localStorage['date'];
   }
 }

@@ -1,0 +1,42 @@
+<div class="jumbotron">
+    <div class="alert">
+        <h2>Projects of <i class="fa fa-user fa-fw fa-lg colored" aria-hidden="true"></i><a href="/user/{{ name }}">{{ name }}</a></h2>
+    </div>
+</div>
+<div>
+    <div *ngFor="let project of createdProjects">
+        <div class="col-xs-12 col-sm-6 col-md-3">
+            <div class="thumbnail card">
+                <div class="img-preview-container">
+                    <a href="/project/{{ project.pageId }}"><img class="img-fluid img-preview" src="{{ project.image }}" alt="Project image"></a>
+                </div>
+                <div class="text-container ">
+                    <a href="/project/{{ project.pageId }}">
+                        <h4 class="title">
+                            {{ project.title }}
+                        </h4>
+                    </a>
+                    <p class="text text-secondary text-left description">
+                        {{ project.description }}
+                    </p>
+                </div>
+                <hr>
+                <div class="text-container">
+                    <p class="text text-success">Goal: {{ project.goal }}$</p>
+                    <p class="text text-info">Current: 0$</p>
+                    <p class="text text-warning">Started: {{ project.creation }}</p>
+                    <p class="text text-warning">Deadline: {{ project.date }}</p>
+                </div>
+                <hr>
+                <div class="text-container text-right d-flex justify-content-around">
+                    <div>
+                        <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                        <a href="/user/{{ project.author }}">{{ project.author }}</a>
+                    </div>
+                    <small class=" text text-secondary ">tagged as: {{ project.tags }}</small>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
