@@ -1,13 +1,11 @@
 <div class="jumbotron">
-    <h1>Crowdfunding Platform</h1>
-    <blockquote>
-        <p>Our project does more than raise money. It builds community around your work.</p>
-        <small>Someone famous in <cite title="Source Title">Our Awesome CO-OP Team</cite></small>
+    <h1>{{ 'Home.Jumbotron.Header' | translate }}</h1>
+    <blockquote [innerHTML]=" 'Home.Jumbotron.Quote' | translate">
     </blockquote>
-    <div class="row"><a class="btn btn-primary btn-lg">Join Us</a></div>
+    <div class="row"><a class="btn btn-primary btn-lg">{{ 'Home.Jumbotron.Join' | translate }}</a></div>
 </div>
 <div class="row">
-    <h2 class="text-center">Projects</h2>
+    <h2 class="text-center">{{ 'Home.Projects' | translate }}</h2>
 </div>
 <div *ngFor="let project of projects">
     <div class="col-xs-12 col-sm-6 col-md-3">
@@ -27,10 +25,10 @@
             </div>
             <hr>
             <div class="text-container">
-                <p class="text text-success">Goal: {{ project.goal }}$</p>
-                <p class="text text-info">Current: {{ project.collected }}$</p>
-                <p class="text text-warning">Started: {{ project.creation }}</p>
-                <p class="text text-warning">Deadline: {{ project.date }}</p>
+                <p class="text text-success">{{ 'Home.Preview.Goal' | translate }}: {{ project.goal }}$</p>
+                <p class="text text-info">{{ 'Home.Preview.Current' | translate }}: {{ project.collected }}</p>
+                <p class="text text-warning">{{ 'Home.Preview.Start' | translate }}: {{ project.creation }}</p>
+                <p class="text text-warning">{{ 'Home.Preview.End' | translate }}: {{ project.date }}</p>
             </div>
             <hr>
             <div class="text-container text-right d-flex justify-content-around">
@@ -38,12 +36,9 @@
                     <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
                     <a href="/user/{{ project.author }}">{{ project.author }}</a>
                 </div>
-                <small class=" text text-secondary ">tagged as: {{ project.tags }}</small>
+                <small class=" text text-secondary ">{{ 'Home.Preview.Tag' | translate }}: {{ project.tags }}</small>
             </div>
             <hr>
         </div>
     </div>
-</div>
-<div>
-    <!--<app-donation></app-donation>-->
 </div>

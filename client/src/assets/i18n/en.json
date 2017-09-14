@@ -1,0 +1,30 @@
+{
+    "Home": {
+        "Jumbotron": {
+            "Header": "Crowdfunding Platform",
+            "Quote": "<p>Our project does more than raise money. It builds community around your work.</p><small>Someone famous in <cite title='Source Title'>Our Awesome CO-OP Team</cite></small>",
+            "Join": "Join Us"
+        },
+        "Projects": "Projects", 
+        "Preview": {
+            "Goal": "Goal",
+            "Current": "Current",
+            "Start": "Started",
+            "End": "Deadline",
+            "Tag": "Tagged as"
+        }
+    },
+    "Navbar": {},
+    "Footer": {
+        "About": "About", 
+        "Contact": "Contact us",
+        "Reviews": "Reviews",
+        "Terms": "Terms of service"
+    },
+    "Project": {
+
+    },
+    "Check": {
+
+    }
+}

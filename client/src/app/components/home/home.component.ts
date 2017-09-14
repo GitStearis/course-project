@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Project } from '../../project';
+import {TranslateService} from 'ng2-translate';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   projects: Project[];
 
-  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
+  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, translate: TranslateService) {
     this.route.params.subscribe(params => {
       this.http
         .get('/api/projects/all')

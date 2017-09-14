@@ -1,14 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { HttpModule } from '@angular/http';
-import { HttpClientModule } from '@angular/common/http';
-import { Http } from '@angular/http';
+import { HttpModule, Http } from "@angular/http";
+import { HttpClientModule } from "@angular/common/http";
+import {
+  TranslateModule,
+  TranslateLoader,
+  TranslateStaticLoader
+} from "ng2-translate/ng2-translate";
 
 import { routing, appRoutingProviders } from './app.routing';
 
-import { MessagesService } from '../../node_modules/ng2-messages/ng2-messages.service';
-import { MessagesComponent } from '../../node_modules/ng2-messages/ng2-messages.component';
+import { MessagesService } from "../../node_modules/ng2-messages/ng2-messages.service";
+import { MessagesComponent } from "../../node_modules/ng2-messages/ng2-messages.component";
 
 import { MarkdownModule } from 'angular2-markdown';
 import { AppComponent } from './app.component';
@@ -32,6 +36,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { VerificationPageComponent } from './components/verification-page/verification-page.component';
 import { CheckingComponent } from './components/checking/checking.component';
 import { CreatedProjectsComponent } from './components/created-projects/created-projects.component';
+import { CommentComponent } from './components/comment/comment.component';
 
 @NgModule({
   declarations: [
@@ -52,14 +57,21 @@ import { CreatedProjectsComponent } from './components/created-projects/created-
     FooterComponent,
     VerificationPageComponent,
     CheckingComponent,
-    CreatedProjectsComponent
+    CreatedProjectsComponent,
+    CommentComponent
   ],
   imports: [
     HttpModule,
     HttpClientModule,
     BrowserModule,
     routing,
-    MarkdownModule.forRoot()
+    MarkdownModule.forRoot(),
+    TranslateModule.forRoot({
+      provide: TranslateLoader,
+      useFactory: (http: Http) =>
+        new TranslateStaticLoader(http, "../assets/i18n", ".json"),
+      deps: [Http]
+    })
   ],
   providers: [
     appRoutingProviders,
@@ -70,4 +82,4 @@ import { CreatedProjectsComponent } from './components/created-projects/created-
   ],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {}
