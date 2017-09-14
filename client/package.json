@@ -13,6 +13,7 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^4.2.4",
+    "@angular/cdk": "^2.0.0-beta.10",
     "@angular/common": "^4.2.4",
     "@angular/compiler": "^4.2.4",
     "@angular/core": "^4.2.4",
@@ -21,6 +22,7 @@
     "@angular/platform-browser": "^4.2.4",
     "@angular/platform-browser-dynamic": "^4.2.4",
     "@angular/router": "^4.2.4",
+    "@angular2-material/progress-bar": "^2.0.0-alpha.8-3",
     "angular2-markdown": "^1.6.0",
     "core-js": "^2.4.1",
     "ng2-cookies": "^1.0.12",

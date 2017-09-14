@@ -13,6 +13,7 @@ module.exports.createProject = function(req, res) {
     _project.body = req.body.body;
     _project.image = req.body.image;
     _project.goal = req.body.goal;
+    _project.collected = 0;
     _project.date = req.body.date;
     _project.creation = new Date().toJSON().slice(0, 10);
     _project.tags = req.body.tags;

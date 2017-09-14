@@ -19,10 +19,16 @@ var projectSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+
     goal: {
         type: Number,
         required: true
     },
+    collected: {
+        type: Number,
+        required: true
+    },
+
     date: {
         type: String, // Date or String ?
         required: true
@@ -31,6 +37,7 @@ var projectSchema = new mongoose.Schema({
         type: String, // Date or String ?
         required: true
     },
+
     tags: [{
         type: String,
         required: true

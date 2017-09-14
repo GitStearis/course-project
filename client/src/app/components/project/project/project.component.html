@@ -1,7 +1,7 @@
 <div class="container">
-    <div class="jumbotron">
+    <div class="container">
         <div class="row">
-            <div class="col-md-7 text-center">
+            <div class="col-md-8 text-center">
                 <div class="alert text-center">
                     <h2>{{ project.title }}</h2>
                     <h4>
@@ -10,47 +10,54 @@
                     </h4>
                 </div>
             </div>
-            <div class="col-md-7 text-center">
+            <div class="col-md-8 text-center">
                 <div><img class="img-fluid img-rounded" src="{{ project.image }}" alt="Project image"></div>
                 <hr>
                 <div class="alert">
                     <h4 class="text text-secondary">{{ project.description }}</h4>
                 </div>
             </div>
-            <div class="col-md-5">
+            <div class="col-md-4 rounded jumbotron">
                 <div class="d-flex flex-column justify-content-center">
                     <div class="text-center">
-                        <h1>{{ project.goal }} $</h1>
-                        <small class="text text-success">Goal</small>
-                    </div>
-                    <div class="alert text-center">
-                        <h3>{{ project.creation }}</h3>
-                        <small class="text text-warning">Created</small>
-                        <h3>{{ project.date }}</h3>
-                        <small class="text text-warning">Deadline</small>
-                    </div>
-                    <div class="alert text-center">
-                        <button type="button" class="btn btn-success btn-lg"><a href="project/{{ project.pageId }}/donate">Support</a></button>
+                        <div class="alert">
+                            <h2>0</h2>
+                            <small class="text text-secondary">Sponsors</small>
+                        </div>
+                        <h2>{{ project.collected }} $</h2>
+                        <small class="text text-secondary">of {{ project.goal }}</small>
+                        <div class="progress goal-progress-container">
+                            <div class="progress-bar progress-bar-success progress-bar-striped active goal-progress" role="progressbar" [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100" [style.width]="progress + '%'">
+                            </div>
+                        </div>
+                        <div class="alert text-center">
+                            <h3>{{ project.creation }}</h3>
+                            <small class="text text-secondary">Created</small>
+                            <h3>{{ project.date }}</h3>
+                            <small class="text text-secondary">Deadline</small>
+                        </div>
+                        <div class="alert text-center">
+                            <button type="button" class="btn btn-success btn-lg"><a href="project/{{ project.pageId }}/donate">Support</a></button>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<div class="container">
-    <div class="col-md-8 jumbotron">
-        <div class="alert text-center">
-            <h2>About</h2>
-        </div>
-        <div class="d-flex justify-content-center">
-            <markdown [data]="project.body"></markdown>
-        </div>
-    </div>
-</div>
-<div class="container">
-    <div class="col-md-8 jumbotron">
-        <div class="alert text-center">
-            <h2>Comments</h2>
+    <div class="container">
+        <div class="col-md-8 jumbotron">
+            <div class="alert text-center">
+                <h2>About</h2>
+            </div>
+            <div class="d-flex justify-content-center">
+                <markdown [data]="project.body"></markdown>
+            </div>
         </div>
     </div>
-</div>
+    <div class="container">
+        <div class="col-md-8 jumbotron">
+            <div class="alert text-center">
+                <h2>Comments</h2>
+            </div>
+        </div>
+    </div>

@@ -14,6 +14,8 @@ export class ProjectComponent implements OnInit {
   pageId: string;
   project: Project;
 
+  progress: number = 0;
+
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
     this.route.params.subscribe(params => {
       this.pageId = params.pageId;
@@ -24,6 +26,7 @@ export class ProjectComponent implements OnInit {
         data => {
           console.log(data);
           this.project = JSON.parse(data);
+          this.progress = parseInt(this.project.collected, 10) / parseInt(this.project.goal, 10) * 100;
         },
         err => {
           if (err.error instanceof Error) {
@@ -38,7 +41,8 @@ export class ProjectComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit() {  
+    
   }
 
 }

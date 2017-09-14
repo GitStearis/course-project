@@ -3,6 +3,7 @@ export interface Project {
     date: string;
     created: string;
     goal: string;
+    collected: string;
     image: string;
     body: string;
     description: string;
