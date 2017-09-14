@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from "@angular/router";
-import { HttpClient } from "@angular/common/http";
-import { Profile } from "../../profile";
-import { Router } from '@angular/router'
+import { ActivatedRoute } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
+import { Profile } from '../../profile';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -12,12 +12,12 @@ import { Router } from '@angular/router'
 export class UserComponent implements OnInit {
 
   profile: Profile = {
-    email: "",
-    name: "",
-    password: "",
-    firstname: "",
-    secondname: "",
-    phone: ""
+    email: '',
+    name: '',
+    password: '',
+    firstname: '',
+    secondname: '',
+    phone: ''
   };
   date: string;
   username: string;
@@ -26,7 +26,7 @@ export class UserComponent implements OnInit {
     this.profile = {
       email: parsed.email,
       name: parsed.name,
-      password: "",
+      password: '',
       firstname: parsed.firstname,
       secondname: parsed.secondname,
       phone: parsed.phone
@@ -38,7 +38,7 @@ export class UserComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.username = params.username;
       this.http
-        .get("/api/user/" + params.username)
+        .get('/api/user/' + params.username)
         .map(data => JSON.stringify(data))
         .subscribe(
         data => {
@@ -47,7 +47,7 @@ export class UserComponent implements OnInit {
         },
         err => {
           if (err.error instanceof Error) {
-            console.log("An error occurred:", err.error.message);
+            console.log('An error occurred:', err.error.message);
           } else {
             console.log(err);
             console.log(`Backend returned code ${err.status}, body was: ${err.error}`);

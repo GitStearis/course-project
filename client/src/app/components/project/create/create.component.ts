@@ -3,8 +3,9 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Profile } from '../../../profile';
 import { AuthService } from '../../../services/auth/auth.service';
 import { MessagesService } from '../../../../../node_modules/ng2-messages/ng2-messages.service';
-import { ImgCloudinaryService } from "../../../services/img/img-cloudinary.service";
-import { async } from "q";
+import { ImgCloudinaryService } from '../../../services/img/img-cloudinary.service';
+import { Router } from '@angular/router';
+import { async } from 'q';
 
 @Component({
   selector: 'app-create',
@@ -45,7 +46,8 @@ export class CreateComponent implements OnInit {
     public auth: AuthService,
     public element: ElementRef,
     public msg: MessagesService,
-    public img: ImgCloudinaryService
+    public img: ImgCloudinaryService,
+    private router: Router
   ) {
     this.elementRef = element;
   }
@@ -73,8 +75,8 @@ export class CreateComponent implements OnInit {
   }
 
   handleClick(event) {
-    var clickedComponent = event.target;
-    var inside = false;
+    let clickedComponent = event.target;
+    let inside = false;
     do {
       if (clickedComponent === this.elementRef.nativeElement) {
         inside = true;
@@ -93,7 +95,7 @@ export class CreateComponent implements OnInit {
   }
 
   public uploadFile(event: any) {
-    let file = event.target.files[0];
+    const file = event.target.files[0];
     // let imgUploaded = this.img.uploadFile(file);
 
     // let imgs = document.getElementsByTagName('img');
@@ -105,18 +107,18 @@ export class CreateComponent implements OnInit {
     //     img.alt = imgUploaded.alt;
     //   }
     // }
-    var xhr = new XMLHttpRequest();
-    var fd = new FormData();
+    const xhr = new XMLHttpRequest();
+    const fd = new FormData();
     xhr.open('POST', this.CLOUDYNARY_URL, true);
     xhr.setRequestHeader('X-Requested-With', 'XMLHttpRequest');
 
     xhr.onreadystatechange = (e) => {
-      if (xhr.readyState == 4 && xhr.status == 200) {
+      if (xhr.readyState === 4 && xhr.status === 200) {
         console.log(JSON.parse(xhr.responseText));
-        let response = JSON.parse(xhr.responseText);
-        let imgs = document.getElementsByTagName('img');
+        const response = JSON.parse(xhr.responseText);
+        const imgs = document.getElementsByTagName('img');
         for (let i = 0; i < imgs.length; i++) {
-          let img = imgs[i];
+          const img = imgs[i];
           if (img.id === 'img-preview') {
             this.image = response.secure_url;
             img.src = response.secure_url;
@@ -134,21 +136,21 @@ export class CreateComponent implements OnInit {
   private removeWarnings() {
     this.msg.messages.subscribe(data => {
       let flag = true;
-      for (let id in data['warning']) {
+      for (const id in data['warning']) {
         if (flag === true) {
           flag = false;
         } else {
           this.msg.remove(id);
         }
       }
-    })
+    });
   }
   private removeAllWarnings() {
     this.msg.messages.subscribe(data => {
       for (const id in data['warning']) {
         this.msg.remove(id);
       }
-    })
+    });
   }
 
   public submit() {
@@ -171,6 +173,7 @@ export class CreateComponent implements OnInit {
         this.removeAllWarnings();
         window.scrollTo(0, 0);
         this.msg.success('Successfully created project!');
+        this.router.navigate(['/']);
         console.log(data);
       },
       err => {
