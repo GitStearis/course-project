@@ -15,6 +15,7 @@ module.exports.createProject = function(req, res) {
     _project.goal = req.body.goal;
     _project.date = req.body.date;
     _project.tags = req.body.tags;
+    _project.author = req.body.author;
 
     _project.pageId = req.body.title.toLowerCase().cleanup();
     let tempTitle = _project.title.toLowerCase().cleanup();

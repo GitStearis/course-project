@@ -34,6 +34,10 @@ var projectSchema = new mongoose.Schema({
     pageId: {
         type: String,
         required: true
+    },
+    author: {
+        type: String,
+        required: true
     }
 });
 

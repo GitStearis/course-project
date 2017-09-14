@@ -22,6 +22,7 @@ export class CreateComponent implements OnInit {
   public goal: string = '';
   public deadline: string = '';
   public tags: string = '';
+  public author: string = localStorage['name'];
 
   public tagList: string[] = [];
 
@@ -150,14 +151,15 @@ export class CreateComponent implements OnInit {
   }
 
   public submit() {
-    let project = {
+    const project = {
       title: this.projectName,
       description: this.description,
       body: this.body,
       image: this.image,
       goal: this.goal,
       date: this.deadline,
-      tags: this.tags
+      tags: this.tags,
+      author: localStorage['name']
     };
 
     this.http

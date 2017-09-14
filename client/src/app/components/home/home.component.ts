@@ -13,7 +13,6 @@ import { Project } from '../../project';
 export class HomeComponent implements OnInit {
 
   projects: Project[];
-  baseUrl: string = 'http://localhost:4200/project/';
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
     this.route.params.subscribe(params => {

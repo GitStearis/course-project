@@ -105,25 +105,29 @@
                 <div class="text-container">
                     <a href="">
                         <h4 class="title">
-                            {{ projectTitle }}
+                            {{ projectName }}
                         </h4>
                     </a>
                     <p class="text text-secondary text-left description">
                         {{ description }}
                     </p>
                 </div>
+                <hr>
+                <div class="text-container">
+                    <p class="text text-success">Goal: {{ goal }}$</p>
+                    <p class="text text-info">Current: 0$</p>
+                    <p class="text text-warning">Deadline: {{ deadline }}</p>
+                </div>
+                <hr>
+                <div class="text-container text-right d-flex justify-content-around">
+                    <div>
+                        <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                        <a href="/user/{{ author }}">{{ author }}</a>
+                    </div>
+                    <small class="text text-secondary">tagged as: {{ tags }}</small>
+                </div>
+                <hr>
             </div>
-            <hr>
-            <div class="text-container">
-                <p class="text text-success">Goal: {{ goal }}$</p>
-                <p class="text text-info">Current: 0$</p>
-                <p class="text text-warning">Deadline: {{ deadline }}</p>
-            </div>
-            <hr>
-            <div class="text-container text-right ">
-                <small class="text text-secondary">tagged as: {{ tags }}</small>
-            </div>
-            <hr>
         </div>
     </div>
 </div>

@@ -6,4 +6,5 @@ export interface Project {
     body: string;
     description: string;
     title: string;
+    author: string;
 }
