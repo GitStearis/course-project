@@ -1,32 +1,26 @@
-  <div class="price-box">
+<div *ngIf="auth.isAuthenticated()">
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4 jumbotron">
 
-    <form class="form-horizontal form-pricing" role="form">
-
-      <div class="price-slider">
-        <h4 class="great">Amount</h4>
-        <span>Minimum $10 is required</span>
-        <div class="col-sm-10">
-            <input type="number" id="amount" class="form-control">
-            <p class="price lead" id="amount-label"></p>
-          </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-12">
-          <button type="submit" class="btn btn-primary btn-lg btn-block">Proceed <span class="glyphicon glyphicon-chevron-right pull-right" style="padding-right: 10px;"></span></button>
+            <div class="rounded alert text-center">
+                <h2>Payment details</h2>
+                <div class="text-center">
+                    <div class="alert">
+                        <input class="form-control">
+                        <small class="text text-secondary">Enter your payment</small>
+                    </div>
+                    <div class="alert">
+                        <button (click)="back()" type="button" class="btn btn-secondary">Back</button>
+                        <button (click)="continue()" class="btn btn-success">Continue</button>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-      <div class="form-group">
-        <div class="col-sm-12">
-          <img src="http://amirolahmad.github.io/bootstrap-pricing-slider/images/payment.png" class="img-responsive payment" />
-        </div>
-      </div>
+        <div class="col-md-4"></div>
+    </div>
+</div>
 
-    </form>
-
-    <p class="text-center" style="padding-top:10px;font-size:12px;color:#2c3e50;font-style:italic;">Created by <a href="https://twitter.com/AmirolAhmad" target="_blank">AmirolAhmad</a></p>
-
-  </div>
-
-
-
-<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.min.js"></script>
+<div *ngIf="!auth.isAuthenticated()">
+    <app-notfound></app-notfound>
+</div>

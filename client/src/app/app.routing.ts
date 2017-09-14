@@ -11,6 +11,7 @@ import { UserComponent } from './components/user/user.component';
 import { VerificationPageComponent } from './components/verification-page/verification-page.component';
 import { CheckingComponent } from './components/checking/checking.component';
 import { CreatedProjectsComponent } from './components/created-projects/created-projects.component';
+import { DonationComponent } from './components/donation/donation.component';
 
 const appRoutes: Routes = [
   {
@@ -40,6 +41,10 @@ const appRoutes: Routes = [
   {
     path: 'project/:pageId',
     component: ProjectComponent
+  },
+  {
+    path: 'project/:pageId/donate',
+    component: DonationComponent
   },
   {
     path: 'user/:name/created',

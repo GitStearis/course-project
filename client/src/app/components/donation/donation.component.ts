@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NotfoundComponent } from '../notfound/notfound.component';
+import { Location } from '@angular/common';
+
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-donation',
@@ -7,7 +11,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonationComponent implements OnInit {
 
-  constructor() { }
+  constructor(public auth: AuthService, private location: Location) { }
+
+  public back() {
+    this.location.back();
+  }
+  public continue() {
+
+  }
 
   ngOnInit() {
   }
