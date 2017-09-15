@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Project } from '../../project';
-import {TranslateService} from 'ng2-translate';
+import { TranslateService } from 'ng2-translate';
 
 @Component({
   selector: 'app-home',

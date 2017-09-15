@@ -19,6 +19,7 @@ const ctrProject = require("../controllers/project");
 // профиль
 router.get("/profile", auth, ctrlProfile.profileRead);
 
+// пользователи
 router.get("/user/:username", ctrlProfile.profileByUsername);
 router.get("/user/:username/created", ctrProject.projectsByUsername);
 
@@ -32,9 +33,12 @@ router.get("/userlist", ctrUserList.list);
 
 // действия с проектами
 router.post("/project/new", ctrProjectForm.createProject);
+
 router.get("/project/:pageId", ctrProject.projectByPageId);
 router.get("/project/:pageId/done", ctrProject.projectMarkDone);
 router.get("/project/:pageId/close", ctrProject.projectMarkClosed);
+router.get("/project/:pageId/donate/:value", ctrProject.projectDonate);
+
 router.get("/projects/new", ctrProject.newProjects);
 router.get("/projects/all", ctrProject.projects);
 router.get("/projects/actual", ctrProject.actualProjects);
