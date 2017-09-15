@@ -1,13 +1,13 @@
-import { Component, OnInit } from "@angular/core";
-import { HttpClient } from "@angular/common/http";
-import { Profile } from "../../profile";
+import { Component, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Profile } from '../../profile';
 
-import { AuthService } from "../../services/auth/auth.service";
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
-  selector: "app-registration",
-  templateUrl: "./registration.component.html",
-  styleUrls: ["./registration.component.css"]
+  selector: 'app-registration',
+  templateUrl: './registration.component.html',
+  styleUrls: ['./registration.component.css']
 })
 export class RegistrationComponent implements OnInit {
   email: string;
@@ -20,14 +20,14 @@ export class RegistrationComponent implements OnInit {
   constructor(private http: HttpClient, public auth: AuthService) { }
 
   isPhoneValid(): boolean {
-    let PHONE_REGEXP = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
+    const PHONE_REGEXP = /^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/;
     if (!PHONE_REGEXP.test(this.phone)) {
       return false;
     }
-    return true;   
+    return true;
   }
   isEmailValid(): boolean {
-    let EMAIL_REGEXP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    const EMAIL_REGEXP = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     if (!EMAIL_REGEXP.test(this.email)) {
       return false;
     }
@@ -47,14 +47,14 @@ export class RegistrationComponent implements OnInit {
   }
   checkFields(first, second, third): boolean {
     if (first && second && third) {
-      return true
+      return true;
     }
     return false;
   }
   checkUsernameLength(): boolean {
     if (this.name) {
       if (this.name.length >= 3) {
-        return true
+        return true;
       }
     }
     return false;
@@ -62,7 +62,7 @@ export class RegistrationComponent implements OnInit {
   checkPasswordLength(): boolean {
     if (this.password) {
       if (this.password.length >= 8) {
-        return true
+        return true;
       }
       return false;
     }
@@ -99,7 +99,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   submit() {
-    let user: Profile = {
+    const user: Profile = {
       email: this.email,
       name: this.name,
       password: this.password,

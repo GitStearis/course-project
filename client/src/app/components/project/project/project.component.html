@@ -52,7 +52,7 @@
                             <small class="text text-secondary">Deadline</small>
                         </div>
                         <div class="alert text-center">
-                            <button *ngIf="!this.isProject('closed')" type="button" class="btn btn-success btn-lg"><a href="project/{{ project.pageId }}/donate">Support</a></button>
+                            <a *ngIf="!this.isProject('closed')" type="button" href="project/{{ project.pageId }}/donate" class="btn btn-success btn-lg">Support</a>
                         </div>
                     </div>
                 </div>
