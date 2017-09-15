@@ -16,6 +16,13 @@ export class ProjectComponent implements OnInit {
 
   progress: number = 0;
 
+  public isProject(status: string): boolean {
+    if (this.project.status === status) {
+      return true;
+    }
+    return false;
+  }
+
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
     this.route.params.subscribe(params => {
       this.pageId = params.pageId;

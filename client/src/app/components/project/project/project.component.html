@@ -4,10 +4,7 @@
             <div class="col-md-8 text-center">
                 <div class="alert text-center">
                     <h2>{{ project.title }}</h2>
-                    <h4>
-                        <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
-                        <a href="/user/{{ project.author }}">{{ project.author }}</a>
-                    </h4>
+
                 </div>
             </div>
             <div class="col-md-8 text-center">
@@ -15,6 +12,24 @@
                 <hr>
                 <div class="alert">
                     <h4 class="text text-secondary">{{ project.description }}</h4>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-around">
+                    <div class="alert">
+                        <h4>
+                            <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                            <a href="/user/{{ project.author }}">{{ project.author }}</a>
+                        </h4>
+                        <small class="text text-secondary">Project author</small>
+                    </div>
+                    <div class="alert">
+                        <h4>
+                            <span *ngIf="this.isProject('active')" class="label label-pill badge-info">Active</span>
+                            <span *ngIf="this.isProject('done')" class="label label-pill badge-success">Done</span>
+                            <span *ngIf="this.isProject('closed')" class="label label-pill badge-warning">Closed</span>
+                        </h4>
+                        <small class="text text-secondary">Project status</small>
+                    </div>
                 </div>
             </div>
             <div class="col-md-4 rounded jumbotron">
@@ -37,7 +52,7 @@
                             <small class="text text-secondary">Deadline</small>
                         </div>
                         <div class="alert text-center">
-                            <button type="button" class="btn btn-success btn-lg"><a href="project/{{ project.pageId }}/donate">Support</a></button>
+                            <button *ngIf="!this.isProject('closed')" type="button" class="btn btn-success btn-lg"><a href="project/{{ project.pageId }}/donate">Support</a></button>
                         </div>
                     </div>
                 </div>
@@ -60,8 +75,8 @@
                 <h2>Comments</h2>
             </div>
         </div>
-    </div> 
+    </div>
 </div>
 <div class="container">
-    <app-comment></app-comment>  
+    <app-comment></app-comment>
 </div>

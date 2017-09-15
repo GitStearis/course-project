@@ -9,4 +9,5 @@ export interface Project {
     description: string;
     title: string;
     author: string;
+    status: string;
 }
