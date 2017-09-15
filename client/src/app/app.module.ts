@@ -1,18 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { HttpModule, Http } from "@angular/http";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpModule, Http } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 import {
   TranslateModule,
   TranslateLoader,
   TranslateStaticLoader
-} from "ng2-translate/ng2-translate";
+} from 'ng2-translate/ng2-translate';
 
 import { routing, appRoutingProviders } from './app.routing';
 
-import { MessagesService } from "../../node_modules/ng2-messages/ng2-messages.service";
-import { MessagesComponent } from "../../node_modules/ng2-messages/ng2-messages.component";
+import { MessagesService } from '../../node_modules/ng2-messages/ng2-messages.service';
+import { MessagesComponent } from '../../node_modules/ng2-messages/ng2-messages.component';
 
 import { MarkdownModule } from 'angular2-markdown';
 import { AppComponent } from './app.component';
@@ -69,7 +69,7 @@ import { CommentComponent } from './components/comment/comment.component';
     TranslateModule.forRoot({
       provide: TranslateLoader,
       useFactory: (http: Http) =>
-        new TranslateStaticLoader(http, "../assets/i18n", ".json"),
+        new TranslateStaticLoader(http, '../assets/i18n', '.json'),
       deps: [Http]
     })
   ],

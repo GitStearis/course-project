@@ -14,27 +14,48 @@ export class HomeComponent implements OnInit {
 
   projects: Project[];
 
+  actualProjects: Project[];
+  newProjects: Project[];
+
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, translate: TranslateService) {
     this.route.params.subscribe(params => {
       this.http
-        .get('/api/projects/all')
+        .get('/api/projects/new')
         .map(data => JSON.stringify(data))
         .subscribe(
         data => {
-          console.log(data);
-          this.projects = JSON.parse(data);
-          console.log(this.projects);
+          this.newProjects = JSON.parse(data);
+          console.log(this.newProjects);
+
+          this.http
+          .get('/api/projects/actual')
+          .map(actual => JSON.stringify(actual))
+          .subscribe(
+          actual => {
+            this.actualProjects = JSON.parse(actual);
+            console.log(this.actualProjects);
+          },
+          err => {
+            if (err.error instanceof Error) {
+              console.log('An error occurred:', err.error.message);
+            } else {
+              console.log(err);
+              console.log(
+                `Backend returned code ${err.status}, body was: ${err.error}`
+              );
+            }
+          });
         },
         err => {
           if (err.error instanceof Error) {
             console.log('An error occurred:', err.error.message);
           } else {
             console.log(err);
-            console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
+            console.log(
+              `Backend returned code ${err.status}, body was: ${err.error}`
+            );
           }
-          this.router.navigate(['/404']);
-        }
-        );
+        });
     });
 
   }

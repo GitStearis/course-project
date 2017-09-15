@@ -20,6 +20,18 @@ module.exports.projectsByUsername = function(req, res) {
     });
 }
 
+module.exports.newProjects = function(req, res) {
+    var query = Project.find({}).sort({ $natural: -1 }).limit(6);
+    query.exec(function(err, project) {
+        if (err || project === null) {
+            res.status(404);
+            return;
+        } else {
+            res.send(JSON.stringify(project));
+        }
+    });
+}
+
 module.exports.projects = function(req, res) {
     Project.find({}, function(err, project) {
         if (err || project === null) {
@@ -27,6 +39,18 @@ module.exports.projects = function(req, res) {
             return;
         }
         res.send(JSON.stringify(project));
+    });
+}
+
+module.exports.actualProjects = function(req, res) {
+    var query = Project.find({}).sort({ collected: -1 }).limit(6);
+    query.exec(function(err, project) {
+        if (err || project === null) {
+            res.status(404);
+            return;
+        } else {
+            res.send(JSON.stringify(project));
+        }
     });
 }
 

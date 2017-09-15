@@ -35,6 +35,9 @@ router.post("/project/new", ctrProjectForm.createProject);
 router.get("/project/:pageId", ctrProject.projectByPageId);
 router.get("/project/:pageId/done", ctrProject.projectMarkDone);
 router.get("/project/:pageId/close", ctrProject.projectMarkClosed);
+router.get("/projects/new", ctrProject.newProjects);
 router.get("/projects/all", ctrProject.projects);
+router.get("/projects/actual", ctrProject.actualProjects);
+
 
 module.exports = router;
