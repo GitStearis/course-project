@@ -91,7 +91,7 @@ module.exports.projectDonate = function(req, res) {
     let inc = parseInt(req.params.value, 10);
     Project.findOneAndUpdate({ pageId: req.params.pageId }, { $inc: { collected: inc } }, { upsert: true }, function(err, project) {
         if (err || project === null) {
-            res.status(409);
+            res.status(409).json('cannot find project to donate');
         } else {
             console.log(project.collected + inc);
             console.log(project.goal);
@@ -100,7 +100,7 @@ module.exports.projectDonate = function(req, res) {
 
                 });
             }
-            res.json(project.status);
+            res.status(200).json('Successfully donated ' + inc + ' $');
         }
     });
 }
