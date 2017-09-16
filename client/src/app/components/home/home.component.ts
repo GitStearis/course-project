@@ -12,8 +12,6 @@ import { TranslateService } from 'ng2-translate';
 })
 export class HomeComponent implements OnInit {
 
-  projects: Project[];
-
   actualProjects: Project[];
   newProjects: Project[];
 

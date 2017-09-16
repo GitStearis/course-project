@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Project } from '../../../project';
+import { News } from '../../../news';
 
 import { AuthService } from '../../../services/auth/auth.service';
 
@@ -16,6 +17,7 @@ export class ProjectComponent implements OnInit {
 
   pageId: string;
   project: Project;
+  news: News[];
 
   progress: number = 0;
 
@@ -44,6 +46,15 @@ export class ProjectComponent implements OnInit {
           console.log(data);
           this.project = JSON.parse(data);
           this.progress = parseInt(this.project.collected, 10) / parseInt(this.project.goal, 10) * 100;
+
+          this.http
+            .get('/api/news/' + this.pageId + '/recent')
+            .map(recent => JSON.stringify(recent))
+            .subscribe(
+            recent => {
+              this.news = JSON.parse(recent);
+              console.log(this.news);
+            });
         },
         err => {
           if (err.error instanceof Error) {
@@ -58,6 +69,6 @@ export class ProjectComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
 }
