@@ -8,6 +8,7 @@ import {
   TranslateLoader,
   TranslateStaticLoader
 } from 'ng2-translate/ng2-translate';
+import { NG_TABLE_DIRECTIVES, Ng2TableModule } from 'ng2-table/ng2-table';
 
 import { routing, appRoutingProviders } from './app.routing';
 
@@ -73,7 +74,8 @@ import { CreateNewsComponent } from './components/news/create-news/create-news.c
       useFactory: (http: Http) =>
         new TranslateStaticLoader(http, '../assets/i18n', '.json'),
       deps: [Http]
-    })
+    }),
+    Ng2TableModule
   ],
   providers: [
     appRoutingProviders,
