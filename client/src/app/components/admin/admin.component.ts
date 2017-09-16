@@ -16,8 +16,8 @@ import 'rxjs/add/operator/toPromise';
   styleUrls: ["./admin.component.css"]
 })
 export class AdminComponent implements OnInit {
-  private TableData: Array<any> = [];
-  private data: Array<any>;
+  public TableData: Array<any> = [];
+  public data: Array<any>;
   public length: number = 0;
 
   public rows: Array<any> = [];
@@ -49,9 +49,7 @@ export class AdminComponent implements OnInit {
     className: ["table-striped", "table-bordered"]
   };
 
-  constructor(private http: HttpClient, public admin: AdminService) {
-    
-  }
+  constructor(private http: HttpClient, public admin: AdminService) { }
 
   public async getUserList(): Promise<any> {
     let response = await this.http.get("/api/userlist").toPromise()      
@@ -61,7 +59,6 @@ export class AdminComponent implements OnInit {
   async ngOnInit() {
     this.data = await this.getUserList();
     console.log(this.data);
-    // this.data = this.TableData;
     this.length = this.data.length;
     console.log(this.length);
     this.onChangeTable(this.config);
@@ -78,6 +75,7 @@ export class AdminComponent implements OnInit {
 
     let filteredData = this.changeFilter(this.data, this.config);
     let sortedData = this.changeSort(filteredData, this.config);
+    this.rows = sortedData;
     this.length = sortedData.length;
   }
 
@@ -154,8 +152,37 @@ export class AdminComponent implements OnInit {
     });
   }
 
+  public selectedRows: Array<number> = [];
+
   public onCellClick(data: any): any {
-    console.log(data);
+    let row = data.row.email;
+    this.selectedRows.push(row);
+    console.log(this.selectedRows);
+  }
+
+  public deleteUsers() {
+    this.http.post('/api/deleteUsers', this.selectedRows)
+    .subscribe( data => {
+      console.log(data);
+    }, err => console.log('smth wrong'));
+    this.selectedRows = [];
+    this.ngOnInit();
+  }
+
+  public blockUsers() {
+    this.http.post('/api/blockUsers', this.selectedRows)
+    .subscribe( data => {
+      console.log(data);
+    }, err => console.log('smth wrong'));
+    this.selectedRows = [];
+  }
+
+  public unblockUsers() {
+    this.http.post('/api/unblockUsers', this.selectedRows)
+    .subscribe( data => {
+      console.log(data);
+    }, err => console.log('smth wrong'));
+    this.selectedRows = [];
   }
 
 }

@@ -63,6 +63,8 @@ module.exports.register = function(req, res) {
                         .slice(0, 10)
                         .replace(/-/g, "/");
                     _user.setPassword(req.body.password);
+                    _user.isBlocked = false;
+                    _user.permission = "authorized";
 
                     host = req.get("host");
                     sendVerificationMail(_user.email, req);

@@ -30,6 +30,8 @@ var userSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    isBlocked: Boolean,
+    permission: String,
     hash: String,
     salt: String
 });
