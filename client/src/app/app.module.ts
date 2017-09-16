@@ -37,6 +37,7 @@ import { VerificationPageComponent } from './components/verification-page/verifi
 import { CheckingComponent } from './components/checking/checking.component';
 import { CreatedProjectsComponent } from './components/created-projects/created-projects.component';
 import { CommentComponent } from './components/comment/comment.component';
+import { CreateNewsComponent } from './components/news/create-news/create-news.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { CommentComponent } from './components/comment/comment.component';
     VerificationPageComponent,
     CheckingComponent,
     CreatedProjectsComponent,
-    CommentComponent
+    CommentComponent,
+    CreateNewsComponent
   ],
   imports: [
     HttpModule,
