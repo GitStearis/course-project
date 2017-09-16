@@ -17,7 +17,7 @@ export class ProjectComponent implements OnInit {
 
   pageId: string;
   project: Project;
-  news: News[];
+  newsList: News[];
 
   progress: number = 0;
 
@@ -52,8 +52,8 @@ export class ProjectComponent implements OnInit {
             .map(recent => JSON.stringify(recent))
             .subscribe(
             recent => {
-              this.news = JSON.parse(recent);
-              console.log(this.news);
+              this.newsList = JSON.parse(recent);
+              console.log(this.newsList);
             });
         },
         err => {

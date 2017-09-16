@@ -84,32 +84,35 @@
                 <div class="alert text-center">
                     <h3>Recent news</h3>
                 </div>
-                <div *ngFor="let title of news">
+                <div *ngFor="let news of newsList">
                     <div class="thumbnail card">
                         <div class="img-preview-container text-center">
-                            <a href=""><img class="img-fluid img-preview" src="{{ title.image }}" alt="Project image"></a>
+                            <a href=""><img class="img-fluid img-preview" src="{{ news.image }}" alt="Project image"></a>
                         </div>
                         <div class="text-container">
                             <a href="">
                                 <h4 class="title">
-                                    {{ title.title }}
+                                    {{ news.title }}
                                 </h4>
                             </a>
                             <p class="text text-secondary text-left description">
-                                {{ title.description }}
+                                {{ news.description }}
+                            </p>
+                            <p class="text text-secondary text-left description">
+                                {{ news.body }}
                             </p>
                         </div>
                         <hr>
                         <div class="text-container">
-                            <p class="text text-warning">Date: {{ title.creation }}</p>
+                            <p class="text text-warning">Date: {{ news.creation }}</p>
                         </div>
                         <hr>
                         <div class="text-container text-right d-flex justify-content-around">
                             <div>
                                 <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
-                                <a href="/user/{{ author }}">{{ title.author }}</a>
+                                <a href="/user/{{ author }}">{{ news.author }}</a>
                             </div>
-                            <small class="text text-secondary">tagged as: {{ title.tags }}</small>
+                            <small class="text text-secondary">tagged as: {{ news.tags }}</small>
                         </div>
                         <hr>
                     </div>
