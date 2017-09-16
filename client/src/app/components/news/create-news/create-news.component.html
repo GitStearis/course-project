@@ -1,0 +1,130 @@
+<div class="jumbotron">
+    <div class="container">
+        <div class="d-flex justify-content-center">
+            <h3 class="display-1">
+                Create new project with CO-OP
+            </h3>
+        </div>
+        <div class=" d-flex justify-content-center">
+            <p>Cooperate to develop your ideas</p>
+        </div>
+        <div class=" d-flex justify-content-center">
+            <img src="https://s8.hostingkartinok.com/uploads/images/2017/09/f61e5552af325c19df4d3bf71f94c7a1.png" width="128" height="128">
+        </div>
+
+        <div class="d-flex justify-content-end">
+            <button type="button" class="btn btn-info">Read guide</button>
+        </div>
+    </div>
+</div>
+
+<div class="container" *ngIf=" auth.isAuthenticated()">
+    <div class="row">
+        <div class="col-2"></div>
+        <form class="form-horizontal col-4 row">
+            <fieldset>
+                <div class="form-group">
+                    <label for="inputTitle" class="control-label"><h3>News title</h3></label>
+                    <input #titleInput class="form-control" placeholder="Title" (input)="projectName = $event.target.value" (keyup.enter)="getFromInput(titleInput.value, this.projectName)" (blur)="getFromInput(titleInput.value, this.projectName)">
+                    <small>Make sure that your news has memorable title. People like it!</small>
+                    <hr>
+                </div>
+                <div class="form-group">
+                    <label for="inputTitle" class="control-label"><h3>Description</h3></label>
+                    <input #inputDescription type="text" class="form-control" placeholder="Write about your project in one sentence" (input)="description = $event.target.value" (keyup.enter)="getFromInput(inputDescription.value, this.description)" (blur)="getFromInput(inputDescription.value, this.description)">
+                    <small>Description can help people to understand you.</small>
+                    <hr>
+                </div>
+                <div class="form-group">
+                    <label for="textArea" class="control-label"><h3>Body</h3></label>
+                    <textarea #textArea class="form-control" rows="3" placeholder="Rock-n-roll starts here" (input)="body = $event.target.value" (keyup.enter)="getFromInput(textArea.value, this.body)" (blur)="getFromInput(textArea.value, this.body)"></textarea>
+                    <small>Tell people what's new about your project.</small>
+                    <hr>
+                </div>
+                <div class="form-group">
+                    <label for="inputTitle" class="control-label"><h3>Cover of the project</h3></label>
+                    <img id="img-preview" class="img-fluid img-rounded" src="{{ image }}" />
+                    <label for="file-upload" class="control-label">
+                          <a class="btn btn-default">Choose image</a>
+                          <!-- Some hell is going on here -->
+                          <!-- #imagePreview (input)="body = $event.target.value" (keyup.enter)="getFromInput(imagePreview.value, this.body)" (blur)="imagePreview(textArea.value, this.body)" -->
+                          <input (change)="uploadFile($event)" id="file-upload" type="file" name="file" class="form-control" style="display:none;">
+                      </label>
+                    <hr>
+                </div>
+                <div class="form-group" id="tag-input">
+                    <label for="inputTitle" class="control-label"><h3>Tag</h3></label>
+                    <input #inputTag type="text" class="form-control" placeholder="Enter tag for project" (input)="tags = $event.target.value" (keyup.enter)="getFromInput(inputTag.value, this.tags)" (blur)="getFromInput(inputTag.value, this.tags)">
+                </div>
+                <div class="alert text-center">
+                    <button data-toggle="modal" data-target="#text-preview" type="button" class="btn btn-primary">Markdown preview</button>
+                    <button (click)="submit()" type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+                </div>
+            </fieldset>
+        </form>
+        <div class="container col-3">
+            <h3>Small preview</h3>
+            <div class="thumbnail card">
+                <div class="img-preview-container text-center">
+                    <a href=""><img class="img-fluid img-preview" src="{{ image }}" alt="Project image"></a>
+                </div>
+                <div class="text-container">
+                    <a href="">
+                        <h4 class="title">
+                            {{ projectName }}
+                        </h4>
+                    </a>
+                    <p class="text text-secondary text-left description">
+                        {{ description }}
+                    </p>
+                </div>
+                <hr>
+                <div class="text-container">
+                    <p class="text text-warning">Date: {{ creation }}</p>
+                </div>
+                <hr>
+                <div class="text-container text-right d-flex justify-content-around">
+                    <div>
+                        <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                        <a href="/user/{{ author }}">{{ author }}</a>
+                    </div>
+                    <small class="text text-secondary">tagged as: {{ tags }}</small>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="jumbotron" *ngIf="!auth.isAuthenticated()">
+    <div class="alert">
+        <p>Creation is available only for authenticated users. Please, <a href="" data-toggle="modal" data-target="#login">sign in</a> or <a href="" data-toggle="modal" data-target="#register">register</a>.</p>
+    </div>
+</div>
+
+<div class="modal fade modal-lower" id="text-preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Project preview</h2>
+            </div>
+            <div class="modal-body">
+                <div class="d-flex justify-content-center">
+                    <h1>{{ projectName }}</h1>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <img id="img-preview" class="img-responsive img-rounded img-thumbnail" src="{{ image }}" />
+                </div>
+                <div class="d-flex justify-content-center">
+                    <div class="alert"><small>{{ description }}</small></div>
+                </div>
+                <div class="d-flex justify-content-center">
+                    <markdown [data]="body"></markdown>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

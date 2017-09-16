@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Project } from '../../../project';
 
+import { AuthService } from '../../../services/auth/auth.service';
+
 
 @Component({
   selector: 'app-project',
@@ -24,7 +26,14 @@ export class ProjectComponent implements OnInit {
     return false;
   }
 
-  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
+  public isAuthor(): boolean {
+    if (localStorage['name'] === this.project.author) {
+      return true;
+    }
+    return false;
+  }
+
+  constructor(public auth: AuthService, private route: ActivatedRoute, private router: Router, private http: HttpClient) {
     this.route.params.subscribe(params => {
       this.pageId = params.pageId;
       this.http
