@@ -12,6 +12,7 @@ import { VerificationPageComponent } from './components/verification-page/verifi
 import { CheckingComponent } from './components/checking/checking.component';
 import { CreatedProjectsComponent } from './components/created-projects/created-projects.component';
 import { DonationComponent } from './components/donation/donation.component';
+import { CreateNewsComponent } from './components/news/create-news/create-news.component';
 
 const appRoutes: Routes = [
   {
@@ -45,6 +46,10 @@ const appRoutes: Routes = [
   {
     path: 'project/:pageId/donate',
     component: DonationComponent
+  },
+  {
+    path: 'project/:pageId/news',
+    component: CreateNewsComponent
   },
   {
     path: 'user/:name/created',

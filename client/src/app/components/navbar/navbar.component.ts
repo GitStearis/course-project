@@ -1,29 +1,29 @@
-import { Component, OnInit, ElementRef } from "@angular/core";
-import { RegistrationComponent } from "../registration/registration.component";
-import { LoginComponent } from "../login/login.component";
+import { Component, OnInit, ElementRef } from '@angular/core';
+import { RegistrationComponent } from '../registration/registration.component';
+import { LoginComponent } from '../login/login.component';
 
 import { Cookie } from 'ng2-cookies/ng2-cookies';
-import { TranslateService } from "ng2-translate";
+import { TranslateService } from 'ng2-translate';
 
-import { AuthService } from "../../services/auth/auth.service";
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
-  selector: "app-navbar",
-  templateUrl: "./navbar.component.html",
-  styleUrls: ["./navbar.component.css"]
+  selector: 'app-navbar',
+  templateUrl: './navbar.component.html',
+  styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
   constructor(public auth: AuthService, private elementRef: ElementRef, public translate: TranslateService) {}
 
-  private dark: string = 'https://bootswatch.com/darkly/bootstrap.min.css';
-  private light: string = 'https://bootswatch.com/flatly/bootstrap.min.css';
+  private dark = 'https://bootswatch.com/darkly/bootstrap.min.css';
+  private light = 'https://bootswatch.com/flatly/bootstrap.min.css';
 
-  private icon: string = 'fa-sun-o';
-  public browserLang: string = "";
+  private icon = 'fa-sun-o';
+  public browserLang = '';
 
   ngOnInit() {
     this.initializeStyle();
-    this.initializeLanguage();    
+    this.initializeLanguage();
   }
 
   // ================== Style section ==========================
@@ -49,9 +49,9 @@ export class NavbarComponent implements OnInit {
 
   changeStyle(style) {
     style === 'null' ? style = this.dark : style = style;
-    let links = document.getElementsByTagName("link");
+    const links = document.getElementsByTagName('link');
     for (let i = 0; i < links.length; i++) {
-      let link = links[i];
+      const link = links[i];
       if (link.href === this.dark || link.href === this.light) {
         Cookie.set('style', style);
         link.href = style;
@@ -71,7 +71,7 @@ export class NavbarComponent implements OnInit {
   }
 
   changeLanguage(lang) {
-    this.translate.use(lang)
+    this.translate.use(lang);
     Cookie.set('lang', lang);
   }
 
