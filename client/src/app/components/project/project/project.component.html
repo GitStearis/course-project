@@ -54,7 +54,7 @@
                             <a *ngIf="!this.isProject('closed') && auth.isAuthenticated() && !this.isAuthor()" href="project/{{ project.pageId }}/donate">
                                 <button type="button" class="btn btn-success btn-lg">Support</button>
                             </a>
-                            <a *ngIf="!this.isProject('closed') && auth.isAuthenticated() && this.isAuthor()" href="project/{{ project.pageId }}/news">
+                            <a *ngIf="!this.isProject('closed') && auth.isAuthenticated() && this.isAuthor()" href="project/{{ project.pageId }}/news/create">
                                 <button type="button" class="btn btn-success btn-lg">Add news</button>
                             </a>
                         </div>
@@ -85,7 +85,7 @@
             </div>
             <div class="col-md-4">
                 <div class="alert text-center">
-                    <h3>Recent news</h3>
+                    <h3><a href="project/{{ project.pageId }}/news">News</a></h3>
                 </div>
                 <div *ngFor="let news of newsList">
                     <div class="thumbnail card">

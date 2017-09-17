@@ -49,6 +49,7 @@ router.get("/projects/actual", ctrProject.actualProjects);
 router.post("/news/new", ctrNewsForm.createNews);
 
 router.get("/news/:pageId/recent", ctrNews.newsRecentByPageId);
+router.get("/news/:pageId/all", ctrNews.newsByPageId);
 router.get("/news/recent", ctrNews.newsRecent);
 router.get("/news/all", ctrNews.news);
 router.get("/news/:newsId", ctrNews.newsByNewsId);
