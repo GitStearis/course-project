@@ -2,7 +2,8 @@ const mongoose = require("mongoose");
 const Project = require("../models/projects");
 
 String.prototype.cleanup = function() {
-    return this.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+
+    return this.toLowerCase().replace(/[^\w\s]/gi, '').replace(/[^a-z0-9]+/g, "-");
 }
 
 module.exports.createProject = function(req, res) {

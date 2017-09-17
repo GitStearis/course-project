@@ -15,6 +15,7 @@ import { DonationComponent } from './components/donation/donation.component';
 import { CreateNewsComponent } from './components/news/create-news/create-news.component';
 import { AllNewsComponent } from './components/news/all-news/all-news.component';
 import { NewsComponent } from './components/news/news/news.component';
+import { AllProjectsComponent } from './components/project/all-projects/all-projects.component';
 
 const appRoutes: Routes = [
   {
@@ -40,6 +41,10 @@ const appRoutes: Routes = [
   {
     path: 'admin',
     component: AdminComponent
+  },
+  {
+    path: 'projects',
+    component: AllProjectsComponent
   },
   {
     path: 'project/:pageId',

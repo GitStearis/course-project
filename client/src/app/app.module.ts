@@ -25,7 +25,6 @@ import { DonationComponent } from './components/donation/donation.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProjectComponent } from './components/project/project/project.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { PreviewComponent } from './components/project/preview/preview.component';
 
 import { AuthService } from './services/auth/auth.service';
 import { CreateComponent } from './components/project/create/create.component';
@@ -40,6 +39,7 @@ import { CommentComponent } from './components/comment/comment.component';
 import { CreateNewsComponent } from './components/news/create-news/create-news.component';
 import { AllNewsComponent } from './components/news/all-news/all-news.component';
 import { NewsComponent } from './components/news/news/news.component';
+import { AllProjectsComponent } from './components/project/all-projects/all-projects.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +53,6 @@ import { NewsComponent } from './components/news/news/news.component';
     LoginComponent,
     ProjectComponent,
     AdminComponent,
-    PreviewComponent,
     MessagesComponent,
     CreateComponent,
     UserComponent,
@@ -64,7 +63,8 @@ import { NewsComponent } from './components/news/news/news.component';
     CommentComponent,
     CreateNewsComponent,
     AllNewsComponent,
-    NewsComponent
+    NewsComponent,
+    AllProjectsComponent
   ],
   imports: [
     HttpModule,

@@ -2,7 +2,8 @@
     <div class="row">
         <div class="col-md-8 text-center">
             <div class="alert text-center">
-                <h2>{{ news.title }}</h2>
+                <h2><a href="project/{{ news.pageId }}">{{ news.title }}</a></h2>
+                <h4 class="text text-secondary">{{ news.description }}</h4>
             </div>
         </div>
         <div class="col-md-8 rounded jumbotron">
@@ -15,10 +16,12 @@
             </div>
         </div>
         <div class="col-md-4 text-center">
-            <div><img class="img-fluid img-rounded" src="{{ news.image }}" alt="Project image"></div>
+            <div>
+                <a href="project/{{ news.pageId }}"><img class="img-fluid img-rounded" src="{{ news.image }}" alt="Project image"></a>
+            </div>
             <hr>
             <div class="alert">
-                <h4 class="text text-secondary">{{ news.description }}</h4>
+                <a href="project/{{ news.pageId }}"><button type="button" class="btn btn-success" value="">Project page</button></a>
             </div>
             <hr>
             <div class="d-flex justify-content-around">

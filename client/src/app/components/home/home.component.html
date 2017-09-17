@@ -31,7 +31,7 @@
             <div class="text-container text-right d-flex justify-content-around">
                 <div>
                     <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
-                    <a href="/user/{{ author }}">{{ news.author }}</a>
+                    <a href="/user/{{ news.author }}">{{ news.author }}</a>
                 </div>
                 <a href="/project/{{ news.pageId }}">Project page</a>
             </div>
@@ -46,7 +46,7 @@
 </section>
 <hr>
 <div class="col-xs-12 col-sm-12 col-md-12 jumbotron">
-    <h2 class="text-center">{{ 'Home.NewProjects' | translate }}</h2>
+    <h2 class="text-center"><a href="/projects">{{ 'Home.NewProjects' | translate }}</a></h2>
 </div>
 <section *ngFor="let project of newProjects">
     <div class="col-xs-12 col-sm-6 col-md-4">
@@ -85,7 +85,7 @@
 </section>
 <hr>
 <div class="col-xs-12 col-sm-12 col-md-12 jumbotron">
-    <h2 class="text-center">{{ 'Home.ActualProjects' | translate }}</h2>
+    <h2 class="text-center"><a href="/projects">{{ 'Home.ActualProjects' | translate }}</a></h2>
 </div>
 <section *ngFor="let project of actualProjects">
     <div class="col-xs-12 col-sm-6 col-md-4">

@@ -51,8 +51,12 @@
                             <small class="text text-secondary">Deadline</small>
                         </div>
                         <div class="alert text-center">
-                            <a *ngIf="!this.isProject('closed') && auth.isAuthenticated() && !this.isAuthor()" type="button" href="project/{{ project.pageId }}/donate" class="btn btn-success btn-lg">Support</a>
-                            <a *ngIf="!this.isProject('closed') && auth.isAuthenticated() && this.isAuthor()" type="button" href="project/{{ project.pageId }}/news" class="btn btn-success btn-lg">Add news</a>
+                            <a *ngIf="!this.isProject('closed') && auth.isAuthenticated() && !this.isAuthor()" href="project/{{ project.pageId }}/donate">
+                                <button type="button" class="btn btn-success btn-lg">Support</button>
+                            </a>
+                            <a *ngIf="!this.isProject('closed') && auth.isAuthenticated() && this.isAuthor()" href="project/{{ project.pageId }}/news">
+                                <button type="button" class="btn btn-success btn-lg">Add news</button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -105,7 +109,7 @@
                         <div class="text-container text-right d-flex justify-content-around">
                             <div>
                                 <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
-                                <a href="/user/{{ author }}">{{ news.author }}</a>
+                                <a href="/user/{{ news.author }}">{{ news.author }}</a>
                             </div>
                         </div>
                         <hr>
