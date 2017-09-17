@@ -103,15 +103,15 @@
                             </p>
                         </div>
                         <hr>
-                        <div class="text-container">
-                            <p class="text text-warning">Date: {{ news.creation }}</p>
-                        </div>
-                        <hr>
                         <div class="text-container text-right d-flex justify-content-around">
                             <div>
                                 <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
                                 <a href="/user/{{ author }}">{{ news.author }}</a>
                             </div>
+                        </div>
+                        <hr>
+                        <div class="text-container text-right d-flex justify-content-around">
+                            <small class="text text-warning">{{ news.creation }}</small>
                             <small class="text text-secondary">tagged as: {{ news.tags }}</small>
                         </div>
                         <hr>

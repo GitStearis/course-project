@@ -6,7 +6,7 @@
 </div>
 <hr>
 <div class="col-xs-12 col-sm-12 col-md-12 jumbotron">
-    <h2 class="text-center">{{ 'Home.News' | translate }}</h2>
+    <h2 class="text-center"><a href="/news">{{ 'Home.News' | translate }}</a></h2>
 </div>
 <section *ngFor="let news of newsList">
     <div class="col-xs-12 col-sm-6 col-md-4">
@@ -28,15 +28,16 @@
                 </p>
             </div>
             <hr>
-            <div class="text-container">
-                <p class="text text-warning">Date: {{ news.creation }}</p>
-            </div>
-            <hr>
             <div class="text-container text-right d-flex justify-content-around">
                 <div>
                     <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
                     <a href="/user/{{ author }}">{{ news.author }}</a>
                 </div>
+                <a href="/project/{{ news.pageId }}">Project page</a>
+            </div>
+            <hr>
+            <div class="text-container text-right d-flex justify-content-around">
+                <small class="text text-warning">{{ news.creation }}</small>
                 <small class="text text-secondary">tagged as: {{ news.tags }}</small>
             </div>
             <hr>

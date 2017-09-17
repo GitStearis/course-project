@@ -38,6 +38,7 @@ import { CheckingComponent } from './components/checking/checking.component';
 import { CreatedProjectsComponent } from './components/created-projects/created-projects.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { CreateNewsComponent } from './components/news/create-news/create-news.component';
+import { AllNewsComponent } from './components/news/all-news/all-news.component';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,8 @@ import { CreateNewsComponent } from './components/news/create-news/create-news.c
     CheckingComponent,
     CreatedProjectsComponent,
     CommentComponent,
-    CreateNewsComponent
+    CreateNewsComponent,
+    AllNewsComponent
   ],
   imports: [
     HttpModule,

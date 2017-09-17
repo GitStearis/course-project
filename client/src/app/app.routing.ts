@@ -13,6 +13,7 @@ import { CheckingComponent } from './components/checking/checking.component';
 import { CreatedProjectsComponent } from './components/created-projects/created-projects.component';
 import { DonationComponent } from './components/donation/donation.component';
 import { CreateNewsComponent } from './components/news/create-news/create-news.component';
+import { AllNewsComponent } from './components/news/all-news/all-news.component';
 
 const appRoutes: Routes = [
   {
@@ -58,6 +59,10 @@ const appRoutes: Routes = [
   {
     path: 'create',
     component: CreateComponent
+  },
+  {
+    path: 'news',
+    component: AllNewsComponent 
   },
   {
     path: '404',
