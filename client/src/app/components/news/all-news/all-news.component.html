@@ -8,10 +8,10 @@
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="thumbnail card">
                 <div class="img-preview-container text-center">
-                    <a href=""><img class="img-fluid img-preview" src="{{ news.image }}" alt="Project image"></a>
+                    <a href="/news/{{ news.newsId }}"><img class="img-fluid img-preview" src="{{ news.image }}" alt="Project image"></a>
                 </div>
                 <div class="text-container">
-                    <a href="/project/{{ news.pageId }}">
+                    <a href="/news/{{ news.newsId }}">
                         <h4 class="title">
                             {{ news.title }}
                         </h4>

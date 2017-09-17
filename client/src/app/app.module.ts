@@ -39,6 +39,7 @@ import { CreatedProjectsComponent } from './components/created-projects/created-
 import { CommentComponent } from './components/comment/comment.component';
 import { CreateNewsComponent } from './components/news/create-news/create-news.component';
 import { AllNewsComponent } from './components/news/all-news/all-news.component';
+import { NewsComponent } from './components/news/news/news.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +63,8 @@ import { AllNewsComponent } from './components/news/all-news/all-news.component'
     CreatedProjectsComponent,
     CommentComponent,
     CreateNewsComponent,
-    AllNewsComponent
+    AllNewsComponent,
+    NewsComponent
   ],
   imports: [
     HttpModule,

@@ -4,7 +4,6 @@
             <div class="col-md-8 text-center">
                 <div class="alert text-center">
                     <h2>{{ project.title }}</h2>
-
                 </div>
             </div>
             <div class="col-md-8 text-center">
@@ -87,10 +86,10 @@
                 <div *ngFor="let news of newsList">
                     <div class="thumbnail card">
                         <div class="img-preview-container text-center">
-                            <a href=""><img class="img-fluid img-preview" src="{{ news.image }}" alt="Project image"></a>
+                            <a href="/news/{{ news.newsId }}"><img class="img-fluid img-preview" src="{{ news.image }}" alt="Project image"></a>
                         </div>
                         <div class="text-container">
-                            <a href="">
+                            <a href="/news/{{ news.newsId }}">
                                 <h4 class="title">
                                     {{ news.title }}
                                 </h4>

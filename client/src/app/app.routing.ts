@@ -14,6 +14,7 @@ import { CreatedProjectsComponent } from './components/created-projects/created-
 import { DonationComponent } from './components/donation/donation.component';
 import { CreateNewsComponent } from './components/news/create-news/create-news.component';
 import { AllNewsComponent } from './components/news/all-news/all-news.component';
+import { NewsComponent } from './components/news/news/news.component';
 
 const appRoutes: Routes = [
   {
@@ -63,6 +64,10 @@ const appRoutes: Routes = [
   {
     path: 'news',
     component: AllNewsComponent 
+  },
+  {
+    path: 'news/:newsId',
+    component: NewsComponent
   },
   {
     path: '404',

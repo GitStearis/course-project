@@ -35,3 +35,14 @@ module.exports.newsRecentByPageId = function(req, res) {
         }
     });
 }
+
+module.exports.newsByNewsId = function(req, res) {
+    News.find({ newsId: req.params.newsId }, function(err, news) {
+        if (err || news === null) {
+            res.status(404);
+            return;
+        } else {
+            res.status(200).json(news);
+        }
+    });
+}
