@@ -60,7 +60,8 @@
                 </div>
             </div>
             <br>
-            <ng-table [config]="config"
+            <ng-table id="resultDataTable"
+                    [config]="config"
                     (tableChanged)="onChangeTable(config)"
                     (cellClicked)="onCellClick($event)"
                     [rows]="rows" [columns]="columns">

@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { HttpClient } from "@angular/common/http";
 import { AdminService } from "../../services/admin/admin.service";
+import { AuthService } from "../../services/auth/auth.service";
 import {
   NG_TABLE_DIRECTIVES,
   NgTableComponent,
@@ -8,7 +9,7 @@ import {
   NgTablePagingDirective,
   NgTableSortingDirective
 } from "ng2-table/ng2-table";
-import 'rxjs/add/operator/toPromise';
+import "rxjs/add/operator/toPromise";
 
 @Component({
   selector: "app-admin",
@@ -28,16 +29,15 @@ export class AdminComponent implements OnInit {
       filtering: { filterString: "", placeholder: "Filter by email" }
     },
     {
-      title: "First Name",
-      name: "firstname",
+      title: "Permission",
+      name: "permission",
       sort: "",
-      filtering: { filterString: "", placeholder: "Filter by name" }
+      filtering: { filterString: "", placeholder: "Filter by permission" }
     },
     {
-      title: "Second Name",
-      name: "secondname",
-      sort: "",
-      filtering: { filterString: "", placeholder: "Filter by surname" }
+      title: "Block",
+      name: "isBlocked",
+      sort: ""
     },
     { title: "Registration date", className: "text-warning", name: "date" }
   ];
@@ -49,10 +49,14 @@ export class AdminComponent implements OnInit {
     className: ["table-striped", "table-bordered"]
   };
 
-  constructor(private http: HttpClient, public admin: AdminService) { }
+  constructor(
+    private http: HttpClient,
+    public admin: AdminService,
+    public auth: AuthService
+  ) {}
 
   public async getUserList(): Promise<any> {
-    let response = await this.http.get("/api/userlist").toPromise()      
+    let response = await this.http.get("/api/userlist").toPromise();
     return JSON.parse(JSON.stringify(response));
   }
 
@@ -77,6 +81,11 @@ export class AdminComponent implements OnInit {
     let sortedData = this.changeSort(filteredData, this.config);
     this.rows = sortedData;
     this.length = sortedData.length;
+
+    $("#resultDataTable").on("click", "tr", function(event: any) {
+      event.preventDefault();
+      $(this).toggleClass("success");
+    });
   }
 
   public changeFilter(data: any, config: any): any {
@@ -137,7 +146,7 @@ export class AdminComponent implements OnInit {
       }
     }
 
-    if (!columnName) {      
+    if (!columnName) {
       return data;
     }
 
@@ -154,35 +163,55 @@ export class AdminComponent implements OnInit {
 
   public selectedRows: Array<number> = [];
 
+  private click() {
+    $("#resultDataTable").on("click", "tr", function(event: any) {
+      event.preventDefault();
+      console.log(event.type);
+      $(this).toggleClass("success");
+    });
+  }
+
   public onCellClick(data: any): any {
     let row = data.row.email;
-    this.selectedRows.push(row);
+    if (!this.selectedRows.includes(row)) {
+      this.selectedRows.push(row);
+    } else {
+      this.selectedRows.splice(this.selectedRows.indexOf(row), 1);
+    }
     console.log(this.selectedRows);
   }
 
   public deleteUsers() {
-    this.http.post('/api/deleteUsers', this.selectedRows)
-    .subscribe( data => {
-      console.log(data);
-    }, err => console.log('smth wrong'));
+    // add localStorage user's data deleting if self deleting
+    this.http.post("/api/deleteUsers", this.selectedRows).subscribe(
+      data => {
+        console.log(data);
+      },
+      err => console.log("smth wrong")
+    );
     this.selectedRows = [];
     this.ngOnInit();
   }
 
-  public blockUsers() {
-    this.http.post('/api/blockUsers', this.selectedRows)
-    .subscribe( data => {
-      console.log(data);
-    }, err => console.log('smth wrong'));
+  public async blockUsers() {
+    this.http.post("/api/blockUsers", this.selectedRows).subscribe(
+      data => {
+        console.log(data);
+      },
+      err => console.log("smth wrong")
+    );
     this.selectedRows = [];
+    this.ngOnInit();
   }
 
   public unblockUsers() {
-    this.http.post('/api/unblockUsers', this.selectedRows)
-    .subscribe( data => {
-      console.log(data);
-    }, err => console.log('smth wrong'));
+    this.http.post("/api/unblockUsers", this.selectedRows).subscribe(
+      data => {
+        console.log(data);
+      },
+      err => console.log("smth wrong")
+    );
     this.selectedRows = [];
+    this.ngOnInit();
   }
-
 }

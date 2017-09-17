@@ -23,7 +23,7 @@ module.exports.deleteSelected = function(req, res) {
             }
         });
         res.status(200);
-        res.send("Everything is ok");
+        res.send("Users are deleted");
     });
 };
 
@@ -33,16 +33,16 @@ module.exports.blockSelected = function(req, res) {
     arr.map(user => {
         User.findOne({email: user}, function(err, user) {
             if (err || user === null) {
-                res.send("User not found");
+                res.send("User is not found");
                 return;
             }
         
             user.isBlocked = true;
             user.save();
-            res.status(200);
-            res.send("User is blocked");
         });
     });
+    res.status(200);
+    res.send("Users are blocked");
 }
 
 module.exports.unblockSelected = function(req, res) {
@@ -51,14 +51,32 @@ module.exports.unblockSelected = function(req, res) {
     arr.map(user => {
         User.findOne({email: user}, function(err, user) {
             if (err || user === null) {
-                res.send("User not found");
+                res.send("User is not found");
                 return;
             }
         
             user.isBlocked = false;
             user.save();
-            res.status(200);
-            res.send("User is blocked");
         });
     });
+    res.status(200);
+    res.send("Users are unblocked");
+}
+
+module.exports.confirmSelected = function(res, res) {
+    console.log(req.body);
+    let arr = req.body;
+    arr.map( user => {
+        User.findOne({email: user}, function(err, user) {
+            if (err || user === null) {
+                res.send("User is not found");
+                return;
+            }
+
+            user.permission = "checked";
+            user.save();
+        });
+    });
+    res.status(200);
+    res.send("Users are checked");
 }
