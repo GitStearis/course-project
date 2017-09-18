@@ -55,6 +55,14 @@ export class AdminComponent implements OnInit {
     public auth: AuthService
   ) {}
 
+  public setRowClickEvent() {
+    $("#resultDataTable").off("click", "tr");
+    $("#resultDataTable").on("click", "tr", function(event: any) {
+      event.preventDefault();
+      $(this).toggleClass("success");
+    });
+  }
+
   public async getUserList(): Promise<any> {
     let response = await this.http.get("/api/userlist").toPromise();
     return JSON.parse(JSON.stringify(response));
@@ -82,17 +90,16 @@ export class AdminComponent implements OnInit {
     this.rows = sortedData;
     this.length = sortedData.length;
 
-    $("#resultDataTable").on("click", "tr", function(event: any) {
-      event.preventDefault();
-      $(this).toggleClass("success");
-    });
+    this.setRowClickEvent();
   }
 
   public changeFilter(data: any, config: any): any {
     let filteredData: Array<any> = data;
     this.columns.forEach((column: any) => {
-      if (column.filtering) {
+      console.log(column.filtering)
+      if ((column.filtering) && (column.title !== 'Block')) {
         filteredData = filteredData.filter((item: any) => {
+          // console.log(item);
           return item[column.name].match(column.filtering.filterString);
         });
       }
@@ -193,19 +200,23 @@ export class AdminComponent implements OnInit {
 
   public async blockUsers() {
     this.http.post("/api/blockUsers", this.selectedRows).subscribe(
-      data => {
+      async data => {
         console.log(data);
+        // debugger;
+        await this.userList();
+        this.onChangeTable(this.config);
       },
       err => console.log("smth wrong")
     );
     this.selectedRows = [];
-    this.userList();
+   // this.userList();
   }
 
   public unblockUsers() {
     this.http.post("/api/unblockUsers", this.selectedRows).subscribe(
       data => {
         console.log(data);
+        
       },
       err => console.log("smth wrong")
     );
@@ -218,8 +229,5 @@ export class AdminComponent implements OnInit {
     const json = await response.json();
     this.data = json;
     console.log(json);
-    this.onChangeTable(this.config);
-
-    // return JSON.parse(JSON.stringify(response));
   }
 }

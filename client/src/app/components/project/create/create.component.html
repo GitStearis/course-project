@@ -30,9 +30,6 @@
                         <small>{{ 'Project.Creation.TitleTag' | translate }}</small>
                         <hr>
                     </div>
-                    <label for="inputTitle" class="control-label"><h3>{{ 'Project.Creation.Title' | translate }}</h3></label>
-                    <input #titleInput class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Title' | translate }}" (input)="projectName = $event.target.value" (keyup.enter)="getFromInput(titleInput.value, this.projectName)" (blur)="getFromInput(titleInput.value, this.projectName)">
-                    <small>{{ 'Project.Creation.TitleTag' | translate }}</small>
                 </div>
                 <div class="form-group panel panel-success">
                     <div class="panel-heading">{{ 'Project.Creation.Description' | translate }}</div>
@@ -41,9 +38,6 @@
                         <small>{{ 'Project.Creation.DescriptionTag' | translate }}</small>
                         <hr>
                     </div>
-                    <label for="inputTitle" class="control-label"><h3>{{ 'Project.Creation.Description' | translate }}</h3></label>
-                    <input #inputDescription type="text" class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Description' | translate }}" (input)="description = $event.target.value" (keyup.enter)="getFromInput(inputDescription.value, this.description)" (blur)="getFromInput(inputDescription.value, this.description)">
-                    <small>{{ 'Project.Creation.DescriptionTag' | translate }}</small>
                 </div>
                 <div class="form-group panel panel-success">
                     <div class="panel-heading">{{ 'Project.Creation.Body' | translate }}</div>
@@ -52,9 +46,6 @@
                         <small>{{ 'Project.Creation.BodyTag' | translate }}</small>
                         <hr>
                     </div>
-                    <label for="textArea" class="control-label"><h3>{{ 'Project.Creation.Body' | translate }}</h3></label>
-                    <textarea #textArea class="form-control" rows="5" placeholder="{{ 'Project.Creation.Placeholders.Body' | translate }}" (input)="body = $event.target.value" (keyup.enter)="getFromInput(textArea.value, this.body)" (blur)="getFromInput(textArea.value, this.body)"></textarea>
-                    <small>{{ 'Project.Creation.BodyTag' | translate }}</small>
                 </div>
                 <div class="form-group panel panel-success">
                     <div class="panel-heading">{{ 'Project.Creation.Image' | translate }}</div>
@@ -68,8 +59,6 @@
                             </label>
                         <hr>
                     </div>
-                    <label for="inputTitle" class="control-label"><h3>{{ 'Project.Creation.Image' | translate }}</h3></label>
-                    <a class="btn btn-default">{{ 'Project.Buttons.Image' | translate }}</a>
                 </div>
                 <div class="form-group panel panel-success">
                     <div class="panel-heading">Project details</div>
@@ -85,13 +74,8 @@
                                 <input #inputDeadline type="date" class="form-control" (input)="deadline = $event.target.value" (keyup.enter)="getFromInput(inputDeadline.value, this.deadline)" (blur)="getFromInput(inputDeadline.value, this.deadline)">
                                 <small>{{ 'Project.Creation.DateTag' | translate }}</small>
                             </div>
-                            <small>{{ 'Project.Creation.GoalTag' | translate }}</small>
-                            <input #inputGoal type="number" class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Goal' | translate }}" (input)="goal = $event.target.value" (keyup.enter)="getFromInput(inputGoal.value, this.goal)" (blur)="getFromInput(inputGoal.value, this.goal)">
-                            <label for="amount" class="col-lg-2 control-label"><h3>{{ 'Project.Creation.Goal' | translate }}</h3></label>
                         </div>
                         <hr>
-                        <small>{{ 'Project.Creation.DateTag' | translate }}</small>
-                        <label for="inputdeadline" class="col-lg-2 control-label"><h3>{{ 'Project.Creation.Date' | translate }}</h3></label>
                     </div>
                 </div>
                 <div class="form-group panel panel-success" id="tag-input">
@@ -121,7 +105,6 @@
                         <small>{{ 'Project.Creation.TagTag' | translate }}</small>
                         <hr>
                     </div>
-                    <small>{{ 'Project.Creation.TagTag' | translate }}</small>
                 </div>
                 <div class="alert text-center">
                     <button data-toggle="modal" data-target="#text-preview" type="button" class="btn btn-primary">{{ 'Project.Buttons.Preview' | translate }}</button>
