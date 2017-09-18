@@ -41,6 +41,9 @@
                 #langSelect (change)="translate.use(langSelect.value)">
                     <i class="fa fa-globe fa-lg fa-fw colored" aria-hidden="true"></i>
                 </a>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let lang of translate.getLangs()" class="dropdown-item" (click)="changeLanguage(lang)"><a class="colored">{{ lang }}</a></li>
+                </ul>
             </li>
             <li class="nav-item">
                 <a class="btn btn-active" href="" data-toggle="modal" data-target="#register" *ngIf="!auth.isAuthenticated()">
