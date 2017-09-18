@@ -12,7 +12,7 @@ const auth = jwt({
 
 const ctrlProfile = require("../controllers/profile");
 const ctrlAuth = require("../controllers/authentication");
-const ctrUserList = require("../controllers/userlist");
+const ctrUserList = require("../controllers/users");
 const ctrProjectForm = require("../controllers/project-form");
 const ctrProject = require("../controllers/project");
 const ctrNewsForm = require("../controllers/news-form");
@@ -30,8 +30,15 @@ router.post("/register", ctrlAuth.register);
 router.get("/verify", ctrlAuth.verification);
 router.post("/login", ctrlAuth.login);
 
-// список пользователей для админа
+// список действий для админа
 router.get("/userlist", ctrUserList.list);
+router.post("/deleteUsers", ctrUserList.deleteSelected);
+router.post("/blockUsers", ctrUserList.blockSelected);
+router.post("/unblockUsers", ctrUserList.unblockSelected);
+router.get("/check/:user", ctrUserList.passportUser);
+router.post("/confirm", ctrUserList.confirmUser);
+
+router.post("/check", ctrlAuth.requestForCheck);
 
 // действия с проектами
 router.post("/project/new", ctrProjectForm.createProject);

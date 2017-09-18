@@ -20,7 +20,7 @@
         "styles": [
             "styles.css"
         ],
-        "scripts": [],
+        "scripts": [ "../node_modules/@types/jquery/index.d.js"],
         "environmentSource": "environments/environment.ts",
         "environments": {
             "dev": "environments/environment.ts",

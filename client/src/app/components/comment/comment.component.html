@@ -1,18 +1,16 @@
-<div class="row">
-    <div class="col-3">
-        <div class="thumbnail">
-            <img class="img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
-        </div>
-    </div>
-
-    <div class="col-9">
-        <div class="panel panel-default">
-            <div class="panel-heading">
-                <strong>User</strong> <span class="text-dark pull-right">Time</span>
-            </div>
-            <div class="panel-body">
-                Content
-            </div>
-        </div>
+<div class="row comment">
+  <div class="col-2">
+      <div class="">
+          <img class="img img-circle img-thumbnail img-rounded img-responsive user-photo" src="https://ssl.gstatic.com/accounts/ui/avatar_2x.png">
+      </div>
+  </div>
+  <div class="col-7">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <strong>{{ user }}</strong> <span class="text-muted pull-right">{{ time }}</span>
+      </div>
+      <div class="panel-body">
+        {{ content }}
+      </div>
     </div>
 </div>
