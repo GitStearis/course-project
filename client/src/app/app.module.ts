@@ -27,7 +27,6 @@ import { DonationComponent } from './components/donation/donation.component';
 import { LoginComponent } from './components/login/login.component';
 import { ProjectComponent } from './components/project/project/project.component';
 import { AdminComponent } from './components/admin/admin.component';
-import { PreviewComponent } from './components/project/preview/preview.component';
 
 import { AuthService } from './services/auth/auth.service';
 import { CreateComponent } from './components/project/create/create.component';
@@ -40,6 +39,10 @@ import { CheckingComponent } from './components/checking/checking.component';
 import { CreatedProjectsComponent } from './components/created-projects/created-projects.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { CreateNewsComponent } from './components/news/create-news/create-news.component';
+import { AllNewsComponent } from './components/news/all-news/all-news.component';
+import { NewsComponent } from './components/news/news/news.component';
+import { AllProjectsComponent } from './components/project/all-projects/all-projects.component';
+import { AllProjectNewsComponent } from './components/news/all-project-news/all-project-news.component';
 import { CheckByAdminComponent } from './components/checking/check-by-admin/check-by-admin.component';
 
 @NgModule({
@@ -54,7 +57,6 @@ import { CheckByAdminComponent } from './components/checking/check-by-admin/chec
     LoginComponent,
     ProjectComponent,
     AdminComponent,
-    PreviewComponent,
     MessagesComponent,
     CreateComponent,
     UserComponent,
@@ -64,6 +66,10 @@ import { CheckByAdminComponent } from './components/checking/check-by-admin/chec
     CreatedProjectsComponent,
     CommentComponent,
     CreateNewsComponent,
+    AllNewsComponent,
+    NewsComponent,
+    AllProjectsComponent,
+    AllProjectNewsComponent
     CheckByAdminComponent
   ],
   imports: [

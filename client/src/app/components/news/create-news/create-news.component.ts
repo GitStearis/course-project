@@ -1,10 +1,13 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+
 import { Profile } from '../../../profile';
 import { AuthService } from '../../../services/auth/auth.service';
 import { MessagesService } from '../../../../../node_modules/ng2-messages/ng2-messages.service';
 import { ImgCloudinaryService } from '../../../services/img/img-cloudinary.service';
-import { Router } from '@angular/router';
+
 import { async } from 'q';
 
 @Component({
@@ -23,6 +26,7 @@ export class CreateNewsComponent implements OnInit {
   public creation: string = new Date().toJSON().slice(0, 10);
   public tags: string = '';
   public author: string = localStorage['name'];
+  public pageId: string = '';
 
   constructor(
     private http: HttpClient,
@@ -30,7 +34,8 @@ export class CreateNewsComponent implements OnInit {
     public element: ElementRef,
     public msg: MessagesService,
     public img: ImgCloudinaryService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) { }
 
   private getFromInput(value, target) {
@@ -93,24 +98,58 @@ export class CreateNewsComponent implements OnInit {
   private removeAllWarnings() {
     this.msg.messages.subscribe(data => {
       for (const id in data['warning']) {
+        if (id) {
         this.msg.remove(id);
+        }
       }
     });
   }
 
   public submit() {
-    const project = {
+    const news = {
       title: this.projectName,
       description: this.description,
       body: this.body,
       image: this.image,
       tags: this.tags,
-      author: localStorage['name']
+      author: localStorage['name'],
+      pageId: this.pageId
     };
-    console.log(project);
+    console.log(news);
+
+    this.http
+    .post('/api/news/new', news)
+    .map(data => JSON.stringify(data))
+    .subscribe(
+    data => {
+      window.scrollTo(0, 0);
+      this.removeAllWarnings();
+      this.msg.success('Successfully created news!');
+      this.router.navigate(['/project/' + this.pageId]);
+      console.log(data);
+    },
+    err => {
+      this.removeWarnings();
+      window.scrollTo(0, 0);
+      if (err.error instanceof Error) {
+        this.msg.warning('An error occured, please, try again.');
+        console.log('An error occurred:', err.error.message);
+      } else {
+        this.msg.warning('Server returned code ' + err.status + ', ' + err.error);
+        console.log(err);
+        console.log(
+          `Backend returned code ${err.status}, body was: ${err.error}`
+        );
+      }
+    }
+    );
   }
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      this.pageId = params.pageId;
+      console.log(params);
+    });
   }
 
 }

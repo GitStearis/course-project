@@ -1,17 +1,3 @@
-.goal-progress-container {
-    height: 24px;
-    background-color: rgba(32, 32, 32, 0.3);
-}
-
-.goal-progress {
-    min-width: 2em;
-}
-
-button a {
-    text-decoration: none;
-    color: white;
-}
-
 .img-preview-container {
     height: 256px;
     display: flex;

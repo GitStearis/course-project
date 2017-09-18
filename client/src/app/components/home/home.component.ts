@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Project } from '../../project';
+import { News } from '../../news';
 import { TranslateService } from 'ng2-translate';
 
 @Component({
@@ -12,10 +13,9 @@ import { TranslateService } from 'ng2-translate';
 })
 export class HomeComponent implements OnInit {
 
-  projects: Project[];
-
   actualProjects: Project[];
   newProjects: Project[];
+  newsList: News[];
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, translate: TranslateService) {
     this.route.params.subscribe(params => {
@@ -25,7 +25,6 @@ export class HomeComponent implements OnInit {
         .subscribe(
         data => {
           this.newProjects = JSON.parse(data);
-          console.log(this.newProjects);
 
           this.http
           .get('/api/projects/actual')
@@ -33,28 +32,16 @@ export class HomeComponent implements OnInit {
           .subscribe(
           actual => {
             this.actualProjects = JSON.parse(actual);
-            console.log(this.actualProjects);
-          },
-          err => {
-            if (err.error instanceof Error) {
-              console.log('An error occurred:', err.error.message);
-            } else {
-              console.log(err);
-              console.log(
-                `Backend returned code ${err.status}, body was: ${err.error}`
-              );
-            }
+
+            this.http
+            .get('/api/news/recent')
+            .map(news => JSON.stringify(news))
+            .subscribe(
+            news => {
+              this.newsList = JSON.parse(news);
+              console.log(this.newsList);
+            });
           });
-        },
-        err => {
-          if (err.error instanceof Error) {
-            console.log('An error occurred:', err.error.message);
-          } else {
-            console.log(err);
-            console.log(
-              `Backend returned code ${err.status}, body was: ${err.error}`
-            );
-          }
         });
     });
 

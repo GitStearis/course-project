@@ -5,8 +5,48 @@
     <div class="row"><a class="btn btn-primary btn-lg">{{ 'Home.Jumbotron.Join' | translate }}</a></div>
 </div>
 <hr>
-<div class="container-fluid">
-    <h2 class="text-center">{{ 'Home.NewProjects' | translate }}</h2>
+<div class="col-xs-12 col-sm-12 col-md-12 jumbotron">
+    <h2 class="text-center"><a href="/news">{{ 'Home.News' | translate }}</a></h2>
+</div>
+<section *ngFor="let news of newsList">
+    <div class="col-xs-12 col-sm-6 col-md-4">
+        <div class="thumbnail card">
+            <div class="img-preview-container text-center">
+                <a href="/news/{{ news.newsId }}"><img class="img-fluid img-preview" src="{{ news.image }}" alt="Project image"></a>
+            </div>
+            <div class="text-container">
+                <a href="/news/{{ news.newsId }}">
+                    <h4 class="title">
+                        {{ news.title }}
+                    </h4>
+                </a>
+                <p class="text text-secondary text-left description">
+                    {{ news.description }}
+                </p>
+                <p class="text text-secondary text-left description">
+                    {{ news.body }}
+                </p>
+            </div>
+            <hr>
+            <div class="text-container text-right d-flex justify-content-around">
+                <div>
+                    <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                    <a href="/user/{{ news.author }}">{{ news.author }}</a>
+                </div>
+                <a href="/project/{{ news.pageId }}">Project page</a>
+            </div>
+            <hr>
+            <div class="text-container text-right d-flex justify-content-around">
+                <small class="text text-warning">{{ news.creation }}</small>
+                <small class="text text-secondary">tagged as: {{ news.tags }}</small>
+            </div>
+            <hr>
+        </div>
+    </div>
+</section>
+<hr>
+<div class="col-xs-12 col-sm-12 col-md-12 jumbotron">
+    <h2 class="text-center"><a href="/projects">{{ 'Home.NewProjects' | translate }}</a></h2>
 </div>
 <section *ngFor="let project of newProjects">
     <div class="col-xs-12 col-sm-6 col-md-4">
@@ -44,8 +84,8 @@
     </div>
 </section>
 <hr>
-<div class="container-fluid">
-    <h2 class="text-center">{{ 'Home.ActualProjects' | translate }}</h2>
+<div class="col-xs-12 col-sm-12 col-md-12 jumbotron">
+    <h2 class="text-center"><a href="/projects">{{ 'Home.ActualProjects' | translate }}</a></h2>
 </div>
 <section *ngFor="let project of actualProjects">
     <div class="col-xs-12 col-sm-6 col-md-4">

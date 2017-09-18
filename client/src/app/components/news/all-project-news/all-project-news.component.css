@@ -1,14 +1,8 @@
-.goal-progress-container {
-    height: 24px;
-    background-color: rgba(32, 32, 32, 0.3);
+h2 {
+    margin-bottom: 40px;
 }
 
-.goal-progress {
-    min-width: 2em;
-}
-
-button a {
-    text-decoration: none;
+.jumbotron .btn {
     color: white;
 }
 

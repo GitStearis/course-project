@@ -15,6 +15,8 @@ const ctrlAuth = require("../controllers/authentication");
 const ctrUserList = require("../controllers/users");
 const ctrProjectForm = require("../controllers/project-form");
 const ctrProject = require("../controllers/project");
+const ctrNewsForm = require("../controllers/news-form");
+const ctrNews = require("../controllers/news");
 
 // профиль
 router.get("/profile", auth, ctrlProfile.profileRead);
@@ -50,5 +52,13 @@ router.get("/projects/new", ctrProject.newProjects);
 router.get("/projects/all", ctrProject.projects);
 router.get("/projects/actual", ctrProject.actualProjects);
 
+// действия с новостями
+router.post("/news/new", ctrNewsForm.createNews);
+
+router.get("/news/:pageId/recent", ctrNews.newsRecentByPageId);
+router.get("/news/:pageId/all", ctrNews.newsByPageId);
+router.get("/news/recent", ctrNews.newsRecent);
+router.get("/news/all", ctrNews.news);
+router.get("/news/:newsId", ctrNews.newsByNewsId);
 
 module.exports = router;

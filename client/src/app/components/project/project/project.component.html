@@ -4,7 +4,6 @@
             <div class="col-md-8 text-center">
                 <div class="alert text-center">
                     <h2>{{ project.title }}</h2>
-
                 </div>
             </div>
             <div class="col-md-8 text-center">
@@ -52,8 +51,12 @@
                             <small class="text text-secondary">Deadline</small>
                         </div>
                         <div class="alert text-center">
-                            <a *ngIf="!this.isProject('closed') && auth.isAuthenticated() && !this.isAuthor()" type="button" href="project/{{ project.pageId }}/donate" class="btn btn-success btn-lg">Support</a>
-                            <a *ngIf="!this.isProject('closed') && auth.isAuthenticated() && this.isAuthor()" type="button" href="project/{{ project.pageId }}/news" class="btn btn-success btn-lg">Add news</a>
+                            <a *ngIf="!this.isProject('closed') && auth.isAuthenticated() && !this.isAuthor()" href="project/{{ project.pageId }}/donate">
+                                <button type="button" class="btn btn-success btn-lg">Support</button>
+                            </a>
+                            <a *ngIf="!this.isProject('closed') && auth.isAuthenticated() && this.isAuthor()" href="project/{{ project.pageId }}/news/create">
+                                <button type="button" class="btn btn-success btn-lg">Add news</button>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -61,23 +64,72 @@
         </div>
     </div>
     <div class="container">
-        <div class="col-md-8 jumbotron">
-            <div class="alert text-center">
-                <h2>About</h2>
+        <div class="row">
+            <div class="col-md-8">
+                <div class="jumbotron">
+                    <div class="alert text-center">
+                        <h2>About</h2>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <markdown [data]="project.body"></markdown>
+                    </div>
+                </div>
+                <div class="jumbotron">
+                    <div class="alert text-center">
+                        <h2>Comments</h2>
+                    </div>
+                    <div>
+                        <app-comment></app-comment>
+                    </div>
+                </div>
             </div>
-            <div class="d-flex justify-content-center">
-                <markdown [data]="project.body"></markdown>
+            <div class="col-md-4">
+                <div class="alert text-center">
+                    <h3><a href="project/{{ project.pageId }}/news">News</a></h3>
+                </div>
+                <div *ngFor="let news of newsList">
+                    <div class="thumbnail card">
+                        <div class="img-preview-container text-center">
+                            <a href="/news/{{ news.newsId }}"><img class="img-fluid img-preview" src="{{ news.image }}" alt="Project image"></a>
+                        </div>
+                        <div class="text-container">
+                            <a href="/news/{{ news.newsId }}">
+                                <h4 class="title">
+                                    {{ news.title }}
+                                </h4>
+                            </a>
+                            <p class="text text-secondary text-left description">
+                                {{ news.description }}
+                            </p>
+                            <p class="text text-secondary text-left description">
+                                {{ news.body }}
+                            </p>
+                        </div>
+                        <hr>
+                        <div class="text-container text-right d-flex justify-content-around">
+                            <div>
+                                <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                                <a href="/user/{{ news.author }}">{{ news.author }}</a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="text-container text-right d-flex justify-content-around">
+                            <small class="text text-warning">{{ news.creation }}</small>
+                            <small class="text text-secondary">tagged as: {{ news.tags }}</small>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
     <div class="container">
-        <div class="col-md-8 jumbotron">
-            <div class="alert text-center">
-                <h2>Comments</h2>
+        <div class="row">
+            <div class="col-md-8">
+
             </div>
         </div>
     </div>
-</div>
-<div class="container">
-    <app-comment></app-comment>
+
 </div>

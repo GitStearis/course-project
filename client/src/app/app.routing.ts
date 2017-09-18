@@ -13,6 +13,10 @@ import { CheckingComponent } from './components/checking/checking.component';
 import { CreatedProjectsComponent } from './components/created-projects/created-projects.component';
 import { DonationComponent } from './components/donation/donation.component';
 import { CreateNewsComponent } from './components/news/create-news/create-news.component';
+import { AllNewsComponent } from './components/news/all-news/all-news.component';
+import { NewsComponent } from './components/news/news/news.component';
+import { AllProjectsComponent } from './components/project/all-projects/all-projects.component';
+import { AllProjectNewsComponent } from './components/news/all-project-news/all-project-news.component';
 
 const appRoutes: Routes = [
   {
@@ -40,6 +44,10 @@ const appRoutes: Routes = [
     component: AdminComponent
   },
   {
+    path: 'projects',
+    component: AllProjectsComponent
+  },
+  {
     path: 'project/:pageId',
     component: ProjectComponent
   },
@@ -49,6 +57,10 @@ const appRoutes: Routes = [
   },
   {
     path: 'project/:pageId/news',
+    component: AllProjectNewsComponent
+  },
+  {
+    path: 'project/:pageId/news/create',
     component: CreateNewsComponent
   },
   {
@@ -58,6 +70,14 @@ const appRoutes: Routes = [
   {
     path: 'create',
     component: CreateComponent
+  },
+  {
+    path: 'news',
+    component: AllNewsComponent 
+  },
+  {
+    path: 'news/:newsId',
+    component: NewsComponent
   },
   {
     path: '404',

@@ -1,0 +1,43 @@
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 text-center">
+            <div class="alert text-center">
+                <h2><a href="project/{{ news.pageId }}">{{ news.title }}</a></h2>
+                <h4 class="text text-secondary">{{ news.description }}</h4>
+            </div>
+        </div>
+        <div class="col-md-8 rounded jumbotron">
+            <div class="d-flex flex-column justify-content-center">
+                <div class="text-center">
+                    <div class="d-flex justify-content-center">
+                        <markdown [data]="news.body"></markdown>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 text-center">
+            <div>
+                <a href="project/{{ news.pageId }}"><img class="img-fluid img-rounded" src="{{ news.image }}" alt="Project image"></a>
+            </div>
+            <hr>
+            <div class="alert">
+                <a href="project/{{ news.pageId }}"><button type="button" class="btn btn-success" value="">Project page</button></a>
+            </div>
+            <hr>
+            <div class="d-flex justify-content-around">
+                <div class="alert">
+                    <h4>
+                        <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                        <a href="/user/{{ news.author }}">{{ news.author }}</a>
+                    </h4>
+                    <small class="text text-secondary">Project author</small>
+                </div>
+                <div class="alert text-center">
+                    <h4>{{ news.creation }}</h4>
+                    <small class="text text-secondary">Date</small>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
