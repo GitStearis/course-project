@@ -8,26 +8,211 @@
         "News": "Project news",
         "Projects": "Projects",
         "NewProjects": "Recently created",
-        "ActualProjects": "Actual",
+        "ActualProjects": "Actual"
+    },
+
+    "Navbar": {
+
+    },
+
+    "Footer": {
+        "About": "About",
+        "Contact": "Contact us",
+        "Goals": "Goals",
+        "Repository": "Repository"
+    },
+
+    "Project": {
+        "Headers": {
+            "CreatedProjects": "Projects of",
+            "AllProjects": "All projects",
+            "Create": "Create new project with CO-OP",
+            "CreateTag": "Cooperate to develop your ideas",
+            "MarkdownPreview": "Markdown preview",
+            "SmallPreview": "Card preview"
+        },
         "Preview": {
             "Goal": "Goal",
             "Current": "Current",
             "Start": "Started",
             "End": "Deadline",
-            "Tag": "Tagged as"
+            "Tag": "Tagged as",
+            "Image": "Project cover"
+        },
+        "Creation": {
+            "Title": "Project title",
+            "TitleTag": "Make sure that your project has memorable title. People like it!",
+            "Description": "Description",
+            "DescriptionTag": "Description can help people to understand your purpose.",
+            "Body": "Body",
+            "BodyTag": "Tell people about yourself, about your goals and gifts.",
+            "Image": "Cover of the project",
+            "Tag": "Tag",
+            "TagTag": "Tags are used for easy search.",
+            "Goal": "Goal",
+            "GoalTag": "How much money do you want to collect?",
+            "Date": "To",
+            "DateTag": "Project's deadline",
+            "Placeholders": {
+                "Title": "memorable title",
+                "Description": "informative description",
+                "Body": "interesting body",
+                "Tag": "e.g. cats",
+                "Goal": "42"
+            },
+            "Alert": {
+                "Prefix": "Project creation is available only for authenticated users. Please",
+                "Login": "log in",
+                "Or": "or",
+                "Register": "register"
+            }
+        },
+        "Buttons": {
+            "Guide": "Read guide",
+            "Image": "Choose image",
+            "Preview": "Markdown preview",
+            "Submit": "Submit",
+            "Close": "Close",
+            "Project": "Project page",
+            "Support": "Support",
+            "AddNews": "Add news"
+        },
+        "Project": {
+            "Author": "Project author",
+            "Status": "Project status",
+            "Active": "Active",
+            "Done": "Done",
+            "Closed": "Closed",
+            "Created": "Created",
+            "Deadline": "Deadline",
+            "About": "About",
+            "Comments": "Comments",
+            "News": "News",
+            "Of": "of"
         }
     },
-    "Navbar": {},
-    "Footer": {
-        "About": "About",
-        "Contact": "Contact us",
-        "Reviews": "Reviews",
-        "Terms": "Terms of service"
-    },
-    "Project": {
 
-    },
     "Check": {
 
+    },
+
+    "Donate": {
+        "Header": "Payment details",
+        "Tag": "Enter your payment",
+        "Back": "Back",
+        "Continue": "Continue"
+    },
+
+    "Login": {
+        "Header": "Welcome",
+        "Captions": {
+            "Email": "E-mail",
+            "Password": "Password"
+        },
+        "Alerts": {
+            "Fill": "Please, fill in all fields",
+            "Email": "Enter valid e-mail address",
+            "Password": "Must be at least 8 symbols"
+        },
+        "Close": "Close",
+        "Login": "Log in"
+    },
+
+    "Registration": {
+        "Headers": {
+            "Registration": "Registration",
+            "Credentials": "Credentials"
+        },
+        "Captions": {
+            "Email": "E-mail",
+            "Username": "Username",
+            "Password": "Password",
+            "FirstName": "First name",
+            "SecondName": "Second name",
+            "Phone": "Phone"
+        },
+        "Alerts": {
+            "Fill": "Please, fill in all fields",
+            "Email": "Enter valid e-mail address",
+            "Username": "Must be 3 symbols at least",
+            "Password": "Must be at least 8 symbols",
+            "Empty": "This field cannot be empty",
+            "Phone": "Enter valid mobile phone"
+        },
+        "Close": "Close",
+        "Continue": "Continue",
+        "Register": "Register"
+    },
+
+    "News": {
+        "Headers": {
+            "AllNews": "Recent news",
+            "AllProjectNews": "Recent news of",
+            "OfProject": "project",
+            "Create": "Publish news for your project",
+            "CreateTag": "Share information with your followers",
+            "MarkdownPreview": "Markdown preview",
+            "SmallPreview": "Card preview"
+        },
+        "Preview": {
+            "ProjectPage": "Project page",
+            "Tag": "Tagged as",
+            "Image": "News cover"
+        },
+        "Creation": {
+            "Title": "News title",
+            "TitleTag": "Make sure that your news has memorable title. People like it!",
+            "Description": "Description",
+            "DescriptionTag": "Description will help to interest people.",
+            "Body": "Body",
+            "BodyTag": "Tell readers what's new about your project.",
+            "Image": "Cover of the news",
+            "Tag": "Tag",
+            "Placeholders": {
+                "Title": "memorable title",
+                "Description": "informative description",
+                "Body": "interesting body",
+                "Tag": "e.g. cats"
+            },
+            "Alert": {
+                "Prefix": "Creation is available only for authenticated users. Please",
+                "Login": "log in",
+                "Or": "or",
+                "Register": "register"
+            }
+        },
+        "News": {
+            "Author": "Project author",
+            "Date": "Date"
+        },
+        "Buttons": {
+            "Guide": "Read guide",
+            "Image": "Choose image",
+            "Preview": "Markdown preview",
+            "Submit": "Submit",
+            "Close": "Close",
+            "Project": "Project page"
+        }
+    },
+
+    "404": {
+        "Button": "Take me home"
+    },
+
+    "Profile": {
+        "Stats": "Statistics",
+        "Donated": "Donated",
+        "Projects": "Created projects",
+        "Tipped": "Tipped projects",
+        "Registration": "Registration date",
+        "Achievements": "Achievements"
+    },
+
+    "Verification": {
+        "Header": "Crowdfunding platform CO-OP",
+        "Welcome": "Welcome in our great community! We hope that the time you spend here will be useful.",
+        "Footer": "Members from CO-OP Team",
+        "Home": "Home"
     }
+
 }

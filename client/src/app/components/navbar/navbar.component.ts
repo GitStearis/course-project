@@ -60,19 +60,21 @@ export class NavbarComponent implements OnInit {
   }
 
   // ================== Language section ==========================
-  initializeLanguage() {
-    if (Cookie.get('lang') === null) {
+  initializeLanguage() { 
+    if (localStorage.getItem('lang') === null) {
       this.browserLang = this.translate.getBrowserLang();
       this.changeLanguage(this.browserLang.match(/en|ru/) ? this.browserLang : 'en');
     } else {
-      this.browserLang = Cookie.get('lang');
+      console.log(Cookie.get('lang'));
+      this.browserLang = localStorage.getItem('lang');
       this.translate.use(this.browserLang);
     }
   }
 
   changeLanguage(lang) {
     this.translate.use(lang);
-    Cookie.set('lang', lang);
+    // Cookie.set('lang', lang);
+    localStorage.setItem('lang', lang);
   }
 
 }

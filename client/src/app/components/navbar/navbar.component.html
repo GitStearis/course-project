@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
-    <a class="navbar-brand" href="#">
+    <a class="navbar-brand" href="/">
         <img src="https://s8.hostingkartinok.com/uploads/images/2017/09/33cb02b1b093be99346051c29dcc6c70.png" width="54" height="20">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -13,32 +13,31 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-active" href="/profile" *ngIf="auth.isAuthenticated()">
-                    <i class="fa fa-user fa-lg fa-fw colored" aria-hidden="true"></i>
+                <a class="btn btn-active dropdown-toggle text-light" data-toggle="dropdown" aria-expanded="false" #langSelect (change)="translate.use(langSelect.value)">
+                    <i class="fa fa-globe fa-lg fa-fw colored" aria-hidden="true"></i>
                 </a>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let lang of translate.getLangs()" class="dropdown-item" (click)="changeLanguage(lang)"><a class="colored">{{ lang }}</a></li>
+                </ul>
             </li>
             <li class="nav-item" *ngIf="auth.isAuthenticated()">
                 <a class="btn btn-active" href="/create" *ngIf="auth.isAuthenticated()">
                     <i class="fa fa-plus-circle fa-lg fa-fw colored" aria-hidden="true"></i>
                 </a>
             </li>
+        </ul>
+    </div>
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav navbar-right">
             <li class="nav-item" *ngIf="auth.isAuthenticated()">
                 <a class="btn btn-active" href="/check" *ngIf="auth.isAuthenticated()">
                     <i class="fa fa-check-circle fa-lg fa-fw colored" aria-hidden="true"></i>
                 </a>
             </li>
-        </ul>
-    </div>
-    <div class="collapse navbar-collapse">
-        <ul class="nav navbar-nav navbar-right">
             <li class="nav-item">
-                <a class="btn btn-active dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href=""
-                #langSelect (change)="translate.use(langSelect.value)">
-                    <i class="fa fa-globe fa-lg fa-fw colored" aria-hidden="true"></i>
+                <a class="btn btn-active" href="/profile" *ngIf="auth.isAuthenticated()">
+                    <i class="fa fa-user fa-lg fa-fw colored" aria-hidden="true"></i>
                 </a>
-                <ul class="dropdown-menu">
-                    <li *ngFor="let lang of translate.getLangs()" (click)="changeLanguage(lang)"><a href="#" class="colored">{{ lang }}</a></li>
-                </ul>
             </li>
             <li class="nav-item">
                 <a class="btn btn-active" href="" data-toggle="modal" data-target="#register" *ngIf="!auth.isAuthenticated()">
