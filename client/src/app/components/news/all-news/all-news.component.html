@@ -1,6 +1,6 @@
 <div class="jumbotron">
     <h2>
-        Recent news
+        {{ 'News.Headers.AllNews' | translate }}:
     </h2>
 </div>
 <div>
@@ -8,7 +8,7 @@
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="thumbnail card">
                 <div class="img-preview-container text-center">
-                    <a href="/news/{{ news.newsId }}"><img class="img-fluid img-preview" src="{{ news.image }}" alt="Project image"></a>
+                    <a href="/news/{{ news.newsId }}"><img class="img-fluid img-preview" src="{{ news.image }}" alt="{{ 'News.Preview.Tag' | translate }}"></a>
                 </div>
                 <div class="text-container">
                     <a href="/news/{{ news.newsId }}">
@@ -29,12 +29,12 @@
                         <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
                         <a href="/user/{{ news.author }}">{{ news.author }}</a>
                     </div>
-                    <a href="/project/{{ news.pageId }}">Project page</a>
+                    <a href="/project/{{ news.pageId }}">{{ 'News.Preview.ProjectPage' | translate }}</a>
                 </div>
                 <hr>
                 <div class="text-container text-right d-flex justify-content-around">
                     <small class="text text-warning">{{ news.creation }}</small>
-                    <small class="text text-secondary">tagged as: {{ news.tags }}</small>
+                    <small class="text text-secondary">{{ 'News.Preview.Tag' | translate }}: {{ news.tags }}</small>
                 </div>
                 <hr>
             </div>

@@ -17,11 +17,11 @@
         </div>
         <div class="col-md-4 text-center">
             <div>
-                <a href="project/{{ news.pageId }}"><img class="img-fluid img-rounded" src="{{ news.image }}" alt="Project image"></a>
+                <a href="project/{{ news.pageId }}"><img class="img-fluid img-rounded" src="{{ news.image }}" alt="{{ 'News.Preview.Tag' | translate }}"></a>
             </div>
             <hr>
             <div class="alert">
-                <a href="project/{{ news.pageId }}"><button type="button" class="btn btn-success" value="">Project page</button></a>
+                <a href="project/{{ news.pageId }}"><button type="button" class="btn btn-success" value="">{{ 'News.Buttons.Project' | translate }}</button></a>
             </div>
             <hr>
             <div class="d-flex justify-content-around">
@@ -30,11 +30,11 @@
                         <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
                         <a href="/user/{{ news.author }}">{{ news.author }}</a>
                     </h4>
-                    <small class="text text-secondary">Project author</small>
+                    <small class="text text-secondary">{{ 'News.News.Author' | translate }}</small>
                 </div>
                 <div class="alert text-center">
                     <h4>{{ news.creation }}</h4>
-                    <small class="text text-secondary">Date</small>
+                    <small class="text text-secondary">{{ 'News.News.Date' | translate }}</small>
                 </div>
             </div>
         </div>
