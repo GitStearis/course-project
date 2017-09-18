@@ -4,7 +4,6 @@ import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Project } from '../../project';
 import { News } from '../../news';
-import { TranslateService } from 'ng2-translate';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +16,7 @@ export class HomeComponent implements OnInit {
   newProjects: Project[];
   newsList: News[];
 
-  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, translate: TranslateService) {
+  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
     this.route.params.subscribe(params => {
       this.http
         .get('/api/projects/new')

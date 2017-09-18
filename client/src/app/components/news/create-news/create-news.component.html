@@ -1,51 +1,51 @@
-<div class="jumbotron">
+<div class="jumbotron" *ngIf="auth.isAuthenticated()">
     <div class="container">
         <div class="d-flex justify-content-center">
             <h3 class="display-1">
-                Create new project with CO-OP
+                {{ 'News.Headers.Create' | translate }}
             </h3>
         </div>
         <div class=" d-flex justify-content-center">
-            <p>Cooperate to develop your ideas</p>
+            <p>{{ 'News.Headers.CreateTag' | translate }}</p>
         </div>
         <div class=" d-flex justify-content-center">
             <img src="https://s8.hostingkartinok.com/uploads/images/2017/09/f61e5552af325c19df4d3bf71f94c7a1.png" width="128" height="128">
         </div>
 
         <div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-info">Read guide</button>
+            <button type="button" class="btn btn-info">{{ 'News.Buttons.Guide' | translate }}</button>
         </div>
     </div>
 </div>
 
-<div class="container" *ngIf=" auth.isAuthenticated()">
+<div class="container" *ngIf="auth.isAuthenticated()">
     <div class="row">
         <div class="col-2"></div>
         <form class="form-horizontal col-4 row">
             <fieldset>
                 <div class="form-group">
-                    <label for="inputTitle" class="control-label"><h3>News title</h3></label>
-                    <input #titleInput class="form-control" placeholder="Title" (input)="projectName = $event.target.value" (keyup.enter)="getFromInput(titleInput.value, this.projectName)" (blur)="getFromInput(titleInput.value, this.projectName)">
-                    <small>Make sure that your news has memorable title. People like it!</small>
+                    <label for="inputTitle" class="control-label"><h3>{{ 'News.Creation.Title' | translate }}</h3></label>
+                    <input #titleInput class="form-control" placeholder="{{ 'News.Creation.Placeholders.Title' | translate }}" (input)="projectName = $event.target.value" (keyup.enter)="getFromInput(titleInput.value, this.projectName)" (blur)="getFromInput(titleInput.value, this.projectName)">
+                    <small>{{ 'News.Creation.TitleTag' | translate }}</small>
                     <hr>
                 </div>
                 <div class="form-group">
-                    <label for="inputTitle" class="control-label"><h3>Description</h3></label>
-                    <input #inputDescription type="text" class="form-control" placeholder="Write about your project in one sentence" (input)="description = $event.target.value" (keyup.enter)="getFromInput(inputDescription.value, this.description)" (blur)="getFromInput(inputDescription.value, this.description)">
-                    <small>Description can help people to understand you.</small>
+                    <label for="inputTitle" class="control-label"><h3>{{ 'News.Creation.Description' | translate }}</h3></label>
+                    <input #inputDescription type="text" class="form-control" placeholder="{{ 'News.Creation.Placeholders.Description' | translate }}" (input)="description = $event.target.value" (keyup.enter)="getFromInput(inputDescription.value, this.description)" (blur)="getFromInput(inputDescription.value, this.description)">
+                    <small>{{ 'News.Creation.DescriptionTag' | translate }}</small>
                     <hr>
                 </div>
                 <div class="form-group">
-                    <label for="textArea" class="control-label"><h3>Body</h3></label>
-                    <textarea #textArea class="form-control" rows="3" placeholder="Rock-n-roll starts here" (input)="body = $event.target.value" (keyup.enter)="getFromInput(textArea.value, this.body)" (blur)="getFromInput(textArea.value, this.body)"></textarea>
-                    <small>Tell people what's new about your project.</small>
+                    <label for="textArea" class="control-label"><h3>{{ 'News.Creation.Body' | translate }}</h3></label>
+                    <textarea #textArea class="form-control" rows="5" placeholder="{{ 'News.Creation.Placeholders.Body' | translate }}" (input)="body = $event.target.value" (keyup.enter)="getFromInput(textArea.value, this.body)" (blur)="getFromInput(textArea.value, this.body)"></textarea>
+                    <small>{{ 'News.Creation.BodyTag' | translate }}</small>
                     <hr>
                 </div>
                 <div class="form-group">
-                    <label for="inputTitle" class="control-label"><h3>Cover of the project</h3></label>
+                    <label for="inputTitle" class="control-label"><h3>{{ 'News.Creation.Image' | translate }}</h3></label>
                     <img id="img-preview" class="img-fluid img-rounded" src="{{ image }}" />
                     <label for="file-upload" class="control-label">
-                          <a class="btn btn-default">Choose image</a>
+                          <a class="btn btn-default">{{ 'News.Buttons.Image' | translate }}</a>
                           <!-- Some hell is going on here -->
                           <!-- #imagePreview (input)="body = $event.target.value" (keyup.enter)="getFromInput(imagePreview.value, this.body)" (blur)="imagePreview(textArea.value, this.body)" -->
                           <input (change)="uploadFile($event)" id="file-upload" type="file" name="file" class="form-control" style="display:none;">
@@ -53,20 +53,22 @@
                     <hr>
                 </div>
                 <div class="form-group" id="tag-input">
-                    <label for="inputTitle" class="control-label"><h3>Tag</h3></label>
-                    <input #inputTag type="text" class="form-control" placeholder="Enter tag for project" (input)="tags = $event.target.value" (keyup.enter)="getFromInput(inputTag.value, this.tags)" (blur)="getFromInput(inputTag.value, this.tags)">
+                    <label for="inputTitle" class="control-label"><h3>{{ 'News.Creation.Tag' | translate }}</h3></label>
+                    <input #inputTag type="text" class="form-control" (input)="tags = $event.target.value" (keyup.enter)="getFromInput(inputTag.value, this.tags)" (blur)="getFromInput(inputTag.value, this.tags)">
                 </div>
                 <div class="alert text-center">
-                    <button data-toggle="modal" data-target="#text-preview" type="button" class="btn btn-primary">Markdown preview</button>
-                    <button (click)="submit()" type="button" class="btn btn-success" data-dismiss="modal">Submit</button>
+                    <button data-toggle="modal" data-target="#text-preview" type="button" class="btn btn-primary">{{ 'News.Buttons.Preview' | translate }}</button>
+                    <button (click)="submit()" type="button" class="btn btn-success" data-dismiss="modal">{{ 'News.Buttons.Submit' | translate }}</button>
                 </div>
             </fieldset>
         </form>
         <div class="container col-3">
-            <h3>Small preview</h3>
+            <h3>
+                {{ 'News.Headers.SmallPreview' | translate }}
+            </h3>
             <div class="thumbnail card">
                 <div class="img-preview-container text-center">
-                    <a href=""><img class="img-fluid img-preview" src="{{ image }}" alt="Project image"></a>
+                    <a href=""><img class="img-fluid img-preview" src="{{ image }}" alt="{{ 'News.Creation.Image' | translate }}" alt="{{ 'News.Preview.Tag' | translate }}"></a>
                 </div>
                 <div class="text-container">
                     <a href="">
@@ -80,7 +82,7 @@
                 </div>
                 <hr>
                 <div class="text-container">
-                    <p class="text text-warning">Date: {{ creation }}</p>
+                    <p class="text text-warning">{{ creation }}</p>
                 </div>
                 <hr>
                 <div class="text-container text-right d-flex justify-content-around">
@@ -88,7 +90,7 @@
                         <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
                         <a href="/user/{{ author }}">{{ author }}</a>
                     </div>
-                    <small class="text text-secondary">tagged as: {{ tags }}</small>
+                    <small class="text text-secondary">{{ 'News.Preview.Tag' | translate }}: {{ tags }}</small>
                 </div>
                 <hr>
             </div>
@@ -97,8 +99,8 @@
 </div>
 
 <div class="jumbotron" *ngIf="!auth.isAuthenticated()">
-    <div class="alert">
-        <p>Creation is available only for authenticated users. Please, <a href="" data-toggle="modal" data-target="#login">sign in</a> or <a href="" data-toggle="modal" data-target="#register">register</a>.</p>
+    <div class="alert text-center">
+        <p>{{ 'News.Creation.Alert.Prefix' | translate }}, <a href="" data-toggle="modal" data-target="#login">{{ 'News.Creation.Alert.Login' | translate }}</a> {{ 'News.Creation.Alert.Or' | translate }} <a href="" data-toggle="modal" data-target="#register">{{ 'News.Creation.Alert.Register' | translate }}</a>.</p>
     </div>
 </div>
 
@@ -106,14 +108,11 @@
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">
-                <h2>Project preview</h2>
+                <h2>{{ 'News.Headers.MarkdownPreview' | translate }}</h2>
             </div>
             <div class="modal-body">
                 <div class="d-flex justify-content-center">
                     <h1>{{ projectName }}</h1>
-                </div>
-                <div class="d-flex justify-content-center">
-                    <img id="img-preview" class="img-responsive img-rounded img-thumbnail" src="{{ image }}" />
                 </div>
                 <div class="d-flex justify-content-center">
                     <div class="alert"><small>{{ description }}</small></div>
@@ -123,7 +122,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-danger" data-dismiss="modal">{{ 'News.Buttons.Close' | translate }}</button>
             </div>
         </div>
     </div>

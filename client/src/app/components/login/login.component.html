@@ -1,38 +1,38 @@
 <div class="modal-sm modal-dialog">
     <div class="modal-content">
-        <div class="modal-header">
-            <h2>Welcome!</h2>
+        <div class="modal-header text-center">
+            <h2>{{ 'Login.Header' | translate }}</h2>
         </div>
         <div class="modal-body">
             <div *ngIf="!this.checkFields(this.email, this.name)" class="alert alert-info text text-center">
                 <small>
-                    Please, fill in all fields
+                    {{ 'Login.Alerts.Fill' | translate }}
                 </small>
             </div>
             <form>
                 <div class="form-group">
-                    <label>E-mail</label>
+                    <label>{{ 'Login.Captions.Email' | translate }}</label>
                     <input (keyup)="saveEmail($event)" class="form-control">
                     <div *ngIf="!this.isEmailValid()" class="alert-warning text text-center rounded">
                         <small>
-                            Enter valid e-mail address
+                            {{ 'Login.Alerts.Email' | translate }}
                         </small>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label>Password</label>
+                    <label>{{ 'Login.Captions.Password' | translate }}</label>
                     <input (keyup)="savePassword($event)" type="password" class="form-control">
                     <div *ngIf="!this.checkPasswordLength()" class="alert-warning text text-center rounded">
                         <small>
-                            Must be at least 8 symbols
+                            {{ 'Login.Alerts.Password' | translate }}
                         </small>
                     </div>
                 </div>
             </form>
         </div>
         <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button (click)="submit()" type="button" class="btn btn-success" data-dismiss="modal" [disabled]="!this.checkFirstPage()">Log in</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'Login.Close' | translate }}</button>
+            <button (click)="submit()" type="button" class="btn btn-success" data-dismiss="modal" [disabled]="!this.checkFirstPage()">{{ 'Login.Login' | translate }}</button>
         </div>
     </div>
 </div>

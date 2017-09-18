@@ -7,7 +7,7 @@
                 </div>
             </div>
             <div class="col-md-8 text-center">
-                <div><img class="img-fluid img-rounded" src="{{ project.image }}" alt="Project image"></div>
+                <div><img class="img-fluid img-rounded" src="{{ project.image }}" alt="{{ 'Project.Preview.Image' | translate }}"></div>
                 <hr>
                 <div class="alert">
                     <h4 class="text text-secondary">{{ project.description }}</h4>
@@ -19,43 +19,43 @@
                             <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
                             <a href="/user/{{ project.author }}">{{ project.author }}</a>
                         </h4>
-                        <small class="text text-secondary">Project author</small>
+                        <small class="text text-secondary">{{ 'Project.Project.Author' | translate }}</small>
                     </div>
                     <div class="alert">
                         <h4>
-                            <span *ngIf="this.isProject('active')" class="label label-pill badge-info">Active</span>
-                            <span *ngIf="this.isProject('done')" class="label label-pill badge-success">Done</span>
-                            <span *ngIf="this.isProject('closed')" class="label label-pill badge-warning">Closed</span>
+                            <span *ngIf="this.isProject('active')" class="label label-pill badge-info">{{ 'Project.Project.Active' | translate }}</span>
+                            <span *ngIf="this.isProject('done')" class="label label-pill badge-success">{{ 'Project.Project.Done' | translate }}</span>
+                            <span *ngIf="this.isProject('closed')" class="label label-pill badge-warning">{{ 'Project.Project.Closed' | translate }}</span>
                         </h4>
-                        <small class="text text-secondary">Project status</small>
+                        <small class="text text-secondary">{{ 'Project.Project.Status' | translate }}</small>
                     </div>
                 </div>
             </div>
             <div class="col-md-4 rounded jumbotron">
                 <div class="d-flex flex-column justify-content-center">
                     <div class="text-center">
-                        <div class="alert">
+                        <!--<div class="alert">
                             <h2>0</h2>
                             <small class="text text-secondary">Sponsors</small>
-                        </div>
+                        </div>-->
                         <h2>{{ project.collected }} $</h2>
-                        <small class="text text-secondary">of {{ project.goal }}</small>
+                        <small class="text text-secondary">{{ 'Project.Project.Of' | translate }} {{ project.goal }}</small>
                         <div class="progress goal-progress-container">
                             <div class="progress-bar progress-bar-success progress-bar-striped active goal-progress" role="progressbar" [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100" [style.width]="progress + '%'">
                             </div>
                         </div>
                         <div class="alert text-center">
                             <h3>{{ project.creation }}</h3>
-                            <small class="text text-secondary">Created</small>
+                            <small class="text text-secondary">{{ 'Project.Project.Created' | translate }}</small>
                             <h3>{{ project.date }}</h3>
-                            <small class="text text-secondary">Deadline</small>
+                            <small class="text text-secondary">{{ 'Project.Project.Deadline' | translate }}</small>
                         </div>
                         <div class="alert text-center">
                             <a *ngIf="!this.isProject('closed') && auth.isAuthenticated() && !this.isAuthor()" href="project/{{ project.pageId }}/donate">
-                                <button type="button" class="btn btn-success btn-lg">Support</button>
+                                <button type="button" class="btn btn-success btn-lg">{{ 'Project.Buttons.Support' | translate }}</button>
                             </a>
                             <a *ngIf="!this.isProject('closed') && auth.isAuthenticated() && this.isAuthor()" href="project/{{ project.pageId }}/news/create">
-                                <button type="button" class="btn btn-success btn-lg">Add news</button>
+                                <button type="button" class="btn btn-success btn-lg">{{ 'Project.Buttons.AddNews' | translate }}</button>
                             </a>
                         </div>
                     </div>
@@ -93,7 +93,7 @@
 
                 <!--<div class="jumbotron">
                     <div class="alert text-center">
-                        <h2>About</h2>
+                        <h2>{{ 'Project.Project.About' | translate }}</h2>
                     </div>
                     <div class="d-flex justify-content-center">
                         <markdown [data]="project.body"></markdown>
@@ -102,7 +102,7 @@
                 
                 <div class="jumbotron">
                     <div class="alert text-center">
-                        <h2>Comments</h2>
+                        <h2>{{ 'Project.Project.Comments' | translate }}</h2>
                     </div>
                     <div>
                         <app-comment></app-comment>
@@ -112,12 +112,12 @@
         
             <div class="col-md-4">
                 <div class="alert text-center">
-                    <h3><a href="project/{{ project.pageId }}/news">News</a></h3>
+                    <h3><a href="project/{{ project.pageId }}/news">{{ 'Project.Project.News' | translate }}</a></h3>
                 </div>
                 <div *ngFor="let news of newsList">
                     <div class="thumbnail card">
                         <div class="img-preview-container text-center">
-                            <a href="/news/{{ news.newsId }}"><img class="img-fluid img-preview" src="{{ news.image }}" alt="Project image"></a>
+                            <a href="/news/{{ news.newsId }}"><img class="img-fluid img-preview" src="{{ news.image }}" alt="{{ 'News.Preview.Tag' | translate }}"></a>
                         </div>
                         <div class="text-container">
                             <a href="/news/{{ news.newsId }}">
@@ -142,7 +142,7 @@
                         <hr>
                         <div class="text-container text-right d-flex justify-content-around">
                             <small class="text text-warning">{{ news.creation }}</small>
-                            <small class="text text-secondary">tagged as: {{ news.tags }}</small>
+                            <small class="text text-secondary">{{ 'News.Preview.Tag' | translate }}: {{ news.tags }}</small>
                         </div>
                         <hr>
                     </div>
