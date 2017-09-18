@@ -69,7 +69,7 @@ import { CheckByAdminComponent } from './components/checking/check-by-admin/chec
     AllNewsComponent,
     NewsComponent,
     AllProjectsComponent,
-    AllProjectNewsComponent
+    AllProjectNewsComponent,
     CheckByAdminComponent
   ],
   imports: [
