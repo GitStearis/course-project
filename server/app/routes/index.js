@@ -33,6 +33,10 @@ router.get("/userlist", ctrUserList.list);
 router.post("/deleteUsers", ctrUserList.deleteSelected);
 router.post("/blockUsers", ctrUserList.blockSelected);
 router.post("/unblockUsers", ctrUserList.unblockSelected);
+router.get("/check/:user", ctrUserList.passportUser);
+router.post("/confirm", ctrUserList.confirmUser);
+
+router.post("/check", ctrlAuth.requestForCheck);
 
 // действия с проектами
 router.post("/project/new", ctrProjectForm.createProject);

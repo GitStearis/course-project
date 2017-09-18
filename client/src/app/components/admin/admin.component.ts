@@ -162,16 +162,14 @@ export class AdminComponent implements OnInit {
   }
 
   public selectedRows: Array<number> = [];
-
-  private click() {
-    $("#resultDataTable").on("click", "tr", function(event: any) {
-      event.preventDefault();
-      console.log(event.type);
-      $(this).toggleClass("success");
-    });
-  }
+  public selectedUser: string = "";
+  public userImage: string = "";
 
   public onCellClick(data: any): any {
+    this.selectedUser = data.row.email;
+    console.log(`Selected user: ${this.selectedUser}`);
+    this.userImage = data.row.passport;
+    console.log(`Scan url: ${this.userImage}`);
     let row = data.row.email;
     if (!this.selectedRows.includes(row)) {
       this.selectedRows.push(row);
@@ -201,7 +199,7 @@ export class AdminComponent implements OnInit {
       err => console.log("smth wrong")
     );
     this.selectedRows = [];
-    this.ngOnInit();
+    this.userList();
   }
 
   public unblockUsers() {
@@ -213,5 +211,15 @@ export class AdminComponent implements OnInit {
     );
     this.selectedRows = [];
     this.ngOnInit();
+  }
+
+  private async userList() {
+    const response = await fetch("/api/userlist");
+    const json = await response.json();
+    this.data = json;
+    console.log(json);
+    this.onChangeTable(this.config);
+
+    // return JSON.parse(JSON.stringify(response));
   }
 }

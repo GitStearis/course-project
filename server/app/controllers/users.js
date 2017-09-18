@@ -63,7 +63,8 @@ module.exports.unblockSelected = function(req, res) {
     res.send("Users are unblocked");
 }
 
-module.exports.confirmSelected = function(res, res) {
+//not in use
+module.exports.confirmSelected = function(req, res) {
     console.log(req.body);
     let arr = req.body;
     arr.map( user => {
@@ -79,4 +80,30 @@ module.exports.confirmSelected = function(res, res) {
     });
     res.status(200);
     res.send("Users are checked");
+}
+
+module.exports.passportUser = function(req, res) {
+    User.findOne({email: req.param.user}, function(err, user) {
+        if (err || user === null) {
+            res.send("User is not found");
+            return;
+        }
+
+        if (user.passport !== null) {
+            res.json(user.passport);
+        }
+    });
+}
+
+// already in use
+module.exports.confirmUser = function(req, res) {
+    User.findOne({email: req.body.user}, function(err, user) {
+        if (err || user === null) {
+            res.send("User is not found");
+            return;
+        }
+
+        user.permission = "checked";
+        user.save();
+    });
 }

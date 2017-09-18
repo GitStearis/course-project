@@ -32,6 +32,10 @@ var userSchema = new mongoose.Schema({
     },
     isBlocked: Boolean,
     permission: String,
+    passport: {
+        type: String,
+        required: false
+    },
     hash: String,
     salt: String
 });

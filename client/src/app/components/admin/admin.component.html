@@ -52,7 +52,7 @@
                 </div>
                 <div class="col-md-8">
                     <div class="btn-group btn-group-justified">
-                        <a class="btn btn-default btn-block"><i class="fa fa-plus-circle" aria-hidden="true"></i> Confirm <span class="badge">3</span></a>
+                        <a class="btn btn-default btn-block" data-toggle="modal" data-target="#user-checking"><i class="fa fa-plus-circle" aria-hidden="true"></i> Confirm <span class="badge">3</span></a>
                         <a class="btn btn-default btn-block" (click)="blockUsers()"><i class="fa fa-lock" aria-hidden="true"></i> Block</a>
                         <a class="btn btn-default btn-block" (click)="unblockUsers()"><i class="fa fa-unlock" aria-hidden="true"></i> Unblock</a>
                         <a class="btn btn-default btn-block" (click)="deleteUsers()"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</a>
@@ -68,4 +68,8 @@
             </ng-table>
         </div>
     </div>
+</div>
+
+<div class="modal fade modal-lower" id="user-checking" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <app-check-by-admin (person)="selectedUser" (image)="userImage"></app-check-by-admin>
 </div>

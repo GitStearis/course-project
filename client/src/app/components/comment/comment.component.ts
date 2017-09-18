@@ -7,9 +7,9 @@ import { Component, OnInit, Input } from "@angular/core";
 })
 export class CommentComponent implements OnInit {
 
-  @Input() time;
-  @Input() user;
-  @Input() content;
+  @Input() time: Date;
+  @Input() user: string = 'default user';
+  @Input() content: string = 'Some hell is going on here';
 
   constructor() { }
 
