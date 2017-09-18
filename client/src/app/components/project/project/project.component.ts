@@ -69,6 +69,8 @@ export class ProjectComponent implements OnInit {
     });
   }
 
+  me: string = "Margarita";
+
   ngOnInit() { }
 
 }

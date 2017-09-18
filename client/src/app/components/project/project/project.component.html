@@ -67,14 +67,14 @@
         <div class="row">
             <div class="col-md-8">
 
-                <div id="exTab2" class="">	
+                <div class="">	
                     <ul class="nav nav-tabs">
-                        <li class="active"><a  href="#overview" data-toggle="tab">Overview</a></li>
-                        <li><a href="#comments" data-toggle="tab">Comments</a></li>
+                        <li class="active"><a  href="#overview" data-toggle="tab"  aria-expanded="true">Overview</a></li>
+                        <li><a href="#comments" data-toggle="tab"  aria-expanded="false">Comments</a></li>
                     </ul>
 
-                    <div class="tab-content ">
-                        <div class="tab-pane active" id="overview">
+                    <div class="tab-content">
+                        <div class="tab-pane fade active in" id="overview">
                                 <div class="alert text-center">
                                     <h2>About</h2>
                                 </div>
@@ -82,8 +82,8 @@
                                     <markdown [data]="project.body"></markdown>
                                 </div>
                         </div>
-                        <div class="tab-pane" id="comments">
-                            <app-comment [user]="localStorage.getItem('email')"></app-comment>
+                        <div class="tab-pane fade" id="comments">
+                            <app-comment [user]="me"></app-comment>
                             <app-comment></app-comment>
                             <app-comment></app-comment>
                         </div>

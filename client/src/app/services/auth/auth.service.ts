@@ -34,7 +34,12 @@ export class AuthService {
   }
 
   public isAuthenticated() {
-    return this.isLoggedIn();
+    if ((this.getBlockStatus() === 'true') // should I fix this?
+      || (this.getBlockStatus() === 'undefined')) {
+        return false;  
+    } else {
+      return this.isLoggedIn();
+    }
   }
 
   public saveToLocal(parsed) {
@@ -45,10 +50,20 @@ export class AuthService {
     localStorage["secondname"] = parsed.secondname;
     localStorage["phone"] = parsed.phone;
     localStorage["date"] = parsed.date;
+    localStorage["isBlocked"] = parsed.isBlocked;
+    localStorage["permission"] = parsed.permission;
   }
 
   public getToken() {
     return localStorage["mean-token"];
+  }
+
+  public getPermissionType() {
+    return localStorage['permission'];
+  }
+
+  public getBlockStatus() {
+    return localStorage['isBlocked'];
   }
 
   public isLoggedIn() {

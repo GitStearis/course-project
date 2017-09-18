@@ -19,7 +19,9 @@ let credentialsJSON = (
     firstname,
     secondname,
     phone,
-    date
+    date,
+    isBlocked,
+    permission
 ) => {
     return {
         token: token,
@@ -28,7 +30,9 @@ let credentialsJSON = (
         firstname: firstname,
         secondname: secondname,
         phone: phone,
-        date: date
+        date: date,
+        isBlocked: isBlocked,
+        permission: permission
     };
 };
 
@@ -94,7 +98,9 @@ module.exports.verification = function(req, res) {
                         _user.firstname,
                         _user.secondname,
                         _user.phone,
-                        _user.date
+                        _user.date,
+                        _user.isBlocked,
+                        _user.permission
                     )
                 );
             });
@@ -127,7 +133,9 @@ module.exports.login = function(req, res) {
                     user.firstname,
                     user.secondname,
                     user.phone,
-                    user.date
+                    user.date,
+                    user.isBlocked,
+                    user.permission
                 )
             );
         } else {
