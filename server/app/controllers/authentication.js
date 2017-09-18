@@ -63,6 +63,8 @@ module.exports.register = function(req, res) {
                         .slice(0, 10)
                         .replace(/-/g, "/");
                     _user.setPassword(req.body.password);
+                    _user.isBlocked = false;
+                    _user.permission = "authorized";
 
                     host = req.get("host");
                     sendVerificationMail(_user.email, req);
@@ -133,3 +135,20 @@ module.exports.login = function(req, res) {
         }
     })(req, res);
 };
+
+module.exports.requestForCheck = function(req, res) {
+    let image = req.body.image;
+    Users.findOne({email: req.body.person}, function(err, user){
+        if (err || user === null){
+            res.send("User is not found")
+        }
+
+        user.permission = "pending";
+        user.passport = image;
+        user.save();
+
+        res.status(200);
+        res.send("User is waiting for admin checking now");
+    })
+    
+}

@@ -8,6 +8,8 @@ import {
   TranslateLoader,
   TranslateStaticLoader
 } from 'ng2-translate/ng2-translate';
+import { NG_TABLE_DIRECTIVES, Ng2TableModule } from 'ng2-table/ng2-table';
+import * as $ from 'jquery';
 
 import { routing, appRoutingProviders } from './app.routing';
 
@@ -41,6 +43,7 @@ import { AllNewsComponent } from './components/news/all-news/all-news.component'
 import { NewsComponent } from './components/news/news/news.component';
 import { AllProjectsComponent } from './components/project/all-projects/all-projects.component';
 import { AllProjectNewsComponent } from './components/news/all-project-news/all-project-news.component';
+import { CheckByAdminComponent } from './components/checking/check-by-admin/check-by-admin.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +69,8 @@ import { AllProjectNewsComponent } from './components/news/all-project-news/all-
     AllNewsComponent,
     NewsComponent,
     AllProjectsComponent,
-    AllProjectNewsComponent
+    AllProjectNewsComponent,
+    CheckByAdminComponent
   ],
   imports: [
     HttpModule,
@@ -79,7 +83,8 @@ import { AllProjectNewsComponent } from './components/news/all-project-news/all-
       useFactory: (http: Http) =>
         new TranslateStaticLoader(http, '../assets/i18n', '.json'),
       deps: [Http]
-    })
+    }),
+    Ng2TableModule
   ],
   providers: [
     appRoutingProviders,

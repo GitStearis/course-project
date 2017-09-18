@@ -42,3 +42,7 @@
     background: inherit;
     left: 20px;
 }
+
+tr:hover {
+    font-weight: bold;
+}
