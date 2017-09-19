@@ -220,20 +220,21 @@ export class AdminComponent implements OnInit {
     );
     this.selectedRows = [];
   }
-
-  public async userList() {
-    const response = await fetch("/api/userlist");
-    const json = await response.json();
-    this.data = json;
-    console.log(json);
-  }
-
+  
   public confirmUser(user: string) {
     this.http.post("/api/confirm", {user: user})
     .subscribe( async data => {
       console.log(data);
       await this.userList();
       this.onChangeTable(this.config);
-    })
+    });
+    this.selectedRows = [];
+  }
+
+  public async userList() {
+    const response = await fetch("/api/userlist");
+    const json = await response.json();
+    this.data = json;
+    console.log(json);
   }
 }

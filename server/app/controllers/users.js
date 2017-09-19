@@ -105,5 +105,7 @@ module.exports.confirmUser = function(req, res) {
 
         user.permission = "checked";
         user.save();
+        res.status(200);
+        res.send("User is checked now!");
     });
 }
