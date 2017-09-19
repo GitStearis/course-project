@@ -25,26 +25,26 @@ export class NavbarComponent implements OnInit {
     this.initializeStyle();
     this.initializeLanguage();
   }
-
+  
   // ================== Style section ==========================
   initializeStyle() {
-    if (Cookie.get('style') === null) {
+    if (localStorage.getItem('style') === null) {
       this.onChange();
     } else {
-      this.changeStyle(Cookie.get('style'));
-      this.icon = Cookie.get('icon');
+      this.changeStyle(localStorage.getItem('style'));
+      this.icon = localStorage.getItem('icon');
     }
   }
 
   onChange() {
-    if (Cookie.get('style') === this.dark || Cookie.get('style') === null) {
-      Cookie.set('icon', 'fa-moon-o');
+    if (localStorage.getItem('style') === this.dark || localStorage.getItem('style') === null) {
+      localStorage.setItem('icon', 'fa-moon-o');
       this.changeStyle(this.light);
     } else {
-      Cookie.set('icon', 'fa-sun-o');
+      localStorage.setItem('icon', 'fa-sun-o');
       this.changeStyle(this.dark);
     }
-    this.icon = Cookie.get('icon');
+    this.icon = localStorage.getItem('icon');
   }
 
   changeStyle(style) {
@@ -53,7 +53,7 @@ export class NavbarComponent implements OnInit {
     for (let i = 0; i < links.length; i++) {
       const link = links[i];
       if (link.href === this.dark || link.href === this.light) {
-        Cookie.set('style', style);
+        localStorage.setItem('style', style);
         link.href = style;
       }
     }
