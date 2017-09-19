@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { AuthService } from "../../../services/auth/auth.service";
 import { MessagesService } from "../../../../../node_modules/ng2-messages/ng2-messages.service";
@@ -14,6 +14,8 @@ export class CheckByAdminComponent implements OnInit {
   @Input() person: string;
   @Input() image: string;
 
+  @Output() confirmUser = new EventEmitter();
+
   constructor(
     public http: HttpClient,
     public auth: AuthService,
@@ -21,19 +23,8 @@ export class CheckByAdminComponent implements OnInit {
     public msg: MessagesService
   ) {}
 
-  public submit() {
-    // this.http.post("/api/confirm", {user: this.person})
-    // .map(data => JSON.stringify(data))
-    // .subscribe(response => {
-    //   this.auth.removeAllWarnings();
-    //   window.scrollTo(0, 0);
-    //   this.msg.success(`Successfully recieved data: ${response}`);
-    //   console.log(`Successfully recieved data: ${response}`);
-    //   this.router.navigate(['/']);
-    // });
-  }
-
   ngOnInit() {
-    console.log(`Passport scan url ${this.image} for user ${this.person}`);
+    // console.log(`Passport scan url ${this.image} for user ${this.person}`);
+    this.confirmUser.emit(this.person);
   }
 }

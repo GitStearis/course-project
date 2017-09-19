@@ -97,9 +97,9 @@ export class AdminComponent implements OnInit {
     let filteredData: Array<any> = data;
     this.columns.forEach((column: any) => {
       console.log(column.filtering)
-      if ((column.filtering) && (column.title !== 'Block')) {
+      if ((column.filtering) && (column.filtering !== undefined)) {
         filteredData = filteredData.filter((item: any) => {
-          // console.log(item);
+          // console.log(item, column.name)
           return item[column.name].match(column.filtering.filterString);
         });
       }
@@ -223,10 +223,19 @@ export class AdminComponent implements OnInit {
     this.selectedRows = [];
   }
 
-  private async userList() {
+  public async userList() {
     const response = await fetch("/api/userlist");
     const json = await response.json();
     this.data = json;
     console.log(json);
+  }
+
+  public confirmUser(event: any) {
+    this.http.post("/api/confirm", {user: event.target.value})
+    .subscribe( async data => {
+      console.log(data);
+      await this.userList();
+      this.onChangeTable(this.config);
+    })
   }
 }
