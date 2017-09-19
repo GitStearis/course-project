@@ -96,10 +96,8 @@ export class AdminComponent implements OnInit {
   public changeFilter(data: any, config: any): any {
     let filteredData: Array<any> = data;
     this.columns.forEach((column: any) => {
-      console.log(column.filtering)
       if ((column.filtering) && (column.filtering !== undefined)) {
         filteredData = filteredData.filter((item: any) => {
-          // console.log(item, column.name)
           return item[column.name].match(column.filtering.filterString);
         });
       }
@@ -230,8 +228,8 @@ export class AdminComponent implements OnInit {
     console.log(json);
   }
 
-  public confirmUser(event: any) {
-    this.http.post("/api/confirm", {user: event.target.value})
+  public confirmUser(user: string) {
+    this.http.post("/api/confirm", {user: user})
     .subscribe( async data => {
       console.log(data);
       await this.userList();
