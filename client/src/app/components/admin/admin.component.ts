@@ -189,39 +189,38 @@ export class AdminComponent implements OnInit {
   public deleteUsers() {
     // add localStorage user's data deleting if self deleting
     this.http.post("/api/deleteUsers", this.selectedRows).subscribe(
-      data => {
-        console.log(data);
-      },
-      err => console.log("smth wrong")
-    );
-    this.selectedRows = [];
-    this.ngOnInit();
-  }
-
-  public async blockUsers() {
-    this.http.post("/api/blockUsers", this.selectedRows).subscribe(
       async data => {
         console.log(data);
-        // debugger;
         await this.userList();
         this.onChangeTable(this.config);
       },
       err => console.log("smth wrong")
     );
     this.selectedRows = [];
-   // this.userList();
   }
 
-  public unblockUsers() {
-    this.http.post("/api/unblockUsers", this.selectedRows).subscribe(
-      data => {
+  public async blockUsers() {
+    this.http.post("/api/blockUsers", this.selectedRows).subscribe(
+      async data => {
         console.log(data);
-        
+        await this.userList();
+        this.onChangeTable(this.config);
       },
       err => console.log("smth wrong")
     );
     this.selectedRows = [];
-    this.ngOnInit();
+  }
+
+  public unblockUsers() {
+    this.http.post("/api/unblockUsers", this.selectedRows).subscribe(
+      async data => {
+        console.log(data);
+        await this.userList();
+        this.onChangeTable(this.config);
+      },
+      err => console.log("smth wrong")
+    );
+    this.selectedRows = [];
   }
 
   private async userList() {
