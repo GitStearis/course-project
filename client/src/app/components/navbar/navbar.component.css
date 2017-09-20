@@ -69,7 +69,7 @@ input.form-control {
     -moz-transition: all 0.7s ease-in-out;
     -o-transition: all 0.7s ease-in-out;
     transition: all 0.7s ease-in-out;
-    padding: 0 2px 0 2px;
+    padding: 0 2px 0 15px;
     background: transparent;
     border: 0;
     border-radius: 20px;

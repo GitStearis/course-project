@@ -30,7 +30,7 @@ module.exports.verificationMail = (email, verificationToken, req) => {
   };
 };
 
-module.exports.newsMail = (email, subject, msg) => {
+function newsMail (email, subject, msg) {
   let config = {
     from: '"CO-OP Team" <itra.courseproject@gmail.com>', // sender address
     to: email,
@@ -54,5 +54,6 @@ module.exports.newsMailToFollowers = (news, followers) => {
   let message = 
     `Hello! You're following <a href='http://localhost:4200/project/${news.pageId}'>project</a> on CO-OP. 
     Check the latest new via this <a href='http://localhost:4200/news/${news.newsId}'>link</a>`;
-  return newsMail(followers, subject, message);
+  let mailOptions = newsMail(followers, subject, message);
+  return mailOptions;
 }
