@@ -72,49 +72,42 @@
         <div class="row">
             <div class="col-md-8">
 
-                <div class="">	
+                <div class="">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a  href="#overview" data-toggle="tab"  aria-expanded="true">Overview</a></li>
-                        <li><a href="#comments" data-toggle="tab"  aria-expanded="false">Comments</a></li>
+                        <li class="active"><a href="#overview" data-toggle="tab" aria-expanded="true">{{ 'Project.Project.Overview' | translate }}</a></li>
+                        <li><a href="#comments" data-toggle="tab" aria-expanded="false">{{ 'Project.Project.Comments' | translate }}</a></li>
                     </ul>
 
                     <div class="tab-content">
                         <div class="tab-pane fade active in" id="overview">
-                                <div class="alert text-center">
-                                    <h2>About</h2>
-                                </div>
-                                <div class="d-flex justify-content-center">
-                                    <markdown [data]="project.body"></markdown>
-                                </div>
+                            <div class="alert text-center">
+                                <h2>{{ 'Project.Project.About' | translate }}</h2>
+                            </div>
+                            <div class="d-flex justify-content-center alert">
+                                <markdown [data]="project.body"></markdown>
+                            </div>
                         </div>
-                        <div class="tab-pane fade" id="comments">
-                            <app-comment [user]="me"></app-comment>
-                            <app-comment></app-comment>
-                            <app-comment></app-comment>
+                        <div class="tab-pane fade alert" id="comments">
+                            <div *ngIf="!this.isProject('closed') && auth.isAuthenticated()">
+                                <div class="form-group panel panel-success">
+                                    <div class="panel-heading"></div>
+                                    <div class="panel-body">
+                                        <textarea placeholder="{{ 'Project.Project.CommentPlaceholder' | translate }}" #textArea class="form-control" rows="3" (input)="comment = $event.target.value"></textarea>
+                                    </div>
+                                    <div class="panel-footer" style="height: 60px;">
+                                        <button type="button" class="btn btn-info btn pull-right" (click)="submit()">{{ 'Project.Buttons.Send' | translate }}</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngFor="let com of commentList; let i = index" class="alert">
+                                <app-comment [user]="com.author" [time]="com.creation" [content]="com.body" [number]="i + 1"></app-comment>
+                            </div>
+                            <hr>
                         </div>
                     </div>
                 </div>
-                <hr>
-
-                <!--<div class="jumbotron">
-                    <div class="alert text-center">
-                        <h2>{{ 'Project.Project.About' | translate }}</h2>
-                    </div>
-                    <div class="d-flex justify-content-center">
-                        <markdown [data]="project.body"></markdown>
-                    </div>
-                </div>
-                
-                <div class="jumbotron">
-                    <div class="alert text-center">
-                        <h2>{{ 'Project.Project.Comments' | translate }}</h2>
-                    </div>
-                    <div>
-                        <app-comment></app-comment>
-                    </div>
-                </div>-->
             </div>
-        
+
             <div class="col-md-4">
                 <div class="alert text-center">
                     <h3><a href="project/{{ project.pageId }}/news">{{ 'Project.Project.News' | translate }}</a></h3>

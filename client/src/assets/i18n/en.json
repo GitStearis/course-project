@@ -75,7 +75,8 @@
             "Close": "Close",
             "Project": "Project page",
             "Support": "Support",
-            "AddNews": "Add news"
+            "AddNews": "Add news",
+            "Send": "Send"
         },
         "Project": {
             "Author": "Project author",
@@ -88,7 +89,9 @@
             "About": "About",
             "Comments": "Comments",
             "News": "News",
-            "Of": "of"
+            "Of": "of",
+            "CommentPlaceholder": "Enter your comment here",
+            "Overview": "Overview"
         }
     },
 

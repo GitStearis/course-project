@@ -13,8 +13,8 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-active" href="/profile" *ngIf="auth.isAuthenticated()"> 
-                    <i class="fa fa-user fa-lg fa-fw colored" aria-hidden="true"></i> 
+                <a class="btn btn-active" href="/profile" *ngIf="auth.isAuthenticated()">
+                    <i class="fa fa-user fa-lg fa-fw colored" aria-hidden="true"></i>
                 </a>
             </li>
             <li class="nav-item" *ngIf="auth.isAuthenticated()">
@@ -62,8 +62,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="btn btn-active dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href=""
-                #langSelect (change)="translate.use(langSelect.value)">
+                <a class="btn btn-active dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="" #langSelect (change)="translate.use(langSelect.value)">
                     <i class="fa fa-globe fa-lg fa-fw colored" aria-hidden="true"></i>
                 </a>
                 <ul class="dropdown-menu">
