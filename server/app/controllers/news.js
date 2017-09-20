@@ -25,7 +25,7 @@ module.exports.newsRecent = function(req, res) {
 }
 
 module.exports.newsRecentByPageId = function(req, res) {
-    var query = News.find({ pageId: req.params.pageId }).sort({ $natural: -1 }).limit(3);
+    var query = News.find({ pageId: req.params.pageId }).sort({ $natural: -1 }).limit(2);
     query.exec(function(err, news) {
         if (err || news === null) {
             res.status(404);

@@ -91,7 +91,9 @@
             "News": "News",
             "Of": "of",
             "CommentPlaceholder": "Enter your comment here",
-            "Overview": "Overview"
+            "Overview": "Overview",
+            "Vote": "Rate the project",
+            "Rating": "Average rating"
         }
     },
 

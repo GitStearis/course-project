@@ -10,4 +10,8 @@ export interface Project {
     title: string;
     author: string;
     status: string;
+    ratings: [{
+        user: string;
+        rating: string;
+    }];
 }
