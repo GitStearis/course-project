@@ -52,10 +52,15 @@
                         </div>
                         <div class="alert text-center">
                             <a *ngIf="!this.isProject('closed') && auth.isAuthenticated() && !this.isAuthor()" href="project/{{ project.pageId }}/donate">
-                                <button type="button" class="btn btn-success btn-lg">{{ 'Project.Buttons.Support' | translate }}</button>
+                                <button type="button" class="btn btn-success btn-lg"><i class="fa fa-usd fa-lg" aria-hidden="true"></i> {{ 'Project.Buttons.Support' | translate }}</button>
                             </a>
                             <a *ngIf="!this.isProject('closed') && auth.isAuthenticated() && this.isAuthor()" href="project/{{ project.pageId }}/news/create">
                                 <button type="button" class="btn btn-success btn-lg">{{ 'Project.Buttons.AddNews' | translate }}</button>
+                            </a>
+                        </div>
+                        <div class="aler text-center">
+                            <a *ngIf="!this.isProject('closed') && auth.isAuthenticated() && !this.isAuthor()">
+                                <button type="button" class="btn btn-success btn-lg" (click)="onFollow()"><i class="fa fa-plus-square fa-lg" aria-hidden="true"></i> Follow</button>
                             </a>
                         </div>
                     </div>

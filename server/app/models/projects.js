@@ -54,7 +54,11 @@ var projectSchema = new mongoose.Schema({
     status: {
         type: String,
         required: true
-    }
+    },
+    followers: [{
+        email: String,
+        required: false
+    }]
 });
 
 module.exports = mongoose.model("project_list", projectSchema);

@@ -48,6 +48,8 @@ router.get("/project/:pageId/done", ctrProject.projectMarkDone);
 router.get("/project/:pageId/close", ctrProject.projectMarkClosed);
 router.get("/project/:pageId/donate/:value", ctrProject.projectDonate);
 
+router.post("/project/:pageId/follow", ctrProject.followProjectNews);
+
 router.get("/projects/new", ctrProject.newProjects);
 router.get("/projects/all", ctrProject.projects);
 router.get("/projects/actual", ctrProject.actualProjects);

@@ -69,6 +69,17 @@ export class ProjectComponent implements OnInit {
     });
   }
 
+  public onFollow() {
+    let newFollower = localStorage['email'];
+    this.http.post(`/api/project/${this.pageId}/follow`, {follower: newFollower})
+    .subscribe(data => {
+      console.log(data);
+      console.log('Successful subsribing!');
+    }, err => {
+      console.log(err);
+    });
+  }
+
   me: string = "Margarita";
 
   ngOnInit() { }
