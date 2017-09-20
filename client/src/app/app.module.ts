@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { HttpModule, Http } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
@@ -10,6 +11,8 @@ import {
 } from 'ng2-translate/ng2-translate';
 import { NG_TABLE_DIRECTIVES, Ng2TableModule } from 'ng2-table/ng2-table';
 import * as $ from 'jquery';
+import { TagInputModule } from 'ngx-chips';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { routing, appRoutingProviders } from './app.routing';
 
@@ -84,7 +87,10 @@ import { CheckByAdminComponent } from './components/checking/check-by-admin/chec
         new TranslateStaticLoader(http, '../assets/i18n', '.json'),
       deps: [Http]
     }),
-    Ng2TableModule
+    Ng2TableModule,
+    TagInputModule,
+    BrowserAnimationsModule,
+    FormsModule
   ],
   providers: [
     appRoutingProviders,

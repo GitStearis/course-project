@@ -6,6 +6,8 @@ import { MessagesService } from '../../../../../node_modules/ng2-messages/ng2-me
 import { ImgCloudinaryService } from '../../../services/img/img-cloudinary.service';
 import { Router } from '@angular/router';
 import { async } from 'q';
+import { TagInputModule } from 'ngx-chips';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @Component({
   selector: 'app-create',
@@ -96,17 +98,6 @@ export class CreateComponent implements OnInit {
 
   public uploadFile(event: any) {
     const file = event.target.files[0];
-    // let imgUploaded = this.img.uploadFile(file);
-
-    // let imgs = document.getElementsByTagName('img');
-    // for (let i = 0; i < imgs.length; i++){
-    //   let img = imgs[i];
-    //   if (img.id === 'img-preview'){
-    //     this.image = imgUploaded.src;
-    //     img.src = imgUploaded.src;
-    //     img.alt = imgUploaded.alt;
-    //   }
-    // }
     const xhr = new XMLHttpRequest();
     const fd = new FormData();
     xhr.open('POST', this.CLOUDYNARY_URL, true);
@@ -191,6 +182,18 @@ export class CreateComponent implements OnInit {
         }
       }
       );
+  }
+
+  items = ['Pizza', 'Pasta', 'Parmesan'];
+
+  public onAdd(event: any) {
+    this.items.push(event.target.value);
+    console.log(this.items);
+  }
+
+  public onItemRemoved(event: any) {
+    this.items.splice(this.items.indexOf(event.target.value), 1);
+    console.log(this.items);
   }
 
   ngOnInit() { }

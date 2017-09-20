@@ -82,18 +82,17 @@
                     <div class="panel-heading">{{ 'Project.Creation.Tag' | translate }}</div>
                     <div class="panel-body">
                         <label for="inputTitle" class="control-label"><h3>Tag</h3></label>
-                        <input #inputTag type="text" class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Tag' | translate }}" (input)="tags = $event.target.value" (keyup.enter)="getFromInput(inputTag.value, this.tags)" (blur)="getFromInput(inputTag.value, this.tags)">
-                        <!--<ng2-completer #inputTag class="form-control" [datasource]="tagList" [minSearchLength]="0" [clearSelected]="true" (selected)="onSelected($event)" (input)="getTagList()" (keyup.enter)="getFromInput(inputTag.value, this.tags)" (blur)="getFromInput(inputTag.value, this.tags)"></ng2-completer>-->
-                        <!--<div class="row">
-                            <div class="col-6">
-                                <input list="country" type="text" class="form-control" (input)="query = $event.target.value" (keyup)="filter()">
-                                <datalist id="country">
-                                    <option *ngFor="let item of filteredList" value="{{item}}" (click)="select(item)">
-                                </datalist>
-                    <label for="inputTitle" class="control-label"><h3>{{ 'Project.Creation.Tag' | translate }}</h3></label>
-                    <input #inputTag type="text" class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Tag' | translate }}" (input)="tags = $event.target.value" (keyup.enter)="getFromInput(inputTag.value, this.tags)" (blur)="getFromInput(inputTag.value, this.tags)">
-                            </div>
-                        </div>-->
+                        <!--<input #inputTag type="text" class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Tag' | translate }}" (input)="tags = $event.target.value" (keyup.enter)="getFromInput(inputTag.value, this.tags)" (blur)="getFromInput(inputTag.value, this.tags)">-->
+                        <tag-input [(ngModel)]='items' 
+                                    name="items"
+                                    [editable]='true'
+                                    [dragZone]='true'
+                                    (onAdd)="onAdd($event)"
+                                    (onRemove)="onItemRemoved($event)">
+                            <tag-input-dropdown 
+                                [autocompleteItems]="['item1', 'item2', 'item3']">
+                            </tag-input-dropdown>
+                        </tag-input>
                         <div class="row">
                             <div *ngFor="let item of selected" class="col-1">
                                 <div class="selected">
