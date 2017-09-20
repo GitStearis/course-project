@@ -47,6 +47,7 @@ import { NewsComponent } from './components/news/news/news.component';
 import { AllProjectsComponent } from './components/project/all-projects/all-projects.component';
 import { AllProjectNewsComponent } from './components/news/all-project-news/all-project-news.component';
 import { CheckByAdminComponent } from './components/checking/check-by-admin/check-by-admin.component';
+import { RatingModule } from 'ngx-rating';
 
 @NgModule({
   declarations: [
@@ -90,7 +91,8 @@ import { CheckByAdminComponent } from './components/checking/check-by-admin/chec
     Ng2TableModule,
     TagInputModule,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    RatingModule
   ],
   providers: [
     appRoutingProviders,

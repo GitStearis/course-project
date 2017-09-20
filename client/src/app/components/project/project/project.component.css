@@ -24,6 +24,10 @@ button a {
     width: auto;
 }
 
+.modal-lower {
+    padding-top: 200px;
+}
+
 .title {
     display: block;
     display: -webkit-box;
