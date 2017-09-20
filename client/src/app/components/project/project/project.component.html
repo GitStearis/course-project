@@ -21,14 +21,17 @@
                         </h4>
                         <small class="text text-secondary">{{ 'Project.Project.Author' | translate }}</small>
                     </div>
-                    <div>
-                        <h3 *ngIf="isVoted">
+                    <div *ngIf="isVoted">
+                        <h3>
                             <span class="label label-pill badge-success">{{ this.averageRating.toFixed(1) }}</span>
                         </h3>
-                        <h4 *ngIf="!isVoted">
+                        <small class="text text-secondary">{{ 'Project.Project.Rating' | translate }}</small>
+                    </div>
+                    <div *ngIf="!isVoted">
+                        <h4>
                             <rating [(ngModel)]="starsCount" [readonly]="isVoted" [disabled]="isVoted" (click)="rateProject()"></rating>
                         </h4>
-                        <small class="text text-secondary">Project rating</small>
+                        <small class="text text-secondary">{{ 'Project.Project.Vote' | translate }}</small>
                     </div>
                     <div class="alert">
                         <h4>
