@@ -21,6 +21,24 @@
                         </h4>
                         <small class="text text-secondary">{{ 'Project.Project.Author' | translate }}</small>
                     </div>
+                    <div *ngIf="!auth.isAuthenticated()">
+                        <h3>
+                            <span class="label label-pill badge-success">{{ this.averageRating.toFixed(1) }}</span>
+                        </h3>
+                        <small class="text text-secondary">{{ 'Project.Project.Rating' | translate }}</small>
+                    </div>
+                    <div *ngIf="isVoted && auth.isAuthenticated()">
+                        <h3>
+                            <span class="label label-pill badge-success">{{ this.averageRating.toFixed(1) }}</span>
+                        </h3>
+                        <small class="text text-secondary">{{ 'Project.Project.Rating' | translate }}</small>
+                    </div>
+                    <div *ngIf="!isVoted && auth.isAuthenticated()">
+                        <h4>
+                            <rating [(ngModel)]="starsCount" [readonly]="isVoted" [disabled]="isVoted" (click)="rateProject()"></rating>
+                        </h4>
+                        <small class="text text-secondary">{{ 'Project.Project.Vote' | translate }}</small>
+                    </div>
                     <div class="alert">
                         <h4>
                             <span *ngIf="this.isProject('active')" class="label label-pill badge-info">{{ 'Project.Project.Active' | translate }}</span>

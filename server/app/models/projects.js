@@ -58,6 +58,16 @@ var projectSchema = new mongoose.Schema({
     followers: [{
         email: String,
         required: false
+    }],
+    ratings: [{
+        user: {
+            type: String,
+            required: true
+        },
+        rating: {
+            type: String,
+            required: true
+        }
     }]
 });
 

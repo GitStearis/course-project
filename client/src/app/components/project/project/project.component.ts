@@ -21,9 +21,43 @@ export class ProjectComponent implements OnInit {
   newsList: News[];
   commentList: Com[];
 
+  starsCount: number;
+  averageRating: number = 0;
   progress: number = 0;
-
   comment: string = '';
+
+  isVoted: boolean = false;
+
+  private rateProject() {
+
+    const newRating = {
+      user: localStorage['name'],
+      rating: this.starsCount
+    }
+
+    this.http
+    .post('/api/project/' + this.pageId + '/rate', newRating)
+    .map(data => JSON.stringify(data))
+    .subscribe(
+    data => {  
+      this.averageRating = parseInt(data);
+      this.isVoted = true; 
+    });
+  }
+
+  private calculateRating() {
+    return this.project.ratings.reduce(function (acc, obj) { return acc + parseInt(obj.rating); }, 0) / this.project.ratings.length;
+  }
+
+  private checkVoting() {
+    console.log(this.isVoted);
+    let voter = this.project.ratings.find(x => x.user === localStorage['name'])
+    if(voter) {
+      this.starsCount = parseInt(voter.rating);
+      return true;
+    }
+    return false;
+  }
 
   public isProject(status: string): boolean {
     if (this.project.status === status) {
@@ -41,8 +75,6 @@ export class ProjectComponent implements OnInit {
   
   
   private submit() {
-    console.log(this.comment);
-
     const newComment = {
       pageId: this.pageId,
       body: this.comment,
@@ -55,14 +87,6 @@ export class ProjectComponent implements OnInit {
       .subscribe(
       data => {   
         this.commentList.push(data);
-      },
-      err => {
-        if (err.error instanceof Error) {
-          console.log('An error occurred:', err.error.message);
-        } else {
-          console.log(err);
-          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
-        }
       });
   }
 
@@ -76,6 +100,9 @@ export class ProjectComponent implements OnInit {
         data => {
           this.project = JSON.parse(data);
           this.progress = parseInt(this.project.collected, 10) / parseInt(this.project.goal, 10) * 100;
+
+          this.averageRating = this.calculateRating();
+          this.isVoted = this.checkVoting();
 
           this.http
             .get('/api/news/' + this.pageId + '/recent')
@@ -92,17 +119,7 @@ export class ProjectComponent implements OnInit {
                 this.commentList = JSON.parse(com);
               });
             });
-        },
-        err => {
-          if (err.error instanceof Error) {
-            console.log('An error occurred:', err.error.message);
-          } else {
-            console.log(err);
-            console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
-          }
-          this.router.navigate(['/404']);
-        }
-        );
+        });
     });
   }
 
@@ -110,15 +127,27 @@ export class ProjectComponent implements OnInit {
     let newFollower = localStorage['email'];
     this.http.post(`/api/project/${this.pageId}/follow`, {follower: newFollower})
     .subscribe(data => {
-      console.log(data);
-      console.log('Successful subsribing!');
-    }, err => {
-      console.log(err);
     });
   }
 
-  me: string = "Margarita";
-
-  ngOnInit() { }
+  ngOnInit() {
+    this.project = {
+      pageId: "",
+      date: "",
+      created: "",
+      goal: "",
+      collected: "",
+      image: "",
+      body: "",
+      description: "",
+      title: "",
+      author: "",
+      status: "",
+      ratings: [{
+          user: "",
+          rating: ""
+      }]
+    }
+   }
 
 }
