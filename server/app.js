@@ -8,6 +8,7 @@ const passport = require("passport");
 const cors = require("cors");
 
 require("./app/models/db");
+// require("./app/models/tag");
 require("./app/config/passport"); //просто начальная конфигурация
 
 const routesApi = require("./app/routes/index");

@@ -82,18 +82,16 @@
                     <div class="panel-heading">{{ 'Project.Creation.Tag' | translate }}</div>
                     <div class="panel-body">
                         <label for="inputTitle" class="control-label"><h3>Tag</h3></label>
-                        <input #inputTag type="text" class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Tag' | translate }}" (input)="tags = $event.target.value" (keyup.enter)="getFromInput(inputTag.value, this.tags)" (blur)="getFromInput(inputTag.value, this.tags)">
-                        <!--<tag-input [(ngModel)]='items' 
-                                    name="items"
-                                    [editable]='true'
-                                    [dragZone]='true'
-                                    [maxItems]='5'
-                                    (onAdd)="onAdd($event)"
-                                    (onRemove)="onItemRemoved($event)">
-                            <tag-input-dropdown 
-                                [autocompleteItems]="['item1', 'item2', 'item3']">
-                            </tag-input-dropdown>
-                        </tag-input>-->
+                        <!--<input #inputTag type="text" class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Tag' | translate }}" (input)="tags = $event.target.value" (keyup.enter)="getFromInput(inputTag.value, this.tags)" (blur)="getFromInput(inputTag.value, this.tags)">-->
+                        <tag-input [maxItems]='3'
+                                [validators]="validators"
+                                [errorMessages]="errorMessages"
+                                [(ngModel)]="items"
+                                [ngModelOptions]="{standalone: true}"
+                                (onAdd)="onAdd($event)"
+                                placeholder="Enter tags"
+                                secondaryPlaceholder="Enter tags">
+                        </tag-input>
                         <div class="row">
                             <div *ngFor="let item of selected" class="col-1">
                                 <div class="selected">
@@ -137,11 +135,14 @@
                 </div>
                 <hr>
                 <div class="text-container text-right d-flex justify-content-around">
-                    <div>
+                    <div class="author">
                         <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
                         <a href="/user/{{ author }}">{{ author }}</a>
                     </div>
-                    <small class="text text-secondary">{{ 'Project.Preview.Tag' | translate }}: {{ tags }}</small>
+                    <div class="tags">
+                        <small class="text text-secondary">{{ 'Project.Preview.Tag' | translate }}:</small>
+                        <small class="taxt text-secondary" *ngFor="let tag of tagsPreview"> {{ tag }}</small>
+                    </div>
                 </div>
                 <hr>
             </div>
