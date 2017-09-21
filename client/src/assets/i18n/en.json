@@ -205,12 +205,16 @@
     },
 
     "Profile": {
-        "Stats": "Statistics",
+        "Statistics": "Statistics",
+        "Projects": "Projects",
         "Donated": "Donated",
-        "Projects": "Created projects",
-        "Tipped": "Tipped projects",
+        "Created": "Created",
+        "Tipped": "Tipped",
+        "Followed": "Followed",
         "Registration": "Registration date",
-        "Achievements": "Achievements"
+        "Achievements": "Achievements",
+        "Phone": "Phone number",
+        "Email": "Email address"
     },
 
     "Verification": {

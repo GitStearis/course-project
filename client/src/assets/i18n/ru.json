@@ -205,12 +205,16 @@
     },
 
     "Profile": {
-        "Stats": "Статистика",
+        "Statistics": "Статистика",
+        "Projects": "Проекты",
         "Donated": "Пожертвовано",
-        "Projects": "Созданные проекты",
-        "Tipped": "Проектов поощрено",
+        "Created": "Созданные",
+        "Tipped": "Поощренные",
+        "Followed": "Подписки",
         "Registration": "Дата регистрации",
-        "Achievements": "Достижения"
+        "Achievements": "Достижения",
+        "Phone": "Телефонный номер",
+        "Email": "Адрес эл. почты"
     },
 
     "Verification": {

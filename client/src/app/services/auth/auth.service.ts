@@ -52,9 +52,24 @@ export class AuthService {
     localStorage["date"] = parsed.date;
     localStorage["isBlocked"] = parsed.isBlocked;
     localStorage["permission"] = parsed.permission;
+
+    if (parsed.tipped === undefined) {
+    localStorage["tipped"] = 0;
+    } else {
     localStorage["tipped"] = parsed.tipped;
-    localStorage["ratedProjects"] = parsed.ratedProjects;
-    localStorage["followedProjects"] = parsed.followedProjects;
+    }
+
+    if (parsed.ratedProjects === undefined) {
+      localStorage["ratedProjects"] = [];
+    } else {
+      localStorage["ratedProjects"] = parsed.ratedProjects;
+    }
+
+    if (parsed.followedProjects === undefined) {
+      localStorage["followedProjects"] = [];
+    } else {
+      localStorage["followedProjects"] = parsed.followedProjects;
+    }  
   }
 
   public getToken() {

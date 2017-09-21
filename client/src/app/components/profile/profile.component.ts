@@ -28,5 +28,8 @@ export class ProfileComponent implements OnInit {
     this.secondname = localStorage['secondname'];
     this.phone = localStorage['phone'];
     this.date = localStorage['date'];
+    this.tipped = parseInt(localStorage['tipped']);
+    this.ratedProjects = localStorage['ratedProjects'];
+    this.followedProjects = localStorage['followedProjects'];
   }
 }

@@ -103,7 +103,10 @@ module.exports.verification = function(req, res) {
                         _user.phone,
                         _user.date,
                         _user.isBlocked,
-                        _user.permission
+                        _user.permission,
+                        _user.tipped,
+                        _user.ratedProjects,
+                        _user.followedProjects
                     )
                 );
             });
@@ -138,7 +141,10 @@ module.exports.login = function(req, res) {
                     user.phone,
                     user.date,
                     user.isBlocked,
-                    user.permission
+                    user.permission,
+                    user.tipped,
+                    user.ratedProjects,
+                    user.followedProjects
                 )
             );
         } else {
