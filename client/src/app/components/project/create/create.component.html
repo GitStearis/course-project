@@ -1,180 +1,182 @@
-<div class="jumbotron" *ngIf="auth.isAuthenticated()">
-    <div class="container">
-        <div class="d-flex justify-content-center">
-            <h3 class="display-1">
-                {{ 'Project.Headers.Create' | translate }}
-            </h3>
-        </div>
-        <div class=" d-flex justify-content-center">
-            <p>{{ 'Project.Headers.CreateTag' | translate }}</p>
-        </div>
-        <div class=" d-flex justify-content-center">
-            <img src="https://s8.hostingkartinok.com/uploads/images/2017/09/f61e5552af325c19df4d3bf71f94c7a1.png" width="128" height="128">
-        </div>
+<div class="container">
+    <div class="jumbotron" *ngIf="auth.isAuthenticated()">
+        <div class="container">
+            <div class="d-flex justify-content-center">
+                <h3 class="display-1">
+                    {{ 'Project.Headers.Create' | translate }}
+                </h3>
+            </div>
+            <div class=" d-flex justify-content-center">
+                <p>{{ 'Project.Headers.CreateTag' | translate }}</p>
+            </div>
+            <div class=" d-flex justify-content-center">
+                <img src="https://s8.hostingkartinok.com/uploads/images/2017/09/f61e5552af325c19df4d3bf71f94c7a1.png" width="128" height="128">
+            </div>
 
-        <div class="d-flex justify-content-end">
-            <button type="button" class="btn btn-info">{{ 'Project.Buttons.Guide' | translate }}</button>
+            <div class="d-flex justify-content-end">
+                <button type="button" class="btn btn-info">{{ 'Project.Buttons.Guide' | translate }}</button>
+            </div>
         </div>
     </div>
-</div>
 
-<div class="container" *ngIf="auth.isAuthenticated()">
-    <div class="row">
-        <div class="col-1"></div>
-        <form class="form-horizontal col-6 row">
-            <fieldset>
-                <div class="form-group panel panel-success">
-                    <div class="panel-heading">{{ 'Project.Creation.Title' | translate }}</div>
-                    <div class="panel-body">
-                        <input #titleInput class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Title' | translate }}" (input)="projectName = $event.target.value" (keyup.enter)="getFromInput(titleInput.value, this.projectName)" (blur)="getFromInput(titleInput.value, this.projectName)">
-                        <small>{{ 'Project.Creation.TitleTag' | translate }}</small>
-                        <hr>
-                    </div>
-                </div>
-                <div class="form-group panel panel-success">
-                    <div class="panel-heading">{{ 'Project.Creation.Description' | translate }}</div>
-                    <div class="panel-body">
-                        <input #inputDescription type="text" class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Description' | translate }}" (input)="description = $event.target.value" (keyup.enter)="getFromInput(inputDescription.value, this.description)" (blur)="getFromInput(inputDescription.value, this.description)">
-                        <small>{{ 'Project.Creation.DescriptionTag' | translate }}</small>
-                        <hr>
-                    </div>
-                </div>
-                <div class="form-group panel panel-success">
-                    <div class="panel-heading">{{ 'Project.Creation.Body' | translate }}</div>
-                    <div class="panel-body">
-                        <textarea #textArea class="form-control" rows="3" placeholder="{{ 'Project.Creation.Placeholders.Body' | translate }}" (input)="body = $event.target.value" (keyup.enter)="getFromInput(textArea.value, this.body)" (blur)="getFromInput(textArea.value, this.body)"></textarea>
-                        <small>{{ 'Project.Creation.BodyTag' | translate }}</small>
-                        <hr>
-                    </div>
-                </div>
-                <div class="form-group panel panel-success">
-                    <div class="panel-heading">{{ 'Project.Creation.Image' | translate }}</div>
-                    <div class="panel-body">
-                        <img id="img-preview" class="img-fluid img-rounded" src="{{ image }}" />
-                        <label for="file-upload" class="control-label">
-                                <a class="btn btn-default">{{ 'Project.Buttons.Image' | translate }}</a>
-                                <!-- Some hell is going on here -->
-                                <!-- #imagePreview (input)="body = $event.target.value" (keyup.enter)="getFromInput(imagePreview.value, this.body)" (blur)="imagePreview(textArea.value, this.body)" -->
-                                <input (change)="uploadFile($event)" id="file-upload" type="file" name="file" class="form-control" style="display:none;">
-                            </label>
-                        <hr>
-                    </div>
-                </div>
-                <div class="form-group panel panel-success">
-                    <div class="panel-heading"></div>
-                    <div class="panel-body">
-                        <div class="row">
-                            <div class="col-6">
-                                <label for="amount" class="col-lg-2 control-label"><h3>{{ 'Project.Creation.Goal' | translate }}</h3></label>
-                                <input #inputGoal type="number" class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Goal' | translate }}" (input)="goal = $event.target.value" (keyup.enter)="getFromInput(inputGoal.value, this.goal)" (blur)="getFromInput(inputGoal.value, this.goal)">
-                                <small>{{ 'Project.Creation.GoalTag' | translate }}</small>
-                            </div>
-                            <div class="col-6">
-                                <label for="inputdeadline" class="col-lg-2 control-label"><h3>{{ 'Project.Creation.Date' | translate }}</h3></label>
-                                <input #inputDeadline type="date" class="form-control" (input)="deadline = $event.target.value" (keyup.enter)="getFromInput(inputDeadline.value, this.deadline)" (blur)="getFromInput(inputDeadline.value, this.deadline)">
-                                <small>{{ 'Project.Creation.DateTag' | translate }}</small>
-                            </div>
+    <div class="container" *ngIf="auth.isAuthenticated()">
+        <div class="row">
+            <div class="col-1"></div>
+            <form class="form-horizontal col-6 row">
+                <fieldset>
+                    <div class="form-group panel panel-success">
+                        <div class="panel-heading">{{ 'Project.Creation.Title' | translate }}</div>
+                        <div class="panel-body">
+                            <input #titleInput class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Title' | translate }}" (input)="projectName = $event.target.value" (keyup.enter)="getFromInput(titleInput.value, this.projectName)" (blur)="getFromInput(titleInput.value, this.projectName)">
+                            <small>{{ 'Project.Creation.TitleTag' | translate }}</small>
+                            <hr>
                         </div>
-                        <hr>
                     </div>
-                </div>
-                <div class="form-group panel panel-success" id="tag-input">
-                    <div class="panel-heading">{{ 'Project.Creation.Tag' | translate }}</div>
-                    <div class="panel-body">
-                        <label for="inputTitle" class="control-label"><h3>Tag</h3></label>
-                        <!--<input #inputTag type="text" class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Tag' | translate }}" (input)="tags = $event.target.value" (keyup.enter)="getFromInput(inputTag.value, this.tags)" (blur)="getFromInput(inputTag.value, this.tags)">-->
-                        <tag-input [maxItems]='3'
-                                [validators]="validators"
-                                [errorMessages]="errorMessages"
-                                [(ngModel)]="items"
-                                [ngModelOptions]="{standalone: true}"
-                                (onAdd)="onAdd($event)"
-                                placeholder="Enter tags"
-                                secondaryPlaceholder="Enter tags">
-                        </tag-input>
-                        <div class="row">
-                            <div *ngFor="let item of selected" class="col-1">
-                                <div class="selected">
-                                    <span>{{item}}</span>
-                                    <a (click)="remove(item)">x</a>
+                    <div class="form-group panel panel-success">
+                        <div class="panel-heading">{{ 'Project.Creation.Description' | translate }}</div>
+                        <div class="panel-body">
+                            <input #inputDescription type="text" class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Description' | translate }}" (input)="description = $event.target.value" (keyup.enter)="getFromInput(inputDescription.value, this.description)" (blur)="getFromInput(inputDescription.value, this.description)">
+                            <small>{{ 'Project.Creation.DescriptionTag' | translate }}</small>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="form-group panel panel-success">
+                        <div class="panel-heading">{{ 'Project.Creation.Body' | translate }}</div>
+                        <div class="panel-body">
+                            <textarea #textArea class="form-control" rows="3" placeholder="{{ 'Project.Creation.Placeholders.Body' | translate }}" (input)="body = $event.target.value" (keyup.enter)="getFromInput(textArea.value, this.body)" (blur)="getFromInput(textArea.value, this.body)"></textarea>
+                            <small>{{ 'Project.Creation.BodyTag' | translate }}</small>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="form-group panel panel-success">
+                        <div class="panel-heading">{{ 'Project.Creation.Image' | translate }}</div>
+                        <div class="panel-body">
+                            <img id="img-preview" class="img-fluid img-rounded" src="{{ image }}" />
+                            <label for="file-upload" class="control-label">
+                                    <a class="btn btn-default">{{ 'Project.Buttons.Image' | translate }}</a>
+                                    <!-- Some hell is going on here -->
+                                    <!-- #imagePreview (input)="body = $event.target.value" (keyup.enter)="getFromInput(imagePreview.value, this.body)" (blur)="imagePreview(textArea.value, this.body)" -->
+                                    <input (change)="uploadFile($event)" id="file-upload" type="file" name="file" class="form-control" style="display:none;">
+                                </label>
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="form-group panel panel-success">
+                        <div class="panel-heading"></div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-6">
+                                    <label for="amount" class="col-lg-2 control-label"><h3>{{ 'Project.Creation.Goal' | translate }}</h3></label>
+                                    <input #inputGoal type="number" class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Goal' | translate }}" (input)="goal = $event.target.value" (keyup.enter)="getFromInput(inputGoal.value, this.goal)" (blur)="getFromInput(inputGoal.value, this.goal)">
+                                    <small>{{ 'Project.Creation.GoalTag' | translate }}</small>
+                                </div>
+                                <div class="col-6">
+                                    <label for="inputdeadline" class="col-lg-2 control-label"><h3>{{ 'Project.Creation.Date' | translate }}</h3></label>
+                                    <input #inputDeadline type="date" class="form-control" (input)="deadline = $event.target.value" (keyup.enter)="getFromInput(inputDeadline.value, this.deadline)" (blur)="getFromInput(inputDeadline.value, this.deadline)">
+                                    <small>{{ 'Project.Creation.DateTag' | translate }}</small>
                                 </div>
                             </div>
+                            <hr>
                         </div>
-                        <small>{{ 'Project.Creation.TagTag' | translate }}</small>
-                        <hr>
                     </div>
-                </div>
-                <div class="alert text-center">
-                    <button data-toggle="modal" data-target="#text-preview" type="button" class="btn btn-primary">{{ 'Project.Buttons.Preview' | translate }}</button>
-                    <button (click)="submit()" type="button" class="btn btn-success" data-dismiss="modal">{{ 'Project.Buttons.Submit' | translate }}</button>
-                </div>
-            </fieldset>
-        </form>
-        <div class="container col-3">
-            <h3>{{ 'Project.Headers.SmallPreview' | translate }}</h3>
-            <div class="thumbnail card">
-                <div class="img-preview-container text-center">
-                    <a href=""><img class="img-fluid img-preview" src="{{ image }}" alt="{{ 'Project.Preview.Image' | translate }}"></a>
-                </div>
-                <div class="text-container">
-                    <a href="">
-                        <h4 class="title">
-                            {{ projectName }}
-                        </h4>
-                    </a>
-                    <p class="text text-secondary text-left description">
-                        {{ description }}
-                    </p>
-                </div>
-                <hr>
-                <div class="text-container">
-                    <p class="text text-success">{{ 'Project.Preview.Goal' | translate }}: {{ goal }}$</p>
-                    <p class="text text-info">{{ 'Project.Preview.Current' | translate }}: 0$</p>
-                    <p class="text text-warning">{{ 'Project.Preview.Start' | translate }}: {{ creation }}</p>
-                    <p class="text text-warning">{{ 'Project.Preview.End' | translate }}: {{ deadline }}</p>
-                </div>
-                <hr>
-                <div class="text-container text-right d-flex justify-content-around">
-                    <div class="author">
-                        <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
-                        <a href="/user/{{ author }}">{{ author }}</a>
+                    <div class="form-group panel panel-success" id="tag-input">
+                        <div class="panel-heading">{{ 'Project.Creation.Tag' | translate }}</div>
+                        <div class="panel-body">
+                            <label for="inputTitle" class="control-label"><h3>Tag</h3></label>
+                            <!--<input #inputTag type="text" class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Tag' | translate }}" (input)="tags = $event.target.value" (keyup.enter)="getFromInput(inputTag.value, this.tags)" (blur)="getFromInput(inputTag.value, this.tags)">-->
+                            <tag-input [maxItems]='3'
+                                    [validators]="validators"
+                                    [errorMessages]="errorMessages"
+                                    [(ngModel)]="items"
+                                    [ngModelOptions]="{standalone: true}"
+                                    (onAdd)="onAdd($event)"
+                                    placeholder="Enter tags"
+                                    secondaryPlaceholder="Enter tags">
+                            </tag-input>
+                            <div class="row">
+                                <div *ngFor="let item of selected" class="col-1">
+                                    <div class="selected">
+                                        <span>{{item}}</span>
+                                        <a (click)="remove(item)">x</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <small>{{ 'Project.Creation.TagTag' | translate }}</small>
+                            <hr>
+                        </div>
                     </div>
-                    <div class="tags">
-                        <small class="text text-secondary">{{ 'Project.Preview.Tag' | translate }}:</small>
-                        <small class="taxt text-secondary" *ngFor="let tag of tagsPreview"> {{ tag }}</small>
+                    <div class="alert text-center">
+                        <button data-toggle="modal" data-target="#text-preview" type="button" class="btn btn-primary">{{ 'Project.Buttons.Preview' | translate }}</button>
+                        <button (click)="submit()" type="button" class="btn btn-success" data-dismiss="modal">{{ 'Project.Buttons.Submit' | translate }}</button>
                     </div>
+                </fieldset>
+            </form>
+            <div class="container col-3">
+                <h3>{{ 'Project.Headers.SmallPreview' | translate }}</h3>
+                <div class="thumbnail card">
+                    <div class="img-preview-container text-center">
+                        <a href=""><img class="img-fluid img-preview" src="{{ image }}" alt="{{ 'Project.Preview.Image' | translate }}"></a>
+                    </div>
+                    <div class="text-container">
+                        <a href="">
+                            <h4 class="title">
+                                {{ projectName }}
+                            </h4>
+                        </a>
+                        <p class="text text-secondary text-left description">
+                            {{ description }}
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="text-container">
+                        <p class="text text-success">{{ 'Project.Preview.Goal' | translate }}: {{ goal }}$</p>
+                        <p class="text text-info">{{ 'Project.Preview.Current' | translate }}: 0$</p>
+                        <p class="text text-warning">{{ 'Project.Preview.Start' | translate }}: {{ creation }}</p>
+                        <p class="text text-warning">{{ 'Project.Preview.End' | translate }}: {{ deadline }}</p>
+                    </div>
+                    <hr>
+                    <div class="text-container text-right d-flex justify-content-around">
+                        <div class="author">
+                            <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                            <a href="/user/{{ author }}">{{ author }}</a>
+                        </div>
+                        <div class="tags">
+                            <small class="text text-secondary">{{ 'Project.Preview.Tag' | translate }}:</small>
+                            <small class="taxt text-secondary" *ngFor="let tag of tagsPreview"> {{ tag }}</small>
+                        </div>
+                    </div>
+                    <hr>
                 </div>
-                <hr>
             </div>
         </div>
     </div>
-</div>
 
-<div class="jumbotron" *ngIf="!auth.isAuthenticated()">
-    <div class="alert text-center">
-        <p>{{ 'Project.Creation.Alert.Prefix' | translate }}, <a href="" data-toggle="modal" data-target="#login">{{ 'Project.Creation.Alert.Login' | translate }}</a> {{ 'Project.Creation.Alert.Or' | translate }} <a href="" data-toggle="modal" data-target="#register">{{ 'Project.Creation.Alert.Register' | translate }}</a>.</p>
+    <div class="jumbotron" *ngIf="!auth.isAuthenticated()">
+        <div class="alert text-center">
+            <p>{{ 'Project.Creation.Alert.Prefix' | translate }}, <a href="" data-toggle="modal" data-target="#login">{{ 'Project.Creation.Alert.Login' | translate }}</a> {{ 'Project.Creation.Alert.Or' | translate }} <a href="" data-toggle="modal" data-target="#register">{{ 'Project.Creation.Alert.Register' | translate }}</a>.</p>
+        </div>
     </div>
-</div>
 
-<div class="modal fade modal-lower" id="text-preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h2>{{ 'Project.Headers.MarkdownPreview' | translate }}</h2>
-            </div>
-            <div class="modal-body">
-                <div class="d-flex justify-content-center">
-                    <h1>{{ projectName }}</h1>
+    <div class="modal fade modal-lower" id="text-preview" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h2>{{ 'Project.Headers.MarkdownPreview' | translate }}</h2>
                 </div>
-                <div class="d-flex justify-content-center">
-                    <div class="alert"><small>{{ description }}</small></div>
+                <div class="modal-body">
+                    <div class="d-flex justify-content-center">
+                        <h1>{{ projectName }}</h1>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="alert"><small>{{ description }}</small></div>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <markdown [data]="body"></markdown>
+                    </div>
                 </div>
-                <div class="d-flex justify-content-center">
-                    <markdown [data]="body"></markdown>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-danger" data-dismiss="modal">{{ 'Project.Buttons.Close' | translate }}</button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-dismiss="modal">{{ 'Project.Buttons.Close' | translate }}</button>
             </div>
         </div>
     </div>

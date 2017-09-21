@@ -1,42 +1,44 @@
-<div class="jumbotron">
-    <h2>
-        {{ 'News.Headers.AllProjectNews' | translate }} <a href="/project/{{ pageId }}">{{ 'News.Headers.OfProject' | translate }}</a>:
-    </h2>
-</div>
-<div>
-    <div *ngFor="let news of newsList">
-        <div class="col-xs-12 col-sm-6 col-md-3">
-            <div class="thumbnail card">
-                <div class="img-preview-container text-center">
-                    <a href="/news/{{ news.newsId }}"><img class="img-fluid img-preview" src="{{ news.image }}" alt="{{ 'News.Preview.Tag' | translate }}"></a>
-                </div>
-                <div class="text-container">
-                    <a href="/news/{{ news.newsId }}">
-                        <h4 class="title">
-                            {{ news.title }}
-                        </h4>
-                    </a>
-                    <p class="text text-secondary text-left description">
-                        {{ news.description }}
-                    </p>
-                    <p class="text text-secondary text-left description">
-                        {{ news.body }}
-                    </p>
-                </div>
-                <hr>
-                <div class="text-container text-right d-flex justify-content-around">
-                    <div>
-                        <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
-                        <a href="/user/{{ news.author }}">{{ news.author }}</a>
+<div class="container">
+    <div class="jumbotron">
+        <h2>
+            {{ 'News.Headers.AllProjectNews' | translate }} <a href="/project/{{ pageId }}">{{ 'News.Headers.OfProject' | translate }}</a>:
+        </h2>
+    </div>
+    <div>
+        <div *ngFor="let news of newsList">
+            <div class="col-xs-12 col-sm-6 col-md-3">
+                <div class="thumbnail card">
+                    <div class="img-preview-container text-center">
+                        <a href="/news/{{ news.newsId }}"><img class="img-fluid img-preview" src="{{ news.image }}" alt="{{ 'News.Preview.Tag' | translate }}"></a>
                     </div>
-                    <a href="/project/{{ news.pageId }}">{{ 'News.Preview.ProjectPage' | translate }}</a>
+                    <div class="text-container">
+                        <a href="/news/{{ news.newsId }}">
+                            <h4 class="title">
+                                {{ news.title }}
+                            </h4>
+                        </a>
+                        <p class="text text-secondary text-left description">
+                            {{ news.description }}
+                        </p>
+                        <p class="text text-secondary text-left description">
+                            {{ news.body }}
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="text-container text-right d-flex justify-content-around">
+                        <div>
+                            <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                            <a href="/user/{{ news.author }}">{{ news.author }}</a>
+                        </div>
+                        <a href="/project/{{ news.pageId }}">{{ 'News.Preview.ProjectPage' | translate }}</a>
+                    </div>
+                    <hr>
+                    <div class="text-container text-right d-flex justify-content-around">
+                        <small class="text text-warning">{{ news.creation }}</small>
+                        <small class="text text-secondary">{{ 'News.Preview.Tag' | translate }}: {{ news.tags }}</small>
+                    </div>
+                    <hr>
                 </div>
-                <hr>
-                <div class="text-container text-right d-flex justify-content-around">
-                    <small class="text text-warning">{{ news.creation }}</small>
-                    <small class="text text-secondary">{{ 'News.Preview.Tag' | translate }}: {{ news.tags }}</small>
-                </div>
-                <hr>
             </div>
         </div>
     </div>

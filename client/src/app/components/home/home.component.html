@@ -1,124 +1,142 @@
-<div class="jumbotron">
+<div class="container-fluid bgimg-2">
+    <div class="d-flex align-items-center d-flex justify-content-center">
+        <div class="caption">
+            <span class="border">CO-OP Team</span>
+        </div>
+    </div>
+</div>
+<!--<div class="jumbotron">
     <h1>{{ 'Home.Jumbotron.Header' | translate }}</h1>
     <blockquote [innerHTML]=" 'Home.Jumbotron.Quote' | translate">
     </blockquote>
     <div class="row"><a class="btn btn-primary btn-lg">{{ 'Home.Jumbotron.Join' | translate }}</a></div>
-</div>
+</div>-->
 <hr>
 <div class="col-xs-12 col-sm-12 col-md-12 jumbotron">
     <h2 class="text-center"><a href="/news">{{ 'Home.News' | translate }}</a></h2>
 </div>
-<section *ngFor="let news of newsList">
-    <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="thumbnail card">
-            <div class="img-preview-container text-center">
-                <a href="/news/{{ news.newsId }}"><img class="img-fluid img-preview" src="{{ news.image }}" alt="{{ 'News.Preview.Tag' | translate }}"></a>
-            </div>
-            <div class="text-container">
-                <a href="/news/{{ news.newsId }}">
-                    <h4 class="title">
-                        {{ news.title }}
-                    </h4>
-                </a>
-                <p class="text text-secondary text-left description">
-                    {{ news.description }}
-                </p>
-                <p class="text text-secondary text-left description">
-                    {{ news.body }}
-                </p>
-            </div>
-            <hr>
-            <div class="text-container text-right d-flex justify-content-around">
-                <div>
-                    <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
-                    <a href="/user/{{ news.author }}">{{ news.author }}</a>
+<div class="container">
+    <section *ngFor="let news of newsList">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="thumbnail card">
+                <div class="img-preview-container text-center">
+                    <a href="/news/{{ news.newsId }}"><img class="img-fluid img-preview" src="{{ news.image }}" alt="{{ 'News.Preview.Tag' | translate }}"></a>
                 </div>
-                <a href="/project/{{ news.pageId }}">{{ 'News.Preview.ProjectPage' | translate }}</a>
+                <div class="text-container">
+                    <a href="/news/{{ news.newsId }}">
+                        <h4 class="title">
+                            {{ news.title }}
+                        </h4>
+                    </a>
+                    <p class="text text-secondary text-left description">
+                        {{ news.description }}
+                    </p>
+                    <p class="text text-secondary text-left description">
+                        {{ news.body }}
+                    </p>
+                </div>
+                <hr>
+                <div class="text-container text-right d-flex justify-content-around">
+                    <div>
+                        <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                        <a href="/user/{{ news.author }}">{{ news.author }}</a>
+                    </div>
+                    <a href="/project/{{ news.pageId }}">{{ 'News.Preview.ProjectPage' | translate }}</a>
+                </div>
+                <hr>
+                <div class="text-container text-right d-flex justify-content-around">
+                    <small class="text text-warning">{{ news.creation }}</small>
+                    <small class="text text-secondary">{{ 'News.Preview.Tag' | translate }}: {{ news.tags }}</small>
+                </div>
+                <hr>
             </div>
-            <hr>
-            <div class="text-container text-right d-flex justify-content-around">
-                <small class="text text-warning">{{ news.creation }}</small>
-                <small class="text text-secondary">{{ 'News.Preview.Tag' | translate }}: {{ news.tags }}</small>
-            </div>
-            <hr>
         </div>
+    </section>
+</div>
+
+<div class="row container-fluid bgimg-2">
+    <div class="caption">
+        <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;text-shadow: 2px 2px 8px #000000;">LESS HEIGHT</span>
     </div>
-</section>
-<hr>
+</div>
 <div class="col-xs-12 col-sm-12 col-md-12 jumbotron">
     <h2 class="text-center"><a href="/projects">{{ 'Home.NewProjects' | translate }}</a></h2>
 </div>
-<section *ngFor="let project of newProjects">
-    <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="thumbnail card card-outline-secondary">
-            <div class="img-preview-container">
-                <a href="/project/{{ project.pageId }}"><img class="img-fluid img-preview" src="{{ project.image }}" alt="Project image"></a>
-            </div>
-            <div class="text-container ">
-                <a href="/project/{{ project.pageId }}">
-                    <h4 class="title">
-                        {{ project.title }}
-                    </h4>
-                </a>
-                <p class="text text-secondary text-left description">
-                    {{ project.description }}
-                </p>
-            </div>
-            <hr>
-            <div class="text-container">
-                <p class="text text-success">{{ 'Project.Preview.Goal' | translate }}: {{ project.goal }} $</p>
-                <p class="text text-info">{{ 'Project.Preview.Current' | translate }}: {{ project.collected }} $</p>
-                <p class="text text-warning">{{ 'Project.Preview.Start' | translate }}: {{ project.creation }}</p>
-                <p class="text text-warning">{{ 'Project.Preview.End' | translate }}: {{ project.date }}</p>
-            </div>
-            <hr>
-            <div class="text-container text-right d-flex justify-content-around">
-                <div>
-                    <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
-                    <a href="/user/{{ project.author }}">{{ project.author }}</a>
+<div class="container">
+    <section *ngFor="let project of newProjects">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="thumbnail card card-outline-secondary">
+                <div class="img-preview-container">
+                    <a href="/project/{{ project.pageId }}"><img class="img-fluid img-preview" src="{{ project.image }}" alt="Project image"></a>
                 </div>
-                <small class=" text text-secondary ">{{ 'Project.Preview.Tag' | translate }}: {{ project.tags }}</small>
+                <div class="text-container ">
+                    <a href="/project/{{ project.pageId }}">
+                        <h4 class="title">
+                            {{ project.title }}
+                        </h4>
+                    </a>
+                    <p class="text text-secondary text-left description">
+                        {{ project.description }}
+                    </p>
+                </div>
+                <hr>
+                <div class="text-container">
+                    <p class="text text-success">{{ 'Project.Preview.Goal' | translate }}: {{ project.goal }} $</p>
+                    <p class="text text-info">{{ 'Project.Preview.Current' | translate }}: {{ project.collected }} $</p>
+                    <p class="text text-warning">{{ 'Project.Preview.Start' | translate }}: {{ project.creation }}</p>
+                    <p class="text text-warning">{{ 'Project.Preview.End' | translate }}: {{ project.date }}</p>
+                </div>
+                <hr>
+                <div class="text-container text-right d-flex justify-content-around">
+                    <div>
+                        <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                        <a href="/user/{{ project.author }}">{{ project.author }}</a>
+                    </div>
+                    <small class=" text text-secondary ">{{ 'Project.Preview.Tag' | translate }}: {{ project.tags }}</small>
+                </div>
+                <hr>
             </div>
-            <hr>
         </div>
-    </div>
-</section>
-<hr>
+    </section>
+</div>
+
 <div class="col-xs-12 col-sm-12 col-md-12 jumbotron">
     <h2 class="text-center"><a href="/projects">{{ 'Home.ActualProjects' | translate }}</a></h2>
 </div>
-<section *ngFor="let project of actualProjects">
-    <div class="col-xs-12 col-sm-6 col-md-4">
-        <div class="thumbnail card card-outline-secondary">
-            <div class="img-preview-container">
-                <a href="/project/{{ project.pageId }}"><img class="img-fluid img-preview" src="{{ project.image }}" alt="Project image"></a>
-            </div>
-            <div class="text-container ">
-                <a href="/project/{{ project.pageId }}">
-                    <h4 class="title">
-                        {{ project.title }}
-                    </h4>
-                </a>
-                <p class="text text-secondary text-left description">
-                    {{ project.description }}
-                </p>
-            </div>
-            <hr>
-            <div class="text-container">
-                <p class="text text-success">{{ 'Project.Preview.Goal' | translate }}: {{ project.goal }} $</p>
-                <p class="text text-info">{{ 'Project.Preview.Current' | translate }}: {{ project.collected }} $</p>
-                <p class="text text-warning">{{ 'Project.Preview.Start' | translate }}: {{ project.creation }}</p>
-                <p class="text text-warning">{{ 'Project.Preview.End' | translate }}: {{ project.date }}</p>
-            </div>
-            <hr>
-            <div class="text-container text-right d-flex justify-content-around">
-                <div>
-                    <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
-                    <a href="/user/{{ project.author }}">{{ project.author }}</a>
+<div class="container">
+    <section *ngFor="let project of actualProjects">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="thumbnail card card-outline-secondary">
+                <div class="img-preview-container">
+                    <a href="/project/{{ project.pageId }}"><img class="img-fluid img-preview" src="{{ project.image }}" alt="Project image"></a>
                 </div>
-                <small class=" text text-secondary ">{{ 'Project.Preview.Tag' | translate }}: {{ project.tags }}</small>
+                <div class="text-container ">
+                    <a href="/project/{{ project.pageId }}">
+                        <h4 class="title">
+                            {{ project.title }}
+                        </h4>
+                    </a>
+                    <p class="text text-secondary text-left description">
+                        {{ project.description }}
+                    </p>
+                </div>
+                <hr>
+                <div class="text-container">
+                    <p class="text text-success">{{ 'Project.Preview.Goal' | translate }}: {{ project.goal }} $</p>
+                    <p class="text text-info">{{ 'Project.Preview.Current' | translate }}: {{ project.collected }} $</p>
+                    <p class="text text-warning">{{ 'Project.Preview.Start' | translate }}: {{ project.creation }}</p>
+                    <p class="text text-warning">{{ 'Project.Preview.End' | translate }}: {{ project.date }}</p>
+                </div>
+                <hr>
+                <div class="text-container text-right d-flex justify-content-around">
+                    <div>
+                        <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                        <a href="/user/{{ project.author }}">{{ project.author }}</a>
+                    </div>
+                    <small class=" text text-secondary ">{{ 'Project.Preview.Tag' | translate }}: {{ project.tags }}</small>
+                </div>
+                <hr>
             </div>
-            <hr>
         </div>
-    </div>
-</section>
+    </section>
+</div>
