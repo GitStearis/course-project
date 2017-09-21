@@ -1,4 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
+import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Profile } from '../../../profile';
 import { AuthService } from '../../../services/auth/auth.service';
@@ -25,7 +26,7 @@ export class CreateComponent implements OnInit {
   public goal: string = '';
   public deadline: string = '';
   public creation: string = new Date().toJSON().slice(0, 10);
-  public tags: string = '';
+  public tags: any [] = [];
   public author: string = localStorage['name'];
 
   constructor(
@@ -92,6 +93,7 @@ export class CreateComponent implements OnInit {
   }
 
   public submit() {
+    this.parseTags();
     const project = {
       title: this.projectName,
       description: this.description,
@@ -131,16 +133,36 @@ export class CreateComponent implements OnInit {
       );
   }
 
-  items = ['Pizza', 'Pasta', 'Parmesan'];
+  public items: any[];
+  public validators = [this.addTag];
+
+  public tagsPreview: any[] = [];
 
   public onAdd(event: any) {
-    this.items.push(event.target.value);
-    console.log(this.items);
+    console.log(event);
+    this.tagsPreview.push(event.value);
+    console.log(this.tagsPreview);
   }
 
-  public onItemRemoved(event: any) {
-    this.items.splice(this.items.indexOf(event.target.value), 1);
-    console.log(this.items);
+  public errorMessages = {
+    'addTag': 'Your tag can have max 25 symbols',
+  };
+
+  public addTag(control: FormControl) {
+    console.log(control.value);
+    if (control.value.length > 25) {
+        return {
+            'addTag': true
+        };
+    }
+    return null;
+  }
+
+  public parseTags() {
+    this.items.map(item => {
+      this.tags.push(item.value);
+    })
+    console.log(this.tags);
   }
 
   ngOnInit() { }

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Project = require("../models/projects");
+// const tag = require("../models/tag");
 
 String.prototype.cleanup = function() {
 
@@ -23,6 +24,8 @@ module.exports.createProject = function(req, res) {
 
     _project.pageId = req.body.title.toLowerCase().cleanup();
     let tempTitle = _project.title.toLowerCase().cleanup();
+
+    // tag.addTag(_project.tags);
 
     Project.findOne({ pageId: tempTitle }, function(err, project) {
         if (project === null) {
