@@ -117,10 +117,14 @@ module.exports.followProjectNews = function(req, res) {
         if (err || project === null) {
             res.status(404).json(err);
         }
-        project.followers.push({ email: req.body.follower });
-        project.save();
+        if (!project.followers.includes(follower)) {
+            project.followers.push({ email: follower });
+            project.save();
+            res.status(200).send(`${follower} follows this project now!`);
+        } else {
+            res.status(200).send(`${follower} is already following this project.`);
+        }
     });
-    res.status(200).send(`${follower} is follow this project now!`);
 };
 
 module.exports.rateProject = function(req, res) {
