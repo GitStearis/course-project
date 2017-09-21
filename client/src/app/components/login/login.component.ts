@@ -65,7 +65,8 @@ export class LoginComponent implements OnInit {
       password: this.password,
       firstname: "",
       secondname: "",
-      phone: ""
+      phone: "",
+      tipped: 0
     };
 
     this.auth.login(user);

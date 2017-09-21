@@ -57,19 +57,7 @@ export class AuthService {
     localStorage["tipped"] = 0;
     } else {
     localStorage["tipped"] = parsed.tipped;
-    }
-
-    if (parsed.ratedProjects === undefined) {
-      localStorage["ratedProjects"] = [];
-    } else {
-      localStorage["ratedProjects"] = parsed.ratedProjects;
-    }
-
-    if (parsed.followedProjects === undefined) {
-      localStorage["followedProjects"] = [];
-    } else {
-      localStorage["followedProjects"] = parsed.followedProjects;
-    }  
+    } 
   }
 
   public getToken() {

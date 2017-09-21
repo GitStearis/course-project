@@ -16,8 +16,6 @@ export class ProfileComponent implements OnInit {
   phone: string;
   date: string;
   tipped: number;
-  ratedProjects: string[];
-  followedProjects: string[];
 
   constructor(public auth: AuthService) {}
 
@@ -29,7 +27,5 @@ export class ProfileComponent implements OnInit {
     this.phone = localStorage['phone'];
     this.date = localStorage['date'];
     this.tipped = parseInt(localStorage['tipped']);
-    this.ratedProjects = localStorage['ratedProjects'];
-    this.followedProjects = localStorage['followedProjects'];
   }
 }

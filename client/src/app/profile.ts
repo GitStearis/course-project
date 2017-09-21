@@ -5,4 +5,5 @@ export interface Profile {
     firstname: string;
     secondname: string;
     phone: string;
+    tipped: number;
   }
