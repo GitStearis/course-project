@@ -15,6 +15,9 @@ export class ProfileComponent implements OnInit {
   secondname: string;
   phone: string;
   date: string;
+  tipped: number;
+  ratedProjects: string[];
+  followedProjects: string[];
 
   constructor(public auth: AuthService) {}
 

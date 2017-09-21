@@ -52,6 +52,9 @@ export class AuthService {
     localStorage["date"] = parsed.date;
     localStorage["isBlocked"] = parsed.isBlocked;
     localStorage["permission"] = parsed.permission;
+    localStorage["tipped"] = parsed.tipped;
+    localStorage["ratedProjects"] = parsed.ratedProjects;
+    localStorage["followedProjects"] = parsed.followedProjects;
   }
 
   public getToken() {

@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 const Project = require("../models/projects");
+var User = require("../models/users");
 
 module.exports.projectByPageId = function(req, res) {
     Project.findOne({ pageId: req.params.pageId }, function(err, project) {
@@ -98,8 +99,12 @@ module.exports.projectDonate = function(req, res) {
             if (err || project === null) {
                 res.status(409).json("cannot find project to donate");
             } else {
-                console.log(project.collected + inc);
-                console.log(project.goal);
+                User.findOneAndUpdate({ name: req.params.user }, { $inc: { tipped: inc } }, { upsert: true }, function(err, user) {
+                    if (err || user === null) {
+                        console.log("cannot find such user");
+                    }
+                });
+
                 if (project.collected + inc >= project.goal) {
                     Project.findOneAndUpdate({ pageId: req.params.pageId }, { $set: { status: "done" } }, { upsert: true },
                         function(err, project) {}
@@ -117,6 +122,13 @@ module.exports.followProjectNews = function(req, res) {
         if (err || project === null) {
             res.status(404).json(err);
         }
+
+        User.findOneAndUpdate({ name: req.params.user }, { $addToSet: { followedProjects: req.params.pageId } }, { upsert: true }, function(err, user) {
+            if (err || user === null) {
+                console.log("cannot find such user");
+            }
+        });
+
         project.followers.push({ email: req.body.follower });
         project.save();
     });
@@ -134,10 +146,18 @@ module.exports.rateProject = function(req, res) {
             res.status(404).json(err);
         }
         if (!project.ratings.find(x => x.user === req.body.user)) {
+
+            User.findOneAndUpdate({ name: req.params.user }, { $addToSet: { ratedProjects: req.params.pageId } }, { upsert: true }, function(err, user) {
+                if (err || user === null) {
+                    console.log("cannot find such user");
+                }
+            });
+
             project.ratings.push(newRating);
-            project.save();
-            const average = project.ratings.reduce(function(acc, obj) { return acc + parseInt(obj.rating); }, 0) / project.ratings.length
-            res.json(average);
+            project.save((err, project) => {
+                const average = project.ratings.reduce(function(acc, obj) { return acc + parseInt(obj.rating); }, 0) / project.ratings.length
+                res.json(average);
+            });
         }
     });
 

@@ -36,7 +36,7 @@ export class ProjectComponent implements OnInit {
     }
 
     this.http
-    .post('/api/project/' + this.pageId + '/rate', newRating)
+    .post('/api/project/' + this.pageId + '/rate/' + localStorage['name'], newRating)
     .map(data => JSON.stringify(data))
     .subscribe(
     data => {  
@@ -125,7 +125,7 @@ export class ProjectComponent implements OnInit {
 
   public onFollow() {
     let newFollower = localStorage['email'];
-    this.http.post(`/api/project/${this.pageId}/follow`, {follower: newFollower})
+    this.http.post(`/api/project/${this.pageId}/follow/` + localStorage['name'], {follower: newFollower})
     .subscribe(data => {
     });
   }

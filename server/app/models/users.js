@@ -36,6 +36,18 @@ var userSchema = new mongoose.Schema({
         type: String,
         required: false
     },
+    tipped: {
+        type: Number,
+        required: false
+    },
+    ratedProjects: [{
+        type: String,
+        required: false
+    }],
+    followedProjects: [{
+        type: String,
+        required: false
+    }],
     hash: String,
     salt: String
 });
