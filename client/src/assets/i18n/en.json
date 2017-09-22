@@ -76,7 +76,9 @@
             "Project": "Project page",
             "Support": "Support",
             "AddNews": "Add news",
-            "Send": "Send"
+            "Send": "Send",
+            "Follow": "Follow",
+            "Edit": "Edit"
         },
         "Project": {
             "Author": "Project author",
