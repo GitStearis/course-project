@@ -16,7 +16,7 @@
     },
 
     "Footer": {
-        "About": "О нас",
+        "About": "О проекте",
         "Contact": "Связаться",
         "Goals": "Цели",
         "Repository": "Репозиторий"
@@ -26,6 +26,7 @@
         "Headers": {
             "CreatedProjects": "Проекты пользователя",
             "RatedProjects": "Оцененные пользователем",
+            "FollowedProjects": "Подписки пользователя",
             "AllProjects": "Все проекты",
             "Create": "Создавайте новые проекты с CO-OP",
             "CreateTag": "Объединяйтесь для развития ваших идей",

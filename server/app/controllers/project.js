@@ -176,3 +176,16 @@ module.exports.projectsRated = function(req, res) {
         }
     });
 }
+
+module.exports.projectsFollowed = function(req, res) {
+    User.findOne({ name: req.params.username }, (err, user) => {
+        if (user.ratedProjects.length !== 0) {
+            Project.find({ pageId: { "$in": user.followedProjects } }, function(err, project) {
+                if (err || project === null) {
+                    res.status(404).json(err);
+                }
+                res.json(project);
+            });
+        }
+    });
+}

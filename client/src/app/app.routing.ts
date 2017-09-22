@@ -18,6 +18,7 @@ import { NewsComponent } from './components/news/news/news.component';
 import { AllProjectsComponent } from './components/project/all-projects/all-projects.component';
 import { AllProjectNewsComponent } from './components/news/all-project-news/all-project-news.component';
 import { RatedProjectsComponent } from './components/project/rated-projects/rated-projects.component';
+import { FollowedProjectsComponent } from './components/project/followed-projects/followed-projects.component';
 
 const appRoutes: Routes = [
   {
@@ -71,6 +72,10 @@ const appRoutes: Routes = [
   {
     path: 'user/:name/rated',
     component: RatedProjectsComponent
+  },
+  {
+    path: 'user/:name/followed',
+    component: FollowedProjectsComponent
   },
   {
     path: 'create',

@@ -26,6 +26,7 @@
         "Headers": {
             "CreatedProjects": "Projects of",
             "RatedProjects": "Rated by",
+            "FollowedProjects": "Followed by",
             "AllProjects": "All projects",
             "Create": "Create new project with CO-OP",
             "CreateTag": "Cooperate to develop your ideas",

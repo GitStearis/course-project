@@ -1,8 +1,8 @@
 <div class="jumbotron">
-    <h2>{{ 'Project.Headers.RatedProjects' | translate }} <i class="fa fa-user fa-fw fa-lg colored" aria-hidden="true"></i><a href="/user/{{ name }}">{{ name }}</a></h2>
+    <h2>{{ 'Project.Headers.FollowedProjects' | translate }} <i class="fa fa-user fa-fw fa-lg colored" aria-hidden="true"></i><a href="/user/{{ name }}">{{ name }}</a></h2>
 </div>
 <div>
-    <div *ngFor="let project of ratedProjects">
+    <div *ngFor="let project of followedProjects">
         <div class="col-xs-12 col-sm-6 col-md-3">
             <div class="thumbnail card">
                 <div class="img-preview-container">

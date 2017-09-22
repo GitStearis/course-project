@@ -5,24 +5,24 @@ import { HttpClient } from '@angular/common/http';
 import { Project } from '../../../project';
 
 @Component({
-  selector: 'app-rated-projects',
-  templateUrl: './rated-projects.component.html',
-  styleUrls: ['./rated-projects.component.css']
+  selector: 'app-followed-projects',
+  templateUrl: './followed-projects.component.html',
+  styleUrls: ['./followed-projects.component.css']
 })
-export class RatedProjectsComponent implements OnInit {
+export class FollowedProjectsComponent implements OnInit {
 
-  ratedProjects: Project[];
+  followedProjects: Project[];
   name: string = '';
 
     constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
       this.route.params.subscribe(params => {
         this.name = params.name;
         this.http
-          .get('/api/user/' + this.name + '/rated')
+          .get('/api/user/' + this.name + '/followed')
           .map(data => JSON.stringify(data))
           .subscribe(
           data => {
-            this.ratedProjects = JSON.parse(data);
+            this.followedProjects = JSON.parse(data);
           },
           err => {
             if (err.error instanceof Error) {
