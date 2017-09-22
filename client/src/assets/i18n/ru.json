@@ -25,6 +25,7 @@
     "Project": {
         "Headers": {
             "CreatedProjects": "Проекты пользователя",
+            "RatedProjects": "Оцененные пользователем",
             "AllProjects": "Все проекты",
             "Create": "Создавайте новые проекты с CO-OP",
             "CreateTag": "Объединяйтесь для развития ваших идей",
@@ -209,7 +210,7 @@
         "Projects": "Проекты",
         "Donated": "Пожертвовано",
         "Created": "Созданные",
-        "Tipped": "Поощренные",
+        "Rated": "Оцененные",
         "Followed": "Подписки",
         "Registration": "Дата регистрации",
         "Achievements": "Достижения",

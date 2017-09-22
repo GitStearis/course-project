@@ -11,6 +11,7 @@ module.exports.projectByPageId = function(req, res) {
         }
     });
 };
+
 module.exports.projectsByUsername = function(req, res) {
     Project.find({ author: req.params.username }, function(err, project) {
         if (err || project === null) {
@@ -160,5 +161,18 @@ module.exports.rateProject = function(req, res) {
             });
         }
     });
-
 };
+
+module.exports.projectsRated = function(req, res) {
+    User.findOne({ name: req.params.username }, (err, user) => {
+        console.log(user.ratedProjects);
+        if (user.ratedProjects.length !== 0) {
+            Project.find({ pageId: { "$in": user.ratedProjects } }, function(err, project) {
+                if (err || project === null) {
+                    res.status(404).json(err);
+                }
+                res.json(project);
+            });
+        }
+    });
+}

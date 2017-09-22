@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Project } from '../../project';
+import { Project } from '../../../project';
 
 @Component({
   selector: 'app-created-projects',

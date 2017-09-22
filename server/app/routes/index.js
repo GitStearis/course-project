@@ -26,6 +26,7 @@ router.get("/profile", auth, ctrlProfile.profileRead);
 // пользователи
 router.get("/user/:username", ctrlProfile.profileByUsername);
 router.get("/user/:username/created", ctrProject.projectsByUsername);
+router.get("/user/:username/rated", ctrProject.projectsRated);
 
 // аутентификация c верификацией
 router.post("/register", ctrlAuth.register);
