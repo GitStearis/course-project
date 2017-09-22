@@ -25,6 +25,8 @@
     "Project": {
         "Headers": {
             "CreatedProjects": "Projects of",
+            "RatedProjects": "Rated by",
+            "FollowedProjects": "Followed by",
             "AllProjects": "All projects",
             "Create": "Create new project with CO-OP",
             "CreateTag": "Cooperate to develop your ideas",
@@ -205,12 +207,16 @@
     },
 
     "Profile": {
-        "Stats": "Statistics",
+        "Statistics": "Statistics",
+        "Projects": "Projects",
         "Donated": "Donated",
-        "Projects": "Created projects",
-        "Tipped": "Tipped projects",
+        "Created": "Created",
+        "Rated": "Rated",
+        "Followed": "Followed",
         "Registration": "Registration date",
-        "Achievements": "Achievements"
+        "Achievements": "Achievements",
+        "Phone": "Phone number",
+        "Email": "Email address"
     },
 
     "Verification": {

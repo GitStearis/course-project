@@ -51,7 +51,7 @@ export class DonationComponent implements OnInit {
   }
   public continue() {
     this.http
-      .get('/api/project/' + this.pageId + '/donate/' + this.value)
+      .get('/api/project/' + this.pageId + '/donate/' + localStorage['name'] + '/' + this.value)
       .map(data => JSON.stringify(data))
       .subscribe(
       data => {

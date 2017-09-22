@@ -105,7 +105,8 @@ export class RegistrationComponent implements OnInit {
       password: this.password,
       firstname: this.firstname,
       secondname: this.secondname,
-      phone: this.phone
+      phone: this.phone,
+      tipped: 0
     };
     console.log(user);
     this.auth.register(user);

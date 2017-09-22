@@ -1,5 +1,6 @@
 var mongoose = require("mongoose");
 const Project = require("../models/projects");
+var User = require("../models/users");
 
 module.exports.projectByPageId = function(req, res) {
     Project.findOne({ pageId: req.params.pageId }, function(err, project) {
@@ -10,6 +11,7 @@ module.exports.projectByPageId = function(req, res) {
         }
     });
 };
+
 module.exports.projectsByUsername = function(req, res) {
     Project.find({ author: req.params.username }, function(err, project) {
         if (err || project === null) {
@@ -98,8 +100,12 @@ module.exports.projectDonate = function(req, res) {
             if (err || project === null) {
                 res.status(409).json("cannot find project to donate");
             } else {
-                console.log(project.collected + inc);
-                console.log(project.goal);
+                User.findOneAndUpdate({ name: req.params.user }, { $inc: { tipped: inc } }, { upsert: true }, function(err, user) {
+                    if (err || user === null) {
+                        console.log("cannot find such user");
+                    }
+                });
+
                 if (project.collected + inc >= project.goal) {
                     Project.findOneAndUpdate({ pageId: req.params.pageId }, { $set: { status: "done" } }, { upsert: true },
                         function(err, project) {}
@@ -138,11 +144,45 @@ module.exports.rateProject = function(req, res) {
             res.status(404).json(err);
         }
         if (!project.ratings.find(x => x.user === req.body.user)) {
+
+            User.findOneAndUpdate({ name: req.params.user }, { $addToSet: { ratedProjects: req.params.pageId } }, { upsert: true }, function(err, user) {
+                if (err || user === null) {
+                    console.log("cannot find such user");
+                }
+            });
+
             project.ratings.push(newRating);
-            project.save();
-            const average = project.ratings.reduce(function(acc, obj) { return acc + parseInt(obj.rating); }, 0) / project.ratings.length
-            res.json(average);
+            project.save((err, project) => {
+                const average = project.ratings.reduce(function(acc, obj) { return acc + parseInt(obj.rating); }, 0) / project.ratings.length
+                res.json(average);
+            });
         }
     });
-
 };
+
+module.exports.projectsRated = function(req, res) {
+    User.findOne({ name: req.params.username }, (err, user) => {
+        console.log(user.ratedProjects);
+        if (user.ratedProjects.length !== 0) {
+            Project.find({ pageId: { "$in": user.ratedProjects } }, function(err, project) {
+                if (err || project === null) {
+                    res.status(404).json(err);
+                }
+                res.json(project);
+            });
+        }
+    });
+}
+
+module.exports.projectsFollowed = function(req, res) {
+    User.findOne({ name: req.params.username }, (err, user) => {
+        if (user.ratedProjects.length !== 0) {
+            Project.find({ pageId: { "$in": user.followedProjects } }, function(err, project) {
+                if (err || project === null) {
+                    res.status(404).json(err);
+                }
+                res.json(project);
+            });
+        }
+    });
+}

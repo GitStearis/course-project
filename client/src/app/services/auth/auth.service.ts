@@ -52,6 +52,12 @@ export class AuthService {
     localStorage["date"] = parsed.date;
     localStorage["isBlocked"] = parsed.isBlocked;
     localStorage["permission"] = parsed.permission;
+
+    if (parsed.tipped === undefined) {
+    localStorage["tipped"] = 0;
+    } else {
+    localStorage["tipped"] = parsed.tipped;
+    } 
   }
 
   public getToken() {

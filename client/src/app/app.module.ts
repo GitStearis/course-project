@@ -39,7 +39,7 @@ import { UserComponent } from './components/user/user.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { VerificationPageComponent } from './components/verification-page/verification-page.component';
 import { CheckingComponent } from './components/checking/checking.component';
-import { CreatedProjectsComponent } from './components/created-projects/created-projects.component';
+import { CreatedProjectsComponent } from './components/project/created-projects/created-projects.component';
 import { CommentComponent } from './components/comment/comment.component';
 import { CreateNewsComponent } from './components/news/create-news/create-news.component';
 import { AllNewsComponent } from './components/news/all-news/all-news.component';
@@ -48,6 +48,8 @@ import { AllProjectsComponent } from './components/project/all-projects/all-proj
 import { AllProjectNewsComponent } from './components/news/all-project-news/all-project-news.component';
 import { CheckByAdminComponent } from './components/checking/check-by-admin/check-by-admin.component';
 import { RatingModule } from 'ngx-rating';
+import { RatedProjectsComponent } from './components/project/rated-projects/rated-projects.component';
+import { FollowedProjectsComponent } from './components/project/followed-projects/followed-projects.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +76,9 @@ import { RatingModule } from 'ngx-rating';
     NewsComponent,
     AllProjectsComponent,
     AllProjectNewsComponent,
-    CheckByAdminComponent
+    CheckByAdminComponent,
+    RatedProjectsComponent,
+    FollowedProjectsComponent
   ],
   imports: [
     HttpModule,

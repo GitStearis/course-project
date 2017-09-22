@@ -4,6 +4,8 @@ import { HttpClient } from '@angular/common/http';
 import { Profile } from '../../profile';
 import { Router } from '@angular/router';
 
+import { AuthService } from '../../services/auth/auth.service';
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -17,7 +19,8 @@ export class UserComponent implements OnInit {
     password: '',
     firstname: '',
     secondname: '',
-    phone: ''
+    phone: '',
+    tipped: 0
   };
   date: string;
   username: string;
@@ -29,12 +32,13 @@ export class UserComponent implements OnInit {
       password: '',
       firstname: parsed.firstname,
       secondname: parsed.secondname,
-      phone: parsed.phone
+      phone: parsed.phone,
+      tipped: parseInt(parsed.tipped)
     };
     this.date = parsed.date;
   }
 
-  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
+  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, public auth: AuthService) {
     this.route.params.subscribe(params => {
       this.username = params.username;
       this.http

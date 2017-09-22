@@ -69,6 +69,9 @@ module.exports.register = function(req, res) {
                     _user.setPassword(req.body.password);
                     _user.isBlocked = false;
                     _user.permission = "authorized";
+                    _user.tipped = 0;
+                    _user.ratedProjects = [];
+                    _user.followedProjects = [];
 
                     host = req.get("host");
                     sendVerificationMail(_user.email, req);
@@ -100,7 +103,8 @@ module.exports.verification = function(req, res) {
                         _user.phone,
                         _user.date,
                         _user.isBlocked,
-                        _user.permission
+                        _user.permission,
+                        _user.tipped
                     )
                 );
             });
@@ -135,7 +139,8 @@ module.exports.login = function(req, res) {
                     user.phone,
                     user.date,
                     user.isBlocked,
-                    user.permission
+                    user.permission,
+                    user.tipped
                 )
             );
         } else {
@@ -146,8 +151,8 @@ module.exports.login = function(req, res) {
 
 module.exports.requestForCheck = function(req, res) {
     let image = req.body.image;
-    Users.findOne({email: req.body.person}, function(err, user){
-        if (err || user === null){
+    Users.findOne({ email: req.body.person }, function(err, user) {
+        if (err || user === null) {
             res.send("User is not found")
         }
 
@@ -158,5 +163,5 @@ module.exports.requestForCheck = function(req, res) {
         res.status(200);
         res.send("User is waiting for admin checking now");
     })
-    
+
 }

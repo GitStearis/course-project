@@ -2,30 +2,27 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { Project } from '../../project';
+import { Project } from '../../../project';
 
 @Component({
-  selector: 'app-created-projects',
-  templateUrl: './created-projects.component.html',
-  styleUrls: ['./created-projects.component.css']
+  selector: 'app-followed-projects',
+  templateUrl: './followed-projects.component.html',
+  styleUrls: ['./followed-projects.component.css']
 })
-export class CreatedProjectsComponent implements OnInit {
+export class FollowedProjectsComponent implements OnInit {
 
-  createdProjects: Project[];
+  followedProjects: Project[];
   name: string = '';
 
     constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
       this.route.params.subscribe(params => {
         this.name = params.name;
-        console.log('/api/user/' + this.name + '/created');
         this.http
-          .get('/api/user/' + this.name + '/created')
+          .get('/api/user/' + this.name + '/followed')
           .map(data => JSON.stringify(data))
           .subscribe(
           data => {
-            console.log(data);
-            this.createdProjects = JSON.parse(data);
-            console.log(this.createdProjects);
+            this.followedProjects = JSON.parse(data);
           },
           err => {
             if (err.error instanceof Error) {
@@ -41,5 +38,4 @@ export class CreatedProjectsComponent implements OnInit {
     }
   ngOnInit() {
   }
-
 }
