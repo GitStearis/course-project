@@ -46,6 +46,7 @@ router.post("/check", ctrlAuth.requestForCheck);
 
 // действия с проектами
 router.post("/project/new", ctrProjectForm.createProject);
+router.post("/project/:pageId/update", ctrProjectForm.updateProject);
 
 router.get("/project/:pageId", ctrProject.projectByPageId);
 router.get("/project/:pageId/done", ctrProject.projectMarkDone);

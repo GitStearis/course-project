@@ -19,6 +19,7 @@ import { AllProjectsComponent } from './components/project/all-projects/all-proj
 import { AllProjectNewsComponent } from './components/news/all-project-news/all-project-news.component';
 import { RatedProjectsComponent } from './components/project/rated-projects/rated-projects.component';
 import { FollowedProjectsComponent } from './components/project/followed-projects/followed-projects.component';
+import { UpdateComponent } from './components/project/update/update.component';
 
 const appRoutes: Routes = [
   {
@@ -88,6 +89,10 @@ const appRoutes: Routes = [
   {
     path: 'news/:newsId',
     component: NewsComponent
+  },
+  {
+    path: "project/:pageId/update",
+    component: UpdateComponent
   },
   {
     path: '404',

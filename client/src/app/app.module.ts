@@ -50,6 +50,7 @@ import { CheckByAdminComponent } from './components/checking/check-by-admin/chec
 import { RatingModule } from 'ngx-rating';
 import { RatedProjectsComponent } from './components/project/rated-projects/rated-projects.component';
 import { FollowedProjectsComponent } from './components/project/followed-projects/followed-projects.component';
+import { UpdateComponent } from './components/project/update/update.component';
 
 @NgModule({
   declarations: [
@@ -79,6 +80,7 @@ import { FollowedProjectsComponent } from './components/project/followed-project
     CheckByAdminComponent,
     RatedProjectsComponent,
     FollowedProjectsComponent
+    UpdateComponent
   ],
   imports: [
     HttpModule,
