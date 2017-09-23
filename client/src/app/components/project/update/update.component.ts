@@ -5,10 +5,11 @@ import { Profile } from '../../../profile';
 import { AuthService } from '../../../services/auth/auth.service';
 import { MessagesService } from '../../../../../node_modules/ng2-messages/ng2-messages.service';
 import { ImgCloudinaryService } from '../../../services/img/img-cloudinary.service';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { async } from 'q';
 import { TagInputModule } from 'ngx-chips';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { Project } from '../../../project';
 
 @Component({
   selector: 'app-update',
@@ -30,14 +31,20 @@ export class UpdateComponent implements OnInit {
   public tags: any [] = [];
   public author: string = localStorage['name'];
 
+  pageId: string;
+  project: Project;
+
   constructor(
     private http: HttpClient,
     public auth: AuthService,
     public element: ElementRef,
     public msg: MessagesService,
     public img: ImgCloudinaryService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private route: ActivatedRoute
+  ) {
+    
+  }
 
   private getFromInput(value, target) {
     if (value) {
@@ -93,7 +100,7 @@ export class UpdateComponent implements OnInit {
     });
   }
 
-  public submit() {
+  public update() {
     this.parseTags();
     const project = {
       title: this.projectName,
@@ -165,6 +172,33 @@ export class UpdateComponent implements OnInit {
     console.log(this.tags);
   }
 
-  ngOnInit() { }
+  async ngOnInit() { 
+    this.project = {
+      pageId: "",
+      date: "",
+      created: "",
+      goal: "",
+      collected: "",
+      image: "",
+      body: "",
+      description: "",
+      title: "",
+      author: "",
+      status: "",
+      ratings: [{
+          user: "",
+          rating: ""
+      }]
+    }
+    this.route.params.subscribe(params => {
+      this.pageId = params.pageId;
+      this.http
+        .get('/api/project/' + this.pageId)
+        .subscribe(
+        async data => {
+          this.project = await JSON.parse(JSON.stringify(data));
+        })
+      });
+  }
 
 }

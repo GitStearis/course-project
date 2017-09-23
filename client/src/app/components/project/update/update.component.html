@@ -27,7 +27,7 @@
                   <div class="form-group panel panel-success">
                       <div class="panel-heading">{{ 'Project.Creation.Title' | translate }}</div>
                       <div class="panel-body">
-                          <input #titleInput class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Title' | translate }}" (input)="projectName = $event.target.value" (keyup.enter)="getFromInput(titleInput.value, this.projectName)" (blur)="getFromInput(titleInput.value, this.projectName)">
+                          <input [(ngModel)]="project.title" [ngModelOptions]="{standalone: true}" #titleInput class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Title' | translate }}" (input)="projectName = $event.target.value" (keyup.enter)="getFromInput(titleInput.value, this.projectName)" (blur)="getFromInput(titleInput.value, this.projectName)">
                           <small>{{ 'Project.Creation.TitleTag' | translate }}</small>
                           <hr>
                       </div>
@@ -35,7 +35,7 @@
                   <div class="form-group panel panel-success">
                       <div class="panel-heading">{{ 'Project.Creation.Description' | translate }}</div>
                       <div class="panel-body">
-                          <input #inputDescription type="text" class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Description' | translate }}" (input)="description = $event.target.value" (keyup.enter)="getFromInput(inputDescription.value, this.description)" (blur)="getFromInput(inputDescription.value, this.description)">
+                          <input [(ngModel)]="project.description" [ngModelOptions]="{standalone: true}" #inputDescription type="text" class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Description' | translate }}" (input)="description = $event.target.value" (keyup.enter)="getFromInput(inputDescription.value, this.description)" (blur)="getFromInput(inputDescription.value, this.description)">
                           <small>{{ 'Project.Creation.DescriptionTag' | translate }}</small>
                           <hr>
                       </div>
@@ -43,7 +43,7 @@
                   <div class="form-group panel panel-success">
                       <div class="panel-heading">{{ 'Project.Creation.Body' | translate }}</div>
                       <div class="panel-body">
-                          <textarea #textArea class="form-control" rows="3" placeholder="{{ 'Project.Creation.Placeholders.Body' | translate }}" (input)="body = $event.target.value" (keyup.enter)="getFromInput(textArea.value, this.body)" (blur)="getFromInput(textArea.value, this.body)"></textarea>
+                          <textarea [(ngModel)]="project.body" [ngModelOptions]="{standalone: true}" #textArea class="form-control" rows="3" placeholder="{{ 'Project.Creation.Placeholders.Body' | translate }}" (input)="body = $event.target.value" (keyup.enter)="getFromInput(textArea.value, this.body)" (blur)="getFromInput(textArea.value, this.body)"></textarea>
                           <small>{{ 'Project.Creation.BodyTag' | translate }}</small>
                           <hr>
                       </div>
@@ -51,7 +51,7 @@
                   <div class="form-group panel panel-success">
                       <div class="panel-heading">{{ 'Project.Creation.Image' | translate }}</div>
                       <div class="panel-body">
-                          <img id="img-preview" class="img-fluid img-rounded" src="{{ image }}" />
+                          <img [(ngModel)]="project.image" [ngModelOptions]="{standalone: true}" id="img-preview" class="img-fluid img-rounded" src="{{ image }}" />
                           <label for="file-upload" class="control-label">
                                   <a class="btn btn-default">{{ 'Project.Buttons.Image' | translate }}</a>
                                   <!-- Some hell is going on here -->
@@ -67,12 +67,12 @@
                           <div class="row">
                               <div class="col-6">
                                   <label for="amount" class="col-lg-2 control-label"><h3>{{ 'Project.Creation.Goal' | translate }}</h3></label>
-                                  <input #inputGoal type="number" class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Goal' | translate }}" (input)="goal = $event.target.value" (keyup.enter)="getFromInput(inputGoal.value, this.goal)" (blur)="getFromInput(inputGoal.value, this.goal)">
+                                  <input [(ngModel)]="project.goal" [ngModelOptions]="{standalone: true}" #inputGoal type="number" class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Goal' | translate }}" (input)="goal = $event.target.value" (keyup.enter)="getFromInput(inputGoal.value, this.goal)" (blur)="getFromInput(inputGoal.value, this.goal)">
                                   <small>{{ 'Project.Creation.GoalTag' | translate }}</small>
                               </div>
                               <div class="col-6">
                                   <label for="inputdeadline" class="col-lg-2 control-label"><h3>{{ 'Project.Creation.Date' | translate }}</h3></label>
-                                  <input #inputDeadline type="date" class="form-control" (input)="deadline = $event.target.value" (keyup.enter)="getFromInput(inputDeadline.value, this.deadline)" (blur)="getFromInput(inputDeadline.value, this.deadline)">
+                                  <input [(ngModel)]="project.date" [ngModelOptions]="{standalone: true}" #inputDeadline type="date" class="form-control" (input)="deadline = $event.target.value" (keyup.enter)="getFromInput(inputDeadline.value, this.deadline)" (blur)="getFromInput(inputDeadline.value, this.deadline)">
                                   <small>{{ 'Project.Creation.DateTag' | translate }}</small>
                               </div>
                           </div>
@@ -107,7 +107,7 @@
                   </div>
                   <div class="alert text-center">
                       <button data-toggle="modal" data-target="#text-preview" type="button" class="btn btn-primary">{{ 'Project.Buttons.Preview' | translate }}</button>
-                      <button (click)="submit()" type="button" class="btn btn-success" data-dismiss="modal">{{ 'Project.Buttons.Submit' | translate }}</button>
+                      <button (click)="update()" type="button" class="btn btn-success" data-dismiss="modal">{{ 'Project.Buttons.Submit' | translate }}</button>
                   </div>
               </fieldset>
           </form>
