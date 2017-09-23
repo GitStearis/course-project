@@ -79,7 +79,7 @@ import { UpdateComponent } from './components/project/update/update.component';
     AllProjectNewsComponent,
     CheckByAdminComponent,
     RatedProjectsComponent,
-    FollowedProjectsComponent
+    FollowedProjectsComponent,
     UpdateComponent
   ],
   imports: [

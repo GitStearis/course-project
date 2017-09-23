@@ -15,13 +15,14 @@ import { AuthService } from '../../services/auth/auth.service';
 export class NavbarComponent implements OnInit {
   constructor(public auth: AuthService, private elementRef: ElementRef, public translate: TranslateService) {}
 
-  private dark = 'https://bootswatch.com/darkly/bootstrap.min.css';
-  private light = 'https://bootswatch.com/flatly/bootstrap.min.css';
+  private dark = 'http://localhost:4200/assets/css/darkly-bootstrap.min.css';
+  private light = 'http://localhost:4200/assets/css/flatly-bootstrap.min.css';
 
   private icon = 'fa-sun-o';
   public browserLang = '';
 
   ngOnInit() {
+    // localStorage.setItem('style', null);
     this.initializeStyle();
     this.initializeLanguage();
   }
@@ -48,11 +49,13 @@ export class NavbarComponent implements OnInit {
   }
 
   changeStyle(style) {
-    style === 'null' ? style = this.dark : style = style;
+    style === 'null' ? style = this.dark : style = style; 
     const links = document.getElementsByTagName('link');
     for (let i = 0; i < links.length; i++) {
       const link = links[i];
+      console.log(link.href === this.dark);
       if (link.href === this.dark || link.href === this.light) {
+        console.log(style);
         localStorage.setItem('style', style);
         link.href = style;
       }
@@ -65,7 +68,6 @@ export class NavbarComponent implements OnInit {
       this.browserLang = this.translate.getBrowserLang();
       this.changeLanguage(this.browserLang.match(/en|ru/) ? this.browserLang : 'en');
     } else {
-      console.log(Cookie.get('lang'));
       this.browserLang = localStorage.getItem('lang');
       this.translate.use(this.browserLang);
     }
