@@ -51,6 +51,7 @@ import { RatingModule } from 'ngx-rating';
 import { RatedProjectsComponent } from './components/project/rated-projects/rated-projects.component';
 import { FollowedProjectsComponent } from './components/project/followed-projects/followed-projects.component';
 import { UpdateComponent } from './components/project/update/update.component';
+import { SearchingPageComponent } from './components/searching-page/searching-page.component';
 
 @NgModule({
   declarations: [
@@ -80,7 +81,8 @@ import { UpdateComponent } from './components/project/update/update.component';
     CheckByAdminComponent,
     RatedProjectsComponent,
     FollowedProjectsComponent,
-    UpdateComponent
+    UpdateComponent,
+    SearchingPageComponent
   ],
   imports: [
     HttpModule,
