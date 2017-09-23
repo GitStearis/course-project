@@ -48,6 +48,7 @@ import { AllProjectsComponent } from './components/project/all-projects/all-proj
 import { AllProjectNewsComponent } from './components/news/all-project-news/all-project-news.component';
 import { CheckByAdminComponent } from './components/checking/check-by-admin/check-by-admin.component';
 import { RatingModule } from 'ngx-rating';
+import { UpdateComponent } from './components/project/update/update.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { RatingModule } from 'ngx-rating';
     NewsComponent,
     AllProjectsComponent,
     AllProjectNewsComponent,
-    CheckByAdminComponent
+    CheckByAdminComponent,
+    UpdateComponent
   ],
   imports: [
     HttpModule,
