@@ -1,0 +1,41 @@
+.body {}
+
+.thumbnail {
+    background-color: rgba(48, 48, 48, 0.05);
+}
+
+.panel {
+    background-color: rgba(48, 48, 48, 0.05);
+}
+
+.text-warning {
+    color: #FF9400 !important;
+}
+
+.text-info {
+    color: #3F8FD2 !important;
+}
+
+.text-success {
+    color: #00AE68 !important;
+}
+
+.alert {
+    margin-bottom: 10px;
+}
+
+p {
+    opacity: 0.9;
+}
+
+markdown {
+    margin: 0em;
+}
+
+markdown p {
+    width: 100%;
+}
+
+markdown p img {
+    max-width: 100%;
+}

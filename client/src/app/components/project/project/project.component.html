@@ -68,7 +68,7 @@
                             <h3>{{ project.date }}</h3>
                             <small class="text text-secondary">{{ 'Project.Project.Deadline' | translate }}</small>
                         </div>
-                        <div class="btn-group btn-group-justified">
+                        <div class="d-flex flex-column justify-content-center btn-group">
                             <a class="btn btn-success btn-block" *ngIf="!this.isProject('closed') && auth.isAuthenticated() && !this.isAuthor()" href="project/{{ project.pageId }}/donate">
                                 <i class="fa fa-usd fa-lg" aria-hidden="true"></i> {{ 'Project.Buttons.Support' | translate }}
                             </a>
@@ -76,7 +76,7 @@
                                 <i class="fa fa-plus-square fa-lg" aria-hidden="true"></i> {{ 'Project.Buttons.Follow' | translate }}
                             </a>
                             <a class="btn btn-success btn-block" *ngIf="!this.isProject('closed') && auth.isAuthenticated() && this.isAuthor()" href="project/{{ project.pageId }}/news/create">
-                                {{ 'Project.Buttons.AddNews' | translate }}
+                                <i class="fa fa-newspaper-o fa-lg" aria-hidden="true"></i> {{ 'Project.Buttons.AddNews' | translate }}
                             </a>
                             <a class="btn btn-success btn-block" *ngIf="!this.isProject('closed') && auth.isAuthenticated() && this.isAuthor()">
                                 <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i> {{ 'Project.Buttons.Edit' | translate }}
@@ -103,7 +103,7 @@
                                 <h2>{{ 'Project.Project.About' | translate }}</h2>
                             </div>
                             <div class="d-flex justify-content-center alert">
-                                <markdown [data]="project.body"></markdown>
+                                <markdown class="d-flex flex-column justify-content-center" [data]="project.body"></markdown>
                             </div>
                         </div>
                         <div class="tab-pane fade alert" id="comments">

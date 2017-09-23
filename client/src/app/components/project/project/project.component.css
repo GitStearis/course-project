@@ -7,7 +7,7 @@
     min-width: 2em;
 }
 
-button a {
+.btn-group a {
     text-decoration: none;
     color: white;
 }
