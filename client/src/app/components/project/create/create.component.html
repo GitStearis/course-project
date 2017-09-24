@@ -14,7 +14,7 @@
             </div>
 
             <div class="d-flex justify-content-end">
-                <button type="button" class="btn btn-info">{{ 'Project.Buttons.Guide' | translate }}</button>
+                <a class="btn btn-info" href="/guide">{{ 'Project.Buttons.Guide' | translate }}</a>
             </div>
         </div>
     </div>
@@ -84,14 +84,7 @@
                         <div class="panel-body">
                             <label for="inputTitle" class="control-label"><h3>Tag</h3></label>
                             <!--<input #inputTag type="text" class="form-control" placeholder="{{ 'Project.Creation.Placeholders.Tag' | translate }}" (input)="tags = $event.target.value" (keyup.enter)="getFromInput(inputTag.value, this.tags)" (blur)="getFromInput(inputTag.value, this.tags)">-->
-                            <tag-input [maxItems]='3'
-                                    [validators]="validators"
-                                    [errorMessages]="errorMessages"
-                                    [(ngModel)]="items"
-                                    [ngModelOptions]="{standalone: true}"
-                                    (onAdd)="onAdd($event)"
-                                    placeholder="Enter tags"
-                                    secondaryPlaceholder="Enter tags">
+                            <tag-input [maxItems]='3' [validators]="validators" [errorMessages]="errorMessages" [(ngModel)]="items" [ngModelOptions]="{standalone: true}" (onAdd)="onAdd($event)" placeholder="Enter tags" secondaryPlaceholder="Enter tags">
                             </tag-input>
                             <div class="row">
                                 <div *ngFor="let item of selected" class="col-1">
