@@ -25,7 +25,7 @@ const ctrSearch = require("../controllers/elasticlunr");
 router.get("/profile", auth, ctrlProfile.profileRead);
 
 // поиск
-router.get("/search", ctrSearch.searchQuery);
+router.get("/search", ctrSearch.projectsBySearch);
 
 // пользователи
 router.get("/user/:username", ctrlProfile.profileByUsername);

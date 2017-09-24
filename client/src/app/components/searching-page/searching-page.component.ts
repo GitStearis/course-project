@@ -24,8 +24,8 @@ export class SearchingPageComponent implements OnInit {
         .get(`/api/search?q=${this.query}`)
         .map(data => JSON.stringify(data))
         .subscribe(
-          data => {
-            this.projects = JSON.parse(data);
+          async data => {
+            this.projects = await JSON.parse(data);
             console.log(this.projects);
           },
           err => {

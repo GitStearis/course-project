@@ -5,20 +5,20 @@ var User = require("../models/users");
 const dbURI = "mongodb://root:root@ds119524.mlab.com:19524/course-project";
 
 mongoose.connect(dbURI, {
-    useMongoClient: true
-  });
+  useMongoClient: true
+});
 
 elasticlunr.clearStopWords();
 const index = elasticlunr(function() {
-    // this.use(elasticlunr.ru);
-  
-    this.addField("title");
-    this.addField("body");
-  
-    this.setRef("id");
-  });
+  // this.use(elasticlunr.ru);
 
-mongoose.Promise = Promise; 
+  this.addField("title");
+  this.addField("body");
+
+  this.setRef("id");
+});
+
+mongoose.Promise = Promise;
 
 // let documents = [{
 //     id: 1,
@@ -55,21 +55,21 @@ mongoose.connection.on("connected", async function() {
   let a = results.map(({ ref }) => Project.findOne({ _id: ref }));
 
   let items = await Promise.all(a);
-    // .then(items => items.forEach(i => console.log(i.title)))
-    items.forEach(i => console.log(i.title));
+  // .then(items => items.forEach(i => console.log(i.title)))
+  items.forEach(i => console.log(i.title));
 
-//   console.log(results);
+  //   console.log(results);
 });
 
 function addToIndex(project) {
-//   let id = Math.floor(Math.random() * (20 - 1)) + 1;
+  //   let id = Math.floor(Math.random() * (20 - 1)) + 1;
   let newDocument = {
     "id": project._id,
     "title": project.title,
     // "description": project.description,
     "body": project.body
   };
-
+  console.log(newDocument);
   index.addDoc(newDocument);
 }
 

@@ -86,6 +86,7 @@ export class NavbarComponent implements OnInit {
   // ================== Searching section ==========================
   searchQuery(event){
     let input = encodeURI(event.target.value);
+    console.log(input);
     if(event.keyCode == 13) {
       this.router.navigate([`search/${input}`]);
     }
