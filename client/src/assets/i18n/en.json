@@ -1,8 +1,8 @@
 {
     "Home": {
         "Jumbotron": {
-            "Header": "Crowdfunding Platform",
-            "Quote": "<p>Our project does more than raise money. It builds community around your work.</p><small>Someone famous in <cite title='Source Title'>Our Awesome CO-OP Team</cite></small>",
+            "Header": "Crowdfunding Platform CO-OP",
+            "Quote": "Our project does more than raise money. It builds community around your work.",
             "Join": "Join Us"
         },
         "News": "Project news",

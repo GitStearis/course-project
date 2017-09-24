@@ -75,14 +75,23 @@ h2 {
     text-align: center;
     color: #000;
 }
-  
-.caption span.border, .caption a {
+
+.caption span.border,
+.caption a {
     padding: 18px;
-    background-color:transparent;
+    background-color: transparent;
     font-size: 30px;
     color: #f7f7f7;
     text-shadow: 2px 2px 8px #000000;
     /*letter-spacing: 10px;*/
+}
+
+.caption h1 {
+    color: #ffffff !important;
+}
+
+.caption span.border {
+    background-color: rgba(240, 240, 240, 0.2);
 }
 
 h1 {
@@ -90,7 +99,7 @@ h1 {
     text-shadow: 2px 2px 8px #000000;
     font-size: 45px;
 }
-  
+
 h3 {
     /*letter-spacing: 5px;*/
     text-transform: uppercase;

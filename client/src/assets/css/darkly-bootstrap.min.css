@@ -18,6 +18,14 @@
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+.text-secondary {
+    color: #9CA2A9!important;
+}
+
+.caption {
+    color: #f7f7f7 !important;
+}
+
 html {
     font-family: sans-serif;
     -ms-text-size-adjust: 100%;
@@ -1707,7 +1715,7 @@ a.text-primary:focus {
 }
 
 .text-success {
-    color: #ffffff
+    color: #1594A8
 }
 
 a.text-success:hover,
@@ -1725,7 +1733,7 @@ a.text-info:focus {
 }
 
 .text-warning {
-    color: #ffffff
+    color: #E8B007 !important;
 }
 
 a.text-warning:hover,
@@ -5955,7 +5963,7 @@ a.badge:focus {
     padding-bottom: 30px;
     margin-bottom: 30px;
     color: inherit;
-    background-color: #303030
+    background-color: #282828;
 }
 
 .jumbotron h1,
@@ -6005,8 +6013,9 @@ a.badge:focus {
     padding: 2px;
     margin-bottom: 21px;
     line-height: 1.42857143;
-    background-color: #222222;
+    background-color: #282828;
     border: 1px solid #464545;
+    box-shadow: 0 1px 2px rgba(240, 240, 240, 0.2);
     border-radius: 4px;
     -webkit-transition: border .2s ease-in-out;
     -o-transition: border .2s ease-in-out;
