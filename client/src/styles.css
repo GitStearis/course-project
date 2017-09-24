@@ -1,31 +1,15 @@
-.body {}
-
-.thumbnail {
-    background-color: rgba(48, 48, 48, 0.05);
+body {
+    font-family: 'Roboto', sans-serif !important;
 }
 
-.panel {
-    background-color: rgba(48, 48, 48, 0.05);
-}
-
-.text-warning {
-    color: #FF9400 !important;
-}
-
-.text-info {
-    color: #3F8FD2 !important;
-}
-
-.text-success {
-    color: #00AE68 !important;
+h1,
+h2,
+h3 {
+    font-family: 'Oswald', sans-serif !important;
 }
 
 .alert {
     margin-bottom: 10px;
-}
-
-p {
-    opacity: 0.9;
 }
 
 markdown {
@@ -38,4 +22,8 @@ markdown p {
 
 markdown p img {
     max-width: 100%;
+}
+
+.jumbotron p {
+    font-size: 1em;
 }
