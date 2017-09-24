@@ -52,6 +52,7 @@ import { RatedProjectsComponent } from './components/project/rated-projects/rate
 import { FollowedProjectsComponent } from './components/project/followed-projects/followed-projects.component';
 import { UpdateComponent } from './components/project/update/update.component';
 import { GuideComponent } from './components/guide/guide.component';
+import { AboutComponent } from './components/about/about.component';
 
 @NgModule({
   declarations: [
@@ -82,7 +83,8 @@ import { GuideComponent } from './components/guide/guide.component';
     RatedProjectsComponent,
     FollowedProjectsComponent,
     UpdateComponent,
-    GuideComponent
+    GuideComponent,
+    AboutComponent
   ],
   imports: [
     HttpModule,

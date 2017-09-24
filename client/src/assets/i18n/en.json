@@ -15,6 +15,23 @@
 
     },
 
+    "About": {
+        "Headers": {
+            "Main": "About CO-OP",
+            "Creators": "Creators",
+            "Technologies": "Technologies",
+            "EasterEgg": "Easter Egg"
+        },
+        "Tags": {
+            "Main": "Egg or chicken?"
+        },
+        "Text": {
+            "Creators": "It's very easy. Two main pillars of CO-OP - Rita Pyrkh & George Puisha. There were a lot of advisors, fans and etc., but the list is 2 long 2 handle.",
+            "Technologies": "Front-end - Angular 2+, back-end - Node.js+Express. Many libs such as passport.js, moment.js and others. Cloudinary for photo uploading, mLab as mongodb database.",
+            "EasterEgg": "Comrade front-end curator, if you have reached this page, then you are a really tough dude! Regards from CO-OP team."
+        }
+    },
+
     "Guide": {
         "Headers": {
             "Main": "CO-OP Guide Page",
@@ -59,7 +76,7 @@
 
     "Footer": {
         "About": "About",
-        "Contact": "Contact us",
+        "Guide": "Guide",
         "Goals": "Goals",
         "Repository": "Repository"
     },
