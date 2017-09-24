@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Router } from "@angular/router";
 import { HttpClient } from "@angular/common/http";
@@ -11,6 +11,7 @@ import { Project } from "../../project";
 })
 export class SearchingPageComponent implements OnInit {
   projects: Project[];
+  query: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -18,8 +19,9 @@ export class SearchingPageComponent implements OnInit {
     private http: HttpClient
   ) {
     this.route.params.subscribe(params => {
+      this.query = params.query;
       this.http
-        .get("/api/projects/all")
+        .get(`/api/search?q=${this.query}`)
         .map(data => JSON.stringify(data))
         .subscribe(
           data => {

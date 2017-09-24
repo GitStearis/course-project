@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Project = require("../models/projects");
+const elasticlunr = require("./elasticlunr");
 // const tag = require("../models/tag");
 
 String.prototype.cleanup = function() {
@@ -31,6 +32,7 @@ module.exports.createProject = function(req, res) {
   Project.findOne({ pageId: tempTitle }, function(err, project) {
     if (project === null) {
       _project.save(function(err) {
+        elasticlunr.addToIndex(_project);
         res.status(200);
       });
     }
