@@ -14,8 +14,9 @@ h2 {
 }
 
 .img-preview {
-    max-height: 256px;
+    height: 256px;
     width: auto;
+    object-fit: cover;
 }
 
 .title {

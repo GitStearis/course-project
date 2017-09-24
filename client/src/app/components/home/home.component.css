@@ -11,11 +11,13 @@ h2 {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    object-fit: cover;
 }
 
 .img-preview {
-    max-height: 256px;
+    height: 256px;
     width: auto;
+    object-fit: cover;
 }
 
 .title {
@@ -49,7 +51,7 @@ h2 {
 .bgimg-1,
 .bgimg-2 {
     position: relative;
-    opacity: 0.6;
+    opacity: 0.85;
     background-attachment: fixed;
     background-position: center;
     background-repeat: no-repeat;
@@ -63,14 +65,14 @@ h2 {
 
 .bgimg-2 {
     background-image: url("https://www.joshmorony.com/wp-content/uploads/2016/04/mountains-back.png");
-    min-height: 190px;
+    min-height: 200px;
     margin: 0 0 20px 0;
 }
 
 .caption {
     position: absolute;
     left: 0;
-    top: 40%;
+    top: 30%;
     width: 100%;
     text-align: center;
     color: #000;
@@ -82,6 +84,7 @@ h2 {
     background-color: transparent;
     font-size: 30px;
     color: #f7f7f7;
+    text-decoration: none;
     text-shadow: 2px 2px 8px #000000;
     /*letter-spacing: 10px;*/
 }
@@ -91,7 +94,12 @@ h2 {
 }
 
 .caption span.border {
+    width: 100%;
     background-color: rgba(240, 240, 240, 0.2);
+}
+
+.caption span.border :hover {
+    color: #dddddd;
 }
 
 h1 {
@@ -101,9 +109,7 @@ h1 {
 }
 
 h3 {
-    /*letter-spacing: 5px;*/
     text-transform: uppercase;
-    /*font: 20px "Lato", sans-serif;*/
     color: #ddd;
 }
 

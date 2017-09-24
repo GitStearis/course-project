@@ -72,9 +72,9 @@
     <hr class="styled">
     <section *ngFor="let project of newProjects">
         <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="thumbnail card card-outline-secondary">
+            <div class="thumbnail card">
                 <div class="img-preview-container">
-                    <a href='/project/{{ project.pageId }}'><img class="img-fluid img-preview" src="{{ project.image }}" alt="Project image"></a>
+                    <a href='/project/{{ project.pageId }}'><img class="img-fluid img-preview" src="{{ project.image }}" alt="{{ 'Project.Preview.Image' | translate }}"></a>
                 </div>
                 <div class="text-container ">
                     <a href='/project/{{ project.pageId }}'>
@@ -119,9 +119,9 @@
     <hr class="styled">
     <section *ngFor="let project of actualProjects">
         <div class="col-xs-12 col-sm-6 col-md-4">
-            <div class="thumbnail card card-outline-secondary">
+            <div class="thumbnail card">
                 <div class="img-preview-container">
-                    <a href="/project/{{ project.pageId }}"><img class="img-fluid img-preview" src="{{ project.image }}" alt="Project image"></a>
+                    <a href="/project/{{ project.pageId }}"><img class="img-fluid img-preview" src="{{ project.image }}" alt="{{ 'Project.Preview.Image' | translate }}"></a>
                 </div>
                 <div class="text-container ">
                     <a href="/project/{{ project.pageId }}">

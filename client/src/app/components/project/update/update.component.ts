@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Profile } from '../../../profile';
 import { AuthService } from '../../../services/auth/auth.service';
@@ -28,7 +28,7 @@ export class UpdateComponent implements OnInit {
   public goal: string = '';
   public deadline: string = '';
   public creation: string = new Date().toJSON().slice(0, 10);
-  public tags: any [] = [];
+  public tags: any[] = [];
   public author: string = localStorage['name'];
 
   pageId: string;
@@ -43,7 +43,7 @@ export class UpdateComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    
+
   }
 
   private getFromInput(value, target) {
@@ -92,6 +92,20 @@ export class UpdateComponent implements OnInit {
       }
     });
   }
+  private removeSuccess() {
+    this.msg.messages.subscribe(data => {
+      console.log(data);
+      let flag = true;
+      for (const id in data['success']) {
+        console.log(id);
+        if (flag === true) {
+          flag = false;
+        } else {
+          this.msg.remove(id);
+        }
+      }
+    });
+  }
   private removeAllWarnings() {
     this.msg.messages.subscribe(data => {
       for (const id in data['warning']) {
@@ -101,7 +115,7 @@ export class UpdateComponent implements OnInit {
   }
 
   public update() {
-    this.parseTags();
+    // this.parseTags();
     const project = {
       title: this.projectName,
       description: this.description,
@@ -113,31 +127,28 @@ export class UpdateComponent implements OnInit {
     };
 
     this.http
-      .post('/api/project/new', project)
+      .post('/api/project/' + this.pageId + '/update', project)
       .map(data => JSON.stringify(data))
       .subscribe(
       data => {
-        this.removeAllWarnings();
-        window.scrollTo(0, 0);
-        this.msg.success('Successfully uppdated project!');
-        this.router.navigate(['/']);
-        console.log(data);
+        console.log('/project/' + this.pageId);
+        
       },
       err => {
+        this.removeSuccess();
         this.removeWarnings();
-        window.scrollTo(0, 0);
         if (err.error instanceof Error) {
           this.msg.warning('An error occured, please, try again.');
           console.log('An error occurred:', err.error.message);
         } else {
-          this.msg.warning('Server returned code ' + err.status + ', ' + err.error);
-          console.log(err);
-          console.log(
-            `Backend returned code ${err.status}, body was: ${err.error}`
-          );
+          console.log(err.status === 200);
+          if (err.status === 200) {
+            this.removeAllWarnings();
+            window.scrollTo(0, 0);
+            this.router.navigate(['/project/' + this.pageId]);   
+          }
         }
-      }
-      );
+      });
   }
 
   public items: any[];
@@ -158,9 +169,9 @@ export class UpdateComponent implements OnInit {
   public addTag(control: FormControl) {
     console.log(control.value);
     if (control.value.length > 25) {
-        return {
-            'addTag': true
-        };
+      return {
+        'addTag': true
+      };
     }
     return null;
   }
@@ -172,7 +183,7 @@ export class UpdateComponent implements OnInit {
     console.log(this.tags);
   }
 
-  async ngOnInit() { 
+  async ngOnInit() {
     this.project = {
       pageId: "",
       date: "",
@@ -186,19 +197,30 @@ export class UpdateComponent implements OnInit {
       author: "",
       status: "",
       ratings: [{
-          user: "",
-          rating: ""
+        user: "",
+        rating: ""
       }]
     }
     this.route.params.subscribe(params => {
       this.pageId = params.pageId;
       this.http
         .get('/api/project/' + this.pageId)
+        .map(data => JSON.stringify(data))
         .subscribe(
         async data => {
-          this.project = await JSON.parse(JSON.stringify(data));
+          this.project = await JSON.parse(data);
+          this.tags = JSON.parse(data).tags;
+
+          this.projectName = this.project.title;
+          this.description = this.project.description;
+          this.body = this.project.body;
+          this.image = this.project.image;
+          this.goal = this.project.goal;
+          this.deadline = this.project.date;
         })
-      });
+    });
+
+
   }
 
 }
