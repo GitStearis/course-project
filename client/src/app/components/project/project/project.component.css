@@ -7,9 +7,13 @@
     min-width: 2em;
 }
 
-.btn-group a {
+.btn-prpject a {
     text-decoration: none;
     color: white;
+}
+
+.some-class {
+    color: white !important; 
 }
 
 .img-preview-container {
