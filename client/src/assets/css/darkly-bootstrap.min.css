@@ -18,6 +18,16 @@
 
 /*! normalize.css v3.0.3 | MIT License | github.com/necolas/normalize.css */
 
+.dropdown-item {
+    color: #eee;
+}
+
+.dropdown-item.active,
+.dropdown-item:active {
+    color: #eee;
+    text-decoration: none;
+}
+
 .text-secondary {
     color: #9CA2A9!important;
 }
@@ -4283,6 +4293,7 @@ tbody.collapse.in {
     font-size: 15px;
     text-align: left;
     background-color: #303030;
+    color: #cccccc !important;
     border: 1px solid #cccccc;
     border: 1px solid rgba(0, 0, 0, 0.15);
     border-radius: 4px;
@@ -4318,7 +4329,6 @@ tbody.collapse.in {
 .dropdown-menu>li>a:focus {
     text-decoration: none;
     color: #ffffff;
-    background-color: #375a7f
 }
 
 .dropdown-menu>.active>a,
