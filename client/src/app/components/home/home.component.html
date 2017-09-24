@@ -1,7 +1,9 @@
-<div class="container-fluid bgimg-2">
+<div class="container-fluid bgimg-1">
     <div class="d-flex align-items-center d-flex justify-content-center">
         <div class="caption">
-            <span class="border">CO-OP Team</span>
+            <h1>{{ 'Home.Jumbotron.Header' | translate }}</h1>
+            <blockquote [innerHTML]=" 'Home.Jumbotron.Quote' | translate">
+            </blockquote>
         </div>
     </div>
 </div>
@@ -11,10 +13,16 @@
     </blockquote>
     <div class="row"><a class="btn btn-primary btn-lg">{{ 'Home.Jumbotron.Join' | translate }}</a></div>
 </div>-->
-<div class="col-xs-12 col-sm-12 col-md-12 jumbotron">
-    <h2 class="text-center"><a href='/news'>{{ 'Home.News' | translate }}</a></h2>
+<div class="row container-fluid bgimg-2">
+    <div class="caption">
+        <span class="border"><a href='/news'>{{ 'Home.News' | translate }}</a></span>
+    </div>
 </div>
+<!-- <div class="col-xs-12 col-sm-12 col-md-12 jumbotron">
+    <h2 class="text-center"><a href='/news'>{{ 'Home.News' | translate }}</a></h2>
+</div> -->
 <div class="container">
+    <hr class="styled">
     <section *ngFor="let news of newsList">
         <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="thumbnail card">
@@ -55,13 +63,14 @@
 
 <div class="row container-fluid bgimg-2">
     <div class="caption">
-        <span class="border" style="background-color:transparent;font-size:25px;color: #f7f7f7;text-shadow: 2px 2px 8px #000000;">LESS HEIGHT</span>
+        <span class="border"><a href='/projects'>{{ 'Home.NewProjects' | translate }}</a></span>
     </div>
 </div>
-<div class="col-xs-12 col-sm-12 col-md-12 jumbotron">
+<!-- <div class="col-xs-12 col-sm-12 col-md-12 jumbotron">
     <h2 class="text-center"><a href='/projects'>{{ 'Home.NewProjects' | translate }}</a></h2>
-</div>
+</div> -->
 <div class="container">
+    <hr class="styled">
     <section *ngFor="let project of newProjects">
         <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="thumbnail card card-outline-secondary">
@@ -99,10 +108,16 @@
     </section>
 </div>
 
-<div class="col-xs-12 col-sm-12 col-md-12 jumbotron">
-    <h2 class="text-center"><a href='/projects'>{{ 'Home.ActualProjects' | translate }}</a></h2>
+<div class="row container-fluid bgimg-2">
+    <div class="caption">
+        <span class="border"><a href='/projects'>{{ 'Home.ActualProjects' | translate }}</a></span>
+    </div>
 </div>
+<!-- <div class="col-xs-12 col-sm-12 col-md-12 jumbotron">
+    <h2 class="text-center"><a href='/projects'>{{ 'Home.ActualProjects' | translate }}</a></h2>
+</div> -->
 <div class="container">
+    <hr class="styled">
     <section *ngFor="let project of actualProjects">
         <div class="col-xs-12 col-sm-6 col-md-4">
             <div class="thumbnail card card-outline-secondary">

@@ -75,10 +75,10 @@
                             <a class="btn btn-success btn-block" (click)="onFollow()" *ngIf="!this.isProject('closed') && auth.isAuthenticated() && !this.isAuthor()">
                                 <i class="fa fa-plus-square fa-lg" aria-hidden="true"></i> {{ 'Project.Buttons.Follow' | translate }}
                             </a>
-                            <a class="btn btn-success btn-block" *ngIf="!this.isProject('closed') && auth.isAuthenticated() && this.isAuthor()" href="project/{{ project.pageId }}/news/create">
+                            <a class="btn btn-success btn-block" *ngIf="!this.isProject('closed') && auth.isAuthenticated() && (this.isAuthor() || (auth.getPermissionType() === 'admin'))" href="project/{{ project.pageId }}/news/create">
                                 <i class="fa fa-newspaper-o fa-lg" aria-hidden="true"></i> {{ 'Project.Buttons.AddNews' | translate }}
                             </a>
-                            <a class="btn btn-success btn-block" *ngIf="!this.isProject('closed') && auth.isAuthenticated() && this.isAuthor()" href="project/{{ project.pageId }}/update">
+                            <a class="btn btn-success btn-block" *ngIf="!this.isProject('closed') && auth.isAuthenticated() && (this.isAuthor() || (auth.getPermissionType() === 'admin'))" href="project/{{ project.pageId }}/update">
                                 <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i> {{ 'Project.Buttons.Edit' | translate }}
                             </a>
                         </div>
