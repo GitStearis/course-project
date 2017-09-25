@@ -20,6 +20,7 @@ import { AllProjectNewsComponent } from './components/news/all-project-news/all-
 import { RatedProjectsComponent } from './components/project/rated-projects/rated-projects.component';
 import { FollowedProjectsComponent } from './components/project/followed-projects/followed-projects.component';
 import { UpdateComponent } from './components/project/update/update.component';
+import { SearchingPageComponent } from './components/searching-page/searching-page.component';
 import { GuideComponent } from './components/guide/guide.component';
 import { AboutComponent } from './components/about/about.component';
 
@@ -67,6 +68,10 @@ const appRoutes: Routes = [
   {
     path: 'project/:pageId/news/create',
     component: CreateNewsComponent
+  },
+  {
+    path: "search/:query",
+    component: SearchingPageComponent
   },
   {
     path: 'user/:name/created',

@@ -6,6 +6,8 @@ import { Cookie } from 'ng2-cookies/ng2-cookies';
 import { TranslateService } from 'ng2-translate';
 
 import { AuthService } from '../../services/auth/auth.service';
+import { HttpClient } from "@angular/common/http";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +15,9 @@ import { AuthService } from '../../services/auth/auth.service';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  constructor(public auth: AuthService, private elementRef: ElementRef, public translate: TranslateService) {}
+  constructor(public auth: AuthService, private elementRef: ElementRef, public translate: TranslateService, 
+  public http: HttpClient, 
+  private router: Router) {}
 
   private dark = 'http://localhost:4200/assets/css/darkly-bootstrap.min.css';
   private light = 'http://localhost:4200/assets/css/flatly-bootstrap.min.css';
@@ -75,6 +79,16 @@ export class NavbarComponent implements OnInit {
     this.translate.use(lang);
     // Cookie.set('lang', lang);
     localStorage.setItem('lang', lang);
+  }
+
+  // ================== Searching section ==========================
+  searchQuery(event){
+    let input = encodeURI(event.target.value);
+    console.log(input);
+    if(event.keyCode == 13) {
+      window.scrollTo(0, 0);
+      this.router.navigate([`search/${input}`]);
+    }
   }
 
 }

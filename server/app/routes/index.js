@@ -19,9 +19,13 @@ const ctrNewsForm = require("../controllers/news-form");
 const ctrNews = require("../controllers/news");
 const ctrCommentForm = require("../controllers/comment-form");
 const ctrComments = require("../controllers/comments");
+const ctrSearch = require("../controllers/elasticlunr");
 
 // профиль
 router.get("/profile", auth, ctrlProfile.profileRead);
+
+// поиск
+router.get("/search", ctrSearch.projectsBySearch);
 
 // пользователи
 router.get("/user/:username", ctrlProfile.profileByUsername);
