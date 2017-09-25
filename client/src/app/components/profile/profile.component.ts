@@ -27,6 +27,19 @@ export class ProfileComponent implements OnInit {
   date: string;
   username: string;
 
+  achievements: any = {
+    registrated: "../../../assets/images/achievements/3.png",
+    comment: "../../../assets/images/achievements/1.png",
+    project: "../../../assets/images/achievements/4.png",
+    donate: "../../../assets/images/achievements/2.png",
+    rate: "../../../assets/images/achievements/6.png"
+  }
+  showingAchievements: boolean = false;
+
+  public showAchievements(state: boolean) {
+    this.showingAchievements = state;
+  }
+
   private saveProfile(parsed) {
     this.profile = {
       email: parsed.email,
