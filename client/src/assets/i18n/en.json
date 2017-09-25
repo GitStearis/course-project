@@ -1,0 +1,306 @@
+{
+    "Home": {
+        "Jumbotron": {
+            "Header": "Crowdfunding Platform CO-OP",
+            "Quote": "Our project does more than raise money. It builds community around your work.",
+            "Join": "Join Us"
+        },
+        "News": "Project news",
+        "Projects": "Projects",
+        "NewProjects": "Recently created",
+        "ActualProjects": "Actual"
+    },
+
+    "Navbar": {
+        "Admin": "Admin",
+        "Register": "Register"
+    },
+    "Searching": {
+        "Request": "Searching results"
+    },
+
+    "About": {
+        "Headers": {
+            "Main": "About CO-OP",
+            "Creators": "Creators",
+            "Technologies": "Technologies",
+            "EasterEgg": "Easter Egg"
+        },
+        "Tags": {
+            "Main": "Egg or chicken?"
+        },
+        "Text": {
+            "Creators": "It's very easy. Two main pillars of CO-OP - Rita Pyrkh & George Puisha. There were a lot of advisors, fans and etc., but the list is 2 long 2 handle.",
+            "Technologies": "Front-end - Angular 2+, back-end - Node.js+Express. Many libs such as passport.js, moment.js and others. Cloudinary for photo uploading, mLab as mongodb database.",
+            "EasterEgg": "Comrade front-end curator, if you have reached this page, then you are a really tough dude! Regards from CO-OP team."
+        }
+    },
+
+    "Guide": {
+        "Headers": {
+            "Main": "CO-OP Guide Page",
+            "Projects": "Projects",
+            "About": "About your first project",
+            "Tell": "What to tell people?",
+            "News": "News",
+            "General": "General"
+        },
+        "Tags": {
+            "Main": "Ultimate ability to learn about everything!",
+            "Welcome": "Welcome to CO-OP Guide! This page will walk you through everything from planning your shipping to communicating with backers."
+        },
+        "Text": {
+            "Projects": {
+                "Abstract": "Your project can be anything that you want to create and share with others. It could be a book, a film, a piece of hardware... pretty much anything you dream up can find a home on CO-OP. Just keep your project focused, with a clearend goal, and you’ll be good",
+                "ListOne": {
+                    "Intro": "Every CO-OP project should have the following:",
+                    "ItemOne": "A project page with a cover and description that clearly explain the story behind your project",
+                    "ItemTwo": "A goal to complete",
+                    "ItemThree": "News that share the creative journey as the project comes to life"
+                },
+                "Answer": "If your project is simple and straightforward, then maybe your project page can be, too. If you’re doing something more complex, share details to demonstrate that you know what you’re doing. Either way, there are some basic questions you should answer:",
+                "ListTwo": {
+                    "ItemOne": "Who are you?",
+                    "TagOne": "Introduce yourself, your team, and any similar work you’ve done",
+                    "ItemTwo": "What are you planning to make?",
+                    "TagTwo": "The more details, the better. Sketches, samples, prototypes — it all helps backers get as excited as you are.",
+                    "ItemThree": "What’s your plan, and what’s your schedule?",
+                    "TagThree": "Lay out a clear, specific timeline for what backers can expect.",
+                    "ItemFour": "Why do you care?",
+                    "TagFour": "Tell people why you’re passionate about your project and committed to making it happen."
+                }
+            },
+            "News": {
+                "TextOne": "Throughout your project, you’ll be communicating with backers and keeping them informed of your progress. Project updates, news posts, project chat will help you keep backers in the loop.",
+                "TextTwo": "Think of these as your project’s blog. Keep backers engaged through interesting and shareable updates, and encourage them to spread the word about your progress, like this project did. Backers aren’t just looking for updates on when their rewards will show up — most of them love a look at the details of how work like yours is actually made. Show them!",
+                "TextThree": "Backers appreciate regular, insightful, and honest updates. Don’t be hesitant to communicate delays or changes to your original plans — or to just check in. (If backers don’t hear from you for a while, they worry that you may be having trouble doing the work you promised.)"
+            }
+        }
+    },
+
+    "Footer": {
+        "About": "About",
+        "Guide": "Guide",
+        "Goals": "Goals",
+        "Repository": "Repository"
+    },
+
+    "Project": {
+        "Headers": {
+            "CreatedProjects": "Projects of",
+            "RatedProjects": "Rated by",
+            "FollowedProjects": "Followed by",
+            "AllProjects": "All projects",
+            "Create": "Create new project with CO-OP",
+            "CreateTag": "Cooperate to develop your ideas",
+            "Update": "Edit your project wisely",
+            "UpdateTag": "Try to avoid errors in future!",
+            "MarkdownPreview": "Markdown preview",
+            "SmallPreview": "Card preview"
+        },
+        "Preview": {
+            "Goal": "Goal",
+            "Current": "Current",
+            "Start": "Started",
+            "End": "Deadline",
+            "Tag": "Tagged as",
+            "Image": "Project cover"
+        },
+        "Creation": {
+            "Title": "Project title",
+            "TitleTag": "Make sure that your project has memorable title. People like it!",
+            "Description": "Description",
+            "DescriptionTag": "Description can help people to understand your purpose.",
+            "Body": "Body",
+            "BodyTag": "Tell people about yourself, about your goals and gifts.",
+            "Image": "Cover of the project",
+            "Tag": "Tag",
+            "TagTag": "Tags are used for easy search.",
+            "Goal": "Goal",
+            "GoalTag": "How much money do you want to collect?",
+            "Date": "To",
+            "DateTag": "Project's deadline",
+            "Placeholders": {
+                "Title": "memorable title",
+                "Description": "informative description",
+                "Body": "interesting body",
+                "Tag": "e.g. cats",
+                "Goal": "42"
+            },
+            "Alert": {
+                "Prefix": "Project creation is available only for authenticated users. Please",
+                "Login": "log in",
+                "Or": "or",
+                "Register": "register"
+            }
+        },
+        "Buttons": {
+            "Guide": "Read guide",
+            "Image": "Choose image",
+            "Preview": "Markdown preview",
+            "Submit": "Submit",
+            "Close": "Close",
+            "Project": "Project page",
+            "Support": "Support",
+            "AddNews": "Add news",
+            "Send": "Send",
+            "Follow": "Follow",
+            "Edit": "Edit",
+            "Delete": "Delete"
+        },
+        "Project": {
+            "Author": "Project author",
+            "Status": "Project status",
+            "Active": "Active",
+            "Done": "Done",
+            "Closed": "Closed",
+            "Created": "Created",
+            "Deadline": "Deadline",
+            "About": "About",
+            "Comments": "Comments",
+            "News": "News",
+            "Of": "of",
+            "CommentPlaceholder": "Enter your comment here",
+            "Overview": "Overview",
+            "Vote": "Rate the project",
+            "Rating": "Average rating"
+        }
+    },
+
+    "Check": {
+
+    },
+
+    "Donate": {
+        "Header": "Payment details",
+        "Tag": "Enter your payment",
+        "Back": "Back",
+        "Continue": "Continue"
+    },
+
+    "Login": {
+        "Header": "Welcome",
+        "Captions": {
+            "Email": "E-mail",
+            "Password": "Password"
+        },
+        "Alerts": {
+            "Fill": "Please, fill in all fields",
+            "Email": "Enter valid e-mail address",
+            "Password": "Must be at least 8 symbols"
+        },
+        "Close": "Close",
+        "Login": "Log in"
+    },
+
+    "Registration": {
+        "Headers": {
+            "Registration": "Registration",
+            "Credentials": "Credentials"
+        },
+        "Captions": {
+            "Email": "E-mail",
+            "Username": "Username",
+            "Password": "Password",
+            "FirstName": "First name",
+            "SecondName": "Second name",
+            "Phone": "Phone"
+        },
+        "Alerts": {
+            "Fill": "Please, fill in all fields",
+            "Email": "Enter valid e-mail address",
+            "Username": "Must be 3 symbols at least",
+            "Password": "Must be at least 8 symbols",
+            "Empty": "This field cannot be empty",
+            "Phone": "Enter valid mobile phone"
+        },
+        "Close": "Close",
+        "Continue": "Continue",
+        "Register": "Register"
+    },
+
+    "News": {
+        "Headers": {
+            "AllNews": "Recent news",
+            "AllProjectNews": "Recent news of",
+            "OfProject": "project",
+            "Create": "Publish news for your project",
+            "CreateTag": "Share information with your followers",
+            "MarkdownPreview": "Markdown preview",
+            "SmallPreview": "Card preview"
+        },
+        "Preview": {
+            "ProjectPage": "Project page",
+            "Tag": "Tagged as",
+            "Image": "News cover"
+        },
+        "Creation": {
+            "Title": "News title",
+            "TitleTag": "Make sure that your news has memorable title. People like it!",
+            "Description": "Description",
+            "DescriptionTag": "Description will help to interest people.",
+            "Body": "Body",
+            "BodyTag": "Tell readers what's new about your project.",
+            "Image": "Cover of the news",
+            "Tag": "Tag",
+            "Placeholders": {
+                "Title": "memorable title",
+                "Description": "informative description",
+                "Body": "interesting body",
+                "Tag": "e.g. cats"
+            },
+            "Alert": {
+                "Prefix": "Creation is available only for authenticated users. Please",
+                "Login": "log in",
+                "Or": "or",
+                "Register": "register"
+            }
+        },
+        "News": {
+            "Author": "Project author",
+            "Date": "Date"
+        },
+        "Buttons": {
+            "Guide": "Read guide",
+            "Image": "Choose image",
+            "Preview": "Markdown preview",
+            "Submit": "Submit",
+            "Close": "Close",
+            "Project": "Project page"
+        }
+    },
+
+    "404": {
+        "Button": "Take me home"
+    },
+
+    "Profile": {
+        "Statistics": "Statistics",
+        "Projects": "Projects",
+        "Donated": "Donated",
+        "Created": "Created",
+        "Rated": "Rated",
+        "Followed": "Followed",
+        "Registration": "Registration date",
+        "Achievements": "Achievements",
+        "Achive": {
+            "Registrated": "Registarted User",
+            "FirstComment": "First Comment",
+            "FirstProject": "First Project",
+            "FirstDonate": "First Donate",
+            "FirstRate": "First Rate",
+            "Back": "Back"
+        },
+        "Phone": "Phone number",
+        "Email": "Email address"
+        
+    },
+
+    "Verification": {
+        "Header": "Crowdfunding platform CO-OP",
+        "Welcome": "Welcome in our great community! We hope that the time you spend here will be useful.",
+        "Footer": "Members from CO-OP Team",
+        "Home": "Home"
+    }
+
+}

@@ -1,12 +1,80 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">App</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark navbar-fixed-top">
+    <a class="navbar-brand" href="/">
+        <img src="https://s8.hostingkartinok.com/uploads/images/2017/09/33cb02b1b093be99346051c29dcc6c70.png" width="54" height="20">
+    </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
+    <div class="collapse navbar-collapse">
+        <ul class="nav navbar-nav">
+            <li class="nav-item">
+                <a (click)="onChange()" class="btn btn-active">
+                    <i class="fa {{ icon }} fa-lg fa-fw colored"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-active" href="/profile" *ngIf="auth.isAuthenticated()">
+                    <i class="fa fa-user fa-lg fa-fw colored" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li class="nav-item" *ngIf="auth.isAuthenticated()">
+                <a class="btn btn-active" href="/create" *ngIf="auth.isAuthenticated() && ((auth.getPermissionType() === 'checked') || (auth.getPermissionType() === 'admin'))">
+                    <i class="fa fa-plus-circle fa-lg fa-fw colored" aria-hidden="true"></i>
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div class="collapse navbar-collapse">
         <ul class="nav navbar-nav navbar-right">
-            <li class="nav-item"><a href="#">Sign up</a></li>
-            <li class="nav-item"><a href="#">Login</a></li>
+            <li class="nav-item">
+                <span class="archive-link pull-right header-search-span">
+                    <span class="header-search">
+                        <input (keydown)="searchQuery($event)" type="text" class="form-control input-sm" maxlength="64" placeholder=" Search" />
+                        <a role="button" class="btn-srch"><i class="fa fa-search fa-lg fa-fw colored"></i></a>
+                    </span>
+                </span>
+            </li>
+            <li class="nav-item" *ngIf="auth.isAuthenticated()">
+                <a class="btn btn-active" href="/check" *ngIf="auth.isAuthenticated()  && (auth.getPermissionType() === 'authorized')">
+                    <i class="fa fa-check-circle fa-lg fa-fw colored" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-active" href="/admin" *ngIf="auth.isAuthenticated() && (auth.getPermissionType() === 'admin')">
+                    <i class="fa fa-home fa-lg fa-fw colored" aria-hidden="true"></i> {{ 'Navbar.Admin' | translate }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-active dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="" #langSelect (change)="translate.use(langSelect.value)">
+                    <i class="fa fa-globe fa-lg fa-fw colored" aria-hidden="true"></i>
+                </a>
+                <ul class="dropdown-menu">
+                    <li *ngFor="let lang of translate.getLangs()" class="dropdown-item" (click)="changeLanguage(lang)"><a class="colored">{{ lang }}</a></li>
+                </ul>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-active" href="" data-toggle="modal" data-target="#register" *ngIf="!auth.isAuthenticated()">
+                    <i class="fa fa-user-plus fa-lg fa-fw colored" aria-hidden="true"></i> {{ 'Navbar.Register' | translate }}
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-active" href="" data-toggle="modal" data-target="#login" *ngIf="!auth.isAuthenticated()">
+                    <i class="fa fa-sign-in fa-lg fa-fw colored" aria-hidden="true"></i>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="btn btn-active" href="" (click)="auth.logout()" *ngIf="auth.isAuthenticated()">
+                    <i class="fa fa-sign-out fa-lg fa-fw colored" aria-hidden="true"></i>
+                </a>
+            </li>
         </ul>
     </div>
 </nav>
+
+<div class="modal fade modal-lower" id="register" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <app-registration></app-registration>
+</div>
+
+<div class="modal fade modal-lower" id="login" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <app-login></app-login>
+</div>

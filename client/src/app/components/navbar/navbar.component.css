@@ -1,0 +1,95 @@
+.modal-lower {
+    padding-top: 160px;
+}
+
+.colored {
+    color: #18BC9C;
+}
+
+.dropdown-menu {
+    max-width: 20px !important;
+}
+
+.dropdown-menu li a {
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+/* 
+#myInput {
+    width:30%;
+    -webkit-transition:width 0.3s ease-in-out;
+}
+#myInput:focus	{
+    width:100%;
+    -webkit-transition:width 0.5s ease-in-out;
+}
+
+
+form {
+    padding-top: 8px;
+} 
+
+
+input.form-control {
+    padding-right: 20px;
+    border: 0 none;
+    background: transparent;
+    box-shadow: none;
+    display:block;
+  }
+
+  .form-group:hover,
+  .form-group.hover {
+    width: 100%;
+    border-radius: 4px 25px 25px 4px;
+  }
+
+*/
+
+.header-search-span {
+    padding-top: 20px;
+    float: right;
+    width: 250px;
+    display: inline-block;
+}
+
+.header-search {
+    width: 230px;
+    position: relative;
+    float: left;
+}
+
+.header-search input {
+    position: absolute;
+    width: 0px;
+    float: Left;
+    margin-left: 210px;
+    -webkit-transition: all 0.7s ease-in-out;
+    -moz-transition: all 0.7s ease-in-out;
+    -o-transition: all 0.7s ease-in-out;
+    transition: all 0.7s ease-in-out;
+    padding: 0 2px 0 15px;
+    background: transparent;
+    border: 0;
+    border-radius: 20px;
+    box-shadow: none;
+}
+
+.header-search:hover input, .header-search input:focus {
+    width: 200px;
+    margin-left: 0px;
+    color: #ffffff;
+    background: rgba(251, 251, 251, 0.10);
+}
+
+.header-search input::placeholder {
+    color: #ffffff;
+}
+
+.btn-srch {
+    position: absolute;
+    right: 0;
+    border: 0;
+    background: transparent;
+}

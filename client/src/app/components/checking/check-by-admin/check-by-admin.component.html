@@ -1,0 +1,20 @@
+<div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2>Request for checking</h2>
+        </div>
+        <div class="modal-body">
+            <div class="form-group panel panel-success">
+                <div class="panel-heading">{{ person }} passport's scan</div>
+                <div  class="panel-body">
+                  <img id="img-preview" class="img-fluid img-rounded" src="{{ image }}" />
+                  <hr>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <button (click)="confirmUser.emit()" type="button" class="btn btn-success" data-dismiss="modal">Confirm</button>
+        </div>
+    </div>
+</div>

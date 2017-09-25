@@ -1,0 +1,40 @@
+.img-preview-container {
+    height: 256px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.img-preview {
+    height: 256px;
+    width: auto;
+    object-fit: cover;
+}
+
+.title {
+    display: block;
+    display: -webkit-box;
+    height: 3.5em;
+    margin: 0 auto;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.description {
+    display: block;
+    display: -webkit-box;
+    height: 4em;
+    margin: 0 auto;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-container {
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+}

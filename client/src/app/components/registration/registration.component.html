@@ -1,0 +1,97 @@
+<div class="modal-sm modal-dialog">
+    <div class="modal-content">
+        <form>
+            <div class="modal-header">
+                <h2>{{ 'Registration.Headers.Registration' | translate }}</h2>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="!this.checkFields(this.email, this.name, this.password)" class="alert alert-info text text-center">
+                    <small>
+                        {{ 'Registration.Alerts.Fill' | translate }}
+                    </small>
+                </div>
+                <div class="form-group">
+                    <label>{{ 'Registration.Captions.Email' | translate }}</label>
+                    <input (keyup)="saveEmail($event)" type="email" class="form-control">
+                    <div *ngIf="!this.isEmailValid()" class="alert-warning text text-center rounded">
+                        <small>
+                            {{ 'Registration.Alerts.Email' | translate }}
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>{{ 'Registration.Captions.Username' | translate }}</label>
+                    <input (keyup)="saveName($event)" class="form-control">
+                    <div *ngIf="!this.checkUsernameLength()" class="alert-warning text text-center rounded">
+                        <small>
+                            {{ 'Registration.Alerts.Username' | translate }}
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>{{ 'Registration.Captions.Password' | translate }}</label>
+                    <input (keyup)="savePassword($event)" type="password" class="form-control">
+                    <div *ngIf="!this.checkPasswordLength()" class="alert-warning text text-center rounded">
+                        <small>
+                            {{ 'Registration.Alerts.Password' | translate }}
+                        </small>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'Registration.Close' | translate }}</button>
+                <button data-toggle="modal" data-target="#register-2" type="button" class="btn btn-success" [disabled]="!this.checkFirstPage()">{{ 'Registration.Continue' | translate }}</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<div class="modal fade modal-lower" id="register-2" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-sm modal-dialog">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h2>{{ 'Registration.Headers.Credentials' | translate }}</h2>
+                </div>
+                <div class="modal-body">
+                    <div *ngIf="!this.checkFields(this.firstname, this.secondname, this.phone)" class="alert alert-info text text-center">
+                        <small>
+                            {{ 'Registration.Alerts.Fill' | translate }}
+                        </small>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'Registration.Captions.FirstName' | translate }}</label>
+                        <input (keyup)="saveFirstname($event)" class="form-control">
+                        <div *ngIf="!this.checkEmptiness(this.firstname)" class="alert-warning text text-center rounded">
+                            <small>
+                                {{ 'Registration.Alerts.Empty' | translate }}
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'Registration.Captions.SecondName' | translate }}</label>
+                        <input (keyup)="saveSecondname($event)" class="form-control">
+                        <div *ngIf="!this.checkEmptiness(this.secondname)" class="alert-warning text text-center rounded">
+                            <small>
+                                {{ 'Registration.Alerts.Empty' | translate }}
+                            </small>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ 'Registration.Captions.Phone' | translate }}</label>
+                        <input (keyup)="savePhone($event)" type="tel" class="form-control">
+                        <div *ngIf="!this.isPhoneValid()" class="alert-warning text text-center rounded">
+                            <small>
+                                {{ 'Registration.Alerts.Phone' | translate }}
+                            </small>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ 'Registration.Close' | translate }}</button>
+                    <button (click)="submit()" type="button" class="btn btn-success" data-dismiss="modal" [disabled]="!this.checkSecondPage()">{{ 'Registration.Register' | translate }}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

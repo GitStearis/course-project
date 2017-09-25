@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="jumbotron">
+        <h2>
+            {{ 'Project.Headers.AllProjects' | translate }}
+        </h2>
+    </div>
+    <div>
+        <div *ngFor="let project of projects">
+            <div class="col-xs-12 col-sm-6 col-md-4">
+                <div class="thumbnail card">
+                    <div class="img-preview-container">
+                        <a href="/project/{{ project.pageId }}"><img class="img-fluid img-preview" src="{{ project.image }}" alt="{{ 'Project.Preview.Image' | translate }}"></a>
+                    </div>
+                    <div class="text-container ">
+                        <a href="/project/{{ project.pageId }}">
+                            <h4 class="title">
+                                {{ project.title }}
+                            </h4>
+                        </a>
+                        <p class="text text-secondary text-left description">
+                            {{ project.description }}
+                        </p>
+                    </div>
+                    <hr>
+                    <div class="text-container">
+                        <p class="text text-success">{{ 'Project.Preview.Goal' | translate }}: {{ project.goal }}$</p>
+                        <p class="text text-info">{{ 'Project.Preview.Current' | translate }}: {{ project.collected }}$</p>
+                        <p class="text text-warning">{{ 'Project.Preview.Start' | translate }}: {{ project.creation }}</p>
+                        <p class="text text-warning">{{ 'Project.Preview.End' | translate }}: {{ project.date }}</p>
+                    </div>
+                    <hr>
+                    <div class="text-container text-right d-flex justify-content-around">
+                        <div>
+                            <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                            <a href="/user/{{ project.author }}">{{ project.author }}</a>
+                        </div>
+                        <small class=" text text-secondary ">{{ 'Project.Preview.Tag' | translate }}: {{ project.tags }}</small>
+                    </div>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

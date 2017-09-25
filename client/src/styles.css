@@ -1,1 +1,32 @@
-/* You can add global styles to this file, and also import other style files */
+body {
+    font-size: 14px;
+    position: relative;
+    font-family: 'Roboto', sans-serif !important;
+    padding-bottom: 30%;
+}
+
+h1,
+h2,
+h3 {
+    font-family: 'Oswald', sans-serif !important;
+}
+
+.alert {
+    margin-bottom: 10px;
+}
+
+markdown {
+    margin: 0em;
+}
+
+markdown p {
+    width: 100%;
+}
+
+markdown p img {
+    max-width: 100%;
+}
+
+.jumbotron p {
+    font-size: 1em;
+}

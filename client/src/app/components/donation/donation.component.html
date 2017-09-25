@@ -1,0 +1,27 @@
+<div class="container">
+    <div *ngIf="auth.isAuthenticated()">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 jumbotron">
+                <div class="rounded alert text-center">
+                    <h2>{{ 'Donate.Header' | translate }}</h2>
+                    <div class="text-center">
+                        <div class="alert">
+                            <input #inputvalue type="number" class="form-control" (input)="value = $event.target.value" (keyup.enter)="continue()">
+                            <small class="text text-secondary">{{ 'Donate.Tag' | translate }}</small>
+                        </div>
+                        <div>
+                            <button (click)="back()" type="button" class="btn btn-secondary">{{ 'Donate.Back' | translate }}</button>
+                            <button (click)="continue()" class="btn btn-success">{{ 'Donate.Continue' | translate }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>
+
+    <div *ngIf="!auth.isAuthenticated()">
+        <app-notfound></app-notfound>
+    </div>
+</div>

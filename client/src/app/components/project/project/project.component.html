@@ -1,0 +1,178 @@
+<div class="container">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 text-center">
+                <div class="alert text-center">
+                    <h2>{{ project.title }}</h2>
+                </div>
+            </div>
+            <div class="col-md-8 text-center">
+                <div><img class="img-fluid img-rounded" src="{{ project.image }}" alt="{{ 'Project.Preview.Image' | translate }}"></div>
+                <hr>
+                <div class="alert">
+                    <h4 class="text text-secondary">{{ project.description }}</h4>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-around">
+                    <div class="alert">
+                        <h4>
+                            <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                            <a href="/user/{{ project.author }}">{{ project.author }}</a>
+                        </h4>
+                        <small class="text text-secondary">{{ 'Project.Project.Author' | translate }}</small>
+                    </div>
+                    <div *ngIf="!auth.isAuthenticated()">
+                        <h3>
+                            <span class="label label-pill badge-success">{{ this.averageRating.toFixed(1) }}</span>
+                        </h3>
+                        <small class="text text-secondary">{{ 'Project.Project.Rating' | translate }}</small>
+                    </div>
+                    <div *ngIf="isVoted && auth.isAuthenticated()">
+                        <h3>
+                            <span class="label label-pill badge-success">{{ this.averageRating.toFixed(1) }}</span>
+                        </h3>
+                        <small class="text text-secondary">{{ 'Project.Project.Rating' | translate }}</small>
+                    </div>
+                    <div *ngIf="!isVoted && auth.isAuthenticated()">
+                        <h4>
+                            <rating [(ngModel)]="starsCount" [readonly]="isVoted" [disabled]="isVoted" (click)="rateProject()"></rating>
+                        </h4>
+                        <small class="text text-secondary">{{ 'Project.Project.Vote' | translate }}</small>
+                    </div>
+                    <div class="alert">
+                        <h4>
+                            <span *ngIf="this.isProject('active')" class="label label-pill badge-info">{{ 'Project.Project.Active' | translate }}</span>
+                            <span *ngIf="this.isProject('done')" class="label label-pill badge-success">{{ 'Project.Project.Done' | translate }}</span>
+                            <span *ngIf="this.isProject('closed')" class="label label-pill badge-warning">{{ 'Project.Project.Closed' | translate }}</span>
+                        </h4>
+                        <small class="text text-secondary">{{ 'Project.Project.Status' | translate }}</small>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 rounded jumbotron">
+                <div class="d-flex flex-column justify-content-center">
+                    <div class="text-center">
+                        <h2>{{ project.collected }} $</h2>
+                        <small class="text text-secondary">{{ 'Project.Project.Of' | translate }} {{ project.goal }}</small>
+                        <div class="progress goal-progress-container">
+                            <div class="progress-bar progress-bar-success progress-bar-striped active goal-progress" role="progressbar" [attr.aria-valuenow]="progress" aria-valuemin="0" aria-valuemax="100" [style.width]="progress + '%'">
+                            </div>
+                        </div>
+                        <div class="alert text-center">
+                            <h3>{{ project.creation }}</h3>
+                            <small class="text text-secondary">{{ 'Project.Project.Created' | translate }}</small>
+                            <h3>{{ project.date }}</h3>
+                            <small class="text text-secondary">{{ 'Project.Project.Deadline' | translate }}</small>
+                        </div>
+                        <div class="d-flex flex-column justify-content-center btn-project">
+                            <a class="btn btn-success btn-block" *ngIf="!this.isProject('closed') && auth.isAuthenticated() && !this.isAuthor()" href="project/{{ project.pageId }}/donate">
+                                <i class="fa fa-usd fa-lg" aria-hidden="true"></i> {{ 'Project.Buttons.Support' | translate }}
+                            </a>
+                            <a class="btn btn-success btn-block some-class" (click)="onFollow()" *ngIf="!this.isProject('closed') && auth.isAuthenticated() && !this.isAuthor()">
+                                <i class="fa fa-plus-square fa-lg" aria-hidden="true"></i> {{ 'Project.Buttons.Follow' | translate }}
+                            </a>
+                            <a class="btn btn-success btn-block" *ngIf="!this.isProject('closed') && auth.isAuthenticated() && (this.isAuthor() || (auth.getPermissionType() === 'admin'))" href="project/{{ project.pageId }}/news/create">
+                                <i class="fa fa-newspaper-o fa-lg" aria-hidden="true"></i> {{ 'Project.Buttons.AddNews' | translate }}
+                            </a>
+                            <a class="btn btn-success btn-block" *ngIf="!this.isProject('closed') && auth.isAuthenticated() && (this.isAuthor() || (auth.getPermissionType() === 'admin'))" href="project/{{ project.pageId }}/update">
+                                <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i> {{ 'Project.Buttons.Edit' | translate }}
+                            </a>
+                            <a class="btn btn-success btn-block" (click)="deleteProject()" *ngIf="!this.isProject('closed') && auth.isAuthenticated() && (this.isAuthor() || (auth.getPermissionType() === 'admin'))">
+                                <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> {{ 'Project.Buttons.Delete' | translate }}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+
+                <div class="">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a href="#overview" data-toggle="tab" aria-expanded="true">{{ 'Project.Project.Overview' | translate }}</a></li>
+                        <li><a href="#comments" data-toggle="tab" aria-expanded="false">{{ 'Project.Project.Comments' | translate }}</a></li>
+                    </ul>
+
+                    <div class="tab-content">
+                        <div class="tab-pane fade active in" id="overview">
+                            <div class="alert text-center">
+                                <h2>{{ 'Project.Project.About' | translate }}</h2>
+                            </div>
+                            <div class="d-flex justify-content-center alert">
+                                <markdown class="d-flex flex-column justify-content-center" [data]="project.body"></markdown>
+                            </div>
+                        </div>
+                        <div class="tab-pane fade alert" id="comments">
+                            <div *ngIf="!this.isProject('closed') && auth.isAuthenticated()">
+                                <div class="form-group panel panel-success">
+                                    <div class="panel-heading"></div>
+                                    <div class="panel-body">
+                                        <textarea placeholder="{{ 'Project.Project.CommentPlaceholder' | translate }}" #textArea class="form-control" rows="3" (input)="comment = $event.target.value"></textarea>
+                                    </div>
+                                    <div class="panel-footer" style="height: 60px;">
+                                        <button type="button" class="btn btn-info btn pull-right" (click)="submit()">{{ 'Project.Buttons.Send' | translate }}</button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div *ngFor="let com of commentList; let i = index" class="alert">
+                                <app-comment [user]="com.author" [time]="com.creation" [content]="com.body" [number]="i + 1"></app-comment>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="alert text-center">
+                    <h3><a href="project/{{ project.pageId }}/news">{{ 'Project.Project.News' | translate }}</a></h3>
+                </div>
+                <div *ngFor="let news of newsList">
+                    <div class="thumbnail card">
+                        <div class="img-preview-container text-center">
+                            <a href="/news/{{ news.newsId }}"><img class="img-fluid img-preview" src="{{ news.image }}" alt="{{ 'News.Preview.Tag' | translate }}"></a>
+                        </div>
+                        <div class="text-container">
+                            <a href="/news/{{ news.newsId }}">
+                                <h4 class="title">
+                                    {{ news.title }}
+                                </h4>
+                            </a>
+                            <p class="text text-secondary text-left description">
+                                {{ news.description }}
+                            </p>
+                            <p class="text text-secondary text-left description">
+                                {{ news.body }}
+                            </p>
+                        </div>
+                        <hr>
+                        <div class="text-container text-right d-flex justify-content-around">
+                            <div>
+                                <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                                <a href="/user/{{ news.author }}">{{ news.author }}</a>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="text-container text-right d-flex justify-content-around">
+                            <small class="text text-warning">{{ news.creation }}</small>
+                            <small class="text text-secondary">{{ 'News.Preview.Tag' | translate }}: {{ news.tags }}</small>
+                        </div>
+                        <hr>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8">
+
+            </div>
+        </div>
+    </div>
+
+</div>

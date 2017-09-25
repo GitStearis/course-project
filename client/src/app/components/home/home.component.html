@@ -1,3 +1,140 @@
-<p>
-  home works!
-</p>
+<div class="container-fluid bgimg-1">
+    <div class="d-flex align-items-center d-flex justify-content-center">
+        <div class="caption">
+            <h1>{{ 'Home.Jumbotron.Header' | translate }}</h1>
+            <p>{{ 'Home.Jumbotron.Quote' | translate }}</p>
+        </div>
+    </div>
+</div>
+<div class="row container-fluid bgimg-2">
+    <div class="caption">
+        <h2><span class="border"><a href='/news'>{{ 'Home.News' | translate }}</a></span></h2>
+    </div>
+</div>
+<div class="container">
+    <hr class="styled">
+    <section *ngFor="let news of newsList">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="thumbnail card">
+                <div class="img-preview-container text-center">
+                    <a href='/news/{{ news.newsId }}'><img class="img-fluid img-preview" src="{{ news.image }}" alt="{{ 'News.Preview.Tag' | translate }}"></a>
+                </div>
+                <div class="text-container">
+                    <a href='/news/{{ news.newsId }}'>
+                        <h4 class="title">
+                            {{ news.title }}
+                        </h4>
+                    </a>
+                    <p class="text text-secondary text-left description">
+                        {{ news.description }}
+                    </p>
+                    <p class="text text-secondary text-left description">
+                        {{ news.body }}
+                    </p>
+                </div>
+                <hr>
+                <div class="text-container text-right d-flex justify-content-around">
+                    <div>
+                        <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                        <a href='/user/{{ news.author }}'>{{ news.author }}</a>
+                    </div>
+                    <a href='/project/{{ news.pageId }}'>{{ 'News.Preview.ProjectPage' | translate }}</a>
+                </div>
+                <hr>
+                <div class="text-container text-right d-flex justify-content-around">
+                    <small class="text text-warning">{{ news.creation }}</small>
+                    <small class="text text-secondary">{{ 'News.Preview.Tag' | translate }}: {{ news.tags }}</small>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="row container-fluid bgimg-2">
+    <div class="caption">
+        <h2><span class="border"><a href='/projects'>{{ 'Home.NewProjects' | translate }}</a></span></h2>
+    </div>
+</div>
+<div class="container">
+    <hr class="styled">
+    <section *ngFor="let project of newProjects">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="thumbnail card">
+                <div class="img-preview-container">
+                    <a href='/project/{{ project.pageId }}'><img class="img-fluid img-preview" src="{{ project.image }}" alt="{{ 'Project.Preview.Image' | translate }}"></a>
+                </div>
+                <div class="text-container ">
+                    <a href='/project/{{ project.pageId }}'>
+                        <h4 class="title">
+                            {{ project.title }}
+                        </h4>
+                    </a>
+                    <p class="text text-secondary text-left description">
+                        {{ project.description }}
+                    </p>
+                </div>
+                <hr>
+                <div class="text-container">
+                    <p class="text text-success">{{ 'Project.Preview.Goal' | translate }}: {{ project.goal }} $</p>
+                    <p class="text text-info">{{ 'Project.Preview.Current' | translate }}: {{ project.collected }} $</p>
+                    <p class="text text-warning">{{ 'Project.Preview.Start' | translate }}: {{ project.creation }}</p>
+                    <p class="text text-warning">{{ 'Project.Preview.End' | translate }}: {{ project.date }}</p>
+                </div>
+                <hr>
+                <div class="text-container text-right d-flex justify-content-around">
+                    <div>
+                        <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                        <a href='/user/{{ project.author }}'>{{ project.author }}</a>
+                    </div>
+                    <small class=" text text-secondary ">{{ 'Project.Preview.Tag' | translate }}: {{ project.tags }}</small>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </section>
+</div>
+
+<div class="row container-fluid bgimg-2">
+    <div class="caption">
+        <h2><span class="border"><a href='/projects'>{{ 'Home.ActualProjects' | translate }}</a></span></h2>
+    </div>
+</div>
+<div class="container">
+    <hr class="styled">
+    <section *ngFor="let project of actualProjects">
+        <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="thumbnail card">
+                <div class="img-preview-container">
+                    <a href="/project/{{ project.pageId }}"><img class="img-fluid img-preview" src="{{ project.image }}" alt="{{ 'Project.Preview.Image' | translate }}"></a>
+                </div>
+                <div class="text-container ">
+                    <a href="/project/{{ project.pageId }}">
+                        <h4 class="title">
+                            {{ project.title }}
+                        </h4>
+                    </a>
+                    <p class="text text-secondary text-left description">
+                        {{ project.description }}
+                    </p>
+                </div>
+                <hr>
+                <div class="text-container">
+                    <p class="text text-success">{{ 'Project.Preview.Goal' | translate }}: {{ project.goal }} $</p>
+                    <p class="text text-info">{{ 'Project.Preview.Current' | translate }}: {{ project.collected }} $</p>
+                    <p class="text text-warning">{{ 'Project.Preview.Start' | translate }}: {{ project.creation }}</p>
+                    <p class="text text-warning">{{ 'Project.Preview.End' | translate }}: {{ project.date }}</p>
+                </div>
+                <hr>
+                <div class="text-container text-right d-flex justify-content-around">
+                    <div>
+                        <i class="fa fa-user fa-fw colored" aria-hidden="true"></i>
+                        <a href="/user/{{ project.author }}">{{ project.author }}</a>
+                    </div>
+                    <small class=" text text-secondary ">{{ 'Project.Preview.Tag' | translate }}: {{ project.tags }}</small>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </section>
+</div>

@@ -1,0 +1,66 @@
+.modal-lower {
+    padding-top: 200px;
+}
+
+input,
+textarea {
+    background-color: #eeeeee;
+}
+
+description {
+    width: 100%;
+    word-wrap: break-word;
+    overflow-x: hidden;
+}
+
+.selected {
+    border: solid #4CAF50 1px;
+    float: left;
+    margin: 2px;
+    padding: 2px 15px;
+}
+
+.selected a {
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.img-preview-container {
+    height: 256px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.img-preview {
+    height: 256px;
+    width: auto;
+    object-fit: cover;
+}
+
+.title {
+    display: block;
+    display: -webkit-box;
+    height: 3.5em;
+    margin: 0 auto;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.description {
+    display: block;
+    display: -webkit-box;
+    height: 3em;
+    margin: 0 auto;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.text-container {
+    margin-top: 1em;
+    margin-left: 1em;
+    margin-right: 1em;
+}
