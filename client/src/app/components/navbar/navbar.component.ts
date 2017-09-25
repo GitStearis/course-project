@@ -26,12 +26,10 @@ export class NavbarComponent implements OnInit {
   public browserLang = '';
 
   ngOnInit() {
-    // localStorage.setItem('style', null);
     this.initializeStyle();
     this.initializeLanguage();
   }
   
-  // ================== Style section ==========================
   initializeStyle() {
     if (localStorage.getItem('style') === null) {
       this.onChange();
@@ -64,7 +62,6 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  // ================== Language section ==========================
   initializeLanguage() { 
     if (localStorage.getItem('lang') === null) {
       this.browserLang = this.translate.getBrowserLang();
@@ -77,11 +74,9 @@ export class NavbarComponent implements OnInit {
 
   changeLanguage(lang) {
     this.translate.use(lang);
-    // Cookie.set('lang', lang);
     localStorage.setItem('lang', lang);
   }
 
-  // ================== Searching section ==========================
   searchQuery(event){
     let input = encodeURI(event.target.value);
     console.log(input);

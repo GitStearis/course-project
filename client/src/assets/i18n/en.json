@@ -282,8 +282,17 @@
         "Followed": "Followed",
         "Registration": "Registration date",
         "Achievements": "Achievements",
+        "Achive": {
+            "Registrated": "Registarted User",
+            "FirstComment": "First Comment",
+            "FirstProject": "First Project",
+            "FirstDonate": "First Donate",
+            "FirstRate": "First Rate",
+            "Back": "Back"
+        },
         "Phone": "Phone number",
         "Email": "Email address"
+        
     },
 
     "Verification": {

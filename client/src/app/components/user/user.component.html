@@ -37,7 +37,7 @@
                     <small class="text text-secondary">{{ 'Profile.Registration' | translate }}</small>
                 </div>
             </div>
-            <div class="col-md-8 rounded jumbotron">
+            <div class="col-md-8 rounded jumbotron" *ngIf="!showingAchievements">
                 <div class="d-flex justify-content-around">
                     <div class="alert text-center">
                         <h2>{{ 'Profile.Statistics' | translate }}</h2>
@@ -53,7 +53,7 @@
                     </div>
                     <div class="alert text-center">
                         <div>
-                            <a href="/user/{{ profile.name }}/achievements">
+                            <a class="colored" (click)="showAchievements(true)">
                                 <i class="fa fa-star fa-fw colored fa-5x" aria-hidden="true"></i>
                             </a>
                         </div>
@@ -93,6 +93,67 @@
                     </div>
                 </div>
             </div>
+            <!-- Achivements -->
+            <div class="col-md-8 rounded jumbotron" *ngIf="showingAchievements">
+                <div class="d-flex justify-content-around">
+                    <div class="alert text-center">
+                        <div>
+                            <i (click)="showAchievements(false)" class="fa fa-chevron-circle-left fa-fw fa-3x colored" aria-hidden="true"></i>
+                        </div>
+                        <small class="text text-secondary">{{ 'Profile.Achive.Back' | translate }}</small>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-around">
+                    <div class="alert text-center">
+                        <h2>{{ 'Profile.Achievements' | translate }}</h2>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-around">
+                    <div class="alert text-center">
+                        <div>
+                            <a>
+                                <img class="img achievement img-circle img-rounded img-responsive user-photo" src="{{ achievements.registrated }}">
+                            </a>
+                        </div>
+                        <small class="text text-secondary">{{ 'Profile.Achive.Registrated' | translate }}</small>
+                    </div>
+                    <div class="alert text-center">
+                        <div>
+                            <a>
+                                <img class="img achievement img-circle img-rounded img-responsive user-photo" src="{{ achievements.comment }}">
+                            </a>
+                        </div>
+                        <small class="text text-secondary">{{ 'Profile.Achive.FirstComment' | translate }}</small>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-around">
+                    <div class="alert text-center">
+                        <div>
+                            <a >
+                                <img class="img achievement img-circle img-rounded img-responsive user-photo" src="{{ achievements.project }}">
+                            </a>
+                        </div>
+                        <small class="text text-secondary">{{ 'Profile.Achive.FirstProject' | translate }}</small>
+                    </div>
+                    <div class="alert text-center">
+                        <div>
+                            <a>
+                                <img class="img achievement img-circle img-rounded img-responsive user-photo" src="{{ achievements.rate }}">
+                            </a>
+                        </div>
+                        <small class="text text-secondary">{{ 'Profile.Achive.FirstRate' | translate }}</small>
+                    </div>
+                    <div class="alert text-center">
+                        <div>
+                            <a>
+                                <img class="img achievement img-circle img-rounded img-responsive user-photo" src="{{ achievements.donate }}">
+                            </a>
+                        </div>
+                        <small class="text text-secondary">{{ 'Profile.Achive.FirstDonate' | translate }}</small>
+                    </div>
+                </div>
+            </div>
+            <!-- End Achievements -->
         </div>
     </div>
 </div>

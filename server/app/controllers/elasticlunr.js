@@ -32,7 +32,6 @@ function addToIndex(project) {
     body: project.body,
     tags: project.tags
   };
-  // console.log(newDocument);
   index.addDoc(newDocument);
 }
 

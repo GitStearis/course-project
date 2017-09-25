@@ -6,20 +6,11 @@
         </div>
     </div>
 </div>
-<!--<div class="jumbotron">
-    <h1>{{ 'Home.Jumbotron.Header' | translate }}</h1>
-    <blockquote [innerHTML]=" 'Home.Jumbotron.Quote' | translate">
-    </blockquote>
-    <div class="row"><a class="btn btn-primary btn-lg">{{ 'Home.Jumbotron.Join' | translate }}</a></div>
-</div>-->
 <div class="row container-fluid bgimg-2">
     <div class="caption">
         <h2><span class="border"><a href='/news'>{{ 'Home.News' | translate }}</a></span></h2>
     </div>
 </div>
-<!-- <div class="col-xs-12 col-sm-12 col-md-12 jumbotron">
-    <h2 class="text-center"><a href='/news'>{{ 'Home.News' | translate }}</a></h2>
-</div> -->
 <div class="container">
     <hr class="styled">
     <section *ngFor="let news of newsList">
@@ -65,9 +56,6 @@
         <h2><span class="border"><a href='/projects'>{{ 'Home.NewProjects' | translate }}</a></span></h2>
     </div>
 </div>
-<!-- <div class="col-xs-12 col-sm-12 col-md-12 jumbotron">
-    <h2 class="text-center"><a href='/projects'>{{ 'Home.NewProjects' | translate }}</a></h2>
-</div> -->
 <div class="container">
     <hr class="styled">
     <section *ngFor="let project of newProjects">
@@ -112,9 +100,6 @@
         <h2><span class="border"><a href='/projects'>{{ 'Home.ActualProjects' | translate }}</a></span></h2>
     </div>
 </div>
-<!-- <div class="col-xs-12 col-sm-12 col-md-12 jumbotron">
-    <h2 class="text-center"><a href='/projects'>{{ 'Home.ActualProjects' | translate }}</a></h2>
-</div> -->
 <div class="container">
     <hr class="styled">
     <section *ngFor="let project of actualProjects">

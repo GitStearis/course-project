@@ -13,6 +13,14 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class UserComponent implements OnInit {
 
+  achievements: any = {
+    registrated: "../../../assets/images/achievements/3.png",
+    comment: "../../../assets/images/achievements/1.png",
+    project: "../../../assets/images/achievements/4.png",
+    donate: "../../../assets/images/achievements/2.png",
+    rate: "../../../assets/images/achievements/6.png"
+  }
+
   profile: Profile = {
     email: '',
     name: '',
@@ -24,6 +32,7 @@ export class UserComponent implements OnInit {
   };
   date: string;
   username: string;
+  showingAchievements: boolean = false;
 
   private saveProfile(parsed) {
     this.profile = {
@@ -54,6 +63,10 @@ export class UserComponent implements OnInit {
         );
     });
 
+  }
+
+  public showAchievements(state: boolean) {
+    this.showingAchievements = state;
   }
 
   ngOnInit() {
