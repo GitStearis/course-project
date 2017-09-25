@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const elasticlunr = require("elasticlunr");
 require("../elasticlunr-config/lunr.stemmer.support.js")(elasticlunr);
 require("../elasticlunr-config/lunr.ru.js")(elasticlunr);
+require("../elasticlunr-config/lunr.multi.js")(elasticlunr);
 const Project = require("../models/projects");
 
 mongoose.Promise = Promise;
@@ -9,7 +10,7 @@ mongoose.Promise = Promise;
 elasticlunr.clearStopWords();
 
 const index = elasticlunr(function() {
-  this.use(elasticlunr.ru);
+  this.use(lunr.multiLanguage('en', 'ru'));
 
   this.addField("title");
   this.addField("description");
