@@ -38,7 +38,6 @@ export class HomeComponent implements OnInit {
             .subscribe(
             news => {
               this.newsList = JSON.parse(news);
-              console.log(this.newsList);
             });
           });
         });

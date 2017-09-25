@@ -64,7 +64,6 @@ export class CreateNewsComponent implements OnInit {
 
     xhr.onreadystatechange = (e) => {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        console.log(JSON.parse(xhr.responseText));
         const response = JSON.parse(xhr.responseText);
         const imgs = document.getElementsByTagName('img');
         for (let i = 0; i < imgs.length; i++) {
@@ -115,7 +114,6 @@ export class CreateNewsComponent implements OnInit {
       author: localStorage['name'],
       pageId: this.pageId
     };
-    console.log(news);
 
     this.http
     .post('/api/news/new', news)
@@ -126,20 +124,15 @@ export class CreateNewsComponent implements OnInit {
       this.removeAllWarnings();
       this.msg.success('Successfully created news!');
       this.router.navigate(['/project/' + this.pageId]);
-      console.log(data);
+
     },
     err => {
       this.removeWarnings();
       window.scrollTo(0, 0);
       if (err.error instanceof Error) {
         this.msg.warning('An error occured, please, try again.');
-        console.log('An error occurred:', err.error.message);
       } else {
         this.msg.warning('Server returned code ' + err.status + ', ' + err.error);
-        console.log(err);
-        console.log(
-          `Backend returned code ${err.status}, body was: ${err.error}`
-        );
       }
     }
     );
@@ -148,7 +141,6 @@ export class CreateNewsComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.pageId = params.pageId;
-      console.log(params);
     });
   }
 

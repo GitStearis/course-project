@@ -14,25 +14,22 @@ export class VerificationPageComponent implements OnInit {
 
   verificationToken: string = "";
 
-  constructor(private route: ActivatedRoute, private auth: AuthService, private http: HttpClient) {
+  constructor(private route: ActivatedRoute, private auth: AuthService, private http: HttpClient, private router: Router) {
     this.route.params.subscribe(params => {
       this.verificationToken = params.token;
       this.http.get(`/api/verify?id=${this.verificationToken}`)
       .map(data => JSON.stringify(data))
       .subscribe(data => {
-        console.log(data);
         this.auth.saveToLocal(JSON.parse(data));
       },
       err => {
         this.auth.removeWarnings();
         if (err.error instanceof Error) {
-          console.log("An error occurred:", err.error.message);
           this.auth.msg.warning('An error occured: ' + err.error.message + '.');
         } else {
-          console.log(err);
-          console.log('Backend returned code ${err.status}, body was: ${err.error}');
           this.auth.msg.warning('An error occured: ' + err.error + '.');
         }
+        this.router.navigate(['/404']);
       })
     })
   }

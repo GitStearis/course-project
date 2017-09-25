@@ -1,5 +1,5 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Profile } from '../../../profile';
 import { AuthService } from '../../../services/auth/auth.service';
@@ -26,7 +26,7 @@ export class CreateComponent implements OnInit {
   public goal: string = '';
   public deadline: string = '';
   public creation: string = new Date().toJSON().slice(0, 10);
-  public tags: any [] = [];
+  public tags: any[] = [];
   public author: string = localStorage['name'];
 
   constructor(
@@ -53,7 +53,6 @@ export class CreateComponent implements OnInit {
 
     xhr.onreadystatechange = (e) => {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        console.log(JSON.parse(xhr.responseText));
         const response = JSON.parse(xhr.responseText);
         const imgs = document.getElementsByTagName('img');
         for (let i = 0; i < imgs.length; i++) {
@@ -114,20 +113,14 @@ export class CreateComponent implements OnInit {
         window.scrollTo(0, 0);
         this.msg.success('Successfully created project!');
         this.router.navigate(['/']);
-        console.log(data);
       },
       err => {
         this.removeWarnings();
         window.scrollTo(0, 0);
         if (err.error instanceof Error) {
           this.msg.warning('An error occured, please, try again.');
-          console.log('An error occurred:', err.error.message);
         } else {
           this.msg.warning('Server returned code ' + err.status + ', ' + err.error);
-          console.log(err);
-          console.log(
-            `Backend returned code ${err.status}, body was: ${err.error}`
-          );
         }
       }
       );
@@ -139,9 +132,7 @@ export class CreateComponent implements OnInit {
   public tagsPreview: any[] = [];
 
   public onAdd(event: any) {
-    console.log(event);
     this.tagsPreview.push(event.value);
-    console.log(this.tagsPreview);
   }
 
   public errorMessages = {
@@ -149,11 +140,10 @@ export class CreateComponent implements OnInit {
   };
 
   public addTag(control: FormControl) {
-    console.log(control.value);
     if (control.value.length > 25) {
-        return {
-            'addTag': true
-        };
+      return {
+        'addTag': true
+      };
     }
     return null;
   }
@@ -162,7 +152,6 @@ export class CreateComponent implements OnInit {
     this.items.map(item => {
       this.tags.push(item.value);
     })
-    console.log(this.tags);
   }
 
   ngOnInit() { }

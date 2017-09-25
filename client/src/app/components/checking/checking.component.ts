@@ -16,7 +16,7 @@ export class CheckingComponent implements OnInit {
   CLOUDYNARY_URL = 'https://api.cloudinary.com/v1_1/itra-courseproject/image/upload';
   CLOUDYNARY_UPLOAD_PRESET = 'nw6hxewv';
 
-  public image: string = "http://imperva.typepad.com/.a/6a01156f8c7ad8970c0167683052d1970b-pi" ;
+  public image: string = "http://imperva.typepad.com/.a/6a01156f8c7ad8970c0167683052d1970b-pi";
 
   constructor(
     private http: HttpClient,
@@ -38,7 +38,6 @@ export class CheckingComponent implements OnInit {
 
     xhr.onreadystatechange = (e) => {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        console.log(JSON.parse(xhr.responseText));
         const response = JSON.parse(xhr.responseText);
         const imgs = document.getElementsByTagName('img');
         for (let i = 0; i < imgs.length; i++) {
@@ -71,20 +70,14 @@ export class CheckingComponent implements OnInit {
         window.scrollTo(0, 0);
         this.msg.success('Wait for admin checking.');
         this.router.navigate(['/']);
-        console.log(data);
       },
       err => {
         this.auth.removeWarnings();
         window.scrollTo(0, 0);
         if (err.error instanceof Error) {
           this.msg.warning('An error occured, please, try again.');
-          console.log('An error occurred:', err.error.message);
         } else {
           this.msg.warning('Server returned code ' + err.status + ', ' + err.error);
-          console.log(err);
-          console.log(
-            `Backend returned code ${err.status}, body was: ${err.error}`
-          );
         }
       }
       );

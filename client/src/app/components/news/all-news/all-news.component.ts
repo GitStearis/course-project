@@ -13,29 +13,21 @@ export class AllNewsComponent implements OnInit {
 
   newsList: News[];
 
-    constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
-      this.route.params.subscribe(params => {
-        this.http
-          .get('api/news/all')
-          .map(data => JSON.stringify(data))
-          .subscribe(
-          data => {
-            console.log(data);
-            this.newsList = JSON.parse(data);
-            console.log(this.newsList);
-          },
-          err => {
-            if (err.error instanceof Error) {
-              console.log('An error occurred:', err.error.message);
-            } else {
-              console.log(err);
-              console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
-            }
-            this.router.navigate(['/404']);
-          }
-          );
-      });
-    }
+  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
+    this.route.params.subscribe(params => {
+      this.http
+        .get('api/news/all')
+        .map(data => JSON.stringify(data))
+        .subscribe(
+        data => {
+          this.newsList = JSON.parse(data);
+        },
+        err => {
+          this.router.navigate(['/404']);
+        }
+        );
+    });
+  }
   ngOnInit() {
   }
 

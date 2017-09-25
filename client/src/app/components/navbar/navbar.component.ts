@@ -53,9 +53,7 @@ export class NavbarComponent implements OnInit {
     const links = document.getElementsByTagName('link');
     for (let i = 0; i < links.length; i++) {
       const link = links[i];
-      console.log(link.href === this.dark);
       if (link.href === this.dark || link.href === this.light) {
-        console.log(style);
         localStorage.setItem('style', style);
         link.href = style;
       }

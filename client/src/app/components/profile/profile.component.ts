@@ -41,25 +41,18 @@ export class ProfileComponent implements OnInit {
   }
 
   constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient, public auth: AuthService) {
-      this.username = localStorage['name'];
-      this.http
-        .get('/api/user/' + this.username)
-        .map(data => JSON.stringify(data))
-        .subscribe(
-        data => {
-          console.log(data);
-          this.saveProfile(JSON.parse(data));
-        },
-        err => {
-          if (err.error instanceof Error) {
-            console.log('An error occurred:', err.error.message);
-          } else {
-            console.log(err);
-            console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
-          }
-          this.router.navigate(['/404']);
-        }
-        );
+    this.username = localStorage['name'];
+    this.http
+      .get('/api/user/' + this.username)
+      .map(data => JSON.stringify(data))
+      .subscribe(
+      data => {
+        this.saveProfile(JSON.parse(data));
+      },
+      err => {
+        this.router.navigate(['/404']);
+      }
+      );
   }
 
   ngOnInit() {

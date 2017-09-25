@@ -22,18 +22,10 @@ export class NewsComponent implements OnInit {
             .map(data => JSON.stringify(data))
             .subscribe(
             data => {
-              console.log(data);
               this.news = JSON.parse(data);
               this.news = this.news[0];
-              console.log(this.news);
             },
             err => {
-              if (err.error instanceof Error) {
-                console.log('An error occurred:', err.error.message);
-              } else {
-                console.log(err);
-                console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
-              }
               this.router.navigate(['/404']);
             }
             );

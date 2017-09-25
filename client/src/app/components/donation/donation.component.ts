@@ -56,13 +56,11 @@ export class DonationComponent implements OnInit {
       .subscribe(
       data => {
         this.msg.success('Successfully donated' + this.value + ' $');
-        console.log(data);
       },
       err => {
         this.removeWarnings();
         if (err.error instanceof Error) {
           this.msg.warning('An error occured, please, try again.');
-          console.log('An error occurred:', err.error.message);
         }
         if (err.status === 200) {
           this.msg.success('Successfully donated ' + this.value + ' $');
@@ -76,7 +74,6 @@ export class DonationComponent implements OnInit {
   ngOnInit() {
     this.route.params.subscribe(params => {
       this.pageId = params.pageId;
-      console.log(params);
     });
   }
 

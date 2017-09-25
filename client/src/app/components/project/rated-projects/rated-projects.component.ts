@@ -14,28 +14,22 @@ export class RatedProjectsComponent implements OnInit {
   ratedProjects: Project[];
   name: string = '';
 
-    constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
-      this.route.params.subscribe(params => {
-        this.name = params.name;
-        this.http
-          .get('/api/user/' + this.name + '/rated')
-          .map(data => JSON.stringify(data))
-          .subscribe(
-          data => {
-            this.ratedProjects = JSON.parse(data);
-          },
-          err => {
-            if (err.error instanceof Error) {
-              console.log('An error occurred:', err.error.message);
-            } else {
-              console.log(err);
-              console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
-            }
-            this.router.navigate(['/404']);
-          }
-          );
-      });
-    }
+  constructor(private route: ActivatedRoute, private router: Router, private http: HttpClient) {
+    this.route.params.subscribe(params => {
+      this.name = params.name;
+      this.http
+        .get('/api/user/' + this.name + '/rated')
+        .map(data => JSON.stringify(data))
+        .subscribe(
+        data => {
+          this.ratedProjects = JSON.parse(data);
+        },
+        err => {
+          this.router.navigate(['/404']);
+        }
+        );
+    });
+  }
   ngOnInit() {
   }
 }
