@@ -62,3 +62,16 @@ module.exports.updateProject = function(req, res) {
     });
 
 }
+
+module.exports.deleteProject = function (req, res) {
+  Project.findOneAndRemove({ pageId: req.params.pageId }, function(err, project) {
+  if (err){
+    res.send(err);
+  }
+  let response = {
+    message: `Project ${project.pageId} was successfully deleted.`,
+    id: project._id
+  }
+  res.status(200).send(response);
+});
+}

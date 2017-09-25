@@ -32,7 +32,7 @@ function addToIndex(project) {
     body: project.body,
     tags: project.tags
   };
-  console.log(newDocument);
+  // console.log(newDocument);
   index.addDoc(newDocument);
 }
 
@@ -67,12 +67,10 @@ function searchQuery(query) {
 }
 
 module.exports.projectsBySearch = async function(req, res) {
-  // let projects = await Project.find({});
-  // projects.forEach(proj => addToIndex(proj));
-  let refArray = searchQuery(req.query["q"]); //внутри пусто
-  console.log(refArray); // EMPTY
+  let refArray = searchQuery(req.query["q"]);
+  console.log(refArray); 
   let promiseArray = refArray.map(({ ref }) => Project.findOne({ _id: ref }));
-  console.log(promiseArray); //EMPTY
+  console.log(promiseArray); 
   let results = await Promise.all(promiseArray);
   res.status(200).send(results);
 };

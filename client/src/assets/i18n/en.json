@@ -14,6 +14,9 @@
     "Navbar": {
 
     },
+    "Searching": {
+        "Request": "Searching results"
+    },
 
     "About": {
         "Headers": {
@@ -141,7 +144,8 @@
             "AddNews": "Add news",
             "Send": "Send",
             "Follow": "Follow",
-            "Edit": "Edit"
+            "Edit": "Edit", 
+            "Delete": "Delete"
         },
         "Project": {
             "Author": "Project author",

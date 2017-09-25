@@ -132,6 +132,16 @@ export class ProjectComponent implements OnInit {
     });
   }
 
+  public deleteProject() {
+    this.http
+    .delete(`/api/project/${this.pageId}/delete`)
+    .subscribe(
+      response => {
+      console.log(response);
+      this.router.navigate(['/']);
+    });
+  }
+
   ngOnInit() {
     this.project = {
       pageId: "",
