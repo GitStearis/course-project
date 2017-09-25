@@ -36,6 +36,10 @@ function addToIndex(project) {
   index.addDoc(newDocument);
 }
 
+module.exports.addDocument = function(proj) {
+  addToIndex(proj);
+}
+
 module.exports.removeFromIndex = function(existingDoc) {
   index.removeDoc(existingDoc);
 };
@@ -58,17 +62,18 @@ function searchQuery(query) {
     bool: "OR",
     expand: true
   });
+  console.log(results);
   return results;
 }
 
 module.exports.projectsBySearch = async function(req, res) {
-  let refArray = searchQuery(req.query["q"]); 
+  // let projects = await Project.find({});
+  // projects.forEach(proj => addToIndex(proj));
+  let refArray = searchQuery(req.query["q"]); //внутри пусто
+  console.log(refArray); // EMPTY
   let promiseArray = refArray.map(({ ref }) => Project.findOne({ _id: ref }));
-  console.log(promiseArray);
+  console.log(promiseArray); //EMPTY
   let results = await Promise.all(promiseArray);
   res.status(200).send(results);
 };
 
-module.exports = {
-  addToIndex: addToIndex
-}

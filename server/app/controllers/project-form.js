@@ -32,7 +32,7 @@ module.exports.createProject = function(req, res) {
   Project.findOne({ pageId: tempTitle }, function(err, project) {
     if (project === null) {
       _project.save(function(err) {
-        elasticlunr.addToIndex(_project);
+        elasticlunr.addDocument(_project);
         res.status(200);
       });
     }

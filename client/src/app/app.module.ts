@@ -84,7 +84,7 @@ import { AboutComponent } from './components/about/about.component';
     RatedProjectsComponent,
     FollowedProjectsComponent,
     UpdateComponent,
-    SearchingPageComponent
+    SearchingPageComponent,
     GuideComponent,
     AboutComponent
   ],
