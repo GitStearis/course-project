@@ -78,7 +78,7 @@
                                 <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i> {{ 'Project.Buttons.Edit' | translate }}
                             </a>
                             <a class="btn btn-success btn-block" (click)="deleteProject()" *ngIf="!this.isProject('closed') && auth.isAuthenticated() && (this.isAuthor() || (auth.getPermissionType() === 'admin'))">
-                                <i class="fa fa-pencil-square-o fa-lg" aria-hidden="true"></i> {{ 'Project.Buttons.Delete' | translate }}
+                                <i class="fa fa-trash-o fa-lg" aria-hidden="true"></i> {{ 'Project.Buttons.Delete' | translate }}
                             </a>
                         </div>
                     </div>
