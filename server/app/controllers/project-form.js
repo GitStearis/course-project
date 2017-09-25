@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const Project = require("../models/projects");
+const elasticlunr = require("./elasticlunr");
 // const tag = require("../models/tag");
 
 String.prototype.cleanup = function() {
