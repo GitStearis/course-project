@@ -50,7 +50,6 @@ export class ProjectComponent implements OnInit {
   }
 
   private checkVoting() {
-    console.log(this.isVoted);
     let voter = this.project.ratings.find(x => x.user === localStorage['name'])
     if(voter) {
       this.starsCount = parseInt(voter.rating);
@@ -119,6 +118,9 @@ export class ProjectComponent implements OnInit {
                 this.commentList = JSON.parse(com);
               });
             });
+        },
+        err => {
+          this.router.navigate(['/404']);
         });
     });
   }

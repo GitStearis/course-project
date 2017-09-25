@@ -108,7 +108,6 @@ export class RegistrationComponent implements OnInit {
       phone: this.phone,
       tipped: 0
     };
-    console.log(user);
     this.auth.register(user);
   }
 

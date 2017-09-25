@@ -18,7 +18,6 @@ export class ImgCloudinaryService {
   
     xhr.onreadystatechange = (e) => {
       if (xhr.readyState == 4 && xhr.status == 200) {
-        console.log(JSON.parse(xhr.responseText));
         let response = JSON.parse(xhr.responseText);
         return image = {
           src: response.secure_url,

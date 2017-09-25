@@ -24,7 +24,6 @@ export class CheckByAdminComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    // console.log(`Passport scan url ${this.image} for user ${this.person}`);
     this.confirmUser.emit(this.person);
   }
 }

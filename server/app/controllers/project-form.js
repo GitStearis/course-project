@@ -29,19 +29,19 @@ module.exports.createProject = function(req, res) {
 
     // tag.addTag(_project.tags);
 
-    Project.findOne({ pageId: tempTitle }, function(err, project) {
-        if (project === null) {
-            elasticlunr.addToIndex(_project);
-            _project.save(function(err) {
-                res.status(200);
-            });
-        }
-        if (project) {
-            res.status(409).json("please, choose other name for your project");
-        } else {
-            res.json(err);
-        }
-    });
+  Project.findOne({ pageId: tempTitle }, function(err, project) {
+    if (project === null) {
+      _project.save(function(err) {
+        elasticlunr.addToIndex(_project);
+        res.status(200);
+      });
+    }
+    if (project) {
+      res.status(409).json("please, choose other name for your project");
+    } else {
+      res.json(err);
+    }
+  });
 };
 
 module.exports.updateProject = function(req, res) {

@@ -21,6 +21,8 @@ import { RatedProjectsComponent } from './components/project/rated-projects/rate
 import { FollowedProjectsComponent } from './components/project/followed-projects/followed-projects.component';
 import { UpdateComponent } from './components/project/update/update.component';
 import { SearchingPageComponent } from './components/searching-page/searching-page.component';
+import { GuideComponent } from './components/guide/guide.component';
+import { AboutComponent } from './components/about/about.component';
 
 const appRoutes: Routes = [
   {
@@ -102,6 +104,14 @@ const appRoutes: Routes = [
   {
     path: '404',
     component: NotfoundComponent
+  },
+  {
+    path: 'guide',
+    component: GuideComponent
+  },
+  {
+    path: 'about',
+    component: AboutComponent
   },
   {
     path: '**',

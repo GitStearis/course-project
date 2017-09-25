@@ -61,7 +61,6 @@ export class UpdateComponent implements OnInit {
 
     xhr.onreadystatechange = (e) => {
       if (xhr.readyState === 4 && xhr.status === 200) {
-        console.log(JSON.parse(xhr.responseText));
         const response = JSON.parse(xhr.responseText);
         const imgs = document.getElementsByTagName('img');
         for (let i = 0; i < imgs.length; i++) {
@@ -94,10 +93,8 @@ export class UpdateComponent implements OnInit {
   }
   private removeSuccess() {
     this.msg.messages.subscribe(data => {
-      console.log(data);
       let flag = true;
       for (const id in data['success']) {
-        console.log(id);
         if (flag === true) {
           flag = false;
         } else {
@@ -131,17 +128,14 @@ export class UpdateComponent implements OnInit {
       .map(data => JSON.stringify(data))
       .subscribe(
       data => {
-        console.log('/project/' + this.pageId);
-        
+        this.router.navigate(['/project/' + this.pageId]); 
       },
       err => {
         this.removeSuccess();
         this.removeWarnings();
         if (err.error instanceof Error) {
           this.msg.warning('An error occured, please, try again.');
-          console.log('An error occurred:', err.error.message);
         } else {
-          console.log(err.status === 200);
           if (err.status === 200) {
             this.removeAllWarnings();
             window.scrollTo(0, 0);
@@ -157,9 +151,7 @@ export class UpdateComponent implements OnInit {
   public tagsPreview: any[] = [];
 
   public onAdd(event: any) {
-    console.log(event);
     this.tagsPreview.push(event.value);
-    console.log(this.tagsPreview);
   }
 
   public errorMessages = {
@@ -167,7 +159,6 @@ export class UpdateComponent implements OnInit {
   };
 
   public addTag(control: FormControl) {
-    console.log(control.value);
     if (control.value.length > 25) {
       return {
         'addTag': true
@@ -180,7 +171,6 @@ export class UpdateComponent implements OnInit {
     this.items.map(item => {
       this.tags.push(item.value);
     })
-    console.log(this.tags);
   }
 
   async ngOnInit() {

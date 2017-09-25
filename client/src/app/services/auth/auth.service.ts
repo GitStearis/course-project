@@ -108,17 +108,13 @@ export class AuthService {
       .subscribe(
       data => {
         this.msg.success("Registration completed successfully!");
-        console.log(data);
         this.saveToLocal(JSON.parse(data));
       },
       err => {
         this.removeWarnings();
         if (err.error instanceof Error) {
-          console.log("An error occurred:", err.error.message);
           this.msg.warning('An error occured: ' + err.error.message + '.');
         } else {
-          console.log(err);
-          console.log('Backend returned code ${err.status}, body was: ${err.error}');
           this.msg.warning('An error occured: ' + err.error + '.');
         }
       }
@@ -135,17 +131,13 @@ export class AuthService {
       data => {
         this.removeAllWarnings();
         this.msg.success("Successfully logged in!");
-        console.log(data);
         this.saveToLocal(JSON.parse(data));
       },
       err => {
         this.removeWarnings();
         if (err.error instanceof Error) {
-          console.log("An error occurred:", err.error.message);
           this.msg.warning('An error occured: ' + err.error.message + '.');
         } else {
-          console.log(err);
-          console.log(`Backend returned code ${err.status}, body was: ${err.error}`);
           this.msg.warning('An error occured: ' + err.error.message + '.');
         }
       }

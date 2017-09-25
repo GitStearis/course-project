@@ -70,9 +70,7 @@ export class AdminComponent implements OnInit {
 
   async ngOnInit() {
     this.data = await this.getUserList();
-    console.log(this.data);
     this.length = this.data.length;
-    console.log(this.length);
     this.onChangeTable(this.config);
   }
 
@@ -172,27 +170,22 @@ export class AdminComponent implements OnInit {
 
   public onCellClick(data: any): any {
     this.selectedUser = data.row.email;
-    console.log(`Selected user: ${this.selectedUser}`);
     this.userImage = data.row.passport;
-    console.log(`Scan url: ${this.userImage}`);
     let row = data.row.email;
     if (!this.selectedRows.includes(row)) {
       this.selectedRows.push(row);
     } else {
       this.selectedRows.splice(this.selectedRows.indexOf(row), 1);
     }
-    console.log(this.selectedRows);
   }
 
   public deleteUsers() {
     // add localStorage user's data deleting if self deleting
     this.http.post("/api/deleteUsers", this.selectedRows).subscribe(
       async data => {
-        console.log(data);
         await this.userList();
         this.onChangeTable(this.config);
-      },
-      err => console.log("smth wrong")
+      }
     );
     this.selectedRows = [];
   }
@@ -200,11 +193,9 @@ export class AdminComponent implements OnInit {
   public async blockUsers() {
     this.http.post("/api/blockUsers", this.selectedRows).subscribe(
       async data => {
-        console.log(data);
         await this.userList();
         this.onChangeTable(this.config);
-      },
-      err => console.log("smth wrong")
+      }
     );
     this.selectedRows = [];
   }
@@ -212,11 +203,9 @@ export class AdminComponent implements OnInit {
   public unblockUsers() {
     this.http.post("/api/unblockUsers", this.selectedRows).subscribe(
       async data => {
-        console.log(data);
         await this.userList();
         this.onChangeTable(this.config);
-      },
-      err => console.log("smth wrong")
+      }
     );
     this.selectedRows = [];
   }
@@ -224,7 +213,6 @@ export class AdminComponent implements OnInit {
   public confirmUser(user: string) {
     this.http.post("/api/confirm", {user: user})
     .subscribe( async data => {
-      console.log(data);
       await this.userList();
       this.onChangeTable(this.config);
     });
@@ -235,6 +223,5 @@ export class AdminComponent implements OnInit {
     const response = await fetch("/api/userlist");
     const json = await response.json();
     this.data = json;
-    console.log(json);
   }
 }
