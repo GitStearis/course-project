@@ -12,7 +12,8 @@
     },
 
     "Navbar": {
-
+        "Admin": "Admin",
+        "Register": "Register"
     },
     "Searching": {
         "Request": "Searching results"
@@ -144,7 +145,7 @@
             "AddNews": "Add news",
             "Send": "Send",
             "Follow": "Follow",
-            "Edit": "Edit", 
+            "Edit": "Edit",
             "Delete": "Delete"
         },
         "Project": {

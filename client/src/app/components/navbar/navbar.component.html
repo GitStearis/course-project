@@ -41,7 +41,7 @@
             </li>
             <li class="nav-item">
                 <a class="btn btn-active" href="/admin" *ngIf="auth.isAuthenticated() && (auth.getPermissionType() === 'admin')">
-                    <i class="fa fa-home fa-lg fa-fw colored" aria-hidden="true"></i> Admin
+                    <i class="fa fa-home fa-lg fa-fw colored" aria-hidden="true"></i> {{ 'Navbar.Admin' | translate }}
                 </a>
             </li>
             <li class="nav-item">
@@ -54,7 +54,7 @@
             </li>
             <li class="nav-item">
                 <a class="btn btn-active" href="" data-toggle="modal" data-target="#register" *ngIf="!auth.isAuthenticated()">
-                    <i class="fa fa-user-plus fa-lg fa-fw colored" aria-hidden="true"></i> Register
+                    <i class="fa fa-user-plus fa-lg fa-fw colored" aria-hidden="true"></i> {{ 'Navbar.Register' | translate }}
                 </a>
             </li>
             <li class="nav-item">
