@@ -58,17 +58,17 @@ function searchQuery(query) {
     bool: "OR",
     expand: true
   });
-  console.log(results);
   return results;
 }
 
 module.exports.projectsBySearch = async function(req, res) {
-  // let projects = await Project.find({});
-  // projects.forEach(proj => addToIndex(proj));
-  let refArray = searchQuery(req.query["q"]); //внутри пусто
-  console.log(refArray); // EMPTY
+  let refArray = searchQuery(req.query["q"]); 
   let promiseArray = refArray.map(({ ref }) => Project.findOne({ _id: ref }));
-  console.log(promiseArray); //EMPTY
+  console.log(promiseArray);
   let results = await Promise.all(promiseArray);
   res.status(200).send(results);
 };
+
+module.exports = {
+  addToIndex: addToIndex
+}

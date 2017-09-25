@@ -31,6 +31,7 @@ module.exports.createProject = function(req, res) {
 
     Project.findOne({ pageId: tempTitle }, function(err, project) {
         if (project === null) {
+            elasticlunr.addToIndex(_project);
             _project.save(function(err) {
                 res.status(200);
             });
@@ -54,6 +55,7 @@ module.exports.updateProject = function(req, res) {
             date: req.body.date,
             tags: req.body.tags
         }, (err, result) => {
+            elasticlunr.updateProject(project);
             res.json(req.params.pageId);
             if (err) throw err;
         });
